@@ -1,0 +1,243 @@
+
+
+================================================================
+== Vivado HLS Report for 'method1'
+================================================================
+* Date:           Thu Oct  1 13:57:34 2020
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        Iris-recognition
+* Solution:       PYNQ_SOLUTION
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  | 10.00 ns | 9.400 ns |   1.25 ns  |
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +----------+-----------+-----------+-----------+----------+-----------+----------+
+    |   Latency (cycles)   |   Latency (absolute)  |       Interval       | Pipeline |
+    |    min   |    max    |    min    |    max    |    min   |    max    |   Type   |
+    +----------+-----------+-----------+-----------+----------+-----------+----------+
+    |  59860419|  119534019| 0.599 sec | 1.195 sec |  59860417|  119534017| dataflow |
+    +----------+-----------+-----------+-----------+----------+-----------+----------+
+
+    + Detail: 
+        * Instance: 
+        +-------------------------+----------------------+----------+-----------+-----------+-----------+----------+-----------+---------+
+        |                         |                      |   Latency (cycles)   |   Latency (absolute)  |       Interval       | Pipeline|
+        |         Instance        |        Module        |    min   |    max    |    min    |    max    |    min   |    max    |   Type  |
+        +-------------------------+----------------------+----------+-----------+-----------+-----------+----------+-----------+---------+
+        |core_low_U0              |core_low              |    678606|     682926|  6.786 ms |  6.829 ms |    678606|     682926|   none  |
+        |find_iris_high_accur_U0  |find_iris_high_accur  |  59860416|  119534016| 0.599 sec | 1.195 sec |  59860416|  119534016|   none  |
+        |findPupil_U0             |findPupil             |     90722|      90722|  0.907 ms |  0.907 ms |     90722|      90722|   none  |
+        |AXIvideo2Mat_U0          |AXIvideo2Mat          |         3|      91003| 30.000 ns |  0.910 ms |         3|      91003|   none  |
+        |Array2Mat_U0             |Array2Mat             |         1|      23233| 10.000 ns |  0.232 ms |         1|      23233|   none  |
+        |CvtColor_U0              |CvtColor              |         1|      91281| 10.000 ns |  0.913 ms |         1|      91281|   none  |
+        |Mat2Array_U0             |Mat2Array             |     90441|      90441|  0.904 ms |  0.904 ms |     90441|      90441|   none  |
+        |Mat2AXIvideo_U0          |Mat2AXIvideo          |     23233|      23233|  0.232 ms |  0.232 ms |     23233|      23233|   none  |
+        |CvtColor_1_U0            |CvtColor_1            |         1|      23233| 10.000 ns |  0.232 ms |         1|      23233|   none  |
+        |writeValues_U0           |writeValues           |         0|          0|    0 ns   |    0 ns   |         0|          0|   none  |
+        |method1_Block_proc_U0    |method1_Block_proc    |         0|          0|    0 ns   |    0 ns   |         0|          0|   none  |
+        +-------------------------+----------------------+----------+-----------+-----------+-----------+----------+-----------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|     52|    -|
+|FIFO             |        0|      -|     142|    816|    -|
+|Instance         |        4|     52|   11223|  25086|    0|
+|Memory           |       80|      -|       0|      0|    0|
+|Multiplexer      |        -|      -|       -|     72|    -|
+|Register         |        -|      -|      10|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |       84|     52|   11375|  26026|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |       30|     23|      10|     48|    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +-------------------------+----------------------+---------+-------+------+-------+-----+
+    |         Instance        |        Module        | BRAM_18K| DSP48E|  FF  |  LUT  | URAM|
+    +-------------------------+----------------------+---------+-------+------+-------+-----+
+    |AXIvideo2Mat_U0          |AXIvideo2Mat          |        0|      0|   365|    445|    0|
+    |Array2Mat_U0             |Array2Mat             |        0|      1|   185|    270|    0|
+    |CvtColor_U0              |CvtColor              |        0|      3|   231|    262|    0|
+    |CvtColor_1_U0            |CvtColor_1            |        0|      0|    50|    196|    0|
+    |Mat2AXIvideo_U0          |Mat2AXIvideo          |        0|      0|    33|    186|    0|
+    |Mat2Array_U0             |Mat2Array             |        0|      0|    70|    191|    0|
+    |core_low_U0              |core_low              |        0|     37|  7653|  16899|    0|
+    |findPupil_U0             |findPupil             |        0|      0|   425|   1512|    0|
+    |find_iris_high_accur_U0  |find_iris_high_accur  |        4|     11|  2079|   5004|    0|
+    |method1_Block_proc_U0    |method1_Block_proc    |        0|      0|     2|     47|    0|
+    |writeValues_U0           |writeValues           |        0|      0|   130|     74|    0|
+    +-------------------------+----------------------+---------+-------+------+-------+-----+
+    |Total                    |                      |        4|     52| 11223|  25086|    0|
+    +-------------------------+----------------------+---------+-------+------+-------+-----+
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    +------------+------------------+---------+---+----+-----+-------+-----+------+-------------+
+    |   Memory   |      Module      | BRAM_18K| FF| LUT| URAM| Words | Bits| Banks| W*Bits*Banks|
+    +------------+------------------+---------+---+----+-----+-------+-----+------+-------------+
+    |imageIn_U   |method1_imageIn   |       64|  0|   0|    0|  89600|    8|     2|      1433600|
+    |imageOut_U  |method1_imageOut  |       16|  0|   0|    0|  23040|    8|     2|       368640|
+    +------------+------------------+---------+---+----+-----+-------+-----+------+-------------+
+    |Total       |                  |       80|  0|   0|    0| 112640|   16|     4|      1802240|
+    +------------+------------------+---------+---+----+-----+-------+-----+------+-------------+
+
+    * FIFO: 
+    +------------------------+---------+---+----+-----+------+-----+---------+
+    |          Name          | BRAM_18K| FF| LUT| URAM| Depth| Bits| Size:D*B|
+    +------------------------+---------+---+----+-----+------+-----+---------+
+    |img0_cols_V_c17_U       |        0|  5|   0|    -|     2|   10|       20|
+    |img0_cols_V_c_U         |        0|  5|   0|    -|     2|   10|       20|
+    |img0_data_stream_0_s_U  |        0|  5|   0|    -|     2|    8|       16|
+    |img0_data_stream_1_s_U  |        0|  5|   0|    -|     2|    8|       16|
+    |img0_data_stream_2_s_U  |        0|  5|   0|    -|     2|    8|       16|
+    |img0_rows_V_c16_U       |        0|  5|   0|    -|     2|   10|       20|
+    |img0_rows_V_c_U         |        0|  5|   0|    -|     2|   10|       20|
+    |img1_data_stream_0_s_U  |        0|  5|   0|    -|     2|    8|       16|
+    |img2_data_stream_0_s_U  |        0|  5|   0|    -|     2|    8|       16|
+    |img3_data_stream_0_s_U  |        0|  5|   0|    -|     2|    8|       16|
+    |img4_cols_V_c21_U       |        0|  5|   0|    -|     2|   10|       20|
+    |img4_cols_V_c_U         |        0|  6|   0|    -|     8|   10|       80|
+    |img4_data_stream_0_s_U  |        0|  5|   0|    -|     2|    8|       16|
+    |img4_rows_V_c20_U       |        0|  5|   0|    -|     2|    8|       16|
+    |img4_rows_V_c_U         |        0|  6|   0|    -|     8|    8|       64|
+    |img5_data_stream_0_s_U  |        0|  5|   0|    -|     2|    8|       16|
+    |img5_data_stream_1_s_U  |        0|  5|   0|    -|     2|    8|       16|
+    |img5_data_stream_2_s_U  |        0|  5|   0|    -|     2|    8|       16|
+    |r1_c_U                  |        0|  5|   0|    -|     3|   32|       96|
+    |r2_U                    |        0|  5|   0|    -|     2|   32|       64|
+    |val_0_channel_U         |        0|  5|   0|    -|     2|   32|       64|
+    |val_1_channel_U         |        0|  5|   0|    -|     2|   32|       64|
+    |val_2_channel_U         |        0|  5|   0|    -|     2|   32|       64|
+    |val_3_channel_U         |        0|  5|   0|    -|     2|   32|       64|
+    |x_c18_U                 |        0|  5|   0|    -|     2|   32|       64|
+    |x_c_U                   |        0|  5|   0|    -|     2|   32|       64|
+    |y_c19_U                 |        0|  5|   0|    -|     2|   32|       64|
+    |y_c_U                   |        0|  5|   0|    -|     2|   32|       64|
+    +------------------------+---------+---+----+-----+------+-----+---------+
+    |Total                   |        0|142|   0|    0|    69|  476|     1092|
+    +------------------------+---------+---+----+-----+------+-----+---------+
+
+    * Expression: 
+    +----------------------------------------+----------+-------+---+----+------------+------------+
+    |              Variable Name             | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------------+----------+-------+---+----+------------+------------+
+    |AXIvideo2Mat_U0_ap_ready_count          |     +    |      0|  0|  10|           2|           1|
+    |method1_Block_proc_U0_ap_ready_count    |     +    |      0|  0|  10|           2|           1|
+    |AXIvideo2Mat_U0_ap_start                |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_val_0_channel           |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_val_1_channel           |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_val_2_channel           |    and   |      0|  0|   2|           1|           1|
+    |ap_channel_done_val_3_channel           |    and   |      0|  0|   2|           1|           1|
+    |ap_idle                                 |    and   |      0|  0|   2|           1|           1|
+    |ap_sync_ready                           |    and   |      0|  0|   2|           1|           1|
+    |core_low_U0_ap_start                    |    and   |      0|  0|   2|           1|           1|
+    |method1_Block_proc_U0_ap_start          |    and   |      0|  0|   2|           1|           1|
+    |writeValues_U0_ap_continue              |    and   |      0|  0|   2|           1|           1|
+    |ap_sync_AXIvideo2Mat_U0_ap_ready        |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_val_0_channel     |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_val_1_channel     |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_val_2_channel     |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_channel_write_val_3_channel     |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_method1_Block_proc_U0_ap_ready  |    or    |      0|  0|   2|           1|           1|
+    +----------------------------------------+----------+-------+---+----+------------+------------+
+    |Total                                   |          |      0|  0|  52|          20|          18|
+    +----------------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +--------------------------------------------+----+-----------+-----+-----------+
+    |                    Name                    | LUT| Input Size| Bits| Total Bits|
+    +--------------------------------------------+----+-----------+-----+-----------+
+    |AXIvideo2Mat_U0_ap_ready_count              |   9|          2|    2|          4|
+    |ap_sync_reg_AXIvideo2Mat_U0_ap_ready        |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_val_0_channel     |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_val_1_channel     |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_val_2_channel     |   9|          2|    1|          2|
+    |ap_sync_reg_channel_write_val_3_channel     |   9|          2|    1|          2|
+    |ap_sync_reg_method1_Block_proc_U0_ap_ready  |   9|          2|    1|          2|
+    |method1_Block_proc_U0_ap_ready_count        |   9|          2|    2|          4|
+    +--------------------------------------------+----+-----------+-----+-----------+
+    |Total                                       |  72|         16|   10|         20|
+    +--------------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +--------------------------------------------+---+----+-----+-----------+
+    |                    Name                    | FF| LUT| Bits| Const Bits|
+    +--------------------------------------------+---+----+-----+-----------+
+    |AXIvideo2Mat_U0_ap_ready_count              |  2|   0|    2|          0|
+    |ap_sync_reg_AXIvideo2Mat_U0_ap_ready        |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_val_0_channel     |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_val_1_channel     |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_val_2_channel     |  1|   0|    1|          0|
+    |ap_sync_reg_channel_write_val_3_channel     |  1|   0|    1|          0|
+    |ap_sync_reg_method1_Block_proc_U0_ap_ready  |  1|   0|    1|          0|
+    |method1_Block_proc_U0_ap_ready_count        |  2|   0|    2|          0|
+    +--------------------------------------------+---+----+-----+-----------+
+    |Total                                       | 10|   0|   10|          0|
+    +--------------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------+-----+-----+------------+-----------------------+--------------+
+|      RTL Ports      | Dir | Bits|  Protocol  |     Source Object     |    C Type    |
++---------------------+-----+-----+------------+-----------------------+--------------+
+|ap_clk               |  in |    1| ap_ctrl_hs |        method1        | return value |
+|ap_rst               |  in |    1| ap_ctrl_hs |        method1        | return value |
+|ap_start             |  in |    1| ap_ctrl_hs |        method1        | return value |
+|ap_done              | out |    1| ap_ctrl_hs |        method1        | return value |
+|ap_ready             | out |    1| ap_ctrl_hs |        method1        | return value |
+|ap_idle              | out |    1| ap_ctrl_hs |        method1        | return value |
+|ap_continue          |  in |    1| ap_ctrl_hs |        method1        | return value |
+|inputStream_TDATA    |  in |   32|    axis    |  inputStream_V_data_V |    pointer   |
+|inputStream_TKEEP    |  in |    4|    axis    |  inputStream_V_keep_V |    pointer   |
+|inputStream_TSTRB    |  in |    4|    axis    |  inputStream_V_strb_V |    pointer   |
+|inputStream_TUSER    |  in |    1|    axis    |  inputStream_V_user_V |    pointer   |
+|inputStream_TLAST    |  in |    1|    axis    |  inputStream_V_last_V |    pointer   |
+|inputStream_TID      |  in |    1|    axis    |   inputStream_V_id_V  |    pointer   |
+|inputStream_TDEST    |  in |    1|    axis    |  inputStream_V_dest_V |    pointer   |
+|inputStream_TVALID   |  in |    1|    axis    |  inputStream_V_dest_V |    pointer   |
+|inputStream_TREADY   | out |    1|    axis    |  inputStream_V_dest_V |    pointer   |
+|outputStream_TDATA   | out |   32|    axis    | outputStream_V_data_V |    pointer   |
+|outputStream_TKEEP   | out |    4|    axis    | outputStream_V_keep_V |    pointer   |
+|outputStream_TSTRB   | out |    4|    axis    | outputStream_V_strb_V |    pointer   |
+|outputStream_TUSER   | out |    1|    axis    | outputStream_V_user_V |    pointer   |
+|outputStream_TLAST   | out |    1|    axis    | outputStream_V_last_V |    pointer   |
+|outputStream_TID     | out |    1|    axis    |  outputStream_V_id_V  |    pointer   |
+|outputStream_TDEST   | out |    1|    axis    | outputStream_V_dest_V |    pointer   |
+|outputStream_TVALID  | out |    1|    axis    | outputStream_V_dest_V |    pointer   |
+|outputStream_TREADY  |  in |    1|    axis    | outputStream_V_dest_V |    pointer   |
++---------------------+-----+-----+------------+-----------------------+--------------+
+

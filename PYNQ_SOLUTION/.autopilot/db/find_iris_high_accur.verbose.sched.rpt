@@ -1,0 +1,702 @@
+
+
+================================================================
+== Vivado HLS Report for 'find_iris_high_accur'
+================================================================
+* Date:           Thu Oct  1 13:57:11 2020
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        Iris-recognition
+* Solution:       PYNQ_SOLUTION
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  | 10.00 ns | 8.636 ns |   1.25 ns  |
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +----------+-----------+-----------+-----------+----------+-----------+---------+
+    |   Latency (cycles)   |   Latency (absolute)  |       Interval       | Pipeline|
+    |    min   |    max    |    min    |    max    |    min   |    max    |   Type  |
+    +----------+-----------+-----------+-----------+----------+-----------+---------+
+    |  59860416|  119534016| 0.599 sec | 1.195 sec |  59860416|  119534016|   none  |
+    +----------+-----------+-----------+-----------+----------+-----------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +--------------------+----------+-----------+-----------------+-----------+-----------+------+----------+
+        |                    |   Latency (cycles)   |    Iteration    |  Initiation Interval  | Trip |          |
+        |      Loop Name     |    min   |    max    |     Latency     |  achieved |   target  | Count| Pipelined|
+        +--------------------+----------+-----------+-----------------+-----------+-----------+------+----------+
+        |- Loop 1            |      6901|       6901|              103|          -|          -|    67|    no    |
+        | + Loop 1.1         |        96|         96|               12|          -|          -|     8|    no    |
+        |- Loop 2            |        37|         37|                1|          -|          -|    37|    no    |
+        |- loopPixel         |  59853360|  119526960| 213762 ~ 426882 |          -|          -|   280|    no    |
+        | + loopPixel.1      |    213760|     426880|    668 ~ 1334   |          -|          -|   320|    no    |
+        |  ++ loopPixel.1.1  |       666|       1332|      3 ~ 6      |          -|          -|   222|    no    |
+        |- Loop 4            |       108|        108|                3|          -|          -|    36|    no    |
+        +--------------------+----------+-----------+-----------------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 37
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 6 
+6 --> 7 
+7 --> 8 
+8 --> 9 26 
+9 --> 10 
+10 --> 11 
+11 --> 12 
+12 --> 13 
+13 --> 14 
+14 --> 15 8 
+15 --> 16 
+16 --> 17 
+17 --> 18 
+18 --> 19 
+19 --> 20 
+20 --> 21 
+21 --> 22 
+22 --> 23 
+23 --> 24 
+24 --> 25 
+25 --> 14 
+26 --> 26 27 
+27 --> 28 35 
+28 --> 29 27 
+29 --> 30 28 
+30 --> 31 34 
+31 --> 32 34 
+32 --> 33 
+33 --> 34 
+34 --> 29 
+35 --> 36 
+36 --> 37 
+37 --> 35 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 7.26>
+ST_1 : Operation 38 [1/1] (0.00ns)   --->   "%points = alloca [804 x i32], align 16" [Iris-recognition/toplevel.cpp:216]   --->   Operation 38 'alloca' 'points' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+ST_1 : Operation 39 [1/1] (0.00ns)   --->   "%sums = alloca [37 x i32], align 16" [Iris-recognition/toplevel.cpp:235]   --->   Operation 39 'alloca' 'sums' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+ST_1 : Operation 40 [1/1] (3.63ns)   --->   "%x_read = call i32 @_ssdm_op_Read.ap_fifo.i32P(i32* %x)" [Iris-recognition/toplevel.cpp:211]   --->   Operation 40 'read' 'x_read' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 8> <Depth = 2> <FIFO>
+ST_1 : Operation 41 [1/1] (3.63ns)   --->   "%y_read = call i32 @_ssdm_op_Read.ap_fifo.i32P(i32* %y)" [Iris-recognition/toplevel.cpp:211]   --->   Operation 41 'read' 'y_read' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 8> <Depth = 2> <FIFO>
+ST_1 : Operation 42 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.i32P(i32* %x_out, i32 %x_read)" [Iris-recognition/toplevel.cpp:211]   --->   Operation 42 'write' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 8> <Depth = 2> <FIFO>
+ST_1 : Operation 43 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.i32P(i32* %y_out, i32 %y_read)" [Iris-recognition/toplevel.cpp:211]   --->   Operation 43 'write' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 8> <Depth = 2> <FIFO>
+
+State 2 <SV = 1> <Delay = 6.41>
+ST_2 : Operation 44 [6/6] (6.41ns)   --->   "%tmp_i = sitofp i32 %x_read to float" [Iris-recognition/toplevel.cpp:225]   --->   Operation 44 'sitofp' 'tmp_i' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+ST_2 : Operation 45 [6/6] (6.41ns)   --->   "%tmp_4_i = sitofp i32 %y_read to float" [Iris-recognition/toplevel.cpp:226]   --->   Operation 45 'sitofp' 'tmp_4_i' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+
+State 3 <SV = 2> <Delay = 6.41>
+ST_3 : Operation 46 [5/6] (6.41ns)   --->   "%tmp_i = sitofp i32 %x_read to float" [Iris-recognition/toplevel.cpp:225]   --->   Operation 46 'sitofp' 'tmp_i' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+ST_3 : Operation 47 [5/6] (6.41ns)   --->   "%tmp_4_i = sitofp i32 %y_read to float" [Iris-recognition/toplevel.cpp:226]   --->   Operation 47 'sitofp' 'tmp_4_i' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+
+State 4 <SV = 3> <Delay = 6.41>
+ST_4 : Operation 48 [4/6] (6.41ns)   --->   "%tmp_i = sitofp i32 %x_read to float" [Iris-recognition/toplevel.cpp:225]   --->   Operation 48 'sitofp' 'tmp_i' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+ST_4 : Operation 49 [4/6] (6.41ns)   --->   "%tmp_4_i = sitofp i32 %y_read to float" [Iris-recognition/toplevel.cpp:226]   --->   Operation 49 'sitofp' 'tmp_4_i' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+
+State 5 <SV = 4> <Delay = 6.41>
+ST_5 : Operation 50 [3/6] (6.41ns)   --->   "%tmp_i = sitofp i32 %x_read to float" [Iris-recognition/toplevel.cpp:225]   --->   Operation 50 'sitofp' 'tmp_i' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+ST_5 : Operation 51 [3/6] (6.41ns)   --->   "%tmp_4_i = sitofp i32 %y_read to float" [Iris-recognition/toplevel.cpp:226]   --->   Operation 51 'sitofp' 'tmp_4_i' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+
+State 6 <SV = 5> <Delay = 6.41>
+ST_6 : Operation 52 [2/6] (6.41ns)   --->   "%tmp_i = sitofp i32 %x_read to float" [Iris-recognition/toplevel.cpp:225]   --->   Operation 52 'sitofp' 'tmp_i' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+ST_6 : Operation 53 [2/6] (6.41ns)   --->   "%tmp_4_i = sitofp i32 %y_read to float" [Iris-recognition/toplevel.cpp:226]   --->   Operation 53 'sitofp' 'tmp_4_i' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+
+State 7 <SV = 6> <Delay = 6.41>
+ST_7 : Operation 54 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i8* %dst_img_data_stream_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str234, i32 0, i32 0, [1 x i8]* @p_str235, [1 x i8]* @p_str236, [1 x i8]* @p_str237, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str238, [1 x i8]* @p_str239)"   --->   Operation 54 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 55 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i8* %img_data_stream_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str227, i32 0, i32 0, [1 x i8]* @p_str228, [1 x i8]* @p_str229, [1 x i8]* @p_str230, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str231, [1 x i8]* @p_str232)"   --->   Operation 55 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 56 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %y, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str412, i32 0, i32 0, [1 x i8]* @p_str413, [1 x i8]* @p_str414, [1 x i8]* @p_str415, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str416, [11 x i8]* @ScalarProp_str)"   --->   Operation 56 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 57 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %x, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str407, i32 0, i32 0, [1 x i8]* @p_str408, [1 x i8]* @p_str409, [1 x i8]* @p_str410, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str411, [11 x i8]* @ScalarProp_str)"   --->   Operation 57 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 58 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %x_out, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str417, i32 0, i32 0, [1 x i8]* @p_str418, [1 x i8]* @p_str419, [1 x i8]* @p_str420, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str421, [11 x i8]* @ScalarProp_str)"   --->   Operation 58 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 59 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %y_out, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str422, i32 0, i32 0, [1 x i8]* @p_str423, [1 x i8]* @p_str424, [1 x i8]* @p_str425, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str426, [11 x i8]* @ScalarProp_str)"   --->   Operation 59 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 60 [1/6] (6.41ns)   --->   "%tmp_i = sitofp i32 %x_read to float" [Iris-recognition/toplevel.cpp:225]   --->   Operation 60 'sitofp' 'tmp_i' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+ST_7 : Operation 61 [1/6] (6.41ns)   --->   "%tmp_4_i = sitofp i32 %y_read to float" [Iris-recognition/toplevel.cpp:226]   --->   Operation 61 'sitofp' 'tmp_4_i' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+ST_7 : Operation 62 [1/1] (1.76ns)   --->   "br label %0" [Iris-recognition/toplevel.cpp:220]   --->   Operation 62 'br' <Predicate = true> <Delay = 1.76>
+
+State 8 <SV = 7> <Delay = 6.41>
+ST_8 : Operation 63 [1/1] (0.00ns)   --->   "%r_0_i = phi i8 [ 84, %entry ], [ %r, %1 ]"   --->   Operation 63 'phi' 'r_0_i' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 64 [1/1] (0.00ns)   --->   "%count1_0_i = phi i7 [ 0, %entry ], [ %count1, %1 ]"   --->   Operation 64 'phi' 'count1_0_i' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 65 [1/1] (0.00ns)   --->   "%zext_ln220 = zext i8 %r_0_i to i32" [Iris-recognition/toplevel.cpp:220]   --->   Operation 65 'zext' 'zext_ln220' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 66 [1/1] (1.55ns)   --->   "%icmp_ln220 = icmp eq i8 %r_0_i, -105" [Iris-recognition/toplevel.cpp:220]   --->   Operation 66 'icmp' 'icmp_ln220' <Predicate = true> <Delay = 1.55> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 67 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 67, i64 67, i64 67)"   --->   Operation 67 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 68 [1/1] (1.87ns)   --->   "%count1 = add i7 %count1_0_i, 1" [Iris-recognition/toplevel.cpp:231]   --->   Operation 68 'add' 'count1' <Predicate = true> <Delay = 1.87> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 69 [1/1] (0.00ns)   --->   "br i1 %icmp_ln220, label %.preheader38.i.preheader, label %.preheader6.preheader.i" [Iris-recognition/toplevel.cpp:220]   --->   Operation 69 'br' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 70 [6/6] (6.41ns)   --->   "%tmp_i_48 = sitofp i32 %zext_ln220 to float" [Iris-recognition/toplevel.cpp:225]   --->   Operation 70 'sitofp' 'tmp_i_48' <Predicate = (!icmp_ln220)> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+ST_8 : Operation 71 [1/1] (1.76ns)   --->   "br label %.preheader38.i" [Iris-recognition/toplevel.cpp:236]   --->   Operation 71 'br' <Predicate = (icmp_ln220)> <Delay = 1.76>
+
+State 9 <SV = 8> <Delay = 6.41>
+ST_9 : Operation 72 [5/6] (6.41ns)   --->   "%tmp_i_48 = sitofp i32 %zext_ln220 to float" [Iris-recognition/toplevel.cpp:225]   --->   Operation 72 'sitofp' 'tmp_i_48' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+
+State 10 <SV = 9> <Delay = 6.41>
+ST_10 : Operation 73 [4/6] (6.41ns)   --->   "%tmp_i_48 = sitofp i32 %zext_ln220 to float" [Iris-recognition/toplevel.cpp:225]   --->   Operation 73 'sitofp' 'tmp_i_48' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+
+State 11 <SV = 10> <Delay = 6.41>
+ST_11 : Operation 74 [3/6] (6.41ns)   --->   "%tmp_i_48 = sitofp i32 %zext_ln220 to float" [Iris-recognition/toplevel.cpp:225]   --->   Operation 74 'sitofp' 'tmp_i_48' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+
+State 12 <SV = 11> <Delay = 6.41>
+ST_12 : Operation 75 [2/6] (6.41ns)   --->   "%tmp_i_48 = sitofp i32 %zext_ln220 to float" [Iris-recognition/toplevel.cpp:225]   --->   Operation 75 'sitofp' 'tmp_i_48' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+
+State 13 <SV = 12> <Delay = 6.41>
+ST_13 : Operation 76 [1/6] (6.41ns)   --->   "%tmp_i_48 = sitofp i32 %zext_ln220 to float" [Iris-recognition/toplevel.cpp:225]   --->   Operation 76 'sitofp' 'tmp_i_48' <Predicate = true> <Delay = 6.41> <Core = "Int2Float">   --->   Core 112 'Int2Float' <Latency = 5> <II = 1> <Delay = 6.41> <FuncUnit> <Opcode : 'sitofp' 'uitofp'> <InPorts = 1> <OutPorts = 1>
+ST_13 : Operation 77 [1/1] (0.00ns)   --->   "%shl_ln = call i11 @_ssdm_op_BitConcatenate.i11.i7.i4(i7 %count1_0_i, i4 0)" [Iris-recognition/toplevel.cpp:227]   --->   Operation 77 'bitconcatenate' 'shl_ln' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 78 [1/1] (0.00ns)   --->   "%zext_ln227 = zext i11 %shl_ln to i12" [Iris-recognition/toplevel.cpp:227]   --->   Operation 78 'zext' 'zext_ln227' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 79 [1/1] (0.00ns)   --->   "%shl_ln227_1 = call i9 @_ssdm_op_BitConcatenate.i9.i7.i2(i7 %count1_0_i, i2 0)" [Iris-recognition/toplevel.cpp:227]   --->   Operation 79 'bitconcatenate' 'shl_ln227_1' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 80 [1/1] (0.00ns)   --->   "%zext_ln227_1 = zext i9 %shl_ln227_1 to i12" [Iris-recognition/toplevel.cpp:227]   --->   Operation 80 'zext' 'zext_ln227_1' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 81 [1/1] (1.63ns)   --->   "%sub_ln227 = sub i12 %zext_ln227, %zext_ln227_1" [Iris-recognition/toplevel.cpp:227]   --->   Operation 81 'sub' 'sub_ln227' <Predicate = true> <Delay = 1.63> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 82 [1/1] (1.76ns)   --->   "br label %.preheader6.i" [Iris-recognition/toplevel.cpp:222]   --->   Operation 82 'br' <Predicate = true> <Delay = 1.76>
+
+State 14 <SV = 13> <Delay = 5.57>
+ST_14 : Operation 83 [1/1] (0.00ns)   --->   "%val_assign = phi i9 [ %alpha, %_ifconv ], [ 0, %.preheader6.preheader.i ]"   --->   Operation 83 'phi' 'val_assign' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 84 [1/1] (0.00ns)   --->   "%count2_0_i = phi i4 [ %count2, %_ifconv ], [ 0, %.preheader6.preheader.i ]"   --->   Operation 84 'phi' 'count2_0_i' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 85 [1/1] (1.30ns)   --->   "%icmp_ln222 = icmp eq i4 %count2_0_i, -8" [Iris-recognition/toplevel.cpp:222]   --->   Operation 85 'icmp' 'icmp_ln222' <Predicate = true> <Delay = 1.30> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 86 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 8, i64 8, i64 8)"   --->   Operation 86 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 87 [1/1] (1.73ns)   --->   "%count2 = add i4 %count2_0_i, 1" [Iris-recognition/toplevel.cpp:229]   --->   Operation 87 'add' 'count2' <Predicate = true> <Delay = 1.73> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 88 [1/1] (0.00ns)   --->   "br i1 %icmp_ln222, label %1, label %_ifconv" [Iris-recognition/toplevel.cpp:222]   --->   Operation 88 'br' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 89 [1/1] (1.66ns)   --->   "%icmp_ln15 = icmp eq i9 %val_assign, 0" [Iris-recognition/sine.cpp:15->Iris-recognition/toplevel.cpp:223]   --->   Operation 89 'icmp' 'icmp_ln15' <Predicate = (!icmp_ln222)> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 90 [1/1] (1.66ns)   --->   "%icmp_ln16 = icmp eq i9 %val_assign, 45" [Iris-recognition/sine.cpp:16->Iris-recognition/toplevel.cpp:223]   --->   Operation 90 'icmp' 'icmp_ln16' <Predicate = (!icmp_ln222)> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 91 [1/1] (1.66ns)   --->   "%icmp_ln17 = icmp eq i9 %val_assign, 90" [Iris-recognition/sine.cpp:17->Iris-recognition/toplevel.cpp:223]   --->   Operation 91 'icmp' 'icmp_ln17' <Predicate = (!icmp_ln222)> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 92 [1/1] (1.66ns)   --->   "%icmp_ln18 = icmp eq i9 %val_assign, 135" [Iris-recognition/sine.cpp:18->Iris-recognition/toplevel.cpp:223]   --->   Operation 92 'icmp' 'icmp_ln18' <Predicate = (!icmp_ln222)> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 93 [1/1] (1.66ns)   --->   "%icmp_ln19 = icmp eq i9 %val_assign, 180" [Iris-recognition/sine.cpp:19->Iris-recognition/toplevel.cpp:223]   --->   Operation 93 'icmp' 'icmp_ln19' <Predicate = (!icmp_ln222)> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 94 [1/1] (0.97ns)   --->   "%or_ln16 = or i1 %icmp_ln15, %icmp_ln16" [Iris-recognition/sine.cpp:16->Iris-recognition/toplevel.cpp:223]   --->   Operation 94 'or' 'or_ln16' <Predicate = (!icmp_ln222)> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 95 [1/1] (0.97ns)   --->   "%or_ln17 = or i1 %or_ln16, %icmp_ln17" [Iris-recognition/sine.cpp:17->Iris-recognition/toplevel.cpp:223]   --->   Operation 95 'or' 'or_ln17' <Predicate = (!icmp_ln222)> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 96 [1/1] (0.97ns)   --->   "%or_ln18 = or i1 %or_ln17, %icmp_ln18" [Iris-recognition/sine.cpp:18->Iris-recognition/toplevel.cpp:223]   --->   Operation 96 'or' 'or_ln18' <Predicate = (!icmp_ln222)> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 97 [1/1] (1.66ns)   --->   "%icmp_ln20 = icmp ne i9 %val_assign, -197" [Iris-recognition/sine.cpp:20->Iris-recognition/toplevel.cpp:223]   --->   Operation 97 'icmp' 'icmp_ln20' <Predicate = (!icmp_ln222)> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 98 [1/1] (1.66ns)   --->   "%icmp_ln20_1 = icmp ne i9 %val_assign, 225" [Iris-recognition/sine.cpp:20->Iris-recognition/toplevel.cpp:223]   --->   Operation 98 'icmp' 'icmp_ln20_1' <Predicate = (!icmp_ln222)> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 99 [1/1] (0.00ns) (grouped into LUT with out node and_ln16)   --->   "%xor_ln15 = xor i1 %icmp_ln15, true" [Iris-recognition/sine.cpp:15->Iris-recognition/toplevel.cpp:223]   --->   Operation 99 'xor' 'xor_ln15' <Predicate = (!icmp_ln222)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 100 [1/1] (0.97ns) (out node of the LUT)   --->   "%and_ln16 = and i1 %icmp_ln16, %xor_ln15" [Iris-recognition/sine.cpp:16->Iris-recognition/toplevel.cpp:223]   --->   Operation 100 'and' 'and_ln16' <Predicate = (!icmp_ln222)> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 101 [1/1] (0.00ns) (grouped into LUT with out node or_ln18_1)   --->   "%xor_ln16 = xor i1 %or_ln16, true" [Iris-recognition/sine.cpp:16->Iris-recognition/toplevel.cpp:223]   --->   Operation 101 'xor' 'xor_ln16' <Predicate = (!icmp_ln222)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 102 [1/1] (0.00ns) (grouped into LUT with out node or_ln18_1)   --->   "%and_ln17 = and i1 %icmp_ln17, %xor_ln16" [Iris-recognition/sine.cpp:17->Iris-recognition/toplevel.cpp:223]   --->   Operation 102 'and' 'and_ln17' <Predicate = (!icmp_ln222)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 103 [1/1] (0.00ns) (grouped into LUT with out node and_ln18)   --->   "%xor_ln17 = xor i1 %or_ln17, true" [Iris-recognition/sine.cpp:17->Iris-recognition/toplevel.cpp:223]   --->   Operation 103 'xor' 'xor_ln17' <Predicate = (!icmp_ln222)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 104 [1/1] (0.97ns) (out node of the LUT)   --->   "%and_ln18 = and i1 %icmp_ln18, %xor_ln17" [Iris-recognition/sine.cpp:18->Iris-recognition/toplevel.cpp:223]   --->   Operation 104 'and' 'and_ln18' <Predicate = (!icmp_ln222)> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 105 [1/1] (0.97ns) (out node of the LUT)   --->   "%or_ln18_1 = or i1 %and_ln18, %and_ln17" [Iris-recognition/sine.cpp:18->Iris-recognition/toplevel.cpp:223]   --->   Operation 105 'or' 'or_ln18_1' <Predicate = (!icmp_ln222)> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 106 [1/1] (1.66ns)   --->   "%icmp_ln20_2 = icmp eq i9 %val_assign, -197" [Iris-recognition/sine.cpp:20->Iris-recognition/toplevel.cpp:223]   --->   Operation 106 'icmp' 'icmp_ln20_2' <Predicate = (!icmp_ln222)> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 107 [1/1] (1.66ns)   --->   "%icmp_ln20_3 = icmp eq i9 %val_assign, 225" [Iris-recognition/sine.cpp:20->Iris-recognition/toplevel.cpp:223]   --->   Operation 107 'icmp' 'icmp_ln20_3' <Predicate = (!icmp_ln222)> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 108 [1/1] (0.00ns) (grouped into LUT with out node add_ln227)   --->   "%shl_ln227 = shl i4 %count2_0_i, 1" [Iris-recognition/toplevel.cpp:227]   --->   Operation 108 'shl' 'shl_ln227' <Predicate = (!icmp_ln222)> <Delay = 0.00>
+ST_14 : Operation 109 [1/1] (0.00ns) (grouped into LUT with out node add_ln227)   --->   "%zext_ln227_2 = zext i4 %shl_ln227 to i12" [Iris-recognition/toplevel.cpp:227]   --->   Operation 109 'zext' 'zext_ln227_2' <Predicate = (!icmp_ln222)> <Delay = 0.00>
+ST_14 : Operation 110 [1/1] (1.54ns) (out node of the LUT)   --->   "%add_ln227 = add i12 %zext_ln227_2, %sub_ln227" [Iris-recognition/toplevel.cpp:227]   --->   Operation 110 'add' 'add_ln227' <Predicate = (!icmp_ln222)> <Delay = 1.54> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 111 [1/1] (1.82ns)   --->   "%alpha = add i9 45, %val_assign" [Iris-recognition/toplevel.cpp:222]   --->   Operation 111 'add' 'alpha' <Predicate = (!icmp_ln222)> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 112 [1/1] (1.91ns)   --->   "%r = add i8 %r_0_i, 1" [Iris-recognition/toplevel.cpp:220]   --->   Operation 112 'add' 'r' <Predicate = (icmp_ln222)> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 113 [1/1] (0.00ns)   --->   "br label %0" [Iris-recognition/toplevel.cpp:220]   --->   Operation 113 'br' <Predicate = (icmp_ln222)> <Delay = 0.00>
+
+State 15 <SV = 14> <Delay = 8.63>
+ST_15 : Operation 114 [1/1] (0.00ns) (grouped into LUT with out node xor_ln19)   --->   "%or_ln19 = or i1 %or_ln18, %icmp_ln19" [Iris-recognition/sine.cpp:19->Iris-recognition/toplevel.cpp:223]   --->   Operation 114 'or' 'or_ln19' <Predicate = true> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 115 [1/1] (0.97ns) (out node of the LUT)   --->   "%xor_ln19 = xor i1 %or_ln19, true" [Iris-recognition/sine.cpp:19->Iris-recognition/toplevel.cpp:223]   --->   Operation 115 'xor' 'xor_ln19' <Predicate = true> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 116 [1/1] (0.00ns) (grouped into LUT with out node select_ln16_1)   --->   "%and_ln20 = and i1 %icmp_ln20_1, %xor_ln19" [Iris-recognition/sine.cpp:20->Iris-recognition/toplevel.cpp:223]   --->   Operation 116 'and' 'and_ln20' <Predicate = (!or_ln18_1)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 117 [1/1] (0.00ns) (grouped into LUT with out node select_ln16_1)   --->   "%and_ln20_1 = and i1 %and_ln20, %icmp_ln20" [Iris-recognition/sine.cpp:20->Iris-recognition/toplevel.cpp:223]   --->   Operation 117 'and' 'and_ln20_1' <Predicate = (!or_ln18_1)> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 118 [1/1] (0.00ns) (grouped into LUT with out node select_ln16_1)   --->   "%select_ln20 = select i1 %and_ln20_1, float 4.200000e+01, float 0xBFE69FBE80000000" [Iris-recognition/sine.cpp:20->Iris-recognition/toplevel.cpp:223]   --->   Operation 118 'select' 'select_ln20' <Predicate = (!or_ln18_1)> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 119 [1/1] (0.00ns) (grouped into LUT with out node select_ln16_1)   --->   "%select_ln16 = select i1 %and_ln16, float 0x3FE69FBE80000000, float 0.000000e+00" [Iris-recognition/sine.cpp:16->Iris-recognition/toplevel.cpp:223]   --->   Operation 119 'select' 'select_ln16' <Predicate = (!or_ln18_1)> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 120 [1/1] (0.97ns)   --->   "%or_ln16_1 = or i1 %and_ln16, %icmp_ln15" [Iris-recognition/sine.cpp:16->Iris-recognition/toplevel.cpp:223]   --->   Operation 120 'or' 'or_ln16_1' <Predicate = true> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 121 [1/1] (0.97ns) (out node of the LUT)   --->   "%select_ln16_1 = select i1 %or_ln16_1, float %select_ln16, float %select_ln20" [Iris-recognition/sine.cpp:16->Iris-recognition/toplevel.cpp:223]   --->   Operation 121 'select' 'select_ln16_1' <Predicate = (!or_ln18_1)> <Delay = 0.97> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 122 [1/1] (0.00ns) (grouped into LUT with out node sinus)   --->   "%select_ln18 = select i1 %and_ln18, float 0x3FE69FBE80000000, float 1.000000e+00" [Iris-recognition/sine.cpp:18->Iris-recognition/toplevel.cpp:223]   --->   Operation 122 'select' 'select_ln18' <Predicate = (or_ln18_1)> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 123 [1/1] (0.00ns) (grouped into LUT with out node sinus)   --->   "%select_ln18_1 = select i1 %or_ln18_1, float %select_ln18, float %select_ln16_1" [Iris-recognition/sine.cpp:18->Iris-recognition/toplevel.cpp:223]   --->   Operation 123 'select' 'select_ln18_1' <Predicate = true> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 124 [1/1] (0.00ns) (grouped into LUT with out node and_ln19)   --->   "%xor_ln18 = xor i1 %or_ln18, true" [Iris-recognition/sine.cpp:18->Iris-recognition/toplevel.cpp:223]   --->   Operation 124 'xor' 'xor_ln18' <Predicate = true> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 125 [1/1] (0.97ns) (out node of the LUT)   --->   "%and_ln19 = and i1 %icmp_ln19, %xor_ln18" [Iris-recognition/sine.cpp:19->Iris-recognition/toplevel.cpp:223]   --->   Operation 125 'and' 'and_ln19' <Predicate = true> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 126 [1/1] (0.00ns) (grouped into LUT with out node sel_tmp53)   --->   "%or_ln20 = or i1 %icmp_ln20_2, %icmp_ln20_3" [Iris-recognition/sine.cpp:20->Iris-recognition/toplevel.cpp:223]   --->   Operation 126 'or' 'or_ln20' <Predicate = true> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 127 [1/1] (0.97ns) (out node of the LUT)   --->   "%sel_tmp53 = and i1 %or_ln20, %xor_ln19" [Iris-recognition/sine.cpp:20->Iris-recognition/toplevel.cpp:223]   --->   Operation 127 'and' 'sel_tmp53' <Predicate = true> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 128 [1/1] (0.00ns) (grouped into LUT with out node sinus)   --->   "%sel_tmp40 = select i1 %sel_tmp53, float 0xBFE69FBE80000000, float 0.000000e+00" [Iris-recognition/sine.cpp:20->Iris-recognition/toplevel.cpp:223]   --->   Operation 128 'select' 'sel_tmp40' <Predicate = true> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 129 [1/1] (0.00ns) (grouped into LUT with out node sinus)   --->   "%empty = or i1 %sel_tmp53, %and_ln19" [Iris-recognition/sine.cpp:20->Iris-recognition/toplevel.cpp:223]   --->   Operation 129 'or' 'empty' <Predicate = true> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 130 [1/1] (0.97ns) (out node of the LUT)   --->   "%sinus = select i1 %empty, float %sel_tmp40, float %select_ln18_1" [Iris-recognition/sine.cpp:20->Iris-recognition/toplevel.cpp:223]   --->   Operation 130 'select' 'sinus' <Predicate = true> <Delay = 0.97> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 131 [1/1] (0.00ns) (grouped into LUT with out node select_ln7_1)   --->   "%select_ln10 = select i1 %icmp_ln20_2, float 0x3FE69FBE80000000, float 4.200000e+01" [Iris-recognition/sine.cpp:10->Iris-recognition/toplevel.cpp:224]   --->   Operation 131 'select' 'select_ln10' <Predicate = (!or_ln18_1)> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 132 [1/1] (0.00ns) (grouped into LUT with out node select_ln7_1)   --->   "%select_ln5 = select i1 %and_ln16, float 0x3FE69FBE80000000, float 1.000000e+00" [Iris-recognition/sine.cpp:5->Iris-recognition/toplevel.cpp:224]   --->   Operation 132 'select' 'select_ln5' <Predicate = (!or_ln18_1)> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 133 [1/1] (0.00ns) (grouped into LUT with out node select_ln7_1)   --->   "%select_ln5_1 = select i1 %or_ln16_1, float %select_ln5, float %select_ln10" [Iris-recognition/sine.cpp:5->Iris-recognition/toplevel.cpp:224]   --->   Operation 133 'select' 'select_ln5_1' <Predicate = (!or_ln18_1)> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 134 [1/1] (0.00ns) (grouped into LUT with out node select_ln7_1)   --->   "%select_ln7 = select i1 %and_ln18, float 0xBFE69FBE80000000, float 0.000000e+00" [Iris-recognition/sine.cpp:7->Iris-recognition/toplevel.cpp:224]   --->   Operation 134 'select' 'select_ln7' <Predicate = (or_ln18_1)> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 135 [1/1] (0.69ns) (out node of the LUT)   --->   "%select_ln7_1 = select i1 %or_ln18_1, float %select_ln7, float %select_ln5_1" [Iris-recognition/sine.cpp:7->Iris-recognition/toplevel.cpp:224]   --->   Operation 135 'select' 'select_ln7_1' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 136 [1/1] (0.97ns)   --->   "%and_ln9 = and i1 %icmp_ln20_3, %xor_ln19" [Iris-recognition/sine.cpp:9->Iris-recognition/toplevel.cpp:224]   --->   Operation 136 'and' 'and_ln9' <Predicate = true> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 137 [1/1] (0.00ns) (grouped into LUT with out node cosinus)   --->   "%select_ln9 = select i1 %and_ln9, float 0xBFE69FBE80000000, float -1.000000e+00" [Iris-recognition/sine.cpp:9->Iris-recognition/toplevel.cpp:224]   --->   Operation 137 'select' 'select_ln9' <Predicate = true> <Delay = 0.00> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 138 [1/1] (0.00ns) (grouped into LUT with out node cosinus)   --->   "%or_ln9 = or i1 %and_ln9, %and_ln19" [Iris-recognition/sine.cpp:9->Iris-recognition/toplevel.cpp:224]   --->   Operation 138 'or' 'or_ln9' <Predicate = true> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 139 [1/1] (0.97ns) (out node of the LUT)   --->   "%cosinus = select i1 %or_ln9, float %select_ln9, float %select_ln7_1" [Iris-recognition/sine.cpp:9->Iris-recognition/toplevel.cpp:224]   --->   Operation 139 'select' 'cosinus' <Predicate = true> <Delay = 0.97> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_15 : Operation 140 [4/4] (5.70ns)   --->   "%tmp_2_i = fmul float %tmp_i_48, %cosinus" [Iris-recognition/toplevel.cpp:225]   --->   Operation 140 'fmul' 'tmp_2_i' <Predicate = true> <Delay = 5.70> <Core = "FMul">   --->   Core 106 'FMul' <Latency = 3> <II = 1> <Delay = 5.70> <FuncUnit> <Opcode : 'fmul'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 141 [4/4] (5.70ns)   --->   "%tmp_5_i = fmul float %tmp_i_48, %sinus" [Iris-recognition/toplevel.cpp:226]   --->   Operation 141 'fmul' 'tmp_5_i' <Predicate = true> <Delay = 5.70> <Core = "FMul">   --->   Core 106 'FMul' <Latency = 3> <II = 1> <Delay = 5.70> <FuncUnit> <Opcode : 'fmul'> <InPorts = 2> <OutPorts = 1>
+
+State 16 <SV = 15> <Delay = 5.70>
+ST_16 : Operation 142 [3/4] (5.70ns)   --->   "%tmp_2_i = fmul float %tmp_i_48, %cosinus" [Iris-recognition/toplevel.cpp:225]   --->   Operation 142 'fmul' 'tmp_2_i' <Predicate = true> <Delay = 5.70> <Core = "FMul">   --->   Core 106 'FMul' <Latency = 3> <II = 1> <Delay = 5.70> <FuncUnit> <Opcode : 'fmul'> <InPorts = 2> <OutPorts = 1>
+ST_16 : Operation 143 [3/4] (5.70ns)   --->   "%tmp_5_i = fmul float %tmp_i_48, %sinus" [Iris-recognition/toplevel.cpp:226]   --->   Operation 143 'fmul' 'tmp_5_i' <Predicate = true> <Delay = 5.70> <Core = "FMul">   --->   Core 106 'FMul' <Latency = 3> <II = 1> <Delay = 5.70> <FuncUnit> <Opcode : 'fmul'> <InPorts = 2> <OutPorts = 1>
+
+State 17 <SV = 16> <Delay = 5.70>
+ST_17 : Operation 144 [2/4] (5.70ns)   --->   "%tmp_2_i = fmul float %tmp_i_48, %cosinus" [Iris-recognition/toplevel.cpp:225]   --->   Operation 144 'fmul' 'tmp_2_i' <Predicate = true> <Delay = 5.70> <Core = "FMul">   --->   Core 106 'FMul' <Latency = 3> <II = 1> <Delay = 5.70> <FuncUnit> <Opcode : 'fmul'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 145 [2/4] (5.70ns)   --->   "%tmp_5_i = fmul float %tmp_i_48, %sinus" [Iris-recognition/toplevel.cpp:226]   --->   Operation 145 'fmul' 'tmp_5_i' <Predicate = true> <Delay = 5.70> <Core = "FMul">   --->   Core 106 'FMul' <Latency = 3> <II = 1> <Delay = 5.70> <FuncUnit> <Opcode : 'fmul'> <InPorts = 2> <OutPorts = 1>
+
+State 18 <SV = 17> <Delay = 5.70>
+ST_18 : Operation 146 [1/4] (5.70ns)   --->   "%tmp_2_i = fmul float %tmp_i_48, %cosinus" [Iris-recognition/toplevel.cpp:225]   --->   Operation 146 'fmul' 'tmp_2_i' <Predicate = true> <Delay = 5.70> <Core = "FMul">   --->   Core 106 'FMul' <Latency = 3> <II = 1> <Delay = 5.70> <FuncUnit> <Opcode : 'fmul'> <InPorts = 2> <OutPorts = 1>
+ST_18 : Operation 147 [1/4] (5.70ns)   --->   "%tmp_5_i = fmul float %tmp_i_48, %sinus" [Iris-recognition/toplevel.cpp:226]   --->   Operation 147 'fmul' 'tmp_5_i' <Predicate = true> <Delay = 5.70> <Core = "FMul">   --->   Core 106 'FMul' <Latency = 3> <II = 1> <Delay = 5.70> <FuncUnit> <Opcode : 'fmul'> <InPorts = 2> <OutPorts = 1>
+
+State 19 <SV = 18> <Delay = 7.25>
+ST_19 : Operation 148 [5/5] (7.25ns)   --->   "%x_assign = fadd float %tmp_i, %tmp_2_i" [Iris-recognition/toplevel.cpp:225]   --->   Operation 148 'fadd' 'x_assign' <Predicate = true> <Delay = 7.25> <Core = "FAddSub">   --->   Core 105 'FAddSub' <Latency = 4> <II = 1> <Delay = 7.25> <FuncUnit> <Opcode : 'fadd' 'fsub'> <InPorts = 2> <OutPorts = 1>
+ST_19 : Operation 149 [5/5] (7.25ns)   --->   "%x_assign_1 = fadd float %tmp_4_i, %tmp_5_i" [Iris-recognition/toplevel.cpp:226]   --->   Operation 149 'fadd' 'x_assign_1' <Predicate = true> <Delay = 7.25> <Core = "FAddSub">   --->   Core 105 'FAddSub' <Latency = 4> <II = 1> <Delay = 7.25> <FuncUnit> <Opcode : 'fadd' 'fsub'> <InPorts = 2> <OutPorts = 1>
+
+State 20 <SV = 19> <Delay = 7.25>
+ST_20 : Operation 150 [4/5] (7.25ns)   --->   "%x_assign = fadd float %tmp_i, %tmp_2_i" [Iris-recognition/toplevel.cpp:225]   --->   Operation 150 'fadd' 'x_assign' <Predicate = true> <Delay = 7.25> <Core = "FAddSub">   --->   Core 105 'FAddSub' <Latency = 4> <II = 1> <Delay = 7.25> <FuncUnit> <Opcode : 'fadd' 'fsub'> <InPorts = 2> <OutPorts = 1>
+ST_20 : Operation 151 [4/5] (7.25ns)   --->   "%x_assign_1 = fadd float %tmp_4_i, %tmp_5_i" [Iris-recognition/toplevel.cpp:226]   --->   Operation 151 'fadd' 'x_assign_1' <Predicate = true> <Delay = 7.25> <Core = "FAddSub">   --->   Core 105 'FAddSub' <Latency = 4> <II = 1> <Delay = 7.25> <FuncUnit> <Opcode : 'fadd' 'fsub'> <InPorts = 2> <OutPorts = 1>
+
+State 21 <SV = 20> <Delay = 7.25>
+ST_21 : Operation 152 [3/5] (7.25ns)   --->   "%x_assign = fadd float %tmp_i, %tmp_2_i" [Iris-recognition/toplevel.cpp:225]   --->   Operation 152 'fadd' 'x_assign' <Predicate = true> <Delay = 7.25> <Core = "FAddSub">   --->   Core 105 'FAddSub' <Latency = 4> <II = 1> <Delay = 7.25> <FuncUnit> <Opcode : 'fadd' 'fsub'> <InPorts = 2> <OutPorts = 1>
+ST_21 : Operation 153 [3/5] (7.25ns)   --->   "%x_assign_1 = fadd float %tmp_4_i, %tmp_5_i" [Iris-recognition/toplevel.cpp:226]   --->   Operation 153 'fadd' 'x_assign_1' <Predicate = true> <Delay = 7.25> <Core = "FAddSub">   --->   Core 105 'FAddSub' <Latency = 4> <II = 1> <Delay = 7.25> <FuncUnit> <Opcode : 'fadd' 'fsub'> <InPorts = 2> <OutPorts = 1>
+
+State 22 <SV = 21> <Delay = 7.25>
+ST_22 : Operation 154 [2/5] (7.25ns)   --->   "%x_assign = fadd float %tmp_i, %tmp_2_i" [Iris-recognition/toplevel.cpp:225]   --->   Operation 154 'fadd' 'x_assign' <Predicate = true> <Delay = 7.25> <Core = "FAddSub">   --->   Core 105 'FAddSub' <Latency = 4> <II = 1> <Delay = 7.25> <FuncUnit> <Opcode : 'fadd' 'fsub'> <InPorts = 2> <OutPorts = 1>
+ST_22 : Operation 155 [2/5] (7.25ns)   --->   "%x_assign_1 = fadd float %tmp_4_i, %tmp_5_i" [Iris-recognition/toplevel.cpp:226]   --->   Operation 155 'fadd' 'x_assign_1' <Predicate = true> <Delay = 7.25> <Core = "FAddSub">   --->   Core 105 'FAddSub' <Latency = 4> <II = 1> <Delay = 7.25> <FuncUnit> <Opcode : 'fadd' 'fsub'> <InPorts = 2> <OutPorts = 1>
+
+State 23 <SV = 22> <Delay = 7.25>
+ST_23 : Operation 156 [1/5] (7.25ns)   --->   "%x_assign = fadd float %tmp_i, %tmp_2_i" [Iris-recognition/toplevel.cpp:225]   --->   Operation 156 'fadd' 'x_assign' <Predicate = true> <Delay = 7.25> <Core = "FAddSub">   --->   Core 105 'FAddSub' <Latency = 4> <II = 1> <Delay = 7.25> <FuncUnit> <Opcode : 'fadd' 'fsub'> <InPorts = 2> <OutPorts = 1>
+ST_23 : Operation 157 [1/5] (7.25ns)   --->   "%x_assign_1 = fadd float %tmp_4_i, %tmp_5_i" [Iris-recognition/toplevel.cpp:226]   --->   Operation 157 'fadd' 'x_assign_1' <Predicate = true> <Delay = 7.25> <Core = "FAddSub">   --->   Core 105 'FAddSub' <Latency = 4> <II = 1> <Delay = 7.25> <FuncUnit> <Opcode : 'fadd' 'fsub'> <InPorts = 2> <OutPorts = 1>
+
+State 24 <SV = 23> <Delay = 7.30>
+ST_24 : Operation 158 [1/1] (0.00ns)   --->   "%p_Val2_s = bitcast float %x_assign to i32" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:310->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:319->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:13->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 158 'bitcast' 'p_Val2_s' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 159 [1/1] (0.00ns)   --->   "%p_Result_s = call i1 @_ssdm_op_BitSelect.i1.i32.i32(i32 %p_Val2_s, i32 31)" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:316->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:319->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:13->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 159 'bitselect' 'p_Result_s' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 160 [1/1] (0.00ns)   --->   "%tmp_V = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %p_Val2_s, i32 23, i32 30) nounwind" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:317->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:319->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:13->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 160 'partselect' 'tmp_V' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 161 [1/1] (0.00ns)   --->   "%tmp_V_1 = trunc i32 %p_Val2_s to i23" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:318->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:319->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:13->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 161 'trunc' 'tmp_V_1' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 162 [1/1] (0.00ns)   --->   "%mantissa_V = call i25 @_ssdm_op_BitConcatenate.i25.i1.i23.i1(i1 true, i23 %tmp_V_1, i1 false)" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:15->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 162 'bitconcatenate' 'mantissa_V' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 163 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_10)   --->   "%zext_ln682 = zext i25 %mantissa_V to i79" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:15->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 163 'zext' 'zext_ln682' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 164 [1/1] (0.00ns)   --->   "%zext_ln339 = zext i8 %tmp_V to i9" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:339->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 164 'zext' 'zext_ln339' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 165 [1/1] (1.91ns)   --->   "%add_ln339 = add i9 -127, %zext_ln339" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:339->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 165 'add' 'add_ln339' <Predicate = true> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_24 : Operation 166 [1/1] (0.00ns)   --->   "%isNeg = call i1 @_ssdm_op_BitSelect.i1.i9.i32(i9 %add_ln339, i32 8)" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 166 'bitselect' 'isNeg' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 167 [1/1] (1.91ns)   --->   "%sub_ln1311 = sub i8 127, %tmp_V" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 167 'sub' 'sub_ln1311' <Predicate = true> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_24 : Operation 168 [1/1] (0.00ns)   --->   "%sext_ln1311 = sext i8 %sub_ln1311 to i9" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 168 'sext' 'sext_ln1311' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 169 [1/1] (0.96ns)   --->   "%ush = select i1 %isNeg, i9 %sext_ln1311, i9 %add_ln339" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 169 'select' 'ush' <Predicate = true> <Delay = 0.96> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_24 : Operation 170 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_10)   --->   "%sext_ln1311_1 = sext i9 %ush to i32" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 170 'sext' 'sext_ln1311_1' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 171 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_10)   --->   "%sext_ln1311_4 = sext i9 %ush to i25" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 171 'sext' 'sext_ln1311_4' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 172 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_10)   --->   "%zext_ln1287 = zext i32 %sext_ln1311_1 to i79" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 172 'zext' 'zext_ln1287' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 173 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_10)   --->   "%r_V = lshr i25 %mantissa_V, %sext_ln1311_4" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 173 'lshr' 'r_V' <Predicate = true> <Delay = 0.00> <Core = "Shift">   --->   Core 28 'Shift' <Latency = 0> <II = 1> <Delay = 4.42> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_24 : Operation 174 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_10)   --->   "%r_V_1 = shl i79 %zext_ln682, %zext_ln1287" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 174 'shl' 'r_V_1' <Predicate = true> <Delay = 0.00> <Core = "Shift">   --->   Core 28 'Shift' <Latency = 0> <II = 1> <Delay = 4.42> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_24 : Operation 175 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_10)   --->   "%tmp = call i1 @_ssdm_op_BitSelect.i1.i25.i32(i25 %r_V, i32 24)" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:21->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 175 'bitselect' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 176 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_10)   --->   "%zext_ln662 = zext i1 %tmp to i32" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:21->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 176 'zext' 'zext_ln662' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 177 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_10)   --->   "%tmp_2 = call i32 @_ssdm_op_PartSelect.i32.i79.i32.i32(i79 %r_V_1, i32 24, i32 55)" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:21->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 177 'partselect' 'tmp_2' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 178 [1/1] (4.42ns) (out node of the LUT)   --->   "%p_Val2_10 = select i1 %isNeg, i32 %zext_ln662, i32 %tmp_2" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 178 'select' 'p_Val2_10' <Predicate = true> <Delay = 4.42> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_24 : Operation 179 [1/1] (0.00ns)   --->   "%p_Val2_5 = bitcast float %x_assign_1 to i32" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:310->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:319->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:13->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 179 'bitcast' 'p_Val2_5' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 180 [1/1] (0.00ns)   --->   "%p_Result_1 = call i1 @_ssdm_op_BitSelect.i1.i32.i32(i32 %p_Val2_5, i32 31)" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:316->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:319->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:13->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 180 'bitselect' 'p_Result_1' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 181 [1/1] (0.00ns)   --->   "%tmp_V_2 = call i8 @_ssdm_op_PartSelect.i8.i32.i32.i32(i32 %p_Val2_5, i32 23, i32 30) nounwind" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:317->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:319->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:13->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 181 'partselect' 'tmp_V_2' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 182 [1/1] (0.00ns)   --->   "%tmp_V_3 = trunc i32 %p_Val2_5 to i23" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:318->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:319->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:13->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 182 'trunc' 'tmp_V_3' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 183 [1/1] (0.00ns)   --->   "%mantissa_V_1 = call i25 @_ssdm_op_BitConcatenate.i25.i1.i23.i1(i1 true, i23 %tmp_V_3, i1 false)" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:15->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 183 'bitconcatenate' 'mantissa_V_1' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 184 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_12)   --->   "%zext_ln682_1 = zext i25 %mantissa_V_1 to i79" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:15->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 184 'zext' 'zext_ln682_1' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 185 [1/1] (0.00ns)   --->   "%zext_ln339_1 = zext i8 %tmp_V_2 to i9" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:339->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 185 'zext' 'zext_ln339_1' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 186 [1/1] (1.91ns)   --->   "%add_ln339_1 = add i9 -127, %zext_ln339_1" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:339->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 186 'add' 'add_ln339_1' <Predicate = true> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_24 : Operation 187 [1/1] (0.00ns)   --->   "%isNeg_1 = call i1 @_ssdm_op_BitSelect.i1.i9.i32(i9 %add_ln339_1, i32 8)" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 187 'bitselect' 'isNeg_1' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 188 [1/1] (1.91ns)   --->   "%sub_ln1311_1 = sub i8 127, %tmp_V_2" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 188 'sub' 'sub_ln1311_1' <Predicate = true> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_24 : Operation 189 [1/1] (0.00ns)   --->   "%sext_ln1311_2 = sext i8 %sub_ln1311_1 to i9" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 189 'sext' 'sext_ln1311_2' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 190 [1/1] (0.96ns)   --->   "%ush_1 = select i1 %isNeg_1, i9 %sext_ln1311_2, i9 %add_ln339_1" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 190 'select' 'ush_1' <Predicate = true> <Delay = 0.96> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_24 : Operation 191 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_12)   --->   "%sext_ln1311_3 = sext i9 %ush_1 to i32" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 191 'sext' 'sext_ln1311_3' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 192 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_12)   --->   "%sext_ln1311_5 = sext i9 %ush_1 to i25" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 192 'sext' 'sext_ln1311_5' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 193 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_12)   --->   "%zext_ln1287_1 = zext i32 %sext_ln1311_3 to i79" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 193 'zext' 'zext_ln1287_1' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 194 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_12)   --->   "%r_V_2 = lshr i25 %mantissa_V_1, %sext_ln1311_5" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 194 'lshr' 'r_V_2' <Predicate = true> <Delay = 0.00> <Core = "Shift">   --->   Core 28 'Shift' <Latency = 0> <II = 1> <Delay = 4.42> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_24 : Operation 195 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_12)   --->   "%r_V_3 = shl i79 %zext_ln682_1, %zext_ln1287_1" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 195 'shl' 'r_V_3' <Predicate = true> <Delay = 0.00> <Core = "Shift">   --->   Core 28 'Shift' <Latency = 0> <II = 1> <Delay = 4.42> <FuncUnit> <Opcode : 'shl' 'lshr' 'ashr'> <InPorts = 2> <OutPorts = 1>
+ST_24 : Operation 196 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_12)   --->   "%tmp_5 = call i1 @_ssdm_op_BitSelect.i1.i25.i32(i25 %r_V_2, i32 24)" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:21->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 196 'bitselect' 'tmp_5' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 197 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_12)   --->   "%zext_ln662_1 = zext i1 %tmp_5 to i32" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:21->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 197 'zext' 'zext_ln662_1' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 198 [1/1] (0.00ns) (grouped into LUT with out node p_Val2_12)   --->   "%tmp_4 = call i32 @_ssdm_op_PartSelect.i32.i79.i32.i32(i79 %r_V_3, i32 24, i32 55)" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:21->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 198 'partselect' 'tmp_4' <Predicate = true> <Delay = 0.00>
+ST_24 : Operation 199 [1/1] (4.42ns) (out node of the LUT)   --->   "%p_Val2_12 = select i1 %isNeg_1, i32 %zext_ln662_1, i32 %tmp_4" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 199 'select' 'p_Val2_12' <Predicate = true> <Delay = 4.42> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+
+State 25 <SV = 24> <Delay = 6.50>
+ST_25 : Operation 200 [1/1] (2.55ns)   --->   "%result_V_1 = sub i32 0, %p_Val2_10" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 200 'sub' 'result_V_1' <Predicate = (p_Result_s)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_25 : Operation 201 [1/1] (0.69ns)   --->   "%p_Val2_11 = select i1 %p_Result_s, i32 %result_V_1, i32 %p_Val2_10" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225]   --->   Operation 201 'select' 'p_Val2_11' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_25 : Operation 202 [1/1] (2.55ns)   --->   "%result_V_3 = sub i32 0, %p_Val2_12" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 202 'sub' 'result_V_3' <Predicate = (p_Result_1)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_25 : Operation 203 [1/1] (0.69ns)   --->   "%p_Val2_13 = select i1 %p_Result_1, i32 %result_V_3, i32 %p_Val2_12" [r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:226]   --->   Operation 203 'select' 'p_Val2_13' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_25 : Operation 204 [1/1] (0.00ns)   --->   "%sext_ln227 = sext i12 %add_ln227 to i32" [Iris-recognition/toplevel.cpp:227]   --->   Operation 204 'sext' 'sext_ln227' <Predicate = true> <Delay = 0.00>
+ST_25 : Operation 205 [1/1] (0.00ns)   --->   "%zext_ln227_3 = zext i32 %sext_ln227 to i64" [Iris-recognition/toplevel.cpp:227]   --->   Operation 205 'zext' 'zext_ln227_3' <Predicate = true> <Delay = 0.00>
+ST_25 : Operation 206 [1/1] (0.00ns)   --->   "%points_addr_2 = getelementptr inbounds [804 x i32]* %points, i64 0, i64 %zext_ln227_3" [Iris-recognition/toplevel.cpp:227]   --->   Operation 206 'getelementptr' 'points_addr_2' <Predicate = true> <Delay = 0.00>
+ST_25 : Operation 207 [1/1] (3.25ns)   --->   "store i32 %p_Val2_11, i32* %points_addr_2, align 8" [Iris-recognition/toplevel.cpp:227]   --->   Operation 207 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+ST_25 : Operation 208 [1/1] (0.00ns)   --->   "%or_ln228 = or i32 %sext_ln227, 1" [Iris-recognition/toplevel.cpp:228]   --->   Operation 208 'or' 'or_ln228' <Predicate = true> <Delay = 0.00>
+ST_25 : Operation 209 [1/1] (0.00ns)   --->   "%zext_ln228 = zext i32 %or_ln228 to i64" [Iris-recognition/toplevel.cpp:228]   --->   Operation 209 'zext' 'zext_ln228' <Predicate = true> <Delay = 0.00>
+ST_25 : Operation 210 [1/1] (0.00ns)   --->   "%points_addr_3 = getelementptr inbounds [804 x i32]* %points, i64 0, i64 %zext_ln228" [Iris-recognition/toplevel.cpp:228]   --->   Operation 210 'getelementptr' 'points_addr_3' <Predicate = true> <Delay = 0.00>
+ST_25 : Operation 211 [1/1] (3.25ns)   --->   "store i32 %p_Val2_13, i32* %points_addr_3, align 4" [Iris-recognition/toplevel.cpp:228]   --->   Operation 211 'store' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+ST_25 : Operation 212 [1/1] (0.00ns)   --->   "br label %.preheader6.i" [Iris-recognition/toplevel.cpp:222]   --->   Operation 212 'br' <Predicate = true> <Delay = 0.00>
+
+State 26 <SV = 8> <Delay = 3.25>
+ST_26 : Operation 213 [1/1] (0.00ns)   --->   "%i_0_i = phi i6 [ %i, %2 ], [ 0, %.preheader38.i.preheader ]"   --->   Operation 213 'phi' 'i_0_i' <Predicate = true> <Delay = 0.00>
+ST_26 : Operation 214 [1/1] (1.42ns)   --->   "%icmp_ln236 = icmp eq i6 %i_0_i, -27" [Iris-recognition/toplevel.cpp:236]   --->   Operation 214 'icmp' 'icmp_ln236' <Predicate = true> <Delay = 1.42> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_26 : Operation 215 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 37, i64 37, i64 37)"   --->   Operation 215 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_26 : Operation 216 [1/1] (1.82ns)   --->   "%i = add i6 %i_0_i, 1" [Iris-recognition/toplevel.cpp:236]   --->   Operation 216 'add' 'i' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_26 : Operation 217 [1/1] (0.00ns)   --->   "br i1 %icmp_ln236, label %.preheader5.i.preheader, label %2" [Iris-recognition/toplevel.cpp:236]   --->   Operation 217 'br' <Predicate = true> <Delay = 0.00>
+ST_26 : Operation 218 [1/1] (0.00ns)   --->   "%zext_ln236 = zext i6 %i_0_i to i64" [Iris-recognition/toplevel.cpp:236]   --->   Operation 218 'zext' 'zext_ln236' <Predicate = (!icmp_ln236)> <Delay = 0.00>
+ST_26 : Operation 219 [1/1] (0.00ns)   --->   "%sums_addr = getelementptr inbounds [37 x i32]* %sums, i64 0, i64 %zext_ln236" [Iris-recognition/toplevel.cpp:236]   --->   Operation 219 'getelementptr' 'sums_addr' <Predicate = (!icmp_ln236)> <Delay = 0.00>
+ST_26 : Operation 220 [1/1] (3.25ns)   --->   "store i32 0, i32* %sums_addr, align 4" [Iris-recognition/toplevel.cpp:236]   --->   Operation 220 'store' <Predicate = (!icmp_ln236)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+ST_26 : Operation 221 [1/1] (0.00ns)   --->   "br label %.preheader38.i" [Iris-recognition/toplevel.cpp:236]   --->   Operation 221 'br' <Predicate = (!icmp_ln236)> <Delay = 0.00>
+ST_26 : Operation 222 [1/1] (1.76ns)   --->   "br label %.preheader5.i" [Iris-recognition/toplevel.cpp:239]   --->   Operation 222 'br' <Predicate = (icmp_ln236)> <Delay = 1.76>
+
+State 27 <SV = 9> <Delay = 1.82>
+ST_27 : Operation 223 [1/1] (0.00ns)   --->   "%y1_0_i = phi i9 [ %y_1, %loopPixel_end ], [ 0, %.preheader5.i.preheader ]"   --->   Operation 223 'phi' 'y1_0_i' <Predicate = true> <Delay = 0.00>
+ST_27 : Operation 224 [1/1] (0.00ns)   --->   "%zext_ln239 = zext i9 %y1_0_i to i32" [Iris-recognition/toplevel.cpp:239]   --->   Operation 224 'zext' 'zext_ln239' <Predicate = true> <Delay = 0.00>
+ST_27 : Operation 225 [1/1] (1.66ns)   --->   "%icmp_ln239 = icmp eq i9 %y1_0_i, -232" [Iris-recognition/toplevel.cpp:239]   --->   Operation 225 'icmp' 'icmp_ln239' <Predicate = true> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_27 : Operation 226 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 280, i64 280, i64 280)"   --->   Operation 226 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_27 : Operation 227 [1/1] (1.82ns)   --->   "%y_1 = add i9 %y1_0_i, 1" [Iris-recognition/toplevel.cpp:239]   --->   Operation 227 'add' 'y_1' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_27 : Operation 228 [1/1] (0.00ns)   --->   "br i1 %icmp_ln239, label %.preheader.i.preheader, label %loopPixel_begin" [Iris-recognition/toplevel.cpp:239]   --->   Operation 228 'br' <Predicate = true> <Delay = 0.00>
+ST_27 : Operation 229 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopName([10 x i8]* @p_str) nounwind" [Iris-recognition/toplevel.cpp:239]   --->   Operation 229 'specloopname' <Predicate = (!icmp_ln239)> <Delay = 0.00>
+ST_27 : Operation 230 [1/1] (0.00ns)   --->   "%tmp_29_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([10 x i8]* @p_str)" [Iris-recognition/toplevel.cpp:239]   --->   Operation 230 'specregionbegin' 'tmp_29_i' <Predicate = (!icmp_ln239)> <Delay = 0.00>
+ST_27 : Operation 231 [1/1] (1.76ns)   --->   "br label %.loopexit" [Iris-recognition/toplevel.cpp:240]   --->   Operation 231 'br' <Predicate = (!icmp_ln239)> <Delay = 1.76>
+ST_27 : Operation 232 [1/1] (1.76ns)   --->   "br label %.preheader.i" [Iris-recognition/toplevel.cpp:261]   --->   Operation 232 'br' <Predicate = (icmp_ln239)> <Delay = 1.76>
+
+State 28 <SV = 10> <Delay = 7.26>
+ST_28 : Operation 233 [1/1] (0.00ns)   --->   "%x2_0_i = phi i9 [ 0, %loopPixel_begin ], [ %x_1, %.loopexit.loopexit ]"   --->   Operation 233 'phi' 'x2_0_i' <Predicate = true> <Delay = 0.00>
+ST_28 : Operation 234 [1/1] (0.00ns)   --->   "%zext_ln240 = zext i9 %x2_0_i to i32" [Iris-recognition/toplevel.cpp:240]   --->   Operation 234 'zext' 'zext_ln240' <Predicate = true> <Delay = 0.00>
+ST_28 : Operation 235 [1/1] (1.66ns)   --->   "%icmp_ln240 = icmp eq i9 %x2_0_i, -192" [Iris-recognition/toplevel.cpp:240]   --->   Operation 235 'icmp' 'icmp_ln240' <Predicate = true> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_28 : Operation 236 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 320, i64 320, i64 320)"   --->   Operation 236 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_28 : Operation 237 [1/1] (1.82ns)   --->   "%x_1 = add i9 %x2_0_i, 1" [Iris-recognition/toplevel.cpp:240]   --->   Operation 237 'add' 'x_1' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_28 : Operation 238 [1/1] (0.00ns)   --->   "br i1 %icmp_ln240, label %loopPixel_end, label %hls_label_3" [Iris-recognition/toplevel.cpp:240]   --->   Operation 238 'br' <Predicate = true> <Delay = 0.00>
+ST_28 : Operation 239 [1/1] (0.00ns)   --->   "%tmp_30_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str54)" [C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:672->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:711->Iris-recognition/toplevel.cpp:243]   --->   Operation 239 'specregionbegin' 'tmp_30_i' <Predicate = (!icmp_ln240)> <Delay = 0.00>
+ST_28 : Operation 240 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecProtocol(i32 0, [1 x i8]* @p_str3) nounwind" [C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:676->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:711->Iris-recognition/toplevel.cpp:243]   --->   Operation 240 'specprotocol' <Predicate = (!icmp_ln240)> <Delay = 0.00>
+ST_28 : Operation 241 [1/1] (3.63ns)   --->   "%tmp_6 = call i8 @_ssdm_op_Read.ap_fifo.volatile.i8P(i8* %img_data_stream_V)" [C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:679->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:711->Iris-recognition/toplevel.cpp:243]   --->   Operation 241 'read' 'tmp_6' <Predicate = (!icmp_ln240)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 8> <Depth = 2> <FIFO>
+ST_28 : Operation 242 [1/1] (0.00ns)   --->   "%empty_49 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str54, i32 %tmp_30_i)" [C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:681->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:711->Iris-recognition/toplevel.cpp:243]   --->   Operation 242 'specregionend' 'empty_49' <Predicate = (!icmp_ln240)> <Delay = 0.00>
+ST_28 : Operation 243 [1/1] (0.00ns)   --->   "%tmp_31_i = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str52)" [C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:696->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:717->Iris-recognition/toplevel.cpp:244]   --->   Operation 243 'specregionbegin' 'tmp_31_i' <Predicate = (!icmp_ln240)> <Delay = 0.00>
+ST_28 : Operation 244 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecProtocol(i32 0, [1 x i8]* @p_str3) nounwind" [C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:700->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:717->Iris-recognition/toplevel.cpp:244]   --->   Operation 244 'specprotocol' <Predicate = (!icmp_ln240)> <Delay = 0.00>
+ST_28 : Operation 245 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i8P(i8* %dst_img_data_stream_V, i8 %tmp_6)" [C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:703->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:717->Iris-recognition/toplevel.cpp:244]   --->   Operation 245 'write' <Predicate = (!icmp_ln240)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 8> <Depth = 2> <FIFO>
+ST_28 : Operation 246 [1/1] (0.00ns)   --->   "%empty_50 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str52, i32 %tmp_31_i)" [C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:705->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:717->Iris-recognition/toplevel.cpp:244]   --->   Operation 246 'specregionend' 'empty_50' <Predicate = (!icmp_ln240)> <Delay = 0.00>
+ST_28 : Operation 247 [1/1] (0.00ns)   --->   "%zext_ln248 = zext i8 %tmp_6 to i32" [Iris-recognition/toplevel.cpp:248]   --->   Operation 247 'zext' 'zext_ln248' <Predicate = (!icmp_ln240)> <Delay = 0.00>
+ST_28 : Operation 248 [1/1] (1.76ns)   --->   "br label %3" [Iris-recognition/toplevel.cpp:245]   --->   Operation 248 'br' <Predicate = (!icmp_ln240)> <Delay = 1.76>
+ST_28 : Operation 249 [1/1] (0.00ns)   --->   "%empty_51 = call i32 (...)* @_ssdm_op_SpecRegionEnd([10 x i8]* @p_str, i32 %tmp_29_i)" [Iris-recognition/toplevel.cpp:252]   --->   Operation 249 'specregionend' 'empty_51' <Predicate = (icmp_ln240)> <Delay = 0.00>
+ST_28 : Operation 250 [1/1] (0.00ns)   --->   "br label %.preheader5.i" [Iris-recognition/toplevel.cpp:239]   --->   Operation 250 'br' <Predicate = (icmp_ln240)> <Delay = 0.00>
+
+State 29 <SV = 11> <Delay = 3.25>
+ST_29 : Operation 251 [1/1] (0.00ns)   --->   "%p_0_i = phi i9 [ 0, %hls_label_3 ], [ %p, %._crit_edge.i ]"   --->   Operation 251 'phi' 'p_0_i' <Predicate = true> <Delay = 0.00>
+ST_29 : Operation 252 [1/1] (1.66ns)   --->   "%icmp_ln245 = icmp ult i9 %p_0_i, -68" [Iris-recognition/toplevel.cpp:245]   --->   Operation 252 'icmp' 'icmp_ln245' <Predicate = true> <Delay = 1.66> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_29 : Operation 253 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 222, i64 222, i64 222)"   --->   Operation 253 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_29 : Operation 254 [1/1] (0.00ns)   --->   "br i1 %icmp_ln245, label %4, label %.loopexit.loopexit" [Iris-recognition/toplevel.cpp:245]   --->   Operation 254 'br' <Predicate = true> <Delay = 0.00>
+ST_29 : Operation 255 [1/1] (0.00ns)   --->   "%zext_ln246 = zext i9 %p_0_i to i64" [Iris-recognition/toplevel.cpp:246]   --->   Operation 255 'zext' 'zext_ln246' <Predicate = (icmp_ln245)> <Delay = 0.00>
+ST_29 : Operation 256 [1/1] (0.00ns)   --->   "%points_addr = getelementptr inbounds [804 x i32]* %points, i64 0, i64 %zext_ln246" [Iris-recognition/toplevel.cpp:246]   --->   Operation 256 'getelementptr' 'points_addr' <Predicate = (icmp_ln245)> <Delay = 0.00>
+ST_29 : Operation 257 [2/2] (3.25ns)   --->   "%points_load = load i32* %points_addr, align 8" [Iris-recognition/toplevel.cpp:246]   --->   Operation 257 'load' 'points_load' <Predicate = (icmp_ln245)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+ST_29 : Operation 258 [1/1] (0.00ns)   --->   "br label %.loopexit"   --->   Operation 258 'br' <Predicate = (!icmp_ln245)> <Delay = 0.00>
+
+State 30 <SV = 12> <Delay = 5.72>
+ST_30 : Operation 259 [1/2] (3.25ns)   --->   "%points_load = load i32* %points_addr, align 8" [Iris-recognition/toplevel.cpp:246]   --->   Operation 259 'load' 'points_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+ST_30 : Operation 260 [1/1] (2.47ns)   --->   "%icmp_ln246 = icmp eq i32 %points_load, %zext_ln240" [Iris-recognition/toplevel.cpp:246]   --->   Operation 260 'icmp' 'icmp_ln246' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_30 : Operation 261 [1/1] (0.00ns)   --->   "br i1 %icmp_ln246, label %5, label %._crit_edge.i" [Iris-recognition/toplevel.cpp:246]   --->   Operation 261 'br' <Predicate = true> <Delay = 0.00>
+ST_30 : Operation 262 [1/1] (0.00ns)   --->   "%or_ln246 = or i9 %p_0_i, 1" [Iris-recognition/toplevel.cpp:246]   --->   Operation 262 'or' 'or_ln246' <Predicate = (icmp_ln246)> <Delay = 0.00>
+ST_30 : Operation 263 [1/1] (0.00ns)   --->   "%zext_ln246_1 = zext i9 %or_ln246 to i64" [Iris-recognition/toplevel.cpp:246]   --->   Operation 263 'zext' 'zext_ln246_1' <Predicate = (icmp_ln246)> <Delay = 0.00>
+ST_30 : Operation 264 [1/1] (0.00ns)   --->   "%points_addr_1 = getelementptr inbounds [804 x i32]* %points, i64 0, i64 %zext_ln246_1" [Iris-recognition/toplevel.cpp:246]   --->   Operation 264 'getelementptr' 'points_addr_1' <Predicate = (icmp_ln246)> <Delay = 0.00>
+ST_30 : Operation 265 [2/2] (3.25ns)   --->   "%points_load_1 = load i32* %points_addr_1, align 4" [Iris-recognition/toplevel.cpp:246]   --->   Operation 265 'load' 'points_load_1' <Predicate = (icmp_ln246)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+
+State 31 <SV = 13> <Delay = 6.38>
+ST_31 : Operation 266 [1/2] (3.25ns)   --->   "%points_load_1 = load i32* %points_addr_1, align 4" [Iris-recognition/toplevel.cpp:246]   --->   Operation 266 'load' 'points_load_1' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+ST_31 : Operation 267 [1/1] (2.47ns)   --->   "%icmp_ln246_1 = icmp eq i32 %points_load_1, %zext_ln239" [Iris-recognition/toplevel.cpp:246]   --->   Operation 267 'icmp' 'icmp_ln246_1' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_31 : Operation 268 [1/1] (0.00ns)   --->   "br i1 %icmp_ln246_1, label %6, label %._crit_edge.i" [Iris-recognition/toplevel.cpp:246]   --->   Operation 268 'br' <Predicate = true> <Delay = 0.00>
+ST_31 : Operation 269 [1/1] (0.00ns)   --->   "%zext_ln247 = zext i9 %p_0_i to i20" [Iris-recognition/toplevel.cpp:247]   --->   Operation 269 'zext' 'zext_ln247' <Predicate = (icmp_ln246_1)> <Delay = 0.00>
+ST_31 : Operation 270 [1/1] (6.38ns) (root node of the DSP)   --->   "%mul_ln247 = mul i20 %zext_ln247, 683" [Iris-recognition/toplevel.cpp:247]   --->   Operation 270 'mul' 'mul_ln247' <Predicate = (icmp_ln246_1)> <Delay = 6.38> <Core = "DSP48">   --->   Core 88 'DSP48' <Latency = 0> <II = 1> <Delay = 6.38> <IPBlock> <Opcode : 'mul' 'add' 'sub' 'select'> <InPorts = 0> <OutPorts = 1> <Sync> <CReg>
+ST_31 : Operation 271 [1/1] (0.00ns)   --->   "%tmp_7 = call i7 @_ssdm_op_PartSelect.i7.i20.i32.i32(i20 %mul_ln247, i32 13, i32 19)" [Iris-recognition/toplevel.cpp:247]   --->   Operation 271 'partselect' 'tmp_7' <Predicate = (icmp_ln246_1)> <Delay = 0.00>
+ST_31 : Operation 272 [1/1] (0.00ns)   --->   "%sext_ln247 = sext i7 %tmp_7 to i9" [Iris-recognition/toplevel.cpp:247]   --->   Operation 272 'sext' 'sext_ln247' <Predicate = (icmp_ln246_1)> <Delay = 0.00>
+ST_31 : Operation 273 [1/1] (0.00ns)   --->   "%zext_ln248_1 = zext i9 %sext_ln247 to i64" [Iris-recognition/toplevel.cpp:248]   --->   Operation 273 'zext' 'zext_ln248_1' <Predicate = (icmp_ln246_1)> <Delay = 0.00>
+ST_31 : Operation 274 [1/1] (0.00ns)   --->   "%sums_addr_3 = getelementptr inbounds [37 x i32]* %sums, i64 0, i64 %zext_ln248_1" [Iris-recognition/toplevel.cpp:248]   --->   Operation 274 'getelementptr' 'sums_addr_3' <Predicate = (icmp_ln246_1)> <Delay = 0.00>
+
+State 32 <SV = 14> <Delay = 3.25>
+ST_32 : Operation 275 [2/2] (3.25ns)   --->   "%sums_load = load i32* %sums_addr_3, align 4" [Iris-recognition/toplevel.cpp:248]   --->   Operation 275 'load' 'sums_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+
+State 33 <SV = 15> <Delay = 5.80>
+ST_33 : Operation 276 [1/2] (3.25ns)   --->   "%sums_load = load i32* %sums_addr_3, align 4" [Iris-recognition/toplevel.cpp:248]   --->   Operation 276 'load' 'sums_load' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+ST_33 : Operation 277 [1/1] (2.55ns)   --->   "%add_ln248 = add nsw i32 %sums_load, %zext_ln248" [Iris-recognition/toplevel.cpp:248]   --->   Operation 277 'add' 'add_ln248' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 34 <SV = 16> <Delay = 3.25>
+ST_34 : Operation 278 [1/1] (3.25ns)   --->   "store i32 %add_ln248, i32* %sums_addr_3, align 4" [Iris-recognition/toplevel.cpp:248]   --->   Operation 278 'store' <Predicate = (icmp_ln246 & icmp_ln246_1)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+ST_34 : Operation 279 [1/1] (0.00ns)   --->   "br label %._crit_edge.i" [Iris-recognition/toplevel.cpp:249]   --->   Operation 279 'br' <Predicate = (icmp_ln246 & icmp_ln246_1)> <Delay = 0.00>
+ST_34 : Operation 280 [1/1] (1.82ns)   --->   "%p = add i9 %p_0_i, 2" [Iris-recognition/toplevel.cpp:245]   --->   Operation 280 'add' 'p' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_34 : Operation 281 [1/1] (0.00ns)   --->   "br label %3" [Iris-recognition/toplevel.cpp:245]   --->   Operation 281 'br' <Predicate = true> <Delay = 0.00>
+
+State 35 <SV = 10> <Delay = 5.07>
+ST_35 : Operation 282 [1/1] (0.00ns)   --->   "%iris_radius_0_i = phi i32 [ %select_ln259, %7 ], [ 0, %.preheader.i.preheader ]" [Iris-recognition/toplevel.cpp:259]   --->   Operation 282 'phi' 'iris_radius_0_i' <Predicate = true> <Delay = 0.00>
+ST_35 : Operation 283 [1/1] (0.00ns)   --->   "%i_max_0_i = phi i32 [ %select_ln259_1, %7 ], [ 0, %.preheader.i.preheader ]" [Iris-recognition/toplevel.cpp:259]   --->   Operation 283 'phi' 'i_max_0_i' <Predicate = true> <Delay = 0.00>
+ST_35 : Operation 284 [1/1] (0.00ns)   --->   "%iris_radius = phi i6 [ %r_1, %7 ], [ 1, %.preheader.i.preheader ]"   --->   Operation 284 'phi' 'iris_radius' <Predicate = true> <Delay = 0.00>
+ST_35 : Operation 285 [1/1] (0.00ns)   --->   "%zext_ln261 = zext i6 %iris_radius to i32" [Iris-recognition/toplevel.cpp:261]   --->   Operation 285 'zext' 'zext_ln261' <Predicate = true> <Delay = 0.00>
+ST_35 : Operation 286 [1/1] (1.42ns)   --->   "%icmp_ln255 = icmp eq i6 %iris_radius, -27" [Iris-recognition/toplevel.cpp:255]   --->   Operation 286 'icmp' 'icmp_ln255' <Predicate = true> <Delay = 1.42> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_35 : Operation 287 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecLoopTripCount(i64 36, i64 36, i64 36)"   --->   Operation 287 'speclooptripcount' <Predicate = true> <Delay = 0.00>
+ST_35 : Operation 288 [1/1] (0.00ns)   --->   "br i1 %icmp_ln255, label %.exit, label %7" [Iris-recognition/toplevel.cpp:255]   --->   Operation 288 'br' <Predicate = true> <Delay = 0.00>
+ST_35 : Operation 289 [1/1] (1.82ns)   --->   "%r_1 = add i6 %iris_radius, 1" [Iris-recognition/toplevel.cpp:256]   --->   Operation 289 'add' 'r_1' <Predicate = (!icmp_ln255)> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_35 : Operation 290 [1/1] (0.00ns)   --->   "%zext_ln256 = zext i6 %r_1 to i64" [Iris-recognition/toplevel.cpp:256]   --->   Operation 290 'zext' 'zext_ln256' <Predicate = (!icmp_ln255)> <Delay = 0.00>
+ST_35 : Operation 291 [1/1] (0.00ns)   --->   "%sums_addr_1 = getelementptr inbounds [37 x i32]* %sums, i64 0, i64 %zext_ln256" [Iris-recognition/toplevel.cpp:256]   --->   Operation 291 'getelementptr' 'sums_addr_1' <Predicate = (!icmp_ln255)> <Delay = 0.00>
+ST_35 : Operation 292 [2/2] (3.25ns)   --->   "%sum1 = load i32* %sums_addr_1, align 4" [Iris-recognition/toplevel.cpp:256]   --->   Operation 292 'load' 'sum1' <Predicate = (!icmp_ln255)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+ST_35 : Operation 293 [1/1] (1.82ns)   --->   "%add_ln257 = add i6 %iris_radius, -1" [Iris-recognition/toplevel.cpp:257]   --->   Operation 293 'add' 'add_ln257' <Predicate = (!icmp_ln255)> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_35 : Operation 294 [1/1] (0.00ns)   --->   "%zext_ln257 = zext i6 %add_ln257 to i64" [Iris-recognition/toplevel.cpp:257]   --->   Operation 294 'zext' 'zext_ln257' <Predicate = (!icmp_ln255)> <Delay = 0.00>
+ST_35 : Operation 295 [1/1] (0.00ns)   --->   "%sums_addr_2 = getelementptr inbounds [37 x i32]* %sums, i64 0, i64 %zext_ln257" [Iris-recognition/toplevel.cpp:257]   --->   Operation 295 'getelementptr' 'sums_addr_2' <Predicate = (!icmp_ln255)> <Delay = 0.00>
+ST_35 : Operation 296 [2/2] (3.25ns)   --->   "%sum2 = load i32* %sums_addr_2, align 4" [Iris-recognition/toplevel.cpp:257]   --->   Operation 296 'load' 'sum2' <Predicate = (!icmp_ln255)> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+ST_35 : Operation 297 [1/1] (2.55ns)   --->   "%add_ln265 = add nsw i32 %iris_radius_0_i, 85" [Iris-recognition/toplevel.cpp:265]   --->   Operation 297 'add' 'add_ln265' <Predicate = (icmp_ln255)> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_35 : Operation 298 [1/1] (0.00ns)   --->   "ret i32 %add_ln265" [Iris-recognition/toplevel.cpp:265]   --->   Operation 298 'ret' <Predicate = (icmp_ln255)> <Delay = 0.00>
+
+State 36 <SV = 11> <Delay = 5.80>
+ST_36 : Operation 299 [1/2] (3.25ns)   --->   "%sum1 = load i32* %sums_addr_1, align 4" [Iris-recognition/toplevel.cpp:256]   --->   Operation 299 'load' 'sum1' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+ST_36 : Operation 300 [1/2] (3.25ns)   --->   "%sum2 = load i32* %sums_addr_2, align 4" [Iris-recognition/toplevel.cpp:257]   --->   Operation 300 'load' 'sum2' <Predicate = true> <Delay = 3.25> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 3.25> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 32> <Depth = 37> <RAM>
+ST_36 : Operation 301 [1/1] (2.55ns)   --->   "%i_max = sub nsw i32 %sum1, %sum2" [Iris-recognition/toplevel.cpp:258]   --->   Operation 301 'sub' 'i_max' <Predicate = true> <Delay = 2.55> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 2.55> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 37 <SV = 12> <Delay = 3.17>
+ST_37 : Operation 302 [1/1] (2.47ns)   --->   "%icmp_ln259 = icmp sgt i32 %i_max, %i_max_0_i" [Iris-recognition/toplevel.cpp:259]   --->   Operation 302 'icmp' 'icmp_ln259' <Predicate = true> <Delay = 2.47> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 2.47> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_37 : Operation 303 [1/1] (0.69ns)   --->   "%select_ln259 = select i1 %icmp_ln259, i32 %zext_ln261, i32 %iris_radius_0_i" [Iris-recognition/toplevel.cpp:259]   --->   Operation 303 'select' 'select_ln259' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_37 : Operation 304 [1/1] (0.69ns)   --->   "%select_ln259_1 = select i1 %icmp_ln259, i32 %i_max, i32 %i_max_0_i" [Iris-recognition/toplevel.cpp:259]   --->   Operation 304 'select' 'select_ln259_1' <Predicate = true> <Delay = 0.69> <Core = "Sel">   --->   Core 26 'Sel' <Latency = 0> <II = 1> <Delay = 0.69> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_37 : Operation 305 [1/1] (0.00ns)   --->   "br label %.preheader.i" [Iris-recognition/toplevel.cpp:255]   --->   Operation 305 'br' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 7.27ns
+The critical path consists of the following:
+	fifo read on port 'x' (Iris-recognition/toplevel.cpp:211) [13]  (3.63 ns)
+	fifo write on port 'x_out' (Iris-recognition/toplevel.cpp:211) [16]  (3.63 ns)
+
+ <State 2>: 6.41ns
+The critical path consists of the following:
+	'sitofp' operation ('tmp_i', Iris-recognition/toplevel.cpp:225) [19]  (6.41 ns)
+
+ <State 3>: 6.41ns
+The critical path consists of the following:
+	'sitofp' operation ('tmp_i', Iris-recognition/toplevel.cpp:225) [19]  (6.41 ns)
+
+ <State 4>: 6.41ns
+The critical path consists of the following:
+	'sitofp' operation ('tmp_i', Iris-recognition/toplevel.cpp:225) [19]  (6.41 ns)
+
+ <State 5>: 6.41ns
+The critical path consists of the following:
+	'sitofp' operation ('tmp_i', Iris-recognition/toplevel.cpp:225) [19]  (6.41 ns)
+
+ <State 6>: 6.41ns
+The critical path consists of the following:
+	'sitofp' operation ('tmp_i', Iris-recognition/toplevel.cpp:225) [19]  (6.41 ns)
+
+ <State 7>: 6.41ns
+The critical path consists of the following:
+	'sitofp' operation ('tmp_i', Iris-recognition/toplevel.cpp:225) [19]  (6.41 ns)
+
+ <State 8>: 6.41ns
+The critical path consists of the following:
+	'phi' operation ('r') with incoming values : ('r', Iris-recognition/toplevel.cpp:220) [23]  (0 ns)
+	'sitofp' operation ('tmp_i_48', Iris-recognition/toplevel.cpp:225) [31]  (6.41 ns)
+
+ <State 9>: 6.41ns
+The critical path consists of the following:
+	'sitofp' operation ('tmp_i_48', Iris-recognition/toplevel.cpp:225) [31]  (6.41 ns)
+
+ <State 10>: 6.41ns
+The critical path consists of the following:
+	'sitofp' operation ('tmp_i_48', Iris-recognition/toplevel.cpp:225) [31]  (6.41 ns)
+
+ <State 11>: 6.41ns
+The critical path consists of the following:
+	'sitofp' operation ('tmp_i_48', Iris-recognition/toplevel.cpp:225) [31]  (6.41 ns)
+
+ <State 12>: 6.41ns
+The critical path consists of the following:
+	'sitofp' operation ('tmp_i_48', Iris-recognition/toplevel.cpp:225) [31]  (6.41 ns)
+
+ <State 13>: 6.41ns
+The critical path consists of the following:
+	'sitofp' operation ('tmp_i_48', Iris-recognition/toplevel.cpp:225) [31]  (6.41 ns)
+
+ <State 14>: 5.57ns
+The critical path consists of the following:
+	'phi' operation ('alpha') with incoming values : ('alpha', Iris-recognition/toplevel.cpp:222) [39]  (0 ns)
+	'icmp' operation ('icmp_ln15', Iris-recognition/sine.cpp:15->Iris-recognition/toplevel.cpp:223) [46]  (1.66 ns)
+	'or' operation ('or_ln16', Iris-recognition/sine.cpp:16->Iris-recognition/toplevel.cpp:223) [51]  (0.978 ns)
+	'or' operation ('or_ln17', Iris-recognition/sine.cpp:17->Iris-recognition/toplevel.cpp:223) [52]  (0.978 ns)
+	'xor' operation ('xor_ln17', Iris-recognition/sine.cpp:17->Iris-recognition/toplevel.cpp:223) [68]  (0 ns)
+	'and' operation ('and_ln18', Iris-recognition/sine.cpp:18->Iris-recognition/toplevel.cpp:223) [69]  (0.978 ns)
+	'or' operation ('or_ln18_1', Iris-recognition/sine.cpp:18->Iris-recognition/toplevel.cpp:223) [71]  (0.978 ns)
+
+ <State 15>: 8.64ns
+The critical path consists of the following:
+	'or' operation ('or_ln19', Iris-recognition/sine.cpp:19->Iris-recognition/toplevel.cpp:223) [54]  (0 ns)
+	'xor' operation ('xor_ln19', Iris-recognition/sine.cpp:19->Iris-recognition/toplevel.cpp:223) [55]  (0.978 ns)
+	'and' operation ('and_ln9', Iris-recognition/sine.cpp:9->Iris-recognition/toplevel.cpp:224) [87]  (0.978 ns)
+	'select' operation ('select_ln9', Iris-recognition/sine.cpp:9->Iris-recognition/toplevel.cpp:224) [88]  (0 ns)
+	'select' operation ('cosinus', Iris-recognition/sine.cpp:9->Iris-recognition/toplevel.cpp:224) [90]  (0.978 ns)
+	'fmul' operation ('tmp_2_i', Iris-recognition/toplevel.cpp:225) [91]  (5.7 ns)
+
+ <State 16>: 5.7ns
+The critical path consists of the following:
+	'fmul' operation ('tmp_2_i', Iris-recognition/toplevel.cpp:225) [91]  (5.7 ns)
+
+ <State 17>: 5.7ns
+The critical path consists of the following:
+	'fmul' operation ('tmp_2_i', Iris-recognition/toplevel.cpp:225) [91]  (5.7 ns)
+
+ <State 18>: 5.7ns
+The critical path consists of the following:
+	'fmul' operation ('tmp_2_i', Iris-recognition/toplevel.cpp:225) [91]  (5.7 ns)
+
+ <State 19>: 7.26ns
+The critical path consists of the following:
+	'fadd' operation ('x', Iris-recognition/toplevel.cpp:225) [92]  (7.26 ns)
+
+ <State 20>: 7.26ns
+The critical path consists of the following:
+	'fadd' operation ('x', Iris-recognition/toplevel.cpp:225) [92]  (7.26 ns)
+
+ <State 21>: 7.26ns
+The critical path consists of the following:
+	'fadd' operation ('x', Iris-recognition/toplevel.cpp:225) [92]  (7.26 ns)
+
+ <State 22>: 7.26ns
+The critical path consists of the following:
+	'fadd' operation ('x', Iris-recognition/toplevel.cpp:225) [92]  (7.26 ns)
+
+ <State 23>: 7.26ns
+The critical path consists of the following:
+	'fadd' operation ('x', Iris-recognition/toplevel.cpp:225) [92]  (7.26 ns)
+
+ <State 24>: 7.3ns
+The critical path consists of the following:
+	'add' operation ('sh', r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:339->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225) [100]  (1.92 ns)
+	'select' operation ('sh', r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225) [104]  (0.968 ns)
+	'shl' operation ('r.V', r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225) [109]  (0 ns)
+	'select' operation ('__Val2__', r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225) [113]  (4.42 ns)
+
+ <State 25>: 6.5ns
+The critical path consists of the following:
+	'sub' operation ('result.V', r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225) [114]  (2.55 ns)
+	'select' operation ('__Val2__', r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225) [115]  (0.698 ns)
+	'store' operation ('store_ln227', Iris-recognition/toplevel.cpp:227) of variable '__Val2__', r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117->r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51->Iris-recognition/toplevel.cpp:225 on array 'points', Iris-recognition/toplevel.cpp:216 [147]  (3.25 ns)
+
+ <State 26>: 3.25ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', Iris-recognition/toplevel.cpp:236) [160]  (0 ns)
+	'getelementptr' operation ('sums_addr', Iris-recognition/toplevel.cpp:236) [167]  (0 ns)
+	'store' operation ('store_ln236', Iris-recognition/toplevel.cpp:236) of constant 0 on array 'sums', Iris-recognition/toplevel.cpp:235 [168]  (3.25 ns)
+
+ <State 27>: 1.82ns
+The critical path consists of the following:
+	'phi' operation ('y') with incoming values : ('y', Iris-recognition/toplevel.cpp:239) [173]  (0 ns)
+	'add' operation ('y', Iris-recognition/toplevel.cpp:239) [177]  (1.82 ns)
+
+ <State 28>: 7.27ns
+The critical path consists of the following:
+	fifo read on port 'img_data_stream_V' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:679->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:711->Iris-recognition/toplevel.cpp:243) [193]  (3.63 ns)
+	fifo write on port 'dst_img_data_stream_V' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:703->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:717->Iris-recognition/toplevel.cpp:244) [197]  (3.63 ns)
+
+ <State 29>: 3.25ns
+The critical path consists of the following:
+	'phi' operation ('p') with incoming values : ('p', Iris-recognition/toplevel.cpp:245) [202]  (0 ns)
+	'getelementptr' operation ('points_addr', Iris-recognition/toplevel.cpp:246) [208]  (0 ns)
+	'load' operation ('points_load', Iris-recognition/toplevel.cpp:246) on array 'points', Iris-recognition/toplevel.cpp:216 [209]  (3.25 ns)
+
+ <State 30>: 5.73ns
+The critical path consists of the following:
+	'load' operation ('points_load', Iris-recognition/toplevel.cpp:246) on array 'points', Iris-recognition/toplevel.cpp:216 [209]  (3.25 ns)
+	'icmp' operation ('icmp_ln246', Iris-recognition/toplevel.cpp:246) [210]  (2.47 ns)
+
+ <State 31>: 6.38ns
+The critical path consists of the following:
+	'mul' operation of DSP[221] ('mul_ln247', Iris-recognition/toplevel.cpp:247) [221]  (6.38 ns)
+
+ <State 32>: 3.25ns
+The critical path consists of the following:
+	'load' operation ('sums_load', Iris-recognition/toplevel.cpp:248) on array 'sums', Iris-recognition/toplevel.cpp:235 [226]  (3.25 ns)
+
+ <State 33>: 5.81ns
+The critical path consists of the following:
+	'load' operation ('sums_load', Iris-recognition/toplevel.cpp:248) on array 'sums', Iris-recognition/toplevel.cpp:235 [226]  (3.25 ns)
+	'add' operation ('add_ln248', Iris-recognition/toplevel.cpp:248) [227]  (2.55 ns)
+
+ <State 34>: 3.25ns
+The critical path consists of the following:
+	'store' operation ('store_ln248', Iris-recognition/toplevel.cpp:248) of variable 'add_ln248', Iris-recognition/toplevel.cpp:248 on array 'sums', Iris-recognition/toplevel.cpp:235 [228]  (3.25 ns)
+
+ <State 35>: 5.08ns
+The critical path consists of the following:
+	'phi' operation ('r') with incoming values : ('r', Iris-recognition/toplevel.cpp:256) [243]  (0 ns)
+	'add' operation ('r', Iris-recognition/toplevel.cpp:256) [249]  (1.83 ns)
+	'getelementptr' operation ('sums_addr_1', Iris-recognition/toplevel.cpp:256) [251]  (0 ns)
+	'load' operation ('sum1', Iris-recognition/toplevel.cpp:256) on array 'sums', Iris-recognition/toplevel.cpp:235 [252]  (3.25 ns)
+
+ <State 36>: 5.81ns
+The critical path consists of the following:
+	'load' operation ('sum1', Iris-recognition/toplevel.cpp:256) on array 'sums', Iris-recognition/toplevel.cpp:235 [252]  (3.25 ns)
+	'sub' operation ('i_max', Iris-recognition/toplevel.cpp:258) [257]  (2.55 ns)
+
+ <State 37>: 3.17ns
+The critical path consists of the following:
+	'icmp' operation ('icmp_ln259', Iris-recognition/toplevel.cpp:259) [258]  (2.47 ns)
+	'select' operation ('select_ln259', Iris-recognition/toplevel.cpp:259) [259]  (0.698 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+	State 19
+	State 20
+	State 21
+	State 22
+	State 23
+	State 24
+	State 25
+	State 26
+	State 27
+	State 28
+	State 29
+	State 30
+	State 31
+	State 32
+	State 33
+	State 34
+	State 35
+	State 36
+	State 37
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

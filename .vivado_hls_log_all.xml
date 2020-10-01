@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog>
+        <logs message="WARNING: [SCHED 204-21] The critical path in module 'CvtColor' consists of the following:&#xD;&#xA;&#x9;'mul' operation of DSP[51] ('r.V', C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1495->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1972) [49]  (3.36 ns)&#xD;&#xA;&#x9;'add' operation of DSP[51] ('ret.V', C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1497->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1972) [51]  (3.02 ns)&#xD;&#xA;&#x9;'add' operation of DSP[53] ('ret.V', C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1497->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1972) [53]  (3.02 ns)" projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:09.072+0200" type="Warning"/>
+        <logs message="WARNING: [SCHED 204-21] Estimated clock period (9.4ns) exceeds the target (target clock period: 10ns, clock uncertainty: 1.25ns, effective delay budget: 8.75ns)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:09.057+0200" type="Warning"/>
+        <logs message="WARNING: [SYN 201-103] Legalizing function name 'CvtColor.1' to 'CvtColor_1'." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:07.021+0200" type="Warning"/>
+        <logs message="WARNING: [SYN 201-103] Legalizing function name 'method1_Block__proc' to 'method1_Block_proc'." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:06.972+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-631] Renaming function 'find_iris_high_accuracy' to 'find_iris_high_accur' (Iris-recognition/toplevel.cpp:5:5)" projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:05.300+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-631] Renaming function 'hls::AXIvideo2Mat&lt;32, 280, 320, 4096>' to 'AXIvideo2Mat' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:49:9)" projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:04.536+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-631] Renaming function 'hls::Array2Mat&lt;360, unsigned char, 64, 360, 0>' to 'Array2Mat' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:174:46)" projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:04.523+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-631] Renaming function 'hls::CvtColor&lt;HLS_GRAY2RGB, 0, 4096, 64, 360>' to 'CvtColor.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:672:39)" projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:04.509+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-631] Renaming function 'hls::CvtColor&lt;HLS_RGB2GRAY, 4096, 0, 280, 320>' to 'CvtColor' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:409:39)" projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:04.498+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-631] Renaming function 'hls::Mat2AXIvideo&lt;32, 64, 360, 4096>' to 'Mat2AXIvideo' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:78:50)" projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:04.486+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-631] Renaming function 'hls::Mat2Array&lt;320, unsigned char, 280, 320, 0>' to 'Mat2Array' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:240:46)" projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:04.470+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-713] All the elements of global array 'imageOut' should be updated in process function 'core_low', otherwise it may not be synthesized correctly." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:00.809+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-561] Updating loop lower bound from 0 to 64 for loop 'loop_height' in function 'hls::Mat2AXIvideo&lt;32, 64, 360, 4096>'." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:00.757+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-561] Updating loop lower bound from 0 to 360 for loop 'loop_width' in function 'hls::Mat2AXIvideo&lt;32, 64, 360, 4096>'." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:00.523+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-561] Updating loop lower bound from 0 to 280 for loop 'loop_pixel' in function 'hls::Mat2Array&lt;320, unsigned char, 280, 320, 0>'." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:00.513+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-561] Updating loop lower bound from 0 to 320 for loop 'Loop-0-0' in function 'hls::Mat2Array&lt;320, unsigned char, 280, 320, 0>'." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:57:00.496+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-1103] Ignored data pack directive on non-struct variable 'img4.data_stream.V' (Iris-recognition/toplevel.cpp:778)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:56:58.971+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-1103] Ignored data pack directive on non-struct variable 'img2.data_stream.V' (Iris-recognition/toplevel.cpp:776)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:56:58.588+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-1103] Ignored data pack directive on non-struct variable 'img3.data_stream.V' (Iris-recognition/toplevel.cpp:777)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:56:58.578+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-1103] Ignored data pack directive on non-struct variable 'img0.data_stream.V' (Iris-recognition/toplevel.cpp:774)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:56:58.568+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-1103] Ignored data pack directive on non-struct variable 'img5.data_stream.V' (Iris-recognition/toplevel.cpp:779)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:56:58.557+0200" type="Warning"/>
+        <logs message="WARNING: [XFORM 203-1103] Ignored data pack directive on non-struct variable 'img1.data_stream.V' (Iris-recognition/toplevel.cpp:775)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:56:58.543+0200" type="Warning"/>
+        <logs message="WARNING: [SYNCHK 200-23] C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_axi_io.h:78: variable-indexed range selection may cause suboptimal QoR." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-01T13:56:56.880+0200" type="Warning"/>
+      </synLog>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>

@@ -1,0 +1,153 @@
+
+
+================================================================
+== Vivado HLS Report for 'top_level'
+================================================================
+* Date:           Thu Oct  1 13:57:35 2020
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        Iris-recognition
+* Solution:       PYNQ_SOLUTION
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  | 10.00 ns | 9.400 ns |   1.25 ns  |
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +----------+-----------+-----------+-----------+----------+-----------+---------+
+    |   Latency (cycles)   |   Latency (absolute)  |       Interval       | Pipeline|
+    |    min   |    max    |    min    |    max    |    min   |    max    |   Type  |
+    +----------+-----------+-----------+-----------+----------+-----------+---------+
+    |  59860422|  119534022| 0.599 sec | 1.195 sec |  59860422|  119534022|   none  |
+    +----------+-----------+-----------+-----------+----------+-----------+---------+
+
+    + Detail: 
+        * Instance: 
+        +-------------------+---------+----------+-----------+-----------+-----------+----------+-----------+----------+
+        |                   |         |   Latency (cycles)   |   Latency (absolute)  |       Interval       | Pipeline |
+        |      Instance     |  Module |    min   |    max    |    min    |    max    |    min   |    max    |   Type   |
+        +-------------------+---------+----------+-----------+-----------+-----------+----------+-----------+----------+
+        |grp_method1_fu_54  |method1  |  59860419|  119534019| 0.599 sec | 1.195 sec |  59860417|  119534017| dataflow |
+        +-------------------+---------+----------+-----------+-----------+-----------+----------+-----------+----------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|      6|    -|
+|FIFO             |        -|      -|       -|      -|    -|
+|Instance         |       84|     52|   11375|  26026|    0|
+|Memory           |        -|      -|       -|      -|    -|
+|Multiplexer      |        -|      -|       -|     36|    -|
+|Register         |        -|      -|       7|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |       84|     52|   11382|  26068|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |       30|     23|      10|     49|    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +-------------------+---------+---------+-------+-------+-------+-----+
+    |      Instance     |  Module | BRAM_18K| DSP48E|   FF  |  LUT  | URAM|
+    +-------------------+---------+---------+-------+-------+-------+-----+
+    |grp_method1_fu_54  |method1  |       84|     52|  11375|  26026|    0|
+    +-------------------+---------+---------+-------+-------+-------+-----+
+    |Total              |         |       84|     52|  11375|  26026|    0|
+    +-------------------+---------+---------+-------+-------+-------+-----+
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------------------+----------+-------+---+----+------------+------------+
+    |             Variable Name             | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------------------+----------+-------+---+----+------------+------------+
+    |grp_method1_fu_54_outputStream_TREADY  |    and   |      0|  0|   2|           1|           1|
+    |ap_sync_grp_method1_fu_54_ap_done      |    or    |      0|  0|   2|           1|           1|
+    |ap_sync_grp_method1_fu_54_ap_ready     |    or    |      0|  0|   2|           1|           1|
+    +---------------------------------------+----------+-------+---+----+------------+------------+
+    |Total                                  |          |      0|  0|   6|           3|           3|
+    +---------------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +------------------------+----+-----------+-----+-----------+
+    |          Name          | LUT| Input Size| Bits| Total Bits|
+    +------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm               |  27|          5|    1|          5|
+    |inputStream_TREADY_int  |   9|          2|    1|          2|
+    +------------------------+----+-----------+-----+-----------+
+    |Total                   |  36|          7|    2|          7|
+    +------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------------------------------+---+----+-----+-----------+
+    |                  Name                  | FF| LUT| Bits| Const Bits|
+    +----------------------------------------+---+----+-----+-----------+
+    |ap_CS_fsm                               |  4|   0|    4|          0|
+    |ap_sync_reg_grp_method1_fu_54_ap_done   |  1|   0|    1|          0|
+    |ap_sync_reg_grp_method1_fu_54_ap_ready  |  1|   0|    1|          0|
+    |grp_method1_fu_54_ap_start_reg          |  1|   0|    1|          0|
+    +----------------------------------------+---+----+-----+-----------+
+    |Total                                   |  7|   0|    7|          0|
+    +----------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------+-----+-----+--------------+-----------------------+--------------+
+|      RTL Ports      | Dir | Bits|   Protocol   |     Source Object     |    C Type    |
++---------------------+-----+-----+--------------+-----------------------+--------------+
+|ap_clk               |  in |    1| ap_ctrl_none |       top_level       | return value |
+|ap_rst_n             |  in |    1| ap_ctrl_none |       top_level       | return value |
+|inputStream_TDATA    |  in |   32|     axis     |  inputStream_V_data_V |    pointer   |
+|inputStream_TVALID   |  in |    1|     axis     |  inputStream_V_dest_V |    pointer   |
+|inputStream_TREADY   | out |    1|     axis     |  inputStream_V_dest_V |    pointer   |
+|inputStream_TDEST    |  in |    1|     axis     |  inputStream_V_dest_V |    pointer   |
+|inputStream_TKEEP    |  in |    4|     axis     |  inputStream_V_keep_V |    pointer   |
+|inputStream_TSTRB    |  in |    4|     axis     |  inputStream_V_strb_V |    pointer   |
+|inputStream_TUSER    |  in |    1|     axis     |  inputStream_V_user_V |    pointer   |
+|inputStream_TLAST    |  in |    1|     axis     |  inputStream_V_last_V |    pointer   |
+|inputStream_TID      |  in |    1|     axis     |   inputStream_V_id_V  |    pointer   |
+|outputStream_TDATA   | out |   32|     axis     | outputStream_V_data_V |    pointer   |
+|outputStream_TVALID  | out |    1|     axis     | outputStream_V_dest_V |    pointer   |
+|outputStream_TREADY  |  in |    1|     axis     | outputStream_V_dest_V |    pointer   |
+|outputStream_TDEST   | out |    1|     axis     | outputStream_V_dest_V |    pointer   |
+|outputStream_TKEEP   | out |    4|     axis     | outputStream_V_keep_V |    pointer   |
+|outputStream_TSTRB   | out |    4|     axis     | outputStream_V_strb_V |    pointer   |
+|outputStream_TUSER   | out |    1|     axis     | outputStream_V_user_V |    pointer   |
+|outputStream_TLAST   | out |    1|     axis     | outputStream_V_last_V |    pointer   |
+|outputStream_TID     | out |    1|     axis     |  outputStream_V_id_V  |    pointer   |
++---------------------+-----+-----+--------------+-----------------------+--------------+
+

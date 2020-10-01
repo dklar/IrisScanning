@@ -1,0 +1,149 @@
+
+
+================================================================
+== Vivado HLS Report for 'writeValues'
+================================================================
+* Date:           Thu Oct  1 13:57:27 2020
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        Iris-recognition
+* Solution:       PYNQ_SOLUTION
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  | 10.00 ns | 3.634 ns |   1.25 ns  |
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        0|        0|   0 ns   |   0 ns   |    0|    0|   none  |
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|      2|    -|
+|FIFO             |        -|      -|       -|      -|    -|
+|Instance         |        -|      -|       -|      -|    -|
+|Memory           |        -|      -|       -|      -|    -|
+|Multiplexer      |        -|      -|       -|     72|    -|
+|Register         |        -|      -|     130|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |        0|      0|     130|     74|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |        0|      0|   ~0   |   ~0  |    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------+----------+-------+---+----+------------+------------+
+    |  Variable Name  | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------+----------+-------+---+----+------------+------------+
+    |ap_block_state1  |    or    |      0|  0|   2|           1|           1|
+    +-----------------+----------+-------+---+----+------------+------------+
+    |Total            |          |      0|  0|   2|           1|           1|
+    +-----------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------+----+-----------+-----+-----------+
+    |     Name    | LUT| Input Size| Bits| Total Bits|
+    +-------------+----+-----------+-----+-----------+
+    |ap_done      |   9|          2|    1|          2|
+    |ap_return_0  |   9|          2|   32|         64|
+    |ap_return_1  |   9|          2|   32|         64|
+    |ap_return_2  |   9|          2|   32|         64|
+    |ap_return_3  |   9|          2|   32|         64|
+    |r1_blk_n     |   9|          2|    1|          2|
+    |x_blk_n      |   9|          2|    1|          2|
+    |y_blk_n      |   9|          2|    1|          2|
+    +-------------+----+-----------+-----+-----------+
+    |Total        |  72|         16|  132|        264|
+    +-------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +------------------+----+----+-----+-----------+
+    |       Name       | FF | LUT| Bits| Const Bits|
+    +------------------+----+----+-----+-----------+
+    |ap_CS_fsm         |   1|   0|    1|          0|
+    |ap_done_reg       |   1|   0|    1|          0|
+    |ap_return_0_preg  |  32|   0|   32|          0|
+    |ap_return_1_preg  |  32|   0|   32|          0|
+    |ap_return_2_preg  |  32|   0|   32|          0|
+    |ap_return_3_preg  |  32|   0|   32|          0|
+    +------------------+----+----+-----+-----------+
+    |Total             | 130|   0|  130|          0|
+    +------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------+-----+-----+------------+--------------+--------------+
+|  RTL Ports  | Dir | Bits|  Protocol  | Source Object|    C Type    |
++-------------+-----+-----+------------+--------------+--------------+
+|ap_clk       |  in |    1| ap_ctrl_hs |  writeValues | return value |
+|ap_rst       |  in |    1| ap_ctrl_hs |  writeValues | return value |
+|ap_start     |  in |    1| ap_ctrl_hs |  writeValues | return value |
+|ap_done      | out |    1| ap_ctrl_hs |  writeValues | return value |
+|ap_continue  |  in |    1| ap_ctrl_hs |  writeValues | return value |
+|ap_idle      | out |    1| ap_ctrl_hs |  writeValues | return value |
+|ap_ready     | out |    1| ap_ctrl_hs |  writeValues | return value |
+|ap_return_0  | out |   32| ap_ctrl_hs |  writeValues | return value |
+|ap_return_1  | out |   32| ap_ctrl_hs |  writeValues | return value |
+|ap_return_2  | out |   32| ap_ctrl_hs |  writeValues | return value |
+|ap_return_3  | out |   32| ap_ctrl_hs |  writeValues | return value |
+|x_dout       |  in |   32|   ap_fifo  |       x      |    pointer   |
+|x_empty_n    |  in |    1|   ap_fifo  |       x      |    pointer   |
+|x_read       | out |    1|   ap_fifo  |       x      |    pointer   |
+|y_dout       |  in |   32|   ap_fifo  |       y      |    pointer   |
+|y_empty_n    |  in |    1|   ap_fifo  |       y      |    pointer   |
+|y_read       | out |    1|   ap_fifo  |       y      |    pointer   |
+|r1_dout      |  in |   32|   ap_fifo  |      r1      |    pointer   |
+|r1_empty_n   |  in |    1|   ap_fifo  |      r1      |    pointer   |
+|r1_read      | out |    1|   ap_fifo  |      r1      |    pointer   |
+|r2           |  in |   32|   ap_none  |      r2      |    scalar    |
++-------------+-----+-----+------------+--------------+--------------+
+

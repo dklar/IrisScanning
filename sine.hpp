@@ -7,13 +7,13 @@
 #define PIHALF 1.570796327
 #define DEGtoRAD 0.01745329252
 
-typedef ap_fixed<8,2> float30;
-typedef ap_fixed<8,0> float8;
+typedef ap_fixed<16,1> float30;
+typedef ap_ufixed<8,0> float8;//only decimal point .00000000
 
-static const float30 arctan[] = {
-		0.7853981633974483,
-		0.4636476090008061,
-		0.24497866312686414,
+static const float8 arctan[] = {
+		0.7853981633974483,//0.1100100100..
+		0.4636476090008061,//0.0111011010..
+		0.24497866312686414,//0.0011111010..
 		0.12435499454676144,
 		0.06241880999595735,
 		0.031239833430268277,
@@ -147,5 +147,5 @@ float cordic360_SIN(float x, int nMax);
 float30 cordic360_Sin_fixed(float x, int nMax);
 float30 cordic360_Cos_fixed(float x, int nMax);
 void cordic360_COS_SIN(float x, float &s, float &c,int nMax);
-
+void cordic360_COS_SIN_fix(float x, float &s, float &c,int nMax);
 

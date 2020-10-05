@@ -7,6 +7,22 @@
       <mgLog/>
       <packageLog/>
       <csimLog>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-05T01:54:30.360+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-05T00:39:45.890+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-05T00:38:25.448+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-05T00:32:18.255+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-05T00:31:04.614+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-05T00:24:47.384+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-05T00:21:15.256+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-05T00:19:22.016+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-05T00:18:02.850+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed with errors." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-05T00:17:43.150+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim failed with errors." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-04T12:54:23.627+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim failed with errors." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-04T12:10:07.412+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim failed with errors." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-04T11:19:41.265+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim failed with errors." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-03T22:51:39.321+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim failed with errors." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-03T22:51:10.256+0200"/>
+        <logs message="ERROR: [SIM 211-107] error deleting &quot;C:/Users/Dennis/VivadoHLS/Final/Iris-recognition/PYNQ_SOLUTION/csim/build\gaborcodes_acc.dat&quot;: permission denied" projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-03T22:51:10.244+0200"/>
         <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-02T16:57:49.998+0200"/>
         <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-02T13:37:42.163+0200"/>
         <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-02T10:19:44.752+0200"/>

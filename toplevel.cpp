@@ -3,8 +3,8 @@
 float sin_filter_matrix[MAX_KERN_SIZE][MAX_KERN_SIZE];
 float cos_filter_matrix[MAX_KERN_SIZE][MAX_KERN_SIZE];
 
-float sin_filter_matrix_fix[MAX_KERN_SIZE][MAX_KERN_SIZE];
-float cos_filter_matrix_fix[MAX_KERN_SIZE][MAX_KERN_SIZE];
+floatGauss sin_filter_matrix_fix[MAX_KERN_SIZE][MAX_KERN_SIZE];
+floatGauss cos_filter_matrix_fix[MAX_KERN_SIZE][MAX_KERN_SIZE];
 
 //uint8_t bit_code[BITCODE_LENGTH];
 //ap_uint<BITCODE_LENGTH> bitcode_t;
@@ -408,8 +408,10 @@ void generateGaborKernel(int kern_size){
 	CalcFirstRow:for (int i = 0;i<kern_size;i++){
 		int phi = i - (kern_size / 2);
 		int temp = kern_size/2;
-		float val_sin = (float) cordic360_Sin_fixed(PI * phi / temp,10);
-		float val_cos = (float) cordic360_Cos_fixed(PI * phi / temp,10 );
+		float val_sin;// = (float) cordic360_Sin_fixed(PI * phi / temp,10);
+		float val_cos;// = (float) cordic360_Cos_fixed(PI * phi / temp,10);
+		cordic360_COS_SIN(PI * phi / temp,val_sin,val_cos,5);
+
 		sin_filter_matrix[0][i] = val_sin;
 		cos_filter_matrix[0][i] = val_cos;
 		sum_row_sin += val_sin;
@@ -429,7 +431,7 @@ void generateGaborKernel(int kern_size){
 			cos_filter_matrix[i][j] = cos_filter_matrix[0][j];
 		}
 	}
-	int peak = 15;
+	int peak = 8;
 	float alpha = (kern_size - 1) * 0.4770322291;
 	float alphaPower = alpha * alpha;
 	CreateGauss:for (int i = 0; i<kern_size; i++){
@@ -472,7 +474,6 @@ void generateGaborKernel(int kern_size){
 		}
 
 }
-
 
 uint8_t gaborPixel(int rho, int phi, uint8_t norm_img[NORM_HEIGHT*NORM_WIDTH],int filter_size){
 	int angles = NORM_WIDTH;
@@ -544,87 +545,83 @@ void encode(uint8_t norm_img[NORM_HEIGHT*NORM_WIDTH],uint8_t bit_code[BITCODE_LE
 	}
 }
 
-
-
 void generateGaborKernel_fix(int kern_size){
-	float gauss[MAX_KERN_SIZE][MAX_KERN_SIZE];
+	floatGauss gauss[MAX_KERN_SIZE][MAX_KERN_SIZE];
 	if (kern_size>MAX_KERN_SIZE) kern_size = MAX_KERN_SIZE;
 
 	float sum_row_sin = 0;
-	float sum_row_cos = 0;
-	CalcFirstRow:for (int i = 0;i<kern_size;i++){
-		int phi = i - (kern_size / 2);
+	float sum_row_cos = 0;//max ~441
+	CalcFirstRow:
+	for (int i = 0;i<kern_size;i++){
+		int phi = i - ((float)kern_size / 2.0);
 		int temp = kern_size/2;
-		float val_sin = cordic360_SIN(PI * phi / temp,5);
-		float val_cos = cordic360_COS(PI * phi / temp,5 );
+		float  angle = PI * phi / temp;
+		float30 val_sin;// = cordic360_SIN(PI * phi / temp,5);
+		float30 val_cos;// = cordic360_COS_fix(PI * phi / temp,5 );
+		cordic360_COS_SIN_fix(angle,val_sin,val_cos,5);
 		sin_filter_matrix_fix[0][i] = val_sin;
 		cos_filter_matrix_fix[0][i] = val_cos;
-		sum_row_sin += val_sin;
-		sum_row_cos += val_cos;
+		sum_row_sin += val_sin.to_float();
+		sum_row_cos += val_cos.to_float();
 	}
 
-	NormalizeFirstRow:for (int i = 0;i<kern_size;i++){
-		float old_v_s = sin_filter_matrix_fix[0][i];
-		float old_v_c = cos_filter_matrix_fix[0][i];
-		sin_filter_matrix_fix[0][i] = old_v_s - (sum_row_sin/(float)kern_size);
-		cos_filter_matrix_fix[0][i] = old_v_c - (sum_row_cos/(float)kern_size);
+	NormalizeFirstRow:
+	for (int i = 0;i<kern_size;i++){
+		sin_filter_matrix_fix[0][i] = sin_filter_matrix_fix[0][i] - (floatGauss)(sum_row_sin/(float)kern_size);
+		cos_filter_matrix_fix[0][i] = cos_filter_matrix_fix[0][i] - (floatGauss)(sum_row_cos/(float)kern_size);
 	}
 
-	AssignCompleteMatrix:for (int i = 1;i<kern_size;i++){
+	AssignCompleteMatrix:
+	for (int i = 1;i<kern_size;i++){
 		for (int j = 0;j<kern_size;j++){
 			sin_filter_matrix_fix[i][j] = sin_filter_matrix_fix[0][j];
 			cos_filter_matrix_fix[i][j] = cos_filter_matrix_fix[0][j];
 		}
 	}
-	int peak = 15;
-	float alpha = (kern_size - 1) * 0.4770322291;
-	float alphaPower = alpha * alpha;
-	CreateGauss:for (int i = 0; i<kern_size; i++){
-		float rho =  i - ((float)kern_size / 2.0);
-		float rhoPower2 = rho*rho;
-		CreateGaussInner:for(int j = 0; j<kern_size; j++){
-			float phi = j - ((float)kern_size / 2.0);
-			//float temp = (float)(peak * exp(-pow(rho,2)/pow(alpha,2)) * exp(-pow(phi,2)/pow(alpha,2)));//bzw exp1 alpha exp2 beta
-			//float temp = (float)(peak * exp(-(rho*rho))/(alpha*alpha) * exp(-(phi*phi)/(alpha*alpha)));
 
+	int peak = 8;//former 15
+	float alpha = (kern_size - 1) * 0.47703;//~10
+	float alphaPower = alpha * alpha;//~100
+
+	CreateGauss:
+	for (int i = 0; i<kern_size; i++){
+		float rho =  i - ((float)kern_size / 2.0);//max~11dec
+		float rhoPower2 = rho*rho;//max 121dec
+		for(int j = 0; j<kern_size; j++){
+			float phi = j - ((float)kern_size / 2.0);//max~11dec
 			float temp1 = -(rhoPower2+phi*phi)/alphaPower;
-			float temp  = peak * hls::expf(temp1);//expf(temp1);
-			gauss[i][j] = temp;
+			gauss[i][j]  = peak * hls::expf(temp1);//expf(temp1);
 		}
 	}
-	GaussMulti:for (int i = 0; i<kern_size; i++){
-			float rho =  i - (kern_size / 2);
-			for(int j = 0; j<kern_size; j++){
-				float temp_sin = sin_filter_matrix_fix[i][j] * gauss[i][j];
-				float temp_cos = cos_filter_matrix_fix[i][j] * gauss[i][j];
-				sin_filter_matrix_fix[i][j] = temp_sin;
-				cos_filter_matrix_fix[i][j] = temp_cos;
-			}
+
+	GaussMultiSine:
+	for (int i = 0; i<kern_size; i++){
+		for(int j = 0; j<kern_size; j++){
+			sin_filter_matrix_fix[i][j] = sin_filter_matrix_fix[i][j] * gauss[i][j];
+			cos_filter_matrix_fix[i][j] = cos_filter_matrix_fix[i][j] * gauss[i][j];
 		}
+	}
 
 	NormalizeGausGabor:
 	for(int i = 0 ; i < kern_size; i++ ){
-		float row_sum_sin = 0;
-		float row_sum_cos = 0;
-			for (int j = 0 ; j<kern_size; j++){
-				row_sum_sin += sin_filter_matrix_fix[i][j];
-				row_sum_cos += cos_filter_matrix_fix[i][j];
-			}
-			for (int j = 0 ; j<kern_size; j++){
-				float old_sin = sin_filter_matrix_fix[i][j];
-				float old_cos = cos_filter_matrix_fix[i][j];
-				sin_filter_matrix_fix[i][j] = old_sin - (row_sum_sin/(float)kern_size);
-				cos_filter_matrix_fix[i][j] = old_cos - (row_sum_cos/(float)kern_size);
-			}
+		floatGauss row_sum_sin = 0;
+		floatGauss row_sum_cos = 0;
+		for (int j = 0 ; j<kern_size; j++){
+			row_sum_sin += sin_filter_matrix_fix[i][j];
+			row_sum_cos += cos_filter_matrix_fix[i][j];
 		}
+		for (int j = 0 ; j<kern_size; j++){
+			sin_filter_matrix_fix[i][j] = sin_filter_matrix_fix[i][j] - (row_sum_sin/(floatGauss)kern_size);
+			cos_filter_matrix_fix[i][j] = cos_filter_matrix_fix[i][j] - (row_sum_cos/(floatGauss)kern_size);
+		}
+	}
 
 }
 
-
-uint8_t gaborPixel_fix(int rho, int phi, uint8_t norm_img[NORM_HEIGHT*NORM_WIDTH],int filter_size){
+int2 gaborPixel_fix(int rho, int phi, uint8_t norm_img[NORM_HEIGHT*NORM_WIDTH],int filter_size){
 	int angles = NORM_WIDTH;
-	float total_i = 0.0;
-	float total_r = 0.0;
+	ap_fixed<16,12> total_i = 0.0;
+	ap_fixed<16,12> total_r = 0.0;
 
 	GaborPixeLoop:
 	for (int i = 0; i<filter_size;i++){
@@ -633,8 +630,8 @@ uint8_t gaborPixel_fix(int rho, int phi, uint8_t norm_img[NORM_HEIGHT*NORM_WIDTH
 			image_y = MODULO(image_y,angles);
 
 			int image_x =  i + rho - (filter_size / 2);
-			int tmp = norm_img[image_x*NORM_WIDTH+image_y];
-			total_i += sin_filter_matrix_fix[i][j] * tmp;
+			uint8_t tmp = norm_img[image_x*NORM_WIDTH+image_y];
+			total_i += sin_filter_matrix_fix[i][j] * tmp;//255*6.4
 			total_r += cos_filter_matrix_fix[i][j] * tmp;
 		}
 	}
@@ -683,7 +680,7 @@ void encode_fix(uint8_t norm_img[NORM_HEIGHT*NORM_WIDTH],uint8_t bit_code[BITCOD
 		generateGaborKernel_fix(filter_height);
 
 		for (int theta = 0;theta<angular_slice;theta++){
-			uint8_t temp = gaborPixel_fix(radius,theta,norm_img,filter_height);
+			int2 temp = gaborPixel_fix(radius,theta,norm_img,filter_height);
 			bit_code[index]   = (temp & 2)>>1;//real
 			bit_code[index+1] = temp & 1;//imag
 			index+=2;

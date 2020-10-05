@@ -10,7 +10,7 @@
     <includePaths/>
     <libraryPaths/>
     <Simulation>
-        <SimFlow name="csim" clean="true" csimMode="0" lastCsimMode="0"/>
+        <SimFlow name="csim" csimMode="0" lastCsimMode="0"/>
     </Simulation>
     <solutions xmlns="">
         <solution name="PYNQ_SOLUTION" status="active"/>

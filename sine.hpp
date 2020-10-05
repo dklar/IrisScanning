@@ -7,20 +7,21 @@
 #define PIHALF 1.570796327
 #define DEGtoRAD 0.01745329252
 
-typedef ap_fixed<16,1> float30;
-typedef ap_ufixed<8,0> float8;//only decimal point .00000000
-
+typedef ap_fixed<8,1> float30;
+typedef ap_fixed<4,1> floatIntern;
+typedef ap_ufixed<4,0> float8;//only decimal point .00000000
+typedef ap_fixed<8,4> floatGauss;
 static const float8 arctan[] = {
 		0.7853981633974483,//0.1100100100..
 		0.4636476090008061,//0.0111011010..
 		0.24497866312686414,//0.0011111010..
-		0.12435499454676144,
-		0.06241880999595735,
+		0.12435499454676144,//0.000111111101010
+		0.06241880999595735,//0.000011111111101//last value fo 4 bits
 		0.031239833430268277,
 		0.015623728620476831,
-		0.007812341060101111,
+		0.007812341060101111,//für 8 bit letzte stelle
 		0.0039062301319669718,
-		0.0019531225164788188,
+		0.0019531225164788188,//10 it
 		0.0009765621895593195,
 		0.0004882812111948983,
 		0.00024414062014936177,
@@ -30,7 +31,7 @@ static const float8 arctan[] = {
 		1.5258789061315762e-05,
 		7.62939453110197e-06,
 		3.814697265606496e-06,
-		1.907348632810187e-06,
+		1.907348632810187e-06,//20 it
 		9.536743164059608e-07,
 		4.7683715820308884e-07,
 		2.3841857910155797e-07,
@@ -147,5 +148,5 @@ float cordic360_SIN(float x, int nMax);
 float30 cordic360_Sin_fixed(float x, int nMax);
 float30 cordic360_Cos_fixed(float x, int nMax);
 void cordic360_COS_SIN(float x, float &s, float &c,int nMax);
-void cordic360_COS_SIN_fix(float x, float &s, float &c,int nMax);
+void cordic360_COS_SIN_fix(float x, float30 &s, float30 &c,int nMax);
 

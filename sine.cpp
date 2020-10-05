@@ -172,16 +172,16 @@ float30 cordic360_Cos_fixed(float x, int nMax){
 	return cordicCos_fix(x,nMax);
 }
 
-void cordic_fix(float x,int nMax,float &s,float &c){
-	float30 phi = (float30) x;
-	float30 z_r = 0.60725293500888;
-	float30 z_i = 0;
-	float30 val = (float30)1;
+void cordic_fix(float x,int nMax,float30 &s,float30 &c){
+	floatIntern phi = (floatIntern) x;
+	floatIntern z_r = 0.60725293500888;
+	floatIntern z_i = 0;
+	floatIntern val = 1;
 	for (int n =0;n<nMax;n++){
 		float8 a = arctan[n];
-		float30 temp1 = val>>n;
-		float30 z_r_old = z_r;
-		float30 z_i_old = z_i;
+		floatIntern temp1 = val>>n;
+		floatIntern z_r_old = z_r;
+		floatIntern z_i_old = z_i;
 
 		//phi.is_neg();
 		if (phi>=0){
@@ -196,11 +196,11 @@ void cordic_fix(float x,int nMax,float &s,float &c){
 			z_i = z_i_old - z_r_old * temp1;
 		}
 	}
-	s = z_i.to_float();
-	c = z_r.to_float();
+	s = z_i;
+	c = z_r;
 }
 
-void cordic360_COS_SIN_fix(float x, float &s, float &c,int nMax){
+void cordic360_COS_SIN_fix(float x, float30 &s, float30 &c,int nMax){
 	if(x>=ThreeHalfPI){
 		cordic_fix(x-TWOPI,nMax,s,c);
 	}else if(x>PIHALF){

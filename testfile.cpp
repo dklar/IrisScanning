@@ -8,7 +8,7 @@
 #include <windows.h>
 #include <tchar.h>
 #include <stdio.h>
-
+#include <fstream>
 using namespace std;
 
 void test_picture(const char* filename,int i){
@@ -140,9 +140,9 @@ void test_main(){
 	}
 }
 
-void create_gabor_codes(const char* path,const char* filename ){
+void create_gabor_codes(const char* path,const char* filename,uint8_t bit_code[BITCODE_LENGTH]){
 	//Fill with random data
-	uint8_t bit_code[BITCODE_LENGTH];
+	bit_code[BITCODE_LENGTH];
 	for (int i=0;i<2048;i++){
 		bit_code[i] = 4;
 	}
@@ -155,27 +155,17 @@ void create_gabor_codes(const char* path,const char* filename ){
 	std::string gabor_filename;
 	std::string temp = filename;
 
-	arrayMethod(src_stream,bit_code);
-	//arrayMethod_fix(src_stream,bit_code);
-
-	gabor_filename = "gabor_acc_"+temp;
-	gabor_filename = gabor_filename.substr(0, gabor_filename.length()-3);//remove "jpg"
-	gabor_filename +="txt";//and replace it with "txt"
-
-
-	fstream f;
-	f.open(gabor_filename.c_str(), ios::app);
-	for (int i=0;i<2048;i++){
-		f << std::to_string(bit_code[i]);
-	}
-	f.close();
+	//arrayMethod(src_stream,bit_code);
+	arrayMethod_fix(src_stream,bit_code);
 
 	cvReleaseImage(&src_image);
 }
 
 void test_main2(){
 	std::string path;
-	remove("eye.txt");
+	uint8_t bit_code[BITCODE_LENGTH];
+	std::ofstream file("gaborcodes_4bit_5iter.dat",std::ofstream::binary| std::ofstream::app);
+
 	for (int i=1;i<=100;i++){
 		path  = "C://Users//Dennis//VivadoHLS//Final//Database//CASIA1//"+std::to_string(i)+"//*";
 		WIN32_FIND_DATA FindFileData;
@@ -185,23 +175,25 @@ void test_main2(){
 		    return;
 		}
 		path = path.substr(0, path.size()-1);
+
 		do {
 
 			if(!(FindFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)){
 				//file
 				std::string pathTemp = path + FindFileData.cFileName;
 				std::cout << pathTemp<<"\n";
-				create_gabor_codes(pathTemp.c_str(),FindFileData.cFileName);
+				create_gabor_codes(pathTemp.c_str(),FindFileData.cFileName,bit_code);
+				file.write((char*)bit_code,BITCODE_LENGTH);
 			}
 
 		}while(FindNextFile(hFind, &FindFileData) != 0);
+
 		FindClose(hFind);
 	}
-
-
+	file.close();
 
 }
-
+/*
 void testCORDIC(){
 	std::cout.setf( std::ios::fixed, std:: ios::floatfield );
 	std::cout.precision(6);
@@ -237,18 +229,15 @@ void testCORDIC_fix(){
 
 	}
 }
-
+*/
 void test(){
-	ap_fixed<8,0> a = 0.00390625;
-	ap_fixed<8,0> b = 0.5;
-	ap_fixed<8,0> c = a+b;
+	ap_ufixed<8,0> a = 0.00390625;
+	ap_ufixed<8,0> b = 0.5;
+	ap_ufixed<8,0> c = a+b;
 	std::cout << c.to_float();
-
-
-
-
 }
 
 int main(int argc, char *argv[]){
 	test_main2();
+	//test();
 }

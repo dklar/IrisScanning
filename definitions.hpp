@@ -30,3 +30,5 @@ typedef hls::Scalar<1, uint8_t> 										PIXELGRAY;
 typedef hls::Mat<64,   360,   HLS_8UC1>									GRAY_IMAGE_NORM;
 typedef hls::Mat<64,   360,   HLS_8UC3>									RGB_IMAGE_NORM;
 
+typedef ap_uint<2> int2;//for return value of gabor pixel ->00,01,10,11
+typedef ap_uint<6> int6;//for other small values

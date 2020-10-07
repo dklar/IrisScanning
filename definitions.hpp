@@ -1,6 +1,6 @@
 #include "hls_video.h"
 #include <ap_fixed.h>
-
+#include "hls_math.h"
 
 #define MAX_WIDTH_CASIA  320
 #define MAX_HEIGHT_CASIA  280

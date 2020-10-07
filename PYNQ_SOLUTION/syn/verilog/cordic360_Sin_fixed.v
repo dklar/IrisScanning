@@ -161,12 +161,12 @@ cordicSin_fix grp_cordicSin_fix_fu_53(
     .ap_return(grp_cordicSin_fix_fu_53_ap_return)
 );
 
-top_level_fptruncncg #(
+top_level2_fptrunncg #(
     .ID( 1 ),
     .NUM_STAGE( 2 ),
     .din0_WIDTH( 64 ),
     .dout_WIDTH( 32 ))
-top_level_fptruncncg_U67(
+top_level2_fptrunncg_U65(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(reg_99),
@@ -174,12 +174,12 @@ top_level_fptruncncg_U67(
     .dout(grp_fu_60_p1)
 );
 
-top_level_fpext_3lbW #(
+top_level2_fpext_lbW #(
     .ID( 1 ),
     .NUM_STAGE( 2 ),
     .din0_WIDTH( 32 ),
     .dout_WIDTH( 64 ))
-top_level_fpext_3lbW_U68(
+top_level2_fpext_lbW_U66(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(x),
@@ -187,13 +187,13 @@ top_level_fpext_3lbW_U68(
     .dout(grp_fu_63_p1)
 );
 
-top_level_dadd_64ocq #(
+top_level2_dadd_6ocq #(
     .ID( 1 ),
     .NUM_STAGE( 5 ),
     .din0_WIDTH( 64 ),
     .din1_WIDTH( 64 ),
     .dout_WIDTH( 64 ))
-top_level_dadd_64ocq_U69(
+top_level2_dadd_6ocq_U67(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(tmp_reg_162),
@@ -202,13 +202,13 @@ top_level_dadd_64ocq_U69(
     .dout(grp_fu_67_p2)
 );
 
-top_level_dcmp_64pcA #(
+top_level2_dcmp_6pcA #(
     .ID( 1 ),
     .NUM_STAGE( 2 ),
     .din0_WIDTH( 64 ),
     .din1_WIDTH( 64 ),
     .dout_WIDTH( 1 ))
-top_level_dcmp_64pcA_U70(
+top_level2_dcmp_6pcA_U68(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(tmp_reg_162),
@@ -218,13 +218,13 @@ top_level_dcmp_64pcA_U70(
     .dout(grp_fu_74_p2)
 );
 
-top_level_dcmp_64pcA #(
+top_level2_dcmp_6pcA #(
     .ID( 1 ),
     .NUM_STAGE( 2 ),
     .din0_WIDTH( 64 ),
     .din1_WIDTH( 64 ),
     .dout_WIDTH( 1 ))
-top_level_dcmp_64pcA_U71(
+top_level2_dcmp_6pcA_U69(
     .clk(ap_clk),
     .reset(ap_rst),
     .din0(tmp_reg_162),

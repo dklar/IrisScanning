@@ -8,7 +8,7 @@ use ieee.std_logic_unsigned.all;
 
 entity cordicCos_fix_arckbM_rom is 
     generic(
-             DWIDTH     : integer := 6; 
+             DWIDTH     : integer := 4; 
              AWIDTH     : integer := 6; 
              MEM_SIZE    : integer := 50
     ); 
@@ -26,8 +26,7 @@ architecture rtl of cordicCos_fix_arckbM_rom is
 signal addr0_tmp : std_logic_vector(AWIDTH-1 downto 0); 
 type mem_array is array (0 to MEM_SIZE-1) of std_logic_vector (DWIDTH-1 downto 0); 
 signal mem : mem_array := (
-    0 => "110010", 1 => "011101", 2 => "001111", 3 => "000111", 4 => "000011", 
-    5 => "000001", 6 to 49=> "000000" );
+    0 => "1100", 1 => "0111", 2 => "0011", 3 => "0001", 4 to 49=> "0000" );
 
 attribute syn_rom_style : string;
 attribute syn_rom_style of mem : signal is "select_rom";
@@ -65,7 +64,7 @@ use IEEE.std_logic_1164.all;
 
 entity cordicCos_fix_arckbM is
     generic (
-        DataWidth : INTEGER := 6;
+        DataWidth : INTEGER := 4;
         AddressRange : INTEGER := 50;
         AddressWidth : INTEGER := 6);
     port (

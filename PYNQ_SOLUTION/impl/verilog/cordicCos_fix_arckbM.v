@@ -6,7 +6,7 @@
 (* rom_style = "distributed" *) module cordicCos_fix_arckbM_rom (
 addr0, ce0, q0, clk);
 
-parameter DWIDTH = 6;
+parameter DWIDTH = 4;
 parameter AWIDTH = 6;
 parameter MEM_SIZE = 50;
 
@@ -43,7 +43,7 @@ module cordicCos_fix_arckbM(
     ce0,
     q0);
 
-parameter DataWidth = 32'd6;
+parameter DataWidth = 32'd4;
 parameter AddressRange = 32'd50;
 parameter AddressWidth = 32'd6;
 input reset;

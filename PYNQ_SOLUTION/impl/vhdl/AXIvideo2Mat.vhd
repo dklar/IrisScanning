@@ -114,7 +114,7 @@ architecture behav of AXIvideo2Mat is
     signal img_cols_V_out_blk_n : STD_LOGIC;
     signal eol_reg_274 : STD_LOGIC_VECTOR (0 downto 0);
     signal axi_data_V_1_i_reg_285 : STD_LOGIC_VECTOR (31 downto 0);
-    signal t_V_4_reg_296 : STD_LOGIC_VECTOR (31 downto 0);
+    signal t_V_2_reg_296 : STD_LOGIC_VECTOR (31 downto 0);
     signal eol_0_i_reg_307 : STD_LOGIC_VECTOR (0 downto 0);
     signal axi_last_V_2_i_reg_319 : STD_LOGIC_VECTOR (0 downto 0);
     signal p_Val2_s_reg_332 : STD_LOGIC_VECTOR (31 downto 0);
@@ -137,8 +137,8 @@ architecture behav of AXIvideo2Mat is
     signal j_V_fu_421_p2 : STD_LOGIC_VECTOR (31 downto 0);
     signal tmp_fu_436_p1 : STD_LOGIC_VECTOR (7 downto 0);
     signal tmp_reg_517 : STD_LOGIC_VECTOR (7 downto 0);
-    signal tmp_7_reg_522 : STD_LOGIC_VECTOR (7 downto 0);
-    signal tmp_8_reg_527 : STD_LOGIC_VECTOR (7 downto 0);
+    signal tmp_4_reg_522 : STD_LOGIC_VECTOR (7 downto 0);
+    signal tmp_5_reg_527 : STD_LOGIC_VECTOR (7 downto 0);
     signal ap_block_state8 : BOOLEAN;
     signal ap_block_pp1_stage0_subdone : BOOLEAN;
     signal ap_condition_pp1_exit_iter0_state5 : STD_LOGIC;
@@ -383,13 +383,13 @@ begin
         end if;
     end process;
 
-    t_V_4_reg_296_assign_proc : process (ap_clk)
+    t_V_2_reg_296_assign_proc : process (ap_clk)
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((ap_enable_reg_pp1_iter0 = ap_const_logic_1) and (ap_const_logic_1 = ap_CS_fsm_pp1_stage0) and (ap_const_boolean_0 = ap_block_pp1_stage0_11001) and (icmp_ln73_fu_416_p2 = ap_const_lv1_0))) then 
-                t_V_4_reg_296 <= j_V_fu_421_p2;
+                t_V_2_reg_296 <= j_V_fu_421_p2;
             elsif (((ap_const_logic_1 = ap_CS_fsm_state4) and (icmp_ln71_fu_405_p2 = ap_const_lv1_0))) then 
-                t_V_4_reg_296 <= ap_const_lv32_0;
+                t_V_2_reg_296 <= ap_const_lv32_0;
             end if; 
         end if;
     end process;
@@ -433,8 +433,8 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((ap_const_logic_1 = ap_CS_fsm_pp1_stage0) and (ap_const_boolean_0 = ap_block_pp1_stage0_11001) and (icmp_ln73_fu_416_p2 = ap_const_lv1_0))) then
-                tmp_7_reg_522 <= ap_phi_mux_p_Val2_s_phi_fu_336_p4(15 downto 8);
-                tmp_8_reg_527 <= ap_phi_mux_p_Val2_s_phi_fu_336_p4(23 downto 16);
+                tmp_4_reg_522 <= ap_phi_mux_p_Val2_s_phi_fu_336_p4(15 downto 8);
+                tmp_5_reg_527 <= ap_phi_mux_p_Val2_s_phi_fu_336_p4(23 downto 16);
                 tmp_reg_517 <= tmp_fu_436_p1;
             end if;
         end if;
@@ -657,7 +657,7 @@ begin
 
     i_V_fu_410_p2 <= std_logic_vector(unsigned(t_V_reg_263) + unsigned(ap_const_lv32_1));
     icmp_ln71_fu_405_p2 <= "1" when (t_V_reg_263 = rows_V_reg_465) else "0";
-    icmp_ln73_fu_416_p2 <= "1" when (t_V_4_reg_296 = cols_V_reg_470) else "0";
+    icmp_ln73_fu_416_p2 <= "1" when (t_V_2_reg_296 = cols_V_reg_470) else "0";
 
     img_cols_V_blk_n_assign_proc : process(real_start, ap_done_reg, ap_CS_fsm_state1, img_cols_V_empty_n)
     begin
@@ -730,7 +730,7 @@ begin
         end if; 
     end process;
 
-    img_data_stream_1_V_din <= tmp_7_reg_522;
+    img_data_stream_1_V_din <= tmp_4_reg_522;
 
     img_data_stream_1_V_write_assign_proc : process(ap_CS_fsm_pp1_stage0, ap_enable_reg_pp1_iter1, icmp_ln73_reg_504, ap_block_pp1_stage0_11001)
     begin
@@ -751,7 +751,7 @@ begin
         end if; 
     end process;
 
-    img_data_stream_2_V_din <= tmp_8_reg_527;
+    img_data_stream_2_V_din <= tmp_5_reg_527;
 
     img_data_stream_2_V_write_assign_proc : process(ap_CS_fsm_pp1_stage0, ap_enable_reg_pp1_iter1, icmp_ln73_reg_504, ap_block_pp1_stage0_11001)
     begin
@@ -833,7 +833,7 @@ begin
         end if; 
     end process;
 
-    j_V_fu_421_p2 <= std_logic_vector(unsigned(t_V_4_reg_296) + unsigned(ap_const_lv32_1));
+    j_V_fu_421_p2 <= std_logic_vector(unsigned(t_V_2_reg_296) + unsigned(ap_const_lv32_1));
     or_ln76_fu_430_p2 <= (sof_1_i_fu_172 or ap_phi_mux_eol_0_i_phi_fu_311_p4);
 
     real_start_assign_proc : process(ap_start, start_full_n, start_once_reg)

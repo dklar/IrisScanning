@@ -138,7 +138,7 @@ reg    img_rows_V_out_blk_n;
 reg    img_cols_V_out_blk_n;
 reg   [0:0] eol_reg_274;
 reg   [31:0] axi_data_V_1_i_reg_285;
-reg   [31:0] t_V_4_reg_296;
+reg   [31:0] t_V_2_reg_296;
 reg   [0:0] eol_0_i_reg_307;
 reg   [0:0] axi_last_V_2_i_reg_319;
 reg   [31:0] p_Val2_s_reg_332;
@@ -160,8 +160,8 @@ reg    ap_block_pp1_stage0_11001;
 wire   [31:0] j_V_fu_421_p2;
 wire   [7:0] tmp_fu_436_p1;
 reg   [7:0] tmp_reg_517;
-reg   [7:0] tmp_7_reg_522;
-reg   [7:0] tmp_8_reg_527;
+reg   [7:0] tmp_4_reg_522;
+reg   [7:0] tmp_5_reg_527;
 reg    ap_block_state8;
 reg    ap_block_pp1_stage0_subdone;
 reg    ap_condition_pp1_exit_iter0_state5;
@@ -355,9 +355,9 @@ end
 
 always @ (posedge ap_clk) begin
     if (((ap_enable_reg_pp1_iter0 == 1'b1) & (1'b1 == ap_CS_fsm_pp1_stage0) & (1'b0 == ap_block_pp1_stage0_11001) & (icmp_ln73_fu_416_p2 == 1'd0))) begin
-        t_V_4_reg_296 <= j_V_fu_421_p2;
+        t_V_2_reg_296 <= j_V_fu_421_p2;
     end else if (((1'b1 == ap_CS_fsm_state4) & (icmp_ln71_fu_405_p2 == 1'd0))) begin
-        t_V_4_reg_296 <= 32'd0;
+        t_V_2_reg_296 <= 32'd0;
     end
 end
 
@@ -390,8 +390,8 @@ end
 
 always @ (posedge ap_clk) begin
     if (((1'b1 == ap_CS_fsm_pp1_stage0) & (1'b0 == ap_block_pp1_stage0_11001) & (icmp_ln73_fu_416_p2 == 1'd0))) begin
-        tmp_7_reg_522 <= {{ap_phi_mux_p_Val2_s_phi_fu_336_p4[15:8]}};
-        tmp_8_reg_527 <= {{ap_phi_mux_p_Val2_s_phi_fu_336_p4[23:16]}};
+        tmp_4_reg_522 <= {{ap_phi_mux_p_Val2_s_phi_fu_336_p4[15:8]}};
+        tmp_5_reg_527 <= {{ap_phi_mux_p_Val2_s_phi_fu_336_p4[23:16]}};
         tmp_reg_517 <= tmp_fu_436_p1;
     end
 end
@@ -755,19 +755,19 @@ assign i_V_fu_410_p2 = (t_V_reg_263 + 32'd1);
 
 assign icmp_ln71_fu_405_p2 = ((t_V_reg_263 == rows_V_reg_465) ? 1'b1 : 1'b0);
 
-assign icmp_ln73_fu_416_p2 = ((t_V_4_reg_296 == cols_V_reg_470) ? 1'b1 : 1'b0);
+assign icmp_ln73_fu_416_p2 = ((t_V_2_reg_296 == cols_V_reg_470) ? 1'b1 : 1'b0);
 
 assign img_cols_V_out_din = img_cols_V_dout;
 
 assign img_data_stream_0_V_din = tmp_reg_517;
 
-assign img_data_stream_1_V_din = tmp_7_reg_522;
+assign img_data_stream_1_V_din = tmp_4_reg_522;
 
-assign img_data_stream_2_V_din = tmp_8_reg_527;
+assign img_data_stream_2_V_din = tmp_5_reg_527;
 
 assign img_rows_V_out_din = img_rows_V_dout;
 
-assign j_V_fu_421_p2 = (t_V_4_reg_296 + 32'd1);
+assign j_V_fu_421_p2 = (t_V_2_reg_296 + 32'd1);
 
 assign or_ln76_fu_430_p2 = (sof_1_i_fu_172 | ap_phi_mux_eol_0_i_phi_fu_311_p4);
 

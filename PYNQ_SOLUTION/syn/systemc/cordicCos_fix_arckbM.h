@@ -18,7 +18,7 @@ using namespace sc_dt;
 
 struct cordicCos_fix_arckbM_ram : public sc_core::sc_module {
 
-  static const unsigned DataWidth = 6;
+  static const unsigned DataWidth = 4;
   static const unsigned AddressRange = 50;
   static const unsigned AddressWidth = 6;
 
@@ -36,14 +36,12 @@ sc_lv<DataWidth> ram[AddressRange];
 
 
    SC_CTOR(cordicCos_fix_arckbM_ram) {
-        ram[0] = "0b110010";
-        ram[1] = "0b011101";
-        ram[2] = "0b001111";
-        ram[3] = "0b000111";
-        ram[4] = "0b000011";
-        ram[5] = "0b000001";
-        for (unsigned i = 6; i < 50 ; i = i + 1) {
-            ram[i] = "0b000000";
+        ram[0] = "0b1100";
+        ram[1] = "0b0111";
+        ram[2] = "0b0011";
+        ram[3] = "0b0001";
+        for (unsigned i = 4; i < 50 ; i = i + 1) {
+            ram[i] = "0b0000";
         }
 
 
@@ -70,7 +68,7 @@ void prc_write_0()
 SC_MODULE(cordicCos_fix_arckbM) {
 
 
-static const unsigned DataWidth = 6;
+static const unsigned DataWidth = 4;
 static const unsigned AddressRange = 50;
 static const unsigned AddressWidth = 6;
 

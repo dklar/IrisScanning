@@ -225,7 +225,7 @@ architecture behav of cordic360_Sin_fixed is
     end component;
 
 
-    component top_level_fptruncncg IS
+    component top_level2_fptrunncg IS
     generic (
         ID : INTEGER;
         NUM_STAGE : INTEGER;
@@ -240,7 +240,7 @@ architecture behav of cordic360_Sin_fixed is
     end component;
 
 
-    component top_level_fpext_3lbW IS
+    component top_level2_fpext_lbW IS
     generic (
         ID : INTEGER;
         NUM_STAGE : INTEGER;
@@ -255,7 +255,7 @@ architecture behav of cordic360_Sin_fixed is
     end component;
 
 
-    component top_level_dadd_64ocq IS
+    component top_level2_dadd_6ocq IS
     generic (
         ID : INTEGER;
         NUM_STAGE : INTEGER;
@@ -272,7 +272,7 @@ architecture behav of cordic360_Sin_fixed is
     end component;
 
 
-    component top_level_dcmp_64pcA IS
+    component top_level2_dcmp_6pcA IS
     generic (
         ID : INTEGER;
         NUM_STAGE : INTEGER;
@@ -303,7 +303,7 @@ begin
         x => grp_cordicSin_fix_fu_53_x,
         ap_return => grp_cordicSin_fix_fu_53_ap_return);
 
-    top_level_fptruncncg_U67 : component top_level_fptruncncg
+    top_level2_fptrunncg_U65 : component top_level2_fptrunncg
     generic map (
         ID => 1,
         NUM_STAGE => 2,
@@ -316,7 +316,7 @@ begin
         ce => ap_const_logic_1,
         dout => grp_fu_60_p1);
 
-    top_level_fpext_3lbW_U68 : component top_level_fpext_3lbW
+    top_level2_fpext_lbW_U66 : component top_level2_fpext_lbW
     generic map (
         ID => 1,
         NUM_STAGE => 2,
@@ -329,7 +329,7 @@ begin
         ce => ap_const_logic_1,
         dout => grp_fu_63_p1);
 
-    top_level_dadd_64ocq_U69 : component top_level_dadd_64ocq
+    top_level2_dadd_6ocq_U67 : component top_level2_dadd_6ocq
     generic map (
         ID => 1,
         NUM_STAGE => 5,
@@ -344,7 +344,7 @@ begin
         ce => ap_const_logic_1,
         dout => grp_fu_67_p2);
 
-    top_level_dcmp_64pcA_U70 : component top_level_dcmp_64pcA
+    top_level2_dcmp_6pcA_U68 : component top_level2_dcmp_6pcA
     generic map (
         ID => 1,
         NUM_STAGE => 2,
@@ -360,7 +360,7 @@ begin
         opcode => grp_fu_74_opcode,
         dout => grp_fu_74_p2);
 
-    top_level_dcmp_64pcA_U71 : component top_level_dcmp_64pcA
+    top_level2_dcmp_6pcA_U69 : component top_level2_dcmp_6pcA
     generic map (
         ID => 1,
         NUM_STAGE => 2,

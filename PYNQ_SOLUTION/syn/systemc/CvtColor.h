@@ -11,9 +11,9 @@
 #include "systemc.h"
 #include "AESL_pkg.h"
 
-#include "top_level_mul_mulbkb.h"
-#include "top_level_mac_mulcud.h"
-#include "top_level_mac_muldEe.h"
+#include "top_level2_mul_mubkb.h"
+#include "top_level2_mac_mucud.h"
+#include "top_level2_mac_mudEe.h"
 
 namespace ap_rtl {
 
@@ -57,9 +57,9 @@ struct CvtColor : public sc_module {
 
     sc_trace_file* mVcdFile;
 
-    top_level_mul_mulbkb<1,1,22,8,29>* top_level_mul_mulbkb_U19;
-    top_level_mac_mulcud<1,1,23,8,29,30>* top_level_mac_mulcud_U20;
-    top_level_mac_muldEe<1,1,20,8,29,29>* top_level_mac_muldEe_U21;
+    top_level2_mul_mubkb<1,1,22,8,29>* top_level2_mul_mubkb_U17;
+    top_level2_mac_mucud<1,1,23,8,29,30>* top_level2_mac_mucud_U18;
+    top_level2_mac_mudEe<1,1,20,8,29,29>* top_level2_mac_mudEe_U19;
     sc_signal< sc_logic > real_start;
     sc_signal< sc_logic > start_once_reg;
     sc_signal< sc_logic > ap_done_reg;
@@ -97,15 +97,15 @@ struct CvtColor : public sc_module {
     sc_signal< sc_lv<1> > icmp_ln1968_reg_362_pp0_iter2_reg;
     sc_signal< sc_lv<9> > j_fu_241_p2;
     sc_signal< sc_logic > ap_enable_reg_pp0_iter0;
-    sc_signal< sc_lv<8> > tmp_36_reg_371;
-    sc_signal< sc_lv<8> > tmp_37_reg_376;
-    sc_signal< sc_lv<8> > tmp_37_reg_376_pp0_iter2_reg;
-    sc_signal< sc_lv<8> > tmp_38_reg_381;
-    sc_signal< sc_lv<8> > tmp_38_reg_381_pp0_iter2_reg;
+    sc_signal< sc_lv<8> > tmp_66_reg_371;
+    sc_signal< sc_lv<8> > tmp_67_reg_376;
+    sc_signal< sc_lv<8> > tmp_67_reg_376_pp0_iter2_reg;
+    sc_signal< sc_lv<8> > tmp_68_reg_381;
+    sc_signal< sc_lv<8> > tmp_68_reg_381_pp0_iter2_reg;
     sc_signal< sc_lv<29> > mul_ln703_fu_319_p2;
     sc_signal< sc_lv<29> > mul_ln703_reg_386;
     sc_signal< sc_lv<30> > grp_fu_325_p3;
-    sc_signal< sc_lv<30> > ret_V_7_reg_391;
+    sc_signal< sc_lv<30> > ret_V_12_reg_391;
     sc_signal< sc_logic > ap_enable_reg_pp0_iter3;
     sc_signal< sc_lv<8> > p_Val2_6_reg_396;
     sc_signal< sc_lv<1> > tmp_reg_401;
@@ -119,9 +119,9 @@ struct CvtColor : public sc_module {
     sc_signal< sc_lv<10> > zext_ln1968_fu_232_p1;
     sc_signal< sc_lv<29> > grp_fu_335_p3;
     sc_signal< sc_lv<8> > zext_ln415_fu_275_p1;
-    sc_signal< sc_lv<1> > tmp_33_fu_283_p3;
-    sc_signal< sc_lv<8> > p_Val2_52_fu_278_p2;
-    sc_signal< sc_lv<1> > tmp_34_fu_296_p3;
+    sc_signal< sc_lv<1> > tmp_63_fu_283_p3;
+    sc_signal< sc_lv<8> > p_Val2_120_fu_278_p2;
+    sc_signal< sc_lv<1> > tmp_64_fu_296_p3;
     sc_signal< sc_lv<1> > xor_ln777_fu_290_p2;
     sc_signal< sc_lv<1> > deleted_zeros_fu_304_p2;
     sc_signal< sc_lv<22> > mul_ln703_fu_319_p0;
@@ -201,7 +201,7 @@ struct CvtColor : public sc_module {
     void thread_mul_ln703_fu_319_p0();
     void thread_mul_ln703_fu_319_p1();
     void thread_mul_ln703_fu_319_p10();
-    void thread_p_Val2_52_fu_278_p2();
+    void thread_p_Val2_120_fu_278_p2();
     void thread_p_dst_data_stream_V_blk_n();
     void thread_p_dst_data_stream_V_din();
     void thread_p_dst_data_stream_V_write();
@@ -218,8 +218,8 @@ struct CvtColor : public sc_module {
     void thread_real_start();
     void thread_start_out();
     void thread_start_write();
-    void thread_tmp_33_fu_283_p3();
-    void thread_tmp_34_fu_296_p3();
+    void thread_tmp_63_fu_283_p3();
+    void thread_tmp_64_fu_296_p3();
     void thread_xor_ln777_fu_290_p2();
     void thread_zext_ln1967_fu_217_p1();
     void thread_zext_ln1968_fu_232_p1();

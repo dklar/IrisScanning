@@ -38,20 +38,20 @@ const sc_lv<30> CvtColor::ap_const_lv30_259168 = "1001011001000101101000";
 const sc_lv<28> CvtColor::ap_const_lv28_74BC6 = "1110100101111000110";
 
 CvtColor::CvtColor(sc_module_name name) : sc_module(name), mVcdFile(0) {
-    top_level_mul_mulbkb_U19 = new top_level_mul_mulbkb<1,1,22,8,29>("top_level_mul_mulbkb_U19");
-    top_level_mul_mulbkb_U19->din0(mul_ln703_fu_319_p0);
-    top_level_mul_mulbkb_U19->din1(mul_ln703_fu_319_p1);
-    top_level_mul_mulbkb_U19->dout(mul_ln703_fu_319_p2);
-    top_level_mac_mulcud_U20 = new top_level_mac_mulcud<1,1,23,8,29,30>("top_level_mac_mulcud_U20");
-    top_level_mac_mulcud_U20->din0(grp_fu_325_p0);
-    top_level_mac_mulcud_U20->din1(grp_fu_325_p1);
-    top_level_mac_mulcud_U20->din2(grp_fu_325_p2);
-    top_level_mac_mulcud_U20->dout(grp_fu_325_p3);
-    top_level_mac_muldEe_U21 = new top_level_mac_muldEe<1,1,20,8,29,29>("top_level_mac_muldEe_U21");
-    top_level_mac_muldEe_U21->din0(grp_fu_335_p0);
-    top_level_mac_muldEe_U21->din1(grp_fu_335_p1);
-    top_level_mac_muldEe_U21->din2(mul_ln703_reg_386);
-    top_level_mac_muldEe_U21->dout(grp_fu_335_p3);
+    top_level2_mul_mubkb_U17 = new top_level2_mul_mubkb<1,1,22,8,29>("top_level2_mul_mubkb_U17");
+    top_level2_mul_mubkb_U17->din0(mul_ln703_fu_319_p0);
+    top_level2_mul_mubkb_U17->din1(mul_ln703_fu_319_p1);
+    top_level2_mul_mubkb_U17->dout(mul_ln703_fu_319_p2);
+    top_level2_mac_mucud_U18 = new top_level2_mac_mucud<1,1,23,8,29,30>("top_level2_mac_mucud_U18");
+    top_level2_mac_mucud_U18->din0(grp_fu_325_p0);
+    top_level2_mac_mucud_U18->din1(grp_fu_325_p1);
+    top_level2_mac_mucud_U18->din2(grp_fu_325_p2);
+    top_level2_mac_mucud_U18->dout(grp_fu_325_p3);
+    top_level2_mac_mudEe_U19 = new top_level2_mac_mudEe<1,1,20,8,29,29>("top_level2_mac_mudEe_U19");
+    top_level2_mac_mudEe_U19->din0(grp_fu_335_p0);
+    top_level2_mac_mudEe_U19->din1(grp_fu_335_p1);
+    top_level2_mac_mudEe_U19->din2(mul_ln703_reg_386);
+    top_level2_mac_mudEe_U19->dout(grp_fu_335_p3);
 
     SC_METHOD(thread_ap_clk_no_reset_);
     dont_initialize();
@@ -149,7 +149,7 @@ CvtColor::CvtColor(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( internal_ap_ready );
 
     SC_METHOD(thread_deleted_zeros_fu_304_p2);
-    sensitive << ( tmp_34_fu_296_p3 );
+    sensitive << ( tmp_64_fu_296_p3 );
     sensitive << ( xor_ln777_fu_290_p2 );
 
     SC_METHOD(thread_grp_fu_325_p0);
@@ -164,7 +164,7 @@ CvtColor::CvtColor(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( grp_fu_325_p10 );
 
     SC_METHOD(thread_grp_fu_325_p10);
-    sensitive << ( tmp_37_reg_376_pp0_iter2_reg );
+    sensitive << ( tmp_67_reg_376_pp0_iter2_reg );
 
     SC_METHOD(thread_grp_fu_325_p2);
     sensitive << ( ap_block_pp0_stage0 );
@@ -187,7 +187,7 @@ CvtColor::CvtColor(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( grp_fu_335_p10 );
 
     SC_METHOD(thread_grp_fu_335_p10);
-    sensitive << ( tmp_38_reg_381_pp0_iter2_reg );
+    sensitive << ( tmp_68_reg_381_pp0_iter2_reg );
 
     SC_METHOD(thread_i_fu_226_p2);
     sensitive << ( i_0_i_reg_195 );
@@ -221,9 +221,9 @@ CvtColor::CvtColor(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( mul_ln703_fu_319_p10 );
 
     SC_METHOD(thread_mul_ln703_fu_319_p10);
-    sensitive << ( tmp_36_reg_371 );
+    sensitive << ( tmp_66_reg_371 );
 
-    SC_METHOD(thread_p_Val2_52_fu_278_p2);
+    SC_METHOD(thread_p_Val2_120_fu_278_p2);
     sensitive << ( p_Val2_6_reg_396 );
     sensitive << ( zext_ln415_fu_275_p1 );
 
@@ -237,7 +237,7 @@ CvtColor::CvtColor(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( ap_enable_reg_pp0_iter4 );
     sensitive << ( icmp_ln1968_reg_362_pp0_iter3_reg );
     sensitive << ( ap_block_pp0_stage0_01001 );
-    sensitive << ( p_Val2_52_fu_278_p2 );
+    sensitive << ( p_Val2_120_fu_278_p2 );
     sensitive << ( deleted_zeros_fu_304_p2 );
 
     SC_METHOD(thread_p_dst_data_stream_V_write);
@@ -322,14 +322,14 @@ CvtColor::CvtColor(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( real_start );
     sensitive << ( start_once_reg );
 
-    SC_METHOD(thread_tmp_33_fu_283_p3);
-    sensitive << ( ret_V_7_reg_391 );
+    SC_METHOD(thread_tmp_63_fu_283_p3);
+    sensitive << ( ret_V_12_reg_391 );
 
-    SC_METHOD(thread_tmp_34_fu_296_p3);
-    sensitive << ( p_Val2_52_fu_278_p2 );
+    SC_METHOD(thread_tmp_64_fu_296_p3);
+    sensitive << ( p_Val2_120_fu_278_p2 );
 
     SC_METHOD(thread_xor_ln777_fu_290_p2);
-    sensitive << ( tmp_33_fu_283_p3 );
+    sensitive << ( tmp_63_fu_283_p3 );
 
     SC_METHOD(thread_zext_ln1967_fu_217_p1);
     sensitive << ( i_0_i_reg_195 );
@@ -439,15 +439,15 @@ CvtColor::CvtColor(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sc_trace(mVcdFile, icmp_ln1968_reg_362_pp0_iter2_reg, "icmp_ln1968_reg_362_pp0_iter2_reg");
     sc_trace(mVcdFile, j_fu_241_p2, "j_fu_241_p2");
     sc_trace(mVcdFile, ap_enable_reg_pp0_iter0, "ap_enable_reg_pp0_iter0");
-    sc_trace(mVcdFile, tmp_36_reg_371, "tmp_36_reg_371");
-    sc_trace(mVcdFile, tmp_37_reg_376, "tmp_37_reg_376");
-    sc_trace(mVcdFile, tmp_37_reg_376_pp0_iter2_reg, "tmp_37_reg_376_pp0_iter2_reg");
-    sc_trace(mVcdFile, tmp_38_reg_381, "tmp_38_reg_381");
-    sc_trace(mVcdFile, tmp_38_reg_381_pp0_iter2_reg, "tmp_38_reg_381_pp0_iter2_reg");
+    sc_trace(mVcdFile, tmp_66_reg_371, "tmp_66_reg_371");
+    sc_trace(mVcdFile, tmp_67_reg_376, "tmp_67_reg_376");
+    sc_trace(mVcdFile, tmp_67_reg_376_pp0_iter2_reg, "tmp_67_reg_376_pp0_iter2_reg");
+    sc_trace(mVcdFile, tmp_68_reg_381, "tmp_68_reg_381");
+    sc_trace(mVcdFile, tmp_68_reg_381_pp0_iter2_reg, "tmp_68_reg_381_pp0_iter2_reg");
     sc_trace(mVcdFile, mul_ln703_fu_319_p2, "mul_ln703_fu_319_p2");
     sc_trace(mVcdFile, mul_ln703_reg_386, "mul_ln703_reg_386");
     sc_trace(mVcdFile, grp_fu_325_p3, "grp_fu_325_p3");
-    sc_trace(mVcdFile, ret_V_7_reg_391, "ret_V_7_reg_391");
+    sc_trace(mVcdFile, ret_V_12_reg_391, "ret_V_12_reg_391");
     sc_trace(mVcdFile, ap_enable_reg_pp0_iter3, "ap_enable_reg_pp0_iter3");
     sc_trace(mVcdFile, p_Val2_6_reg_396, "p_Val2_6_reg_396");
     sc_trace(mVcdFile, tmp_reg_401, "tmp_reg_401");
@@ -461,9 +461,9 @@ CvtColor::CvtColor(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sc_trace(mVcdFile, zext_ln1968_fu_232_p1, "zext_ln1968_fu_232_p1");
     sc_trace(mVcdFile, grp_fu_335_p3, "grp_fu_335_p3");
     sc_trace(mVcdFile, zext_ln415_fu_275_p1, "zext_ln415_fu_275_p1");
-    sc_trace(mVcdFile, tmp_33_fu_283_p3, "tmp_33_fu_283_p3");
-    sc_trace(mVcdFile, p_Val2_52_fu_278_p2, "p_Val2_52_fu_278_p2");
-    sc_trace(mVcdFile, tmp_34_fu_296_p3, "tmp_34_fu_296_p3");
+    sc_trace(mVcdFile, tmp_63_fu_283_p3, "tmp_63_fu_283_p3");
+    sc_trace(mVcdFile, p_Val2_120_fu_278_p2, "p_Val2_120_fu_278_p2");
+    sc_trace(mVcdFile, tmp_64_fu_296_p3, "tmp_64_fu_296_p3");
     sc_trace(mVcdFile, xor_ln777_fu_290_p2, "xor_ln777_fu_290_p2");
     sc_trace(mVcdFile, deleted_zeros_fu_304_p2, "deleted_zeros_fu_304_p2");
     sc_trace(mVcdFile, mul_ln703_fu_319_p0, "mul_ln703_fu_319_p0");
@@ -489,9 +489,9 @@ CvtColor::~CvtColor() {
     if (mVcdFile) 
         sc_close_vcd_trace_file(mVcdFile);
 
-    delete top_level_mul_mulbkb_U19;
-    delete top_level_mac_mulcud_U20;
-    delete top_level_mac_muldEe_U21;
+    delete top_level2_mul_mubkb_U17;
+    delete top_level2_mac_mucud_U18;
+    delete top_level2_mac_mudEe_U19;
 }
 
 void CvtColor::thread_ap_clk_no_reset_() {
@@ -592,8 +592,8 @@ void CvtColor::thread_ap_clk_no_reset_() {
     if (esl_seteq<1,1,1>(ap_block_pp0_stage0_11001.read(), ap_const_boolean_0)) {
         icmp_ln1968_reg_362_pp0_iter2_reg = icmp_ln1968_reg_362_pp0_iter1_reg.read();
         icmp_ln1968_reg_362_pp0_iter3_reg = icmp_ln1968_reg_362_pp0_iter2_reg.read();
-        tmp_37_reg_376_pp0_iter2_reg = tmp_37_reg_376.read();
-        tmp_38_reg_381_pp0_iter2_reg = tmp_38_reg_381.read();
+        tmp_67_reg_376_pp0_iter2_reg = tmp_67_reg_376.read();
+        tmp_68_reg_381_pp0_iter2_reg = tmp_68_reg_381.read();
     }
     if ((esl_seteq<1,1,1>(ap_block_pp0_stage0_11001.read(), ap_const_boolean_0) && esl_seteq<1,1,1>(ap_const_lv1_1, icmp_ln1968_reg_362_pp0_iter1_reg.read()))) {
         mul_ln703_reg_386 = mul_ln703_fu_319_p2.read();
@@ -607,12 +607,12 @@ void CvtColor::thread_ap_clk_no_reset_() {
         p_src_rows_V_read_reg_348 = p_src_rows_V_dout.read();
     }
     if ((esl_seteq<1,1,1>(ap_block_pp0_stage0_11001.read(), ap_const_boolean_0) && esl_seteq<1,1,1>(ap_const_logic_1, ap_enable_reg_pp0_iter3.read()) && esl_seteq<1,1,1>(ap_const_lv1_1, icmp_ln1968_reg_362_pp0_iter2_reg.read()))) {
-        ret_V_7_reg_391 = grp_fu_325_p3.read();
+        ret_V_12_reg_391 = grp_fu_325_p3.read();
     }
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_pp0_stage0.read()) && esl_seteq<1,1,1>(icmp_ln1968_reg_362.read(), ap_const_lv1_1) && esl_seteq<1,1,1>(ap_block_pp0_stage0_11001.read(), ap_const_boolean_0))) {
-        tmp_36_reg_371 = p_src_data_stream_0_V_dout.read();
-        tmp_37_reg_376 = p_src_data_stream_1_V_dout.read();
-        tmp_38_reg_381 = p_src_data_stream_2_V_dout.read();
+        tmp_66_reg_371 = p_src_data_stream_0_V_dout.read();
+        tmp_67_reg_376 = p_src_data_stream_1_V_dout.read();
+        tmp_68_reg_381 = p_src_data_stream_2_V_dout.read();
     }
 }
 
@@ -746,7 +746,7 @@ void CvtColor::thread_ap_ready() {
 }
 
 void CvtColor::thread_deleted_zeros_fu_304_p2() {
-    deleted_zeros_fu_304_p2 = (tmp_34_fu_296_p3.read() | xor_ln777_fu_290_p2.read());
+    deleted_zeros_fu_304_p2 = (tmp_64_fu_296_p3.read() | xor_ln777_fu_290_p2.read());
 }
 
 void CvtColor::thread_grp_fu_325_p0() {
@@ -758,7 +758,7 @@ void CvtColor::thread_grp_fu_325_p1() {
 }
 
 void CvtColor::thread_grp_fu_325_p10() {
-    grp_fu_325_p10 = esl_zext<30,8>(tmp_37_reg_376_pp0_iter2_reg.read());
+    grp_fu_325_p10 = esl_zext<30,8>(tmp_67_reg_376_pp0_iter2_reg.read());
 }
 
 void CvtColor::thread_grp_fu_325_p2() {
@@ -778,7 +778,7 @@ void CvtColor::thread_grp_fu_335_p1() {
 }
 
 void CvtColor::thread_grp_fu_335_p10() {
-    grp_fu_335_p10 = esl_zext<28,8>(tmp_38_reg_381_pp0_iter2_reg.read());
+    grp_fu_335_p10 = esl_zext<28,8>(tmp_68_reg_381_pp0_iter2_reg.read());
 }
 
 void CvtColor::thread_i_fu_226_p2() {
@@ -815,11 +815,11 @@ void CvtColor::thread_mul_ln703_fu_319_p1() {
 }
 
 void CvtColor::thread_mul_ln703_fu_319_p10() {
-    mul_ln703_fu_319_p10 = esl_zext<29,8>(tmp_36_reg_371.read());
+    mul_ln703_fu_319_p10 = esl_zext<29,8>(tmp_66_reg_371.read());
 }
 
-void CvtColor::thread_p_Val2_52_fu_278_p2() {
-    p_Val2_52_fu_278_p2 = (!zext_ln415_fu_275_p1.read().is_01() || !p_Val2_6_reg_396.read().is_01())? sc_lv<8>(): (sc_biguint<8>(zext_ln415_fu_275_p1.read()) + sc_biguint<8>(p_Val2_6_reg_396.read()));
+void CvtColor::thread_p_Val2_120_fu_278_p2() {
+    p_Val2_120_fu_278_p2 = (!zext_ln415_fu_275_p1.read().is_01() || !p_Val2_6_reg_396.read().is_01())? sc_lv<8>(): (sc_biguint<8>(zext_ln415_fu_275_p1.read()) + sc_biguint<8>(p_Val2_6_reg_396.read()));
 }
 
 void CvtColor::thread_p_dst_data_stream_V_blk_n() {
@@ -833,7 +833,7 @@ void CvtColor::thread_p_dst_data_stream_V_blk_n() {
 }
 
 void CvtColor::thread_p_dst_data_stream_V_din() {
-    p_dst_data_stream_V_din = (!deleted_zeros_fu_304_p2.read()[0].is_01())? sc_lv<8>(): ((deleted_zeros_fu_304_p2.read()[0].to_bool())? p_Val2_52_fu_278_p2.read(): ap_const_lv8_FF);
+    p_dst_data_stream_V_din = (!deleted_zeros_fu_304_p2.read()[0].is_01())? sc_lv<8>(): ((deleted_zeros_fu_304_p2.read()[0].to_bool())? p_Val2_120_fu_278_p2.read(): ap_const_lv8_FF);
 }
 
 void CvtColor::thread_p_dst_data_stream_V_write() {
@@ -970,16 +970,16 @@ void CvtColor::thread_start_write() {
     }
 }
 
-void CvtColor::thread_tmp_33_fu_283_p3() {
-    tmp_33_fu_283_p3 = ret_V_7_reg_391.read().range(29, 29);
+void CvtColor::thread_tmp_63_fu_283_p3() {
+    tmp_63_fu_283_p3 = ret_V_12_reg_391.read().range(29, 29);
 }
 
-void CvtColor::thread_tmp_34_fu_296_p3() {
-    tmp_34_fu_296_p3 = p_Val2_52_fu_278_p2.read().range(7, 7);
+void CvtColor::thread_tmp_64_fu_296_p3() {
+    tmp_64_fu_296_p3 = p_Val2_120_fu_278_p2.read().range(7, 7);
 }
 
 void CvtColor::thread_xor_ln777_fu_290_p2() {
-    xor_ln777_fu_290_p2 = (tmp_33_fu_283_p3.read() ^ ap_const_lv1_1);
+    xor_ln777_fu_290_p2 = (tmp_63_fu_283_p3.read() ^ ap_const_lv1_1);
 }
 
 void CvtColor::thread_zext_ln1967_fu_217_p1() {

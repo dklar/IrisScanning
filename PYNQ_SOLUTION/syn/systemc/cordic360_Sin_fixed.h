@@ -12,10 +12,10 @@
 #include "AESL_pkg.h"
 
 #include "cordicSin_fix.h"
-#include "top_level_fptruncncg.h"
-#include "top_level_fpext_3lbW.h"
-#include "top_level_dadd_64ocq.h"
-#include "top_level_dcmp_64pcA.h"
+#include "top_level2_fptrunncg.h"
+#include "top_level2_fpext_lbW.h"
+#include "top_level2_dadd_6ocq.h"
+#include "top_level2_dcmp_6pcA.h"
 
 namespace ap_rtl {
 
@@ -43,11 +43,11 @@ struct cordic360_Sin_fixed : public sc_module {
     sc_trace_file* mVcdFile;
 
     cordicSin_fix* grp_cordicSin_fix_fu_53;
-    top_level_fptruncncg<1,2,64,32>* top_level_fptruncncg_U67;
-    top_level_fpext_3lbW<1,2,32,64>* top_level_fpext_3lbW_U68;
-    top_level_dadd_64ocq<1,5,64,64,64>* top_level_dadd_64ocq_U69;
-    top_level_dcmp_64pcA<1,2,64,64,1>* top_level_dcmp_64pcA_U70;
-    top_level_dcmp_64pcA<1,2,64,64,1>* top_level_dcmp_64pcA_U71;
+    top_level2_fptrunncg<1,2,64,32>* top_level2_fptrunncg_U65;
+    top_level2_fpext_lbW<1,2,32,64>* top_level2_fpext_lbW_U66;
+    top_level2_dadd_6ocq<1,5,64,64,64>* top_level2_dadd_6ocq_U67;
+    top_level2_dcmp_6pcA<1,2,64,64,1>* top_level2_dcmp_6pcA_U68;
+    top_level2_dcmp_6pcA<1,2,64,64,1>* top_level2_dcmp_6pcA_U69;
     sc_signal< sc_lv<40> > ap_CS_fsm;
     sc_signal< sc_logic > ap_CS_fsm_state1;
     sc_signal< sc_lv<64> > grp_fu_67_p2;

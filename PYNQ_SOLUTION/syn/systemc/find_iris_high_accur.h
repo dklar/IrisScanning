@@ -11,10 +11,10 @@
 #include "systemc.h"
 #include "AESL_pkg.h"
 
-#include "top_level_fadd_32g8j.h"
-#include "top_level_fmul_32hbi.h"
-#include "top_level_sitofp_ibs.h"
-#include "top_level_mul_muljbC.h"
+#include "top_level2_fadd_3g8j.h"
+#include "top_level2_fmul_3hbi.h"
+#include "top_level2_sitofpibs.h"
+#include "top_level2_mul_mujbC.h"
 #include "find_iris_high_aceOg.h"
 #include "find_iris_high_acfYi.h"
 
@@ -64,13 +64,13 @@ struct find_iris_high_accur : public sc_module {
 
     find_iris_high_aceOg* points_U;
     find_iris_high_acfYi* sums_U;
-    top_level_fadd_32g8j<1,5,32,32,32>* top_level_fadd_32g8j_U36;
-    top_level_fadd_32g8j<1,5,32,32,32>* top_level_fadd_32g8j_U37;
-    top_level_fmul_32hbi<1,4,32,32,32>* top_level_fmul_32hbi_U38;
-    top_level_fmul_32hbi<1,4,32,32,32>* top_level_fmul_32hbi_U39;
-    top_level_sitofp_ibs<1,6,32,32>* top_level_sitofp_ibs_U40;
-    top_level_sitofp_ibs<1,6,32,32>* top_level_sitofp_ibs_U41;
-    top_level_mul_muljbC<1,1,9,11,20>* top_level_mul_muljbC_U42;
+    top_level2_fadd_3g8j<1,5,32,32,32>* top_level2_fadd_3g8j_U34;
+    top_level2_fadd_3g8j<1,5,32,32,32>* top_level2_fadd_3g8j_U35;
+    top_level2_fmul_3hbi<1,4,32,32,32>* top_level2_fmul_3hbi_U36;
+    top_level2_fmul_3hbi<1,4,32,32,32>* top_level2_fmul_3hbi_U37;
+    top_level2_sitofpibs<1,6,32,32>* top_level2_sitofpibs_U38;
+    top_level2_sitofpibs<1,6,32,32>* top_level2_sitofpibs_U39;
+    top_level2_mul_mujbC<1,1,9,11,20>* top_level2_mul_mujbC_U40;
     sc_signal< sc_logic > real_start;
     sc_signal< sc_logic > start_once_reg;
     sc_signal< sc_logic > ap_done_reg;
@@ -92,12 +92,12 @@ struct find_iris_high_accur : public sc_module {
     sc_signal< sc_lv<32> > tmp_i_reg_1381;
     sc_signal< sc_logic > ap_CS_fsm_state7;
     sc_signal< sc_lv<32> > grp_fu_511_p1;
-    sc_signal< sc_lv<32> > tmp_4_i_reg_1386;
+    sc_signal< sc_lv<32> > tmp_19_i_reg_1386;
     sc_signal< sc_lv<32> > zext_ln220_fu_514_p1;
     sc_signal< sc_logic > ap_CS_fsm_state8;
     sc_signal< sc_lv<7> > count1_fu_525_p2;
     sc_signal< sc_lv<7> > count1_reg_1399;
-    sc_signal< sc_lv<32> > tmp_i_48_reg_1404;
+    sc_signal< sc_lv<32> > tmp_i_38_reg_1404;
     sc_signal< sc_logic > ap_CS_fsm_state13;
     sc_signal< sc_lv<12> > sub_ln227_fu_555_p2;
     sc_signal< sc_lv<12> > sub_ln227_reg_1410;
@@ -132,22 +132,22 @@ struct find_iris_high_accur : public sc_module {
     sc_signal< sc_lv<8> > r_fu_708_p2;
     sc_signal< sc_logic > ap_CS_fsm_state15;
     sc_signal< sc_lv<32> > grp_fu_500_p2;
-    sc_signal< sc_lv<32> > tmp_2_i_reg_1506;
+    sc_signal< sc_lv<32> > tmp_17_i_reg_1506;
     sc_signal< sc_logic > ap_CS_fsm_state18;
     sc_signal< sc_lv<32> > grp_fu_504_p2;
-    sc_signal< sc_lv<32> > tmp_5_i_reg_1511;
+    sc_signal< sc_lv<32> > tmp_20_i_reg_1511;
     sc_signal< sc_lv<32> > grp_fu_492_p2;
     sc_signal< sc_lv<32> > x_assign_reg_1516;
     sc_signal< sc_logic > ap_CS_fsm_state23;
     sc_signal< sc_lv<32> > grp_fu_496_p2;
-    sc_signal< sc_lv<32> > x_assign_1_reg_1521;
+    sc_signal< sc_lv<32> > x_assign_3_reg_1521;
     sc_signal< sc_lv<1> > p_Result_s_reg_1526;
     sc_signal< sc_logic > ap_CS_fsm_state24;
-    sc_signal< sc_lv<32> > p_Val2_10_fu_1003_p3;
-    sc_signal< sc_lv<32> > p_Val2_10_reg_1531;
-    sc_signal< sc_lv<1> > p_Result_1_reg_1537;
-    sc_signal< sc_lv<32> > p_Val2_12_fu_1132_p3;
-    sc_signal< sc_lv<32> > p_Val2_12_reg_1542;
+    sc_signal< sc_lv<32> > p_Val2_60_fu_1003_p3;
+    sc_signal< sc_lv<32> > p_Val2_60_reg_1531;
+    sc_signal< sc_lv<1> > p_Result_53_reg_1537;
+    sc_signal< sc_lv<32> > p_Val2_62_fu_1132_p3;
+    sc_signal< sc_lv<32> > p_Val2_62_reg_1542;
     sc_signal< sc_lv<6> > i_fu_1189_p2;
     sc_signal< sc_logic > ap_CS_fsm_state26;
     sc_signal< sc_lv<32> > zext_ln239_fu_1200_p1;
@@ -275,7 +275,7 @@ struct find_iris_high_accur : public sc_module {
     sc_signal< sc_lv<32> > select_ln9_fu_859_p3;
     sc_signal< sc_lv<32> > select_ln7_1_fu_847_p3;
     sc_signal< sc_lv<32> > p_Val2_s_fu_882_p1;
-    sc_signal< sc_lv<23> > tmp_V_1_fu_903_p1;
+    sc_signal< sc_lv<23> > tmp_V_22_fu_903_p1;
     sc_signal< sc_lv<25> > mantissa_V_fu_907_p4;
     sc_signal< sc_lv<8> > tmp_V_fu_893_p4;
     sc_signal< sc_lv<9> > zext_ln339_fu_921_p1;
@@ -284,41 +284,41 @@ struct find_iris_high_accur : public sc_module {
     sc_signal< sc_lv<1> > isNeg_fu_931_p3;
     sc_signal< sc_lv<9> > sext_ln1311_fu_945_p1;
     sc_signal< sc_lv<9> > ush_fu_949_p3;
-    sc_signal< sc_lv<32> > sext_ln1311_1_fu_957_p1;
-    sc_signal< sc_lv<25> > sext_ln1311_4_fu_961_p1;
+    sc_signal< sc_lv<32> > sext_ln1311_2_fu_957_p1;
+    sc_signal< sc_lv<25> > sext_ln1311_5_fu_961_p1;
     sc_signal< sc_lv<79> > zext_ln682_fu_917_p1;
     sc_signal< sc_lv<79> > zext_ln1287_fu_965_p1;
     sc_signal< sc_lv<25> > r_V_fu_969_p2;
     sc_signal< sc_lv<1> > tmp_fu_981_p3;
-    sc_signal< sc_lv<79> > r_V_1_fu_975_p2;
+    sc_signal< sc_lv<79> > r_V_11_fu_975_p2;
     sc_signal< sc_lv<32> > zext_ln662_fu_989_p1;
-    sc_signal< sc_lv<32> > tmp_2_fu_993_p4;
-    sc_signal< sc_lv<32> > p_Val2_5_fu_1011_p1;
-    sc_signal< sc_lv<23> > tmp_V_3_fu_1032_p1;
+    sc_signal< sc_lv<32> > tmp_4_fu_993_p4;
+    sc_signal< sc_lv<32> > p_Val2_55_fu_1011_p1;
+    sc_signal< sc_lv<23> > tmp_V_24_fu_1032_p1;
     sc_signal< sc_lv<25> > mantissa_V_1_fu_1036_p4;
-    sc_signal< sc_lv<8> > tmp_V_2_fu_1022_p4;
+    sc_signal< sc_lv<8> > tmp_V_23_fu_1022_p4;
     sc_signal< sc_lv<9> > zext_ln339_1_fu_1050_p1;
     sc_signal< sc_lv<9> > add_ln339_1_fu_1054_p2;
     sc_signal< sc_lv<8> > sub_ln1311_1_fu_1068_p2;
     sc_signal< sc_lv<1> > isNeg_1_fu_1060_p3;
-    sc_signal< sc_lv<9> > sext_ln1311_2_fu_1074_p1;
+    sc_signal< sc_lv<9> > sext_ln1311_3_fu_1074_p1;
     sc_signal< sc_lv<9> > ush_1_fu_1078_p3;
-    sc_signal< sc_lv<32> > sext_ln1311_3_fu_1086_p1;
-    sc_signal< sc_lv<25> > sext_ln1311_5_fu_1090_p1;
+    sc_signal< sc_lv<32> > sext_ln1311_4_fu_1086_p1;
+    sc_signal< sc_lv<25> > sext_ln1311_6_fu_1090_p1;
     sc_signal< sc_lv<79> > zext_ln682_1_fu_1046_p1;
     sc_signal< sc_lv<79> > zext_ln1287_1_fu_1094_p1;
-    sc_signal< sc_lv<25> > r_V_2_fu_1098_p2;
-    sc_signal< sc_lv<1> > tmp_5_fu_1110_p3;
-    sc_signal< sc_lv<79> > r_V_3_fu_1104_p2;
+    sc_signal< sc_lv<25> > r_V_12_fu_1098_p2;
+    sc_signal< sc_lv<1> > tmp_31_fu_1110_p3;
+    sc_signal< sc_lv<79> > r_V_13_fu_1104_p2;
     sc_signal< sc_lv<32> > zext_ln662_1_fu_1118_p1;
-    sc_signal< sc_lv<32> > tmp_4_fu_1122_p4;
-    sc_signal< sc_lv<32> > result_V_1_fu_1140_p2;
-    sc_signal< sc_lv<32> > result_V_3_fu_1152_p2;
+    sc_signal< sc_lv<32> > tmp_8_fu_1122_p4;
+    sc_signal< sc_lv<32> > result_V_2_fu_1140_p2;
+    sc_signal< sc_lv<32> > result_V_4_fu_1152_p2;
     sc_signal< sc_lv<32> > sext_ln227_fu_1164_p1;
     sc_signal< sc_lv<32> > or_ln228_fu_1172_p2;
     sc_signal< sc_lv<9> > or_ln246_fu_1252_p2;
     sc_signal< sc_lv<20> > mul_ln247_fu_1364_p2;
-    sc_signal< sc_lv<7> > tmp_7_fu_1272_p4;
+    sc_signal< sc_lv<7> > tmp_33_fu_1272_p4;
     sc_signal< sc_lv<9> > sext_ln247_fu_1281_p1;
     sc_signal< sc_lv<6> > add_ln257_fu_1322_p2;
     sc_signal< sc_lv<1> > icmp_ln259_fu_1345_p2;
@@ -525,9 +525,9 @@ struct find_iris_high_accur : public sc_module {
     void thread_or_ln228_fu_1172_p2();
     void thread_or_ln246_fu_1252_p2();
     void thread_or_ln9_fu_867_p2();
-    void thread_p_Val2_10_fu_1003_p3();
-    void thread_p_Val2_12_fu_1132_p3();
-    void thread_p_Val2_5_fu_1011_p1();
+    void thread_p_Val2_55_fu_1011_p1();
+    void thread_p_Val2_60_fu_1003_p3();
+    void thread_p_Val2_62_fu_1132_p3();
     void thread_p_Val2_s_fu_882_p1();
     void thread_p_fu_1295_p2();
     void thread_points_address0();
@@ -539,14 +539,14 @@ struct find_iris_high_accur : public sc_module {
     void thread_points_we0();
     void thread_points_we1();
     void thread_r_1_fu_1311_p2();
-    void thread_r_V_1_fu_975_p2();
-    void thread_r_V_2_fu_1098_p2();
-    void thread_r_V_3_fu_1104_p2();
+    void thread_r_V_11_fu_975_p2();
+    void thread_r_V_12_fu_1098_p2();
+    void thread_r_V_13_fu_1104_p2();
     void thread_r_V_fu_969_p2();
     void thread_r_fu_708_p2();
     void thread_real_start();
-    void thread_result_V_1_fu_1140_p2();
-    void thread_result_V_3_fu_1152_p2();
+    void thread_result_V_2_fu_1140_p2();
+    void thread_result_V_4_fu_1152_p2();
     void thread_sel_tmp40_fu_795_p3();
     void thread_sel_tmp53_fu_789_p2();
     void thread_select_ln10_fu_818_p3();
@@ -562,11 +562,11 @@ struct find_iris_high_accur : public sc_module {
     void thread_select_ln7_1_fu_847_p3();
     void thread_select_ln7_fu_840_p3();
     void thread_select_ln9_fu_859_p3();
-    void thread_sext_ln1311_1_fu_957_p1();
-    void thread_sext_ln1311_2_fu_1074_p1();
-    void thread_sext_ln1311_3_fu_1086_p1();
-    void thread_sext_ln1311_4_fu_961_p1();
-    void thread_sext_ln1311_5_fu_1090_p1();
+    void thread_sext_ln1311_2_fu_957_p1();
+    void thread_sext_ln1311_3_fu_1074_p1();
+    void thread_sext_ln1311_4_fu_1086_p1();
+    void thread_sext_ln1311_5_fu_961_p1();
+    void thread_sext_ln1311_6_fu_1090_p1();
     void thread_sext_ln1311_fu_945_p1();
     void thread_sext_ln227_fu_1164_p1();
     void thread_sext_ln247_fu_1281_p1();
@@ -584,13 +584,13 @@ struct find_iris_high_accur : public sc_module {
     void thread_sums_ce1();
     void thread_sums_d0();
     void thread_sums_we0();
-    void thread_tmp_2_fu_993_p4();
-    void thread_tmp_4_fu_1122_p4();
-    void thread_tmp_5_fu_1110_p3();
-    void thread_tmp_7_fu_1272_p4();
-    void thread_tmp_V_1_fu_903_p1();
-    void thread_tmp_V_2_fu_1022_p4();
-    void thread_tmp_V_3_fu_1032_p1();
+    void thread_tmp_31_fu_1110_p3();
+    void thread_tmp_33_fu_1272_p4();
+    void thread_tmp_4_fu_993_p4();
+    void thread_tmp_8_fu_1122_p4();
+    void thread_tmp_V_22_fu_903_p1();
+    void thread_tmp_V_23_fu_1022_p4();
+    void thread_tmp_V_24_fu_1032_p1();
     void thread_tmp_V_fu_893_p4();
     void thread_tmp_fu_981_p3();
     void thread_ush_1_fu_1078_p3();

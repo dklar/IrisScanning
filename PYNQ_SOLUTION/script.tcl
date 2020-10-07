@@ -4,7 +4,7 @@
 ## Copyright (C) 1986-2019 Xilinx, Inc. All Rights Reserved.
 ############################################################
 open_project Iris-recognition
-set_top top_level
+set_top top_level2
 add_files Iris-recognition/definitions.hpp
 add_files Iris-recognition/sine.cpp
 add_files Iris-recognition/sine.hpp

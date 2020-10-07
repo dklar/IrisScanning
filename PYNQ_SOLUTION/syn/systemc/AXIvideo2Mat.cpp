@@ -210,7 +210,7 @@ AXIvideo2Mat::AXIvideo2Mat(sc_module_name name) : sc_module(name), mVcdFile(0) {
     SC_METHOD(thread_icmp_ln73_fu_416_p2);
     sensitive << ( ap_CS_fsm_pp1_stage0 );
     sensitive << ( ap_enable_reg_pp1_iter0 );
-    sensitive << ( t_V_4_reg_296 );
+    sensitive << ( t_V_2_reg_296 );
     sensitive << ( cols_V_reg_470 );
     sensitive << ( ap_block_pp1_stage0_11001 );
 
@@ -285,7 +285,7 @@ AXIvideo2Mat::AXIvideo2Mat(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( ap_CS_fsm_pp1_stage0 );
     sensitive << ( ap_enable_reg_pp1_iter1 );
     sensitive << ( icmp_ln73_reg_504 );
-    sensitive << ( tmp_7_reg_522 );
+    sensitive << ( tmp_4_reg_522 );
     sensitive << ( ap_block_pp1_stage0_01001 );
 
     SC_METHOD(thread_img_data_stream_1_V_write);
@@ -305,7 +305,7 @@ AXIvideo2Mat::AXIvideo2Mat(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( ap_CS_fsm_pp1_stage0 );
     sensitive << ( ap_enable_reg_pp1_iter1 );
     sensitive << ( icmp_ln73_reg_504 );
-    sensitive << ( tmp_8_reg_527 );
+    sensitive << ( tmp_5_reg_527 );
     sensitive << ( ap_block_pp1_stage0_01001 );
 
     SC_METHOD(thread_img_data_stream_2_V_write);
@@ -380,7 +380,7 @@ AXIvideo2Mat::AXIvideo2Mat(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sensitive << ( ap_CS_fsm_state4 );
 
     SC_METHOD(thread_j_V_fu_421_p2);
-    sensitive << ( t_V_4_reg_296 );
+    sensitive << ( t_V_2_reg_296 );
 
     SC_METHOD(thread_or_ln76_fu_430_p2);
     sensitive << ( ap_phi_mux_eol_0_i_phi_fu_311_p4 );
@@ -513,7 +513,7 @@ AXIvideo2Mat::AXIvideo2Mat(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sc_trace(mVcdFile, img_cols_V_out_blk_n, "img_cols_V_out_blk_n");
     sc_trace(mVcdFile, eol_reg_274, "eol_reg_274");
     sc_trace(mVcdFile, axi_data_V_1_i_reg_285, "axi_data_V_1_i_reg_285");
-    sc_trace(mVcdFile, t_V_4_reg_296, "t_V_4_reg_296");
+    sc_trace(mVcdFile, t_V_2_reg_296, "t_V_2_reg_296");
     sc_trace(mVcdFile, eol_0_i_reg_307, "eol_0_i_reg_307");
     sc_trace(mVcdFile, axi_last_V_2_i_reg_319, "axi_last_V_2_i_reg_319");
     sc_trace(mVcdFile, p_Val2_s_reg_332, "p_Val2_s_reg_332");
@@ -535,8 +535,8 @@ AXIvideo2Mat::AXIvideo2Mat(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sc_trace(mVcdFile, j_V_fu_421_p2, "j_V_fu_421_p2");
     sc_trace(mVcdFile, tmp_fu_436_p1, "tmp_fu_436_p1");
     sc_trace(mVcdFile, tmp_reg_517, "tmp_reg_517");
-    sc_trace(mVcdFile, tmp_7_reg_522, "tmp_7_reg_522");
-    sc_trace(mVcdFile, tmp_8_reg_527, "tmp_8_reg_527");
+    sc_trace(mVcdFile, tmp_4_reg_522, "tmp_4_reg_522");
+    sc_trace(mVcdFile, tmp_5_reg_527, "tmp_5_reg_527");
     sc_trace(mVcdFile, ap_block_state8, "ap_block_state8");
     sc_trace(mVcdFile, ap_block_pp1_stage0_subdone, "ap_block_pp1_stage0_subdone");
     sc_trace(mVcdFile, ap_condition_pp1_exit_iter0_state5, "ap_condition_pp1_exit_iter0_state5");
@@ -718,10 +718,10 @@ void AXIvideo2Mat::thread_ap_clk_no_reset_() {
          esl_seteq<1,1,1>(ap_const_logic_1, ap_enable_reg_pp1_iter0.read()) && 
          esl_seteq<1,1,1>(icmp_ln73_fu_416_p2.read(), ap_const_lv1_0) && 
          esl_seteq<1,1,1>(ap_block_pp1_stage0_11001.read(), ap_const_boolean_0))) {
-        t_V_4_reg_296 = j_V_fu_421_p2.read();
+        t_V_2_reg_296 = j_V_fu_421_p2.read();
     } else if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read()) && 
                 esl_seteq<1,1,1>(ap_const_lv1_0, icmp_ln71_fu_405_p2.read()))) {
-        t_V_4_reg_296 = ap_const_lv32_0;
+        t_V_2_reg_296 = ap_const_lv32_0;
     }
     if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read())) {
         t_V_reg_263 = ap_const_lv32_0;
@@ -739,8 +739,8 @@ void AXIvideo2Mat::thread_ap_clk_no_reset_() {
         icmp_ln73_reg_504 = icmp_ln73_fu_416_p2.read();
     }
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_pp1_stage0.read()) && esl_seteq<1,1,1>(icmp_ln73_fu_416_p2.read(), ap_const_lv1_0) && esl_seteq<1,1,1>(ap_block_pp1_stage0_11001.read(), ap_const_boolean_0))) {
-        tmp_7_reg_522 = ap_phi_mux_p_Val2_s_phi_fu_336_p4.read().range(15, 8);
-        tmp_8_reg_527 = ap_phi_mux_p_Val2_s_phi_fu_336_p4.read().range(23, 16);
+        tmp_4_reg_522 = ap_phi_mux_p_Val2_s_phi_fu_336_p4.read().range(15, 8);
+        tmp_5_reg_527 = ap_phi_mux_p_Val2_s_phi_fu_336_p4.read().range(23, 16);
         tmp_reg_517 = tmp_fu_436_p1.read();
     }
     if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && esl_seteq<1,1,1>(inputStream_TVALID.read(), ap_const_logic_1))) {
@@ -967,7 +967,7 @@ void AXIvideo2Mat::thread_icmp_ln71_fu_405_p2() {
 }
 
 void AXIvideo2Mat::thread_icmp_ln73_fu_416_p2() {
-    icmp_ln73_fu_416_p2 = (!t_V_4_reg_296.read().is_01() || !cols_V_reg_470.read().is_01())? sc_lv<1>(): sc_lv<1>(t_V_4_reg_296.read() == cols_V_reg_470.read());
+    icmp_ln73_fu_416_p2 = (!t_V_2_reg_296.read().is_01() || !cols_V_reg_470.read().is_01())? sc_lv<1>(): sc_lv<1>(t_V_2_reg_296.read() == cols_V_reg_470.read());
 }
 
 void AXIvideo2Mat::thread_img_cols_V_blk_n() {
@@ -1048,7 +1048,7 @@ void AXIvideo2Mat::thread_img_data_stream_1_V_blk_n() {
 }
 
 void AXIvideo2Mat::thread_img_data_stream_1_V_din() {
-    img_data_stream_1_V_din = tmp_7_reg_522.read();
+    img_data_stream_1_V_din = tmp_4_reg_522.read();
 }
 
 void AXIvideo2Mat::thread_img_data_stream_1_V_write() {
@@ -1074,7 +1074,7 @@ void AXIvideo2Mat::thread_img_data_stream_2_V_blk_n() {
 }
 
 void AXIvideo2Mat::thread_img_data_stream_2_V_din() {
-    img_data_stream_2_V_din = tmp_8_reg_527.read();
+    img_data_stream_2_V_din = tmp_5_reg_527.read();
 }
 
 void AXIvideo2Mat::thread_img_data_stream_2_V_write() {
@@ -1169,7 +1169,7 @@ void AXIvideo2Mat::thread_internal_ap_ready() {
 }
 
 void AXIvideo2Mat::thread_j_V_fu_421_p2() {
-    j_V_fu_421_p2 = (!t_V_4_reg_296.read().is_01() || !ap_const_lv32_1.is_01())? sc_lv<32>(): (sc_biguint<32>(t_V_4_reg_296.read()) + sc_biguint<32>(ap_const_lv32_1));
+    j_V_fu_421_p2 = (!t_V_2_reg_296.read().is_01() || !ap_const_lv32_1.is_01())? sc_lv<32>(): (sc_biguint<32>(t_V_2_reg_296.read()) + sc_biguint<32>(ap_const_lv32_1));
 }
 
 void AXIvideo2Mat::thread_or_ln76_fu_430_p2() {

@@ -817,6 +817,14 @@ void top_level(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
 	method1(inputStream,outputStream);
 }
 
+void top_level2(AXI_STREAM& inputStream,uint8_t code[BITCODE_LENGTH]){
+#pragma HLS INTERFACE axis port=inputStream
+#pragma HLS INTERFACE s_axilite port=code
+#pragma HLS INTERFACE ap_ctrl_none port=return
+
+	arrayMethod_fix(inputStream,code);
+}
+
 void test_detection_top(AXI_STREAM& inputStream,int& x,int& y, int& r1, int& r2){
 #pragma HLS INTERFACE axis port=inputStream
 #pragma HLS INTERFACE s_axilite port=x

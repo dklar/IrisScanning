@@ -92,7 +92,7 @@ struct AXIvideo2Mat : public sc_module {
     sc_signal< sc_logic > img_cols_V_out_blk_n;
     sc_signal< sc_lv<1> > eol_reg_274;
     sc_signal< sc_lv<32> > axi_data_V_1_i_reg_285;
-    sc_signal< sc_lv<32> > t_V_4_reg_296;
+    sc_signal< sc_lv<32> > t_V_2_reg_296;
     sc_signal< sc_lv<1> > eol_0_i_reg_307;
     sc_signal< sc_lv<1> > axi_last_V_2_i_reg_319;
     sc_signal< sc_lv<32> > p_Val2_s_reg_332;
@@ -114,8 +114,8 @@ struct AXIvideo2Mat : public sc_module {
     sc_signal< sc_lv<32> > j_V_fu_421_p2;
     sc_signal< sc_lv<8> > tmp_fu_436_p1;
     sc_signal< sc_lv<8> > tmp_reg_517;
-    sc_signal< sc_lv<8> > tmp_7_reg_522;
-    sc_signal< sc_lv<8> > tmp_8_reg_527;
+    sc_signal< sc_lv<8> > tmp_4_reg_522;
+    sc_signal< sc_lv<8> > tmp_5_reg_527;
     sc_signal< bool > ap_block_state8;
     sc_signal< bool > ap_block_pp1_stage0_subdone;
     sc_signal< sc_logic > ap_condition_pp1_exit_iter0_state5;

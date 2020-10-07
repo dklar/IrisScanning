@@ -93,7 +93,8 @@
   "Files": {
     "CSource": [
       "..\/toplevel.cpp",
-      "..\/sine.cpp"
+      "..\/sine.cpp",
+      "..\/segmentation.cpp"
     ],
     "Vhdl": [
       "impl\/vhdl\/arrayMethod_fix.vhd",
@@ -1532,7 +1533,7 @@
   },
   "GenData": {
     "DataVersion": "0.2",
-    "Time": "2020-10-06 18:21:46 +0200",
+    "Time": "2020-10-07 11:50:56 +0200",
     "ToolName": "vivado_hls",
     "ToolVersion": "2019.2"
   }

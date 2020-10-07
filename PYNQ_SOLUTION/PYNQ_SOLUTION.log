@@ -2576,3 +2576,841 @@ INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:57 
 INFO: [VHDL 208-304] Generating VHDL RTL for top_level2.
 INFO: [VLOG 209-307] Generating Verilog RTL for top_level2.
 INFO: [HLS 200-112] Total elapsed time: 153.21 seconds; peak allocated memory: 989.017 MB.
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg400-1'
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/toplevel.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/sine.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/segmentation.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:04 ; elapsed = 00:01:39 . Memory (MB): peak = 194.867 ; gain = 105.012
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:04 ; elapsed = 00:01:39 . Memory (MB): peak = 194.867 ; gain = 105.012
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-489] Unrolling loop 'loop_channels' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:247) in function 'int hls::Mat2Array<320, unsigned char, 280, 320, 0>(hls::Mat<FORWARD_REFERENCE, FORWARD_REFERENCE, FORWARD_REFERENCE>&, FORWARD_REFERENCE*, int)' completely with a factor of 1.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:677) in function 'hls::Mat<280, 320, 0>::read()' completely with a factor of 1.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:701) in function 'hls::Mat<280, 320, 0>::write(hls::Scalar<1, unsigned char>)' completely with a factor of 1.
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 4096>::init' into 'hls::Mat<280, 320, 4096>::Mat.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::init' into 'hls::Mat<280, 320, 0>::Mat.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<64, 360, 0>::init' into 'hls::Mat<64, 360, 0>::Mat.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<64, 360, 4096>::init' into 'hls::Mat<64, 360, 4096>::Mat.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642).
+INFO: [XFORM 203-603] Inlining function 'hls::AXIGetBitFields<32, unsigned char>.1' into 'hls::AXIGetBitFields<32, unsigned char>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_axi_io.h:71).
+INFO: [XFORM 203-603] Inlining function 'hls::AXIGetBitFields<32, unsigned char>' into 'hls::AXIvideo2Mat<32, 280, 320, 4096>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:92).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 4096>::write' into 'hls::Mat<280, 320, 4096>::operator<<' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:717).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 4096>::operator<<' into 'hls::AXIvideo2Mat<32, 280, 320, 4096>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:94).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 4096>::read' into 'hls::Mat<280, 320, 4096>::operator>>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:711).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 4096>::operator>>' into 'hls::CvtColor<HLS_RGB2GRAY, 4096, 0, 280, 320>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1971).
+INFO: [XFORM 203-603] Inlining function 'hls::ColorConverter<unsigned char, unsigned char>::convert<3>' into 'hls::kernel_CvtColor<HLS_RGB2GRAY, unsigned char, unsigned char>::apply<3, 1>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::write' into 'hls::Mat<280, 320, 0>::operator<<' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:717).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator<<' into 'find_iris_high_accuracy' (Iris-recognition/segmentation.cpp:235).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator<<' into 'findPupil' (Iris-recognition/segmentation.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator<<' into 'hls::CvtColor<HLS_RGB2GRAY, 4096, 0, 280, 320>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1973).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::read' into 'hls::Mat<280, 320, 0>::operator>>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:711).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator>>' into 'find_iris_high_accuracy' (Iris-recognition/segmentation.cpp:234).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator>>' into 'findPupil' (Iris-recognition/segmentation.cpp:24).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator>>' into 'hls::Mat2Array<320, unsigned char, 280, 320, 0>.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:245).
+INFO: [XFORM 203-603] Inlining function 'hls::AXISetBitFields<8, unsigned char>' into 'hls::Mat2Array<320, unsigned char, 280, 320, 0>.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:249).
+INFO: [XFORM 203-603] Inlining function 'hls::AXIGetBitFields<8, unsigned char>' into 'hls::Mat2Array<320, unsigned char, 280, 320, 0>.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:252).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:09 ; elapsed = 00:01:48 . Memory (MB): peak = 526.938 ; gain = 437.082
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'hls::sr_cast_class<ap_uint<8> >::operator()<35, 13, (ap_q_mode)5, (ap_o_mode)3>' into 'hls::sr_cast<unsigned char, ap_fixed<35, 13, (ap_q_mode)5, (ap_o_mode)3, 0> >' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_types.h:500) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::sr_cast<unsigned char, ap_fixed<35, 13, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'hls::kernel_CvtColor<HLS_RGB2GRAY, unsigned char, unsigned char>::apply<3, 1>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1498->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:15) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' into 'generic_cast_IEEE754<int, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, float>' into '__hls_fptosi_float_i32' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51) automatically.
+INFO: [XFORM 203-602] Inlining function 'replaceSIN' into 'find_iris_high_accuracy' (Iris-recognition/segmentation.cpp:214) automatically.
+INFO: [XFORM 203-602] Inlining function 'replaceCOS' into 'find_iris_high_accuracy' (Iris-recognition/segmentation.cpp:215) automatically.
+INFO: [XFORM 203-602] Inlining function 'cordic360_Cos_fixed' into 'core_low' (Iris-recognition/toplevel.cpp:55) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:15) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' into 'generic_cast_IEEE754<int, double>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, double>' into '__hls_fptosi_double_i32' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:55) automatically.
+INFO: [XFORM 203-602] Inlining function 'exp_reduce_::exp' into 'hls::expf' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/c++/expfloat.cpp:20) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'generateGaborKernel_fix' (Iris-recognition/toplevel.cpp:239) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::expf' into 'generateGaborKernel_fix' (Iris-recognition/toplevel.cpp:276) automatically.
+INFO: [XFORM 203-602] Inlining function 'MODULO' into 'gaborPixel_fix' (Iris-recognition/toplevel.cpp:313) automatically.
+WARNING: [SYNCHK 200-23] C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_axi_io.h:49: variable-indexed range selection may cause suboptimal QoR.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:11 ; elapsed = 00:01:51 . Memory (MB): peak = 699.734 ; gain = 609.879
+WARNING: [XFORM 203-1103] Ignored data pack directive on non-struct variable 'img1.data_stream.V' (Iris-recognition/toplevel.cpp:385).
+WARNING: [XFORM 203-1103] Ignored data pack directive on non-struct variable 'img0.data_stream.V' (Iris-recognition/toplevel.cpp:384).
+WARNING: [XFORM 203-1103] Ignored data pack directive on non-struct variable 'img3.data_stream.V' (Iris-recognition/toplevel.cpp:387).
+WARNING: [XFORM 203-1103] Ignored data pack directive on non-struct variable 'img2.data_stream.V' (Iris-recognition/toplevel.cpp:386).
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'loop_width' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1968) in function 'hls::CvtColor<HLS_RGB2GRAY, 4096, 0, 280, 320>' for pipelining.
+INFO: [XFORM 203-502] Unrolling all sub-loops inside loop 'loop_width' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:73) in function 'hls::AXIvideo2Mat<32, 280, 320, 4096>' for pipelining.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1.1.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:677) in function 'hls::CvtColor<HLS_RGB2GRAY, 4096, 0, 280, 320>' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'loop_channels' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:91) in function 'hls::AXIvideo2Mat<32, 280, 320, 4096>' completely with a factor of 3.
+INFO: [HLS 200-489] Unrolling loop 'Loop-2.1.2' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:701) in function 'hls::AXIvideo2Mat<32, 280, 320, 4096>' completely with a factor of 3.
+INFO: [XFORM 203-102] Partitioning array 's.val.assign' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:589) automatically.
+INFO: [XFORM 203-102] Partitioning array 'val' automatically.
+INFO: [XFORM 203-102] Automatically partitioning streamed array 'img0.data_stream.V' (Iris-recognition/toplevel.cpp:384) .
+INFO: [XFORM 203-102] Automatically partitioning streamed array 'img1.data_stream.V' (Iris-recognition/toplevel.cpp:385) .
+INFO: [XFORM 203-102] Automatically partitioning streamed array 'img2.data_stream.V' (Iris-recognition/toplevel.cpp:386) .
+INFO: [XFORM 203-102] Automatically partitioning streamed array 'img3.data_stream.V' (Iris-recognition/toplevel.cpp:387) .
+INFO: [XFORM 203-101] Partitioning array 'kernel_opr.par.val.V' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1960) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array '_s.val' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1965) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array '_d.val' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1966) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'scl.val' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:670) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'pix.val' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:56) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'pixel_value.val' (Iris-recognition/segmentation.cpp:225) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'scl.val' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:670) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'pixel_value.val' (Iris-recognition/segmentation.cpp:4) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'scl.val' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:670) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'pix.val' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:238) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'scl.val' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:670) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'img0.data_stream.V' (Iris-recognition/toplevel.cpp:384) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'img1.data_stream.V' (Iris-recognition/toplevel.cpp:385) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'img2.data_stream.V' (Iris-recognition/toplevel.cpp:386) in dimension 1 completely.
+INFO: [XFORM 203-101] Partitioning array 'img3.data_stream.V' (Iris-recognition/toplevel.cpp:387) in dimension 1 completely.
+INFO: [XFORM 203-602] Inlining function 'hls::sr_cast_class<ap_uint<8> >::operator()<35, 13, (ap_q_mode)5, (ap_o_mode)3>' into 'hls::sr_cast<unsigned char, ap_fixed<35, 13, (ap_q_mode)5, (ap_o_mode)3, 0> >' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_types.h:500) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::sr_cast<unsigned char, ap_fixed<35, 13, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'hls::kernel_CvtColor<HLS_RGB2GRAY, unsigned char, unsigned char>::apply<3, 1>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1498->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::kernel_CvtColor<HLS_RGB2GRAY, unsigned char, unsigned char>::apply<3, 1>' into 'hls::CvtColor<HLS_RGB2GRAY, 4096, 0, 280, 320>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1972) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:15) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' into 'generic_cast_IEEE754<int, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, float>' into '__hls_fptosi_float_i32' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51) automatically.
+INFO: [XFORM 203-602] Inlining function 'replaceSIN' into 'find_iris_high_accuracy' (Iris-recognition/segmentation.cpp:214) automatically.
+INFO: [XFORM 203-602] Inlining function 'replaceCOS' into 'find_iris_high_accuracy' (Iris-recognition/segmentation.cpp:215) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'find_iris_high_accuracy' (Iris-recognition/segmentation.cpp:216) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::Mat2Array<320, unsigned char, 280, 320, 0>.1' into 'hls::Mat2Array<320, unsigned char, 280, 320, 0>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:264) automatically.
+INFO: [XFORM 203-602] Inlining function 'cordic360_Cos_fixed' into 'core_low' (Iris-recognition/toplevel.cpp:55) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'core_low' (Iris-recognition/toplevel.cpp:66) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:15) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<double>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, double>' into 'generic_cast_IEEE754<int, double>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, double>' into '__hls_fptosi_double_i32' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:55) automatically.
+INFO: [XFORM 203-602] Inlining function 'exp_reduce_::exp' into 'hls::expf' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/c++/expfloat.cpp:20) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_double_i32' into 'generateGaborKernel_fix' (Iris-recognition/toplevel.cpp:239) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::expf' into 'generateGaborKernel_fix' (Iris-recognition/toplevel.cpp:276) automatically.
+INFO: [XFORM 203-602] Inlining function 'MODULO' into 'gaborPixel_fix' (Iris-recognition/toplevel.cpp:313) automatically.
+WARNING: [XFORM 203-561] Updating loop lower bound from 0 to 320 for loop 'Loop-0-0' in function 'hls::Mat2Array<320, unsigned char, 280, 320, 0>'.
+WARNING: [XFORM 203-561] Updating loop lower bound from 0 to 280 for loop 'loop_pixel' in function 'hls::Mat2Array<320, unsigned char, 280, 320, 0>'.
+WARNING: [XFORM 203-713] All the elements of global array 'imageOut' should be updated in process function 'core_low', otherwise it may not be synthesized correctly.
+INFO: [XFORM 203-712] Applying dataflow to function 'arrayMethod_fix', detected/extracted 9 process function(s): 
+	 'arrayMethod_fix_Block__proc'
+	 'hls::AXIvideo2Mat<32, 280, 320, 4096>'
+	 'hls::CvtColor<HLS_RGB2GRAY, 4096, 0, 280, 320>'
+	 'findPupil'
+	 'find_iris_high_accuracy'
+	 'hls::Mat2Array<320, unsigned char, 280, 320, 0>'
+	 'writeValues'
+	 'core_low'
+	 'encode_fix'.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Iris-recognition/toplevel.cpp:238:34) to (Iris-recognition/toplevel.cpp:238:29) in function 'generateGaborKernel_fix'... converting 19 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Iris-recognition/toplevel.cpp:252:34) to (Iris-recognition/toplevel.cpp:252:29) in function 'generateGaborKernel_fix'... converting 17 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Iris-recognition/toplevel.cpp:274:44) to (Iris-recognition/toplevel.cpp:273:31) in function 'generateGaborKernel_fix'... converting 10 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Iris-recognition/toplevel.cpp:323:6) to (Iris-recognition/toplevel.cpp:304:25) in function 'gaborPixel_fix'... converting 21 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Iris-recognition/sine.cpp:14:22) to (Iris-recognition/segmentation.cpp:213:34) in function 'find_iris_high_accuracy'... converting 15 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Iris-recognition/segmentation.cpp:21:27) to (Iris-recognition/segmentation.cpp:21:22) in function 'findPupil'... converting 7 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Iris-recognition/toplevel.cpp:55:13) to (Iris-recognition/toplevel.cpp:63:19) in function 'core_low'... converting 19 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Iris-recognition/sine.cpp:181:23) to (Iris-recognition/sine.cpp:180:23) in function 'cordic_fix'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Iris-recognition/sine.cpp:175:23) to (Iris-recognition/sine.cpp:180:15) in function 'cordic_fix'... converting 10 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Iris-recognition/sine.cpp:100:23) to (Iris-recognition/sine.cpp:99:23) in function 'cordicSin_fix'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Iris-recognition/sine.cpp:94:29) to (Iris-recognition/sine.cpp:99:15) in function 'cordicSin_fix'... converting 10 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Iris-recognition/sine.cpp:126:24) to (Iris-recognition/sine.cpp:125:23) in function 'cordicCos_fix'... converting 4 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (Iris-recognition/sine.cpp:120:29) to (Iris-recognition/sine.cpp:125:15) in function 'cordicCos_fix'... converting 10 basic blocks.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:17 ; elapsed = 00:01:58 . Memory (MB): peak = 924.398 ; gain = 834.543
+WARNING: [XFORM 203-631] Renaming function 'hls::Mat2Array<320, unsigned char, 280, 320, 0>' to 'Mat2Array' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:240:46)
+WARNING: [XFORM 203-631] Renaming function 'hls::CvtColor<HLS_RGB2GRAY, 4096, 0, 280, 320>' to 'CvtColor' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:409:39)
+WARNING: [XFORM 203-631] Renaming function 'hls::AXIvideo2Mat<32, 280, 320, 4096>' to 'AXIvideo2Mat' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:49:9)
+WARNING: [XFORM 203-631] Renaming function 'generateGaborKernel_fix' to 'generateGaborKernel_' (Iris-recognition/toplevel.cpp:15:33)
+WARNING: [XFORM 203-631] Renaming function 'find_iris_high_accuracy' to 'find_iris_high_accur' (Iris-recognition/segmentation.cpp:5:5)
+WARNING: [XFORM 203-631] Renaming function 'cordic360_COS_SIN_fix' to 'cordic360_COS_SIN_fi' (Iris-recognition/sine.cpp:204:2)
+WARNING: [XFORM 203-631] Renaming function 'arrayMethod_fix_Block__proc' to 'arrayMethod_fix_Bloc' (Iris-recognition/toplevel.cpp:384)
+INFO: [HLS 200-472] Inferring partial write operation for 'sin_filter_matrix_fi' (Iris-recognition/toplevel.cpp:245:3)
+INFO: [HLS 200-472] Inferring partial write operation for 'cos_filter_matrix_fi' (Iris-recognition/toplevel.cpp:246:3)
+INFO: [HLS 200-472] Inferring partial write operation for 'sin_filter_matrix_fi' (Iris-recognition/toplevel.cpp:253:33)
+INFO: [HLS 200-472] Inferring partial write operation for 'cos_filter_matrix_fi' (Iris-recognition/toplevel.cpp:254:33)
+INFO: [HLS 200-472] Inferring partial write operation for 'sin_filter_matrix_fi' (Iris-recognition/toplevel.cpp:260:4)
+INFO: [HLS 200-472] Inferring partial write operation for 'cos_filter_matrix_fi' (Iris-recognition/toplevel.cpp:261:4)
+INFO: [HLS 200-472] Inferring partial write operation for 'gauss.V' (Iris-recognition/toplevel.cpp:276:25)
+INFO: [HLS 200-472] Inferring partial write operation for 'sin_filter_matrix_fi' (Iris-recognition/toplevel.cpp:283:34)
+INFO: [HLS 200-472] Inferring partial write operation for 'cos_filter_matrix_fi' (Iris-recognition/toplevel.cpp:284:34)
+INFO: [HLS 200-472] Inferring partial write operation for 'sin_filter_matrix_fi' (Iris-recognition/toplevel.cpp:297:65)
+INFO: [HLS 200-472] Inferring partial write operation for 'cos_filter_matrix_fi' (Iris-recognition/toplevel.cpp:298:65)
+INFO: [HLS 200-472] Inferring partial write operation for 'points' (Iris-recognition/segmentation.cpp:218:4)
+INFO: [HLS 200-472] Inferring partial write operation for 'points' (Iris-recognition/segmentation.cpp:219:4)
+INFO: [HLS 200-472] Inferring partial write operation for 'sums' (Iris-recognition/segmentation.cpp:227:24)
+INFO: [HLS 200-472] Inferring partial write operation for 'sums' (Iris-recognition/segmentation.cpp:239:6)
+INFO: [HLS 200-472] Inferring partial write operation for 'image_out' (Iris-recognition/toplevel.cpp:69:4)
+INFO: [HLS 200-472] Inferring partial write operation for 'fb' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:253:16)
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:22 ; elapsed = 00:02:03 . Memory (MB): peak = 1120.496 ; gain = 1030.641
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'top_level2' ...
+WARNING: [SYN 201-103] Legalizing function name 'generateGaborKernel_' to 'generateGaborKernel_s'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'arrayMethod_fix_Bloc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 123.148 seconds; current allocated memory: 1.010 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.277 seconds; current allocated memory: 1.010 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'AXIvideo2Mat' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'loop_wait_for_start'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [SCHED 204-61] Pipelining loop 'loop_width'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [SCHED 204-61] Pipelining loop 'loop_wait_for_eol'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.671 seconds; current allocated memory: 1.010 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.34 seconds; current allocated memory: 1.011 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'CvtColor' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'loop_width'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 5.
+WARNING: [SCHED 204-21] Estimated clock period (9.4ns) exceeds the target (target clock period: 10ns, clock uncertainty: 1.25ns, effective delay budget: 8.75ns).
+WARNING: [SCHED 204-21] The critical path in module 'CvtColor' consists of the following:
+	'mul' operation of DSP[51] ('r.V', C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1495->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1972) [49]  (3.36 ns)
+	'add' operation of DSP[51] ('ret.V', C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1497->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1972) [51]  (3.02 ns)
+	'add' operation of DSP[53] ('ret.V', C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1497->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1972) [53]  (3.02 ns)
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.681 seconds; current allocated memory: 1.011 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.324 seconds; current allocated memory: 1.011 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'findPupil' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'loopPixel.1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.613 seconds; current allocated memory: 1.012 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.375 seconds; current allocated memory: 1.012 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'find_iris_high_accur' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.784 seconds; current allocated memory: 1.013 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.531 seconds; current allocated memory: 1.014 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'Mat2Array' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'loop_pixel.1'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 2.
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.69 seconds; current allocated memory: 1.014 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.31 seconds; current allocated memory: 1.014 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'writeValues' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.449 seconds; current allocated memory: 1.014 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.281 seconds; current allocated memory: 1.014 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cordicCos_fix' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.36 seconds; current allocated memory: 1.014 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.364 seconds; current allocated memory: 1.015 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cordicSin_fix' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.458 seconds; current allocated memory: 1.015 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.363 seconds; current allocated memory: 1.015 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cordic360_Sin_fixed' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.439 seconds; current allocated memory: 1.015 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.38 seconds; current allocated memory: 1.016 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'core_low' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.688 seconds; current allocated memory: 1.017 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.733 seconds; current allocated memory: 1.018 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cordic_fix' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.897 seconds; current allocated memory: 1.018 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.373 seconds; current allocated memory: 1.019 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'cordic360_COS_SIN_fi' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.45 seconds; current allocated memory: 1.019 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.392 seconds; current allocated memory: 1.019 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'generateGaborKernel_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.828 seconds; current allocated memory: 1.021 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.119 seconds; current allocated memory: 1.023 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'gaborPixel_fix' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1.428 seconds; current allocated memory: 1.024 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.475 seconds; current allocated memory: 1.024 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'encode_fix' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.562 seconds; current allocated memory: 1.025 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.78 seconds; current allocated memory: 1.025 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'arrayMethod_fix' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.821 seconds; current allocated memory: 1.026 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 1.153 seconds; current allocated memory: 1.027 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'top_level2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 1.216 seconds; current allocated memory: 1.028 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.611 seconds; current allocated memory: 1.028 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'arrayMethod_fix_Bloc' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'arrayMethod_fix_Bloc'.
+INFO: [HLS 200-111]  Elapsed time: 1.206 seconds; current allocated memory: 1.029 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'AXIvideo2Mat' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'AXIvideo2Mat'.
+INFO: [HLS 200-111]  Elapsed time: 0.411 seconds; current allocated memory: 1.029 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'CvtColor' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'top_level2_mul_mul_22ns_8ns_29_1_1' to 'top_level2_mul_mubkb' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_mac_muladd_23ns_8ns_29ns_30_1_1' to 'top_level2_mac_mucud' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_mac_muladd_20ns_8ns_29ns_29_1_1' to 'top_level2_mac_mudEe' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'top_level2_mac_mucud': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_mac_mudEe': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_mul_mubkb': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'CvtColor'.
+INFO: [HLS 200-111]  Elapsed time: 0.674 seconds; current allocated memory: 1.030 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'findPupil' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'findPupil'.
+INFO: [HLS 200-111]  Elapsed time: 0.58 seconds; current allocated memory: 1.030 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'find_iris_high_accur' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'find_iris_high_accur_points' to 'find_iris_high_aceOg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'find_iris_high_accur_sums' to 'find_iris_high_acfYi' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_fadd_32ns_32ns_32_5_full_dsp_1' to 'top_level2_fadd_3g8j' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_fmul_32ns_32ns_32_4_max_dsp_1' to 'top_level2_fmul_3hbi' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_sitofp_32ns_32_6_1' to 'top_level2_sitofpibs' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_mul_mul_9ns_11ns_20_1_1' to 'top_level2_mul_mujbC' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fadd_3g8j': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fmul_3hbi': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_mul_mujbC': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_sitofpibs': 2 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'find_iris_high_accur'.
+INFO: [HLS 200-111]  Elapsed time: 1.008 seconds; current allocated memory: 1.032 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'Mat2Array' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'Mat2Array'.
+INFO: [HLS 200-111]  Elapsed time: 1.31 seconds; current allocated memory: 1.033 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'writeValues' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'writeValues'.
+INFO: [HLS 200-111]  Elapsed time: 0.512 seconds; current allocated memory: 1.033 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cordicCos_fix' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'cordicCos_fix_arctan_V233' to 'cordicCos_fix_arckbM' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_fpext_32ns_64_2_1' to 'top_level2_fpext_lbW' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fpext_lbW': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cordicCos_fix'.
+INFO: [HLS 200-111]  Elapsed time: 0.5 seconds; current allocated memory: 1.034 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cordicSin_fix' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'cordicSin_fix_arctan_V232' to 'cordicSin_fix_arcmb6' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fpext_lbW': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cordicSin_fix'.
+INFO: [HLS 200-111]  Elapsed time: 0.847 seconds; current allocated memory: 1.035 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cordic360_Sin_fixed' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'top_level2_fptrunc_64ns_32_2_1' to 'top_level2_fptrunncg' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_dadd_64ns_64ns_64_5_full_dsp_1' to 'top_level2_dadd_6ocq' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_dcmp_64ns_64ns_1_2_1' to 'top_level2_dcmp_6pcA' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'top_level2_dadd_6ocq': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_dcmp_6pcA': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fpext_lbW': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fptrunncg': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cordic360_Sin_fixed'.
+INFO: [HLS 200-111]  Elapsed time: 0.922 seconds; current allocated memory: 1.035 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'core_low' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'top_level2_faddfsub_32ns_32ns_32_5_full_dsp_1' to 'top_level2_faddfsqcK' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_dmul_64ns_64ns_64_6_max_dsp_1' to 'top_level2_dmul_6rcU' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_sitodp_32ns_64_6_1' to 'top_level2_sitodpsc4' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'top_level2_dadd_6ocq': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_dcmp_6pcA': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_dmul_6rcU': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fadd_3g8j': 3 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_faddfsqcK': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fmul_3hbi': 4 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fpext_lbW': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fptrunncg': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_sitodpsc4': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_sitofpibs': 4 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'core_low'.
+INFO: [HLS 200-111]  Elapsed time: 0.982 seconds; current allocated memory: 1.038 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cordic_fix' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fpext_lbW': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cordic_fix'.
+INFO: [HLS 200-111]  Elapsed time: 1.714 seconds; current allocated memory: 1.039 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'cordic360_COS_SIN_fi' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'top_level2_dadd_6ocq': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_dcmp_6pcA': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fpext_lbW': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fptrunncg': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'cordic360_COS_SIN_fi'.
+INFO: [HLS 200-111]  Elapsed time: 0.954 seconds; current allocated memory: 1.040 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'generateGaborKernel_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'generateGaborKernel_s_gauss_V' to 'generateGaborKerntde' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_fdiv_32ns_32ns_32_16_1' to 'top_level2_fdiv_3udo' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_fexp_32ns_32ns_32_9_full_dsp_1' to 'top_level2_fexp_3vdy' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_dsub_64ns_64ns_64_5_full_dsp_1' to 'top_level2_dsub_6wdI' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_ddiv_64ns_64ns_64_31_1' to 'top_level2_ddiv_6xdS' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_sdiv_12ns_8s_8_16_seq_1' to 'top_level2_sdiv_1yd2' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'top_level2_ddiv_6xdS': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_dmul_6rcU': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_dsub_6wdI': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fadd_3g8j': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fdiv_3udo': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fexp_3vdy': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fmul_3hbi': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fpext_lbW': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_fptrunncg': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_sdiv_1yd2': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_sitodpsc4': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_sitofpibs': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'generateGaborKernel_s'.
+INFO: [HLS 200-111]  Elapsed time: 1.264 seconds; current allocated memory: 1.044 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'gaborPixel_fix' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'top_level2_srem_11ns_10ns_11_15_seq_1' to 'top_level2_srem_1zec' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'top_level2_mac_muladd_8s_8ns_16ns_16_1_1' to 'top_level2_mac_muAem' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'top_level2_dcmp_6pcA': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_mac_muAem': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'top_level2_srem_1zec': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'gaborPixel_fix'.
+INFO: [HLS 200-111]  Elapsed time: 3.089 seconds; current allocated memory: 1.046 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'encode_fix' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'encode_fix_sin_filter_matrix_fi' to 'encode_fix_sin_fiBew' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'encode_fix_cos_filter_matrix_fi' to 'encode_fix_cos_fiCeG' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'encode_fix'.
+INFO: [HLS 200-111]  Elapsed time: 1.334 seconds; current allocated memory: 1.047 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'arrayMethod_fix' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'arrayMethod_fix_imageIn' to 'arrayMethod_fix_iDeQ' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'arrayMethod_fix_imageOut' to 'arrayMethod_fix_iEe0' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_CvtColor_U0' to 'start_for_CvtColoFfa' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_findPupil_U0' to 'start_for_findPupGfk' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_find_iris_high_accur_U0' to 'start_for_find_irHfu' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'start_for_Mat2Array_U0' to 'start_for_Mat2ArrIfE' due to the length limit 20
+INFO: [RTGEN 206-100] Finished creating RTL model for 'arrayMethod_fix'.
+INFO: [HLS 200-111]  Elapsed time: 1.324 seconds; current allocated memory: 1.049 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'top_level2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-500] Setting interface mode on port 'top_level2/inputStream_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'top_level2/inputStream_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'top_level2/inputStream_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'top_level2/inputStream_V_user_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'top_level2/inputStream_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'top_level2/inputStream_V_id_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'top_level2/inputStream_V_dest_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'top_level2/code' to 's_axilite & ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'top_level2' to 'ap_ctrl_none'.
+INFO: [RTGEN 206-100] Bundling port 'code' to AXI-Lite port AXILiteS.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'top_level2'.
+INFO: [HLS 200-111]  Elapsed time: 1.904 seconds; current allocated memory: 1.050 GB.
+INFO: [HLS 200-789] **** Estimated Fmax: 106.38 MHz
+INFO: [RTMG 210-278] Implementing memory 'find_iris_high_aceOg_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-278] Implementing memory 'find_iris_high_acfYi_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-279] Implementing memory 'cordicCos_fix_arckbM_rom' using distributed ROMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'top_level2_sdiv_1yd2_div'
+INFO: [RTMG 210-278] Implementing memory 'generateGaborKerntde_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-282] Generating pipelined core: 'top_level2_srem_1zec_div'
+INFO: [RTMG 210-278] Implementing memory 'encode_fix_sin_fiBew_ram (RAM)' using block RAMs with power-on initialization.
+INFO: [HLS 200-741] Implementing PIPO arrayMethod_fix_iDeQ_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'arrayMethod_fix_iDeQ_memcore_ram (RAM)' using block RAMs.
+INFO: [HLS 200-741] Implementing PIPO arrayMethod_fix_iEe0_memcore using a single memory for all blocks
+INFO: [RTMG 210-278] Implementing memory 'arrayMethod_fix_iEe0_memcore_ram (RAM)' using block RAMs.
+INFO: [RTMG 210-285] Implementing FIFO 'img0_rows_V_c_U(fifo_w10_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'img0_cols_V_c_U(fifo_w10_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'img0_data_stream_0_s_U(fifo_w8_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'img0_data_stream_1_s_U(fifo_w8_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'img0_data_stream_2_s_U(fifo_w8_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'img0_rows_V_c10_U(fifo_w10_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'img0_cols_V_c11_U(fifo_w10_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'img1_data_stream_0_s_U(fifo_w8_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'img2_data_stream_0_s_U(fifo_w8_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'r1_c_U(fifo_w32_d3_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'x_c_U(fifo_w32_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'y_c_U(fifo_w32_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'img3_data_stream_0_s_U(fifo_w8_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'x_c12_U(fifo_w32_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'y_c13_U(fifo_w32_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'r2_U(fifo_w32_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'val_0_channel_U(fifo_w32_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'val_1_channel_U(fifo_w32_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'val_2_channel_U(fifo_w32_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'val_3_channel_U(fifo_w32_d2_A)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_CvtColoFfa_U(start_for_CvtColoFfa)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_findPupGfk_U(start_for_findPupGfk)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_find_irHfu_U(start_for_find_irHfu)' using Shift Registers.
+INFO: [RTMG 210-285] Implementing FIFO 'start_for_Mat2ArrIfE_U(start_for_Mat2ArrIfE)' using Shift Registers.
+INFO: [HLS 200-741] Implementing PIPO arrayMethod_fix_iDeQ_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO arrayMethod_fix_iEe0_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO arrayMethod_fix_iDeQ_memcore using a single memory for all blocks
+INFO: [HLS 200-741] Implementing PIPO arrayMethod_fix_iEe0_memcore using a single memory for all blocks
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:01:00 ; elapsed = 00:03:00 . Memory (MB): peak = 1210.223 ; gain = 1120.367
+INFO: [VHDL 208-304] Generating VHDL RTL for top_level2.
+INFO: [VLOG 209-307] Generating Verilog RTL for top_level2.
+INFO: [HLS 200-112] Total elapsed time: 179.954 seconds; peak allocated memory: 1.050 GB.
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg400-1'
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/toplevel.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/sine.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/segmentation.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/gabor.cpp' ... 
+ERROR: [HLS 200-70] Compilation errors found: In file included from Iris-recognition/gabor.cpp:1:
+Iris-recognition/gabor.cpp:165:19: error: no matching function for call to 'gaborPixel'
+   uint8_t temp = gaborPixel(radius,theta,norm_img,filter_height);
+                  ^~~~~~~~~~
+Iris-recognition/gabor.cpp:99:9: note: candidate function not viable: requires 6 arguments, but 4 were provided
+uint8_t gaborPixel(int rho, int phi, uint8_t norm_img[64 * 360],
+        ^
+1 error generated.
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg400-1'
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/toplevel.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/sine.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/segmentation.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/normalization.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/gabor.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:05 ; elapsed = 00:02:26 . Memory (MB): peak = 195.188 ; gain = 102.840
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:05 ; elapsed = 00:02:26 . Memory (MB): peak = 195.188 ; gain = 102.840
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-489] Unrolling loop 'loop_channels' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:247) in function 'int hls::Mat2Array<320, unsigned char, 280, 320, 0>(hls::Mat<FORWARD_REFERENCE, FORWARD_REFERENCE, FORWARD_REFERENCE>&, FORWARD_REFERENCE*, int)' completely with a factor of 1.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:677) in function 'hls::Mat<280, 320, 0>::read()' completely with a factor of 1.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:701) in function 'hls::Mat<280, 320, 0>::write(hls::Scalar<1, unsigned char>)' completely with a factor of 1.
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 4096>::init' into 'hls::Mat<280, 320, 4096>::Mat.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::init' into 'hls::Mat<280, 320, 0>::Mat.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<64, 360, 0>::init' into 'hls::Mat<64, 360, 0>::Mat.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<64, 360, 4096>::init' into 'hls::Mat<64, 360, 4096>::Mat.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642).
+INFO: [XFORM 203-603] Inlining function 'hls::AXIGetBitFields<32, unsigned char>.1' into 'hls::AXIGetBitFields<32, unsigned char>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_axi_io.h:71).
+INFO: [XFORM 203-603] Inlining function 'hls::AXIGetBitFields<32, unsigned char>' into 'hls::AXIvideo2Mat<32, 280, 320, 4096>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:92).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 4096>::write' into 'hls::Mat<280, 320, 4096>::operator<<' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:717).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 4096>::operator<<' into 'hls::AXIvideo2Mat<32, 280, 320, 4096>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:94).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 4096>::read' into 'hls::Mat<280, 320, 4096>::operator>>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:711).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 4096>::operator>>' into 'hls::CvtColor<HLS_RGB2GRAY, 4096, 0, 280, 320>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1971).
+INFO: [XFORM 203-603] Inlining function 'hls::ColorConverter<unsigned char, unsigned char>::convert<3>' into 'hls::kernel_CvtColor<HLS_RGB2GRAY, unsigned char, unsigned char>::apply<3, 1>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::write' into 'hls::Mat<280, 320, 0>::operator<<' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:717).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator<<' into 'find_iris_high_accuracy' (Iris-recognition/segmentation.cpp:235).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator<<' into 'findPupil' (Iris-recognition/segmentation.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator<<' into 'hls::CvtColor<HLS_RGB2GRAY, 4096, 0, 280, 320>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1973).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::read' into 'hls::Mat<280, 320, 0>::operator>>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:711).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator>>' into 'find_iris_high_accuracy' (Iris-recognition/segmentation.cpp:234).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator>>' into 'findPupil' (Iris-recognition/segmentation.cpp:24).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator>>' into 'hls::Mat2Array<320, unsigned char, 280, 320, 0>.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:245).
+INFO: [XFORM 203-603] Inlining function 'hls::AXISetBitFields<8, unsigned char>' into 'hls::Mat2Array<320, unsigned char, 280, 320, 0>.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:249).
+INFO: [XFORM 203-603] Inlining function 'hls::AXIGetBitFields<8, unsigned char>' into 'hls::Mat2Array<320, unsigned char, 280, 320, 0>.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:252).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:10 ; elapsed = 00:02:36 . Memory (MB): peak = 603.102 ; gain = 510.754
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'hls::sr_cast_class<ap_uint<8> >::operator()<35, 13, (ap_q_mode)5, (ap_o_mode)3>' into 'hls::sr_cast<unsigned char, ap_fixed<35, 13, (ap_q_mode)5, (ap_o_mode)3, 0> >' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_types.h:500) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::sr_cast<unsigned char, ap_fixed<35, 13, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'hls::kernel_CvtColor<HLS_RGB2GRAY, unsigned char, unsigned char>::apply<3, 1>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1498->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:15) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' into 'generic_cast_IEEE754<int, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, float>' into '__hls_fptosi_float_i32' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51) automatically.
+INFO: [XFORM 203-602] Inlining function 'replaceSIN' into 'find_iris_high_accuracy' (Iris-recognition/segmentation.cpp:214) automatically.
+INFO: [XFORM 203-602] Inlining function 'replaceCOS' into 'find_iris_high_accuracy' (Iris-recognition/segmentation.cpp:215) automatically.
+INFO: [XFORM 203-602] Inlining function 'cordic360_Cos_fixed' into 'norm_low' (Iris-recognition/normalization.cpp:52) automatically.
+WARNING: [SYNCHK 200-23] Iris-recognition/normalization.cpp:52: variable-indexed range selection may cause suboptimal QoR.
+ERROR: [SYNCHK 200-71] Iris-recognition/toplevel.cpp:33: function 'void encode_fix<16, 8, 8, 2>(unsigned char*, unsigned char*)' has no function body.
+WARNING: [SYNCHK 200-77] The top function 'top_level2' (Iris-recognition/toplevel.cpp:131) has no outputs. Possible cause(s) are: (1) Output parameters are passed by value; (2) intended outputs (parameters or global variables) are never written; (3) there are infinite loops.
+INFO: [SYNCHK 200-10] 1 error(s), 2 warning(s).
+ERROR: [HLS 200-70] Synthesizability check failed.
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg400-1'
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/toplevel.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/sine.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/segmentation.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/normalization.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/gabor.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:06 ; elapsed = 00:02:26 . Memory (MB): peak = 195.398 ; gain = 106.344
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:06 ; elapsed = 00:02:26 . Memory (MB): peak = 195.398 ; gain = 106.344
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-489] Unrolling loop 'loop_channels' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:247) in function 'int hls::Mat2Array<320, unsigned char, 280, 320, 0>(hls::Mat<FORWARD_REFERENCE, FORWARD_REFERENCE, FORWARD_REFERENCE>&, FORWARD_REFERENCE*, int)' completely with a factor of 1.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:677) in function 'hls::Mat<280, 320, 0>::read()' completely with a factor of 1.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:701) in function 'hls::Mat<280, 320, 0>::write(hls::Scalar<1, unsigned char>)' completely with a factor of 1.
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 4096>::init' into 'hls::Mat<280, 320, 4096>::Mat.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::init' into 'hls::Mat<280, 320, 0>::Mat.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<64, 360, 0>::init' into 'hls::Mat<64, 360, 0>::Mat.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<64, 360, 4096>::init' into 'hls::Mat<64, 360, 4096>::Mat.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642).
+INFO: [XFORM 203-603] Inlining function 'hls::AXIGetBitFields<32, unsigned char>.1' into 'hls::AXIGetBitFields<32, unsigned char>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_axi_io.h:71).
+INFO: [XFORM 203-603] Inlining function 'hls::AXIGetBitFields<32, unsigned char>' into 'hls::AXIvideo2Mat<32, 280, 320, 4096>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:92).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 4096>::write' into 'hls::Mat<280, 320, 4096>::operator<<' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:717).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 4096>::operator<<' into 'hls::AXIvideo2Mat<32, 280, 320, 4096>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:94).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 4096>::read' into 'hls::Mat<280, 320, 4096>::operator>>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:711).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 4096>::operator>>' into 'hls::CvtColor<HLS_RGB2GRAY, 4096, 0, 280, 320>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1971).
+INFO: [XFORM 203-603] Inlining function 'hls::ColorConverter<unsigned char, unsigned char>::convert<3>' into 'hls::kernel_CvtColor<HLS_RGB2GRAY, unsigned char, unsigned char>::apply<3, 1>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::write' into 'hls::Mat<280, 320, 0>::operator<<' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:717).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator<<' into 'find_iris_high_accuracy' (Iris-recognition/segmentation.cpp:235).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator<<' into 'findPupil' (Iris-recognition/segmentation.cpp:25).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator<<' into 'hls::CvtColor<HLS_RGB2GRAY, 4096, 0, 280, 320>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1973).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::read' into 'hls::Mat<280, 320, 0>::operator>>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:711).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator>>' into 'find_iris_high_accuracy' (Iris-recognition/segmentation.cpp:234).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator>>' into 'findPupil' (Iris-recognition/segmentation.cpp:24).
+INFO: [XFORM 203-603] Inlining function 'hls::Mat<280, 320, 0>::operator>>' into 'hls::Mat2Array<320, unsigned char, 280, 320, 0>.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:245).
+INFO: [XFORM 203-603] Inlining function 'hls::AXISetBitFields<8, unsigned char>' into 'hls::Mat2Array<320, unsigned char, 280, 320, 0>.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:249).
+INFO: [XFORM 203-603] Inlining function 'hls::AXIGetBitFields<8, unsigned char>' into 'hls::Mat2Array<320, unsigned char, 280, 320, 0>.1' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:252).
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:10 ; elapsed = 00:02:36 . Memory (MB): peak = 604.727 ; gain = 515.672
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'hls::sr_cast_class<ap_uint<8> >::operator()<35, 13, (ap_q_mode)5, (ap_o_mode)3>' into 'hls::sr_cast<unsigned char, ap_fixed<35, 13, (ap_q_mode)5, (ap_o_mode)3, 0> >' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_types.h:500) automatically.
+INFO: [XFORM 203-602] Inlining function 'hls::sr_cast<unsigned char, ap_fixed<35, 13, (ap_q_mode)5, (ap_o_mode)3, 0> >' into 'hls::kernel_CvtColor<HLS_RGB2GRAY, unsigned char, unsigned char>::apply<3, 1>' (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1498->C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:15) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' into 'generic_cast_IEEE754<int, float>' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, float>' into '__hls_fptosi_float_i32' (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51) automatically.
+INFO: [XFORM 203-602] Inlining function 'replaceSIN' into 'find_iris_high_accuracy' (Iris-recognition/segmentation.cpp:214) automatically.
+INFO: [XFORM 203-602] Inlining function 'replaceCOS' into 'find_iris_high_accuracy' (Iris-recognition/segmentation.cpp:215) automatically.
+INFO: [XFORM 203-602] Inlining function 'cordic360_Cos_fixed' into 'norm_low' (Iris-recognition/normalization.cpp:52) automatically.
+WARNING: [SYNCHK 200-23] Iris-recognition/normalization.cpp:52: variable-indexed range selection may cause suboptimal QoR.
+ERROR: [SYNCHK 200-71] Iris-recognition/toplevel.cpp:33: function 'void encode_fix<16, 8, 8, 2>(unsigned char*, unsigned char*)' has no function body.
+WARNING: [SYNCHK 200-77] The top function 'top_level2' (Iris-recognition/toplevel.cpp:131) has no outputs. Possible cause(s) are: (1) Output parameters are passed by value; (2) intended outputs (parameters or global variables) are never written; (3) there are infinite loops.
+INFO: [SYNCHK 200-10] 1 error(s), 2 warning(s).
+ERROR: [HLS 200-70] Synthesizability check failed.
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg400-1'
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] CSim file generation failed with errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg400-1'
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+ERROR: [SIM 211-100] CSim file generation failed: compilation error(s).
+INFO: [SIM 211-3] *************** CSIM finish ***************
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg400-1'
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/toplevel.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/sine.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/segmentation.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/normalization.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/gabor.cpp' ... 
+ERROR: [HLS 200-70] Compilation errors found: In file included from Iris-recognition/gabor.cpp:1:
+Iris-recognition/gabor.cpp:209:58: error: use of overloaded operator '/' is ambiguous (with operand types 'ap_fixed<16, 8>' and 'double')
+  int phi = i - ((ap_fixed<INTERN_W,INTERN_H>) kern_size / 2.0);
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~
+...
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg400-1'
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/toplevel.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/sine.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/segmentation.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/normalization.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'Iris-recognition/gabor.cpp' ... 
+ERROR: [HLS 200-70] Compilation errors found: In file included from Iris-recognition/gabor.cpp:1:
+Iris-recognition/gabor.cpp:214:3: error: no matching function for call to 'cordic360_COS_SIN_fix'
+  cordic360_COS_SIN_fix(angle, val_sin, val_cos, 5);
+  ^~~~~~~~~~~~~~~~~~~~~
+Iris-recognition/gabor.cpp:338:3: note: in instantiation of function template specialization 'generateGaborKernel_fix<16, 8, 16, 8>' requested here
+  generateGaborKernel_fix<RESULT_W, RESULT_H, INTERN_W, INTERN_H>(
+  ^
+Iris-recognition/sine.hpp:151:6: note: candidate function not viable: no known conversion from 'ap_fixed<16, 8>' to 'float30 &' (aka 'ap_fixed<8, 1> &') for 2nd argument; 
+void cordic360_COS_SIN_fix(float x, float30 &s, float30 &c,int nMax);
+     ^
+In file included from Iris-recognition/gabor.cpp:1:
+In file included from Iris-recognition/gabor.cpp:1:
+In file included from Iris-recognition/gabor.hpp:3:
+In file included from Iris-recognition/definitions.hpp:1:
+In file included from C:/Xilinx/Vivado/2019.2/common/technology/autopilot\hls_video.h:48:
+In file included from C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_axi_io.h:39:
+In file included from C:/Xilinx/Vivado/2019.2/common/technology/autopilot\ap_axi_sdata.h:86:
+In file included from C:/Xilinx/Vivado/2019.2/common/technology/autopilot/ap_int.h:367:
+In file included from C:/Xilinx/Vivado/2019.2/common/technology/autopilot\ap_fixed.h:55:
+C:/Xilinx/Vivado/2019.2/common/technology/autopilot\ap_fixed_base.h:838:13: warning: shift count is negative [-Wshift-count-negative]
+      ret.V <<= (_AP_I - _AP_W);
+            ^   ~~~~~~~~~~~~~~~
+C:/Xilinx/Vivado/2019.2/common/technology/autopilot\ap_fixed_base.h:869:69: note: in instantiation of member function 'ap_fixed_base<41, 33, true, 5, 3, 0>::to_ap_int_base' requested here
+  inline __attribute__((always_inline)) int to_int() const { return to_ap_int_base().to_int(); }
+                                                                    ^
+C:/Xilinx/Vivado/2019.2/common/technology/autopilot\ap_fixed_base.h:1042:71: note: in instantiation of member function 'ap_fixed_base<41, 33, true, 5, 3, 0>::to_int' requested here
+  inline __attribute__((always_inline)) operator int() const { return to_int(); }
+                                                                      ^
+Iris-recognition/gabor.cpp:209:13: note: in instantiation of member function 'ap_fixed_base<41, 33, true, 5, 3, 0>::operator int' requested here
+  int phi = i - ((ap_fixed<INTERN_W,INTERN_H>) kern_size / (ap_fixed<INTERN_W,INTERN_H>)2.0);
+            ^
+Iris-recognition/gabor.cpp:338:3: note: in instantiation of function template specialization 'generateGaborKernel_fix<16, 8, 16, 8>' requested here
+  generateGaborKernel_fix<RESULT_W, RESULT_H, INTERN_W, INTERN_H>(
+  ^
+1 warning and 1 error generated.

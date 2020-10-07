@@ -152,6 +152,8 @@ extern "C" {
 # 1 "<built-in>" 2
 # 1 "Iris-recognition/toplevel.cpp" 2
 # 1 "Iris-recognition/toplevel.hpp" 1
+
+
 # 1 "Iris-recognition/definitions.hpp" 1
 # 1 "C:/Xilinx/Vivado/2019.2/common/technology/autopilot\\hls_video.h" 1
 # 48 "C:/Xilinx/Vivado/2019.2/common/technology/autopilot\\hls_video.h"
@@ -34447,7 +34449,7 @@ typedef hls::Mat<64, 360, (((0) & ((1 << 11) - 1)) + (((3)-1) << 11))> RGB_IMAGE
 
 typedef ap_uint<2> int2;
 typedef ap_uint<6> int6;
-# 2 "Iris-recognition/toplevel.hpp" 2
+# 4 "Iris-recognition/toplevel.hpp" 2
 # 1 "Iris-recognition/sine.hpp" 1
 # 10 "Iris-recognition/sine.hpp"
 typedef ap_fixed<8,1> float30;
@@ -34592,18 +34594,82 @@ float30 cordic360_Sin_fixed(float x, int nMax);
 float30 cordic360_Cos_fixed(float x, int nMax);
 void cordic360_COS_SIN(float x, float &s, float &c,int nMax);
 void cordic360_COS_SIN_fix(float x, float30 &s, float30 &c,int nMax);
-# 3 "Iris-recognition/toplevel.hpp" 2
+# 5 "Iris-recognition/toplevel.hpp" 2
 
-void top_level(AXI_STREAM& inputStream,AXI_STREAM& outputStream);
+
+# 1 "Iris-recognition/segmentation.hpp" 1
+
+
+
+
 
 
 void findPupil(GRAY_IMAGE& img, int& r, int& x, int& y,GRAY_IMAGE &dst_img);
-void findPupil2(GRAY_IMAGE& img, int& r, int& x, int& y,GRAY_IMAGE &dst_img);
-void find_iris_high_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,int& irisRadius,GRAY_IMAGE &dst_img);
-void find_iris_low_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,int& irisRadius,GRAY_IMAGE &dst_img);
 
-void core_high(unsigned char image_in[280*320],unsigned char image_out[64*360],int values[6]);
-void core_low(unsigned char image_in[280*320],unsigned char image_out[64*360],int values[6]);
+void findPupil2(GRAY_IMAGE& img, int& r, int& x, int& y,GRAY_IMAGE &dst_img);
+
+void find_iris_high_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,int& irisRadius,GRAY_IMAGE &dst_img);
+
+void find_iris_low_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,int& irisRadius,GRAY_IMAGE &dst_img);
+# 8 "Iris-recognition/toplevel.hpp" 2
+# 1 "Iris-recognition/gabor.hpp" 1
+
+
+
+
+
+
+
+void encode_fix(uint8_t norm_img[64 * 360],
+  uint8_t bit_code[2048]);
+
+template<int RESULT_W, int RESULT_H, int INTERN_W, int INTERN_H>
+ap_uint<2> gaborPixel_fix(int rho, int phi,
+  uint8_t norm_img[64 * 360], int filter_size,
+  ap_fixed<RESULT_W, RESULT_H> sin_filter_matrix[64/3][64/3],
+  ap_fixed<RESULT_W, RESULT_H> cos_filter_matrix[64/3][64/3]);
+
+template<int RESULT_W, int RESULT_H, int INTERN_W, int INTERN_H>
+void generateGaborKernel_fix(int kern_size,
+  ap_fixed<RESULT_W, RESULT_H> sin_filter_matrix[64/3][64/3],
+  ap_fixed<RESULT_W, RESULT_H> cos_filter_matrix[64/3][64/3]);
+
+template<int RESULT_W,int RESULT_H,int INTERN_W,int INTERN_H>
+void generateGaussKernel_fix(int kern_size,
+  ap_fixed<RESULT_W,RESULT_H> gauss[64/3][64/3]);
+
+
+
+
+void encode(uint8_t norm_img[64*360],uint8_t bit_code[2048]);
+
+uint8_t gaborPixel(int rho, int phi, uint8_t norm_img[64 * 360],
+  int filter_size, float sin_filter_matrix[64/3][64/3],
+  float cos_filter_matrix[64/3][64/3]);
+
+void generateGaborKernel(int kern_size,
+  float sin_filter_matrix[64/3][64/3],
+  float cos_filter_matrix[64/3][64/3]);
+
+void generateGaussKernel(int kern_size,
+  float gauss[64/3][64/3]);
+# 9 "Iris-recognition/toplevel.hpp" 2
+# 1 "Iris-recognition/normalization.hpp" 1
+
+
+
+
+
+
+void norm_low(unsigned char image_in[280*320],
+  uint8_t image_out[64*360],int values[6]);
+
+void norm_high(unsigned char image_in[280*320],
+  uint8_t image_out[64*360],int values[6]);
+# 10 "Iris-recognition/toplevel.hpp" 2
+
+void top_level(AXI_STREAM& inputStream,AXI_STREAM& outputStream);
+
 
 void arrayMethod(AXI_STREAM& INPUT_STREAM,uint8_t code[2048]);
 void arrayMethodschnell(AXI_STREAM& INPUT_STREAM,uint8_t code[2048]);
@@ -34611,703 +34677,13 @@ void arrayMethod_fix(AXI_STREAM& INPUT_STREAM,uint8_t code[2048]);
 void test_detection_top(AXI_STREAM& inputStream,int& x,int& y, int& r1, int& r2);
 # 2 "Iris-recognition/toplevel.cpp" 2
 
-float sin_filter_matrix[64/3][64/3];
-float cos_filter_matrix[64/3][64/3];
-
-floatGauss sin_filter_matrix_fix[64/3][64/3];
-floatGauss cos_filter_matrix_fix[64/3][64/3];
-
-
-
-
-void findPupil(GRAY_IMAGE& img, int& r, int& x, int& y,GRAY_IMAGE &dst_img){
- PIXELGRAY pixel_value;
- int startX_line = 0;
- int length_line = 0;
- int gap_count = 0;
- const int max_gap = 5;
- int longest_line_in_row = 0;
- int start_longest_lineX = 0;
-
- bool is_line = false;
-
- int total_longest_line = 0;
-  int total_y = 0;
-  int total_x = 0;
-
-
- loopPixel:
- for (int y=0;y<280;y++){
-  for (int x=0;x<320;x++){
-_ssdm_SpecLoopFlatten(1, "");
-_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
- img >> pixel_value;
-   dst_img <<pixel_value;
-   if (pixel_value.val[0]<=70){
-
-    if (!is_line){
-     startX_line = x;
-     length_line = 1;
-     is_line = true;
-    }else{
-     length_line += 1;
-    }
-    gap_count = 0;
-   }else{
-
-    if (is_line){
-     gap_count +=1;
-     length_line += 1;
-     if (gap_count >= max_gap){
-
-      length_line -= max_gap;
-      is_line = false;
-      gap_count = 0;
-      if (length_line > longest_line_in_row){
-       longest_line_in_row = length_line;
-       length_line = 0;
-       start_longest_lineX = startX_line;
-       if (longest_line_in_row > total_longest_line){
-        total_longest_line = longest_line_in_row;
-        total_x = startX_line;
-        total_y = y;
-       }
-
-      }
-     }
-    }
-   }
-  }
- }
-
-
- r = (int)total_longest_line/2;
- x = total_x+r;
- y = total_y;
-}
-
-void findPupil2(GRAY_IMAGE& img, int& r, int& x, int& y,GRAY_IMAGE &dst_img){
- PIXELGRAY pixel_value;
- int startX_line = 0;
- int length_line = 0;
- int gap_count = 0;
- const int max_gap = 10;
- int longest_line_in_row = 0;
- int start_longest_lineX = 0;
-
- bool is_line = false;
-
- int total_longest_line = 0;
-  int total_y = 0;
-  int total_x = 0;
-
- int startSearchingAreaX = 75;
- int startSearchingAreaY = 75;
- int endSearchingAreaX = 250;
- int endSearchingAreaY = 250;
-
-
-
- loopPixel:
- for (int y=0;y<280;y++){
-  for (int x=0;x<320;x++){
-_ssdm_SpecLoopFlatten(1, "");
-_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
- img >> pixel_value;
-   dst_img <<pixel_value;
-
-   if (y>startSearchingAreaY && y< endSearchingAreaY){
-    if(x>startSearchingAreaX && x < endSearchingAreaX){
-     if (pixel_value.val[0]<=70){
-
-      if (!is_line){
-       startX_line = x;
-       length_line = 1;
-       is_line = true;
-      }else{
-       length_line += 1;
-      }
-      gap_count = 0;
-     }else{
-
-      if (is_line){
-       gap_count +=1;
-       length_line += 1;
-       if (gap_count >= max_gap){
-
-        length_line -= max_gap;
-        is_line = false;
-        gap_count = 0;
-
-        if (length_line > longest_line_in_row){
-         longest_line_in_row = length_line;
-         length_line = 0;
-         start_longest_lineX = startX_line;
-
-         if (longest_line_in_row > total_longest_line){
-          total_longest_line = longest_line_in_row;
-          total_x = startX_line;
-          total_y = y;
-         }
-        }
-       }
-      }
-     }
-    }
-   }
-  }
- }
-
-
- r = (int)total_longest_line/2;
- x = total_x+r;
- y = total_y;
-}
-
-void improve(GRAY_IMAGE& img, int& r_estimate, int& x_estimate, int& y_estimate,GRAY_IMAGE &dst_img){
-
- float angleList[8] = {0.7,0.7,-0.7,0.7,-0.7,-0.7,0.7,-0.7};
-
- int neededValues[10*10*8*3];
- int sums[3*10*10];
- int j = 0;
- for (int x = x_estimate-5; x < x_estimate+5; x++)
- {
-  for (int y = y_estimate-5; y < y_estimate+5; x++)
-  {
-   for (int r = r_estimate;r<=r_estimate+3;r++){
-    for(int i=0;i<8;i+=2){
-     neededValues[j] = x + r*angleList[i];
-     neededValues[j+1] = y + r*angleList[i+1];
-     j += 2;
-    }
-
-   }
-  }
- }
- PIXELGRAY pixel;
- loopPixel:
- for (int y=0;y<280;y++){
-  for (int x=0;x<320;x++){
-_ssdm_SpecLoopFlatten(1, "");
-_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
- img >> pixel;
-   dst_img <<pixel;
-   for (int i=0;i<2400;i+=2){
-    if (neededValues[i]==x and neededValues[i+1]==y){
-     int pos = (int) i/4;
-     sums[pos] += pixel.val[0];
-    }
-   }
-  }
- }
-
- int i_max = 0;
- int iris_radius = 0;
- int sum1 = 0;
- int sum2 = 0;
- int nr = 0;
- for (int r= 1;r<300;r++){
-  sum1 = sums[r+1];
-  sum2 = sums[r-1];
-  int diff = sum1 - sum2;
-  if (diff > i_max){
-   i_max = diff;
-   iris_radius = r;
-   nr = r;
-  }
- }
-}
-
-void find_iris_high_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,int& irisRadius,GRAY_IMAGE &dst_img){
- int i_max = 0;
- int iris_radius = 0;
-
-
- int points[(150 - 85 + 2)*6*2];
- int count1 = 0;
- int count2 = 0;
-
- for (int r =85 -1; r<150 +1;r++ ){
-  count2 = 0;
-  for (int alpha = 0; alpha <360;alpha+=45){
-   float sinus = replaceSIN(alpha);
-   float cosinus = replaceCOS(alpha);
-   int cx = x + r * cosinus;
-   int cy = y + r * sinus;
-   points[count1*12+count2*2+0] = cx;
-   points[count1*12+count2*2+1] = cy;
-   count2++;
-  }
-  count1++;
- }
-
- PIXELGRAY pixel_value;
- int sums[37];
- for (int i=0;i<37;i++)sums[i]=0;
- int count =0;
- loopPixel:
- for (int y=0;y<280;y++){
-  for (int x=0;x<320;x++){
-
-
-   img >> pixel_value;
-   dst_img << pixel_value;
-   for (int p = 0;p<444;p+=2){
-    if (points[p]==x and points[p+1]==y){
-     int pos = (int) p/12;
-     sums[pos] += pixel_value.val[0];
-    }
-   }
-  }
- }
- int sum1 = 0;
- int sum2 = 0;
- for (int r= 1;r<37;r++){
-  sum1 = sums[r+1];
-  sum2 = sums[r-1];
-  int diff = sum1 - sum2;
-  if (diff > i_max){
-   i_max = diff;
-   iris_radius = r;
-  }
- }
-
- irisRadius = 85 + iris_radius;
-}
-
-void find_iris_low_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,int& irisRadius,GRAY_IMAGE &dst_img){
- int i_max = 0;
- int iris_radius = 0;
-
-
- int points[37*6*2];
- int count1 = 0;
- int count2 = 0;
-
- for (int r =85 -1; r<150 +1;r++ ){
-  count2 = 0;
-  for (int alpha = 0; alpha <360;alpha+=45){
-   if (alpha != 90 and alpha != 270){
-    int cx = x + r * replaceCOS(alpha);
-    int cy = y + r * replaceSIN(alpha);
-    points[count1*12+count2*2+0] = cx;
-    points[count1*12+count2*2+1] = cy;
-    count2++;
-   }
-
-  }
-  count1++;
- }
-
- PIXELGRAY pixel_value;
- int sums[37];
- for (int i=0;i<37;i++)sums[i]=0;
- int count =0;
- loopPixel:
- for (int y=0;y<280;y++){
-  for (int x=0;x<320;x++){
-
-
-   img >> pixel_value;
-   dst_img << pixel_value;
-   for (int p = 0;p<444;p+=2){
-    if (points[p]==x and points[p+1]==y){
-     int pos = (int) p/12;
-     sums[pos] += pixel_value.val[0];
-    }
-   }
-  }
- }
- int sum1 = 0;
- int sum2 = 0;
- for (int r= 1;r<37;r++){
-  sum1 = sums[r+1];
-  sum2 = sums[r-1];
-  int diff = sum1 - sum2;
-  if (diff > i_max){
-   i_max = diff;
-   iris_radius = r;
-  }
- }
-
-  irisRadius = 85 + iris_radius;
-}
-
-void core_high(unsigned char image_in[280*320],unsigned char image_out[64*360],int values[6]){_ssdm_SpecArrayDimSize(image_in, 89600);_ssdm_SpecArrayDimSize(image_out, 23040);_ssdm_SpecArrayDimSize(values, 6);
- int x_p=values[0];
- int y_p=values[1];
- int r_p=values[2];
- int r_i=values[3];
-
- int rows = 280;
- int cols = 320;
-
- for(int theta = 0; theta < 360; theta++){
-  float thetaDot = theta*0.01745329252;
-  float temp1,temp2,temp3,temp4;
-  float tempSin,tempCos;
-
-  tempSin = sin(thetaDot);
-  tempCos = cos(thetaDot);
-  temp1 =(float) (x_p+r_p*tempCos);
-  temp2 =(float) (x_p+r_i*tempCos);
-  temp3 =(float) (y_p+r_p*tempSin);
-  temp4 =(float) (y_p+r_i*tempSin);
-
-     for(int r = 0; r < 64; r++){
-      float radius = r/((float)64);
-
-   int x = int((1-radius)*temp1 + radius*temp2);
-   int y = int((1-radius)*temp3 + radius*temp4);
-
-   image_out[r*360 +theta] = image_in[y*320 +x];
-     }
- }
-}
-
-void core_low(unsigned char image_in[280*320],unsigned char image_out[64*360],int values[6]){_ssdm_SpecArrayDimSize(image_in, 89600);_ssdm_SpecArrayDimSize(image_out, 23040);_ssdm_SpecArrayDimSize(values, 6);
- int x_p=values[0];
- int y_p=values[1];
- int r_p=values[2];
- int r_i=values[3];
-
- int rows = 280;
- int cols = 320;
-
- for(int theta = 0; theta < 360; theta++){
-
-  float temp1,temp2,temp3,temp4;
-  float tempSin,tempCos;
-
-  tempCos = cordic360_Cos_fixed(theta*0.01745329252,10).to_float();
-  tempSin = cordic360_Sin_fixed(theta*0.01745329252,10).to_float();
-
-  temp1 =(float) (x_p+r_p*tempCos);
-  temp2 =(float) (x_p+r_i*tempCos);
-  temp3 =(float) (y_p+r_p*tempSin);
-  temp4 =(float) (y_p+r_i*tempSin);
-
-     for(int r = 0; r < 64; r++){
-      float radius = r/((float)64);
-
-   int x = int((1-radius)*temp1 + radius*temp2);
-   int y = int((1-radius)*temp3 + radius*temp4);
-
-   image_out[r*360 +theta] = image_in[y*320 +x];
-     }
- }
-}
-
-
-
-
-
-
-int MODULO(int a,int b){
-
- int res = a % b;
- return res < 0 ? res + b: res;
-}
-
-void generateGaborKernel(int kern_size){
- float gauss[64/3][64/3];
- if (kern_size>64/3) kern_size = 64/3;
-
- float sum_row_sin = 0;
- float sum_row_cos = 0;
- CalcFirstRow:for (int i = 0;i<kern_size;i++){
-  int phi = i - (kern_size / 2);
-  int temp = kern_size/2;
-  float val_sin;
-  float val_cos;
-  cordic360_COS_SIN(3.14159265358979 * phi / temp,val_sin,val_cos,5);
-
-  sin_filter_matrix[0][i] = val_sin;
-  cos_filter_matrix[0][i] = val_cos;
-  sum_row_sin += val_sin;
-  sum_row_cos += val_cos;
- }
-
- NormalizeFirstRow:for (int i = 0;i<kern_size;i++){
-  float old_v_s = sin_filter_matrix[0][i];
-  float old_v_c = cos_filter_matrix[0][i];
-  sin_filter_matrix[0][i] = old_v_s - (sum_row_sin/(float)kern_size);
-  cos_filter_matrix[0][i] = old_v_c - (sum_row_cos/(float)kern_size);
- }
-
- AssignCompleteMatrix:for (int i = 1;i<kern_size;i++){
-  for (int j = 0;j<kern_size;j++){
-   sin_filter_matrix[i][j] = sin_filter_matrix[0][j];
-   cos_filter_matrix[i][j] = cos_filter_matrix[0][j];
-  }
- }
- int peak = 8;
- float alpha = (kern_size - 1) * 0.4770322291;
- float alphaPower = alpha * alpha;
- CreateGauss:for (int i = 0; i<kern_size; i++){
-  float rho = i - ((float)kern_size / 2.0);
-  float rhoPower2 = rho*rho;
-  CreateGaussInner:for(int j = 0; j<kern_size; j++){
-   float phi = j - ((float)kern_size / 2.0);
-
-
-
-   float temp1 = -(rhoPower2+phi*phi)/alphaPower;
-   float temp = peak * hls::expf(temp1);
-   gauss[i][j] = temp;
-  }
- }
- GaussMulti:for (int i = 0; i<kern_size; i++){
-   float rho = i - (kern_size / 2);
-   for(int j = 0; j<kern_size; j++){
-    float temp_sin = sin_filter_matrix[i][j] * gauss[i][j];
-    float temp_cos = cos_filter_matrix[i][j] * gauss[i][j];
-    sin_filter_matrix[i][j] = temp_sin;
-    cos_filter_matrix[i][j] = temp_cos;
-   }
-  }
-
- NormalizeGausGabor:
- for(int i = 0 ; i < kern_size; i++ ){
-  float row_sum_sin = 0;
-  float row_sum_cos = 0;
-   for (int j = 0 ; j<kern_size; j++){
-    row_sum_sin += sin_filter_matrix[i][j];
-    row_sum_cos += cos_filter_matrix[i][j];
-   }
-   for (int j = 0 ; j<kern_size; j++){
-    float old_sin = sin_filter_matrix[i][j];
-    float old_cos = cos_filter_matrix[i][j];
-    sin_filter_matrix[i][j] = old_sin - (row_sum_sin/(float)kern_size);
-    cos_filter_matrix[i][j] = old_cos - (row_sum_cos/(float)kern_size);
-   }
-  }
-
-}
-
-uint8_t gaborPixel(int rho, int phi, uint8_t norm_img[64*360],int filter_size){_ssdm_SpecArrayDimSize(norm_img, 23040);
- int angles = 360;
- float total_i = 0.0;
- float total_r = 0.0;
-
- GaborPixeLoop:
- for (int i = 0; i<filter_size;i++){
-  for (int j = 0; j<filter_size;j++){
-   int image_y = j + phi - (filter_size / 2);
-   image_y = MODULO(image_y,angles);
-
-   int image_x = i + rho - (filter_size / 2);
-   int tmp = norm_img[image_x*360 +image_y];
-   total_i += sin_filter_matrix[i][j] * tmp;
-   total_r += cos_filter_matrix[i][j] * tmp;
-  }
- }
-
- uint8_t ret = 0;
- if (total_r >= 0.0 ){
-  ret = 2;
-
- }else{
-  ret = 0;
-
- }
-
- if (total_i >= 0.0 ){
-  ret = ret | 1;
-
- }else{
-  ret = ret | 0;
-
- }
- return ret;
-}
-
-void encode(uint8_t norm_img[64*360],uint8_t bit_code[2048]){_ssdm_SpecArrayDimSize(norm_img, 23040);_ssdm_SpecArrayDimSize(bit_code, 2048);
- int height = 64;
- int width = 360;
-
- int angular_slice = 360;
- int radial_slice = 1024 / angular_slice;
-
- int max_filter = 64 / 3;
-
- int index = 0;
-
- for (int r_slice = 0 ;r_slice < radial_slice ;r_slice++){
-  int radius = ((r_slice * (height - 6)) / (2 * radial_slice)) + 3;
-  int filter_height;
-
-  if (radius < (height - radius)){
-   filter_height = 2 * radius - 1;
-  }else{
-   filter_height = 2 * (height - radius) - 1;
-  }
-  if (filter_height > max_filter) filter_height = max_filter;
-
-  generateGaborKernel(filter_height);
-
-  for (int theta = 0;theta<angular_slice;theta++){
-   uint8_t temp = gaborPixel(radius,theta,norm_img,filter_height);
-   bit_code[index] = (temp & 2)>>1;
-   bit_code[index+1] = temp & 1;
-   index+=2;
-  }
- }
-}
-
-void generateGaborKernel_fix(int kern_size){
- floatGauss gauss[64/3][64/3];
- if (kern_size>64/3) kern_size = 64/3;
-
- float sum_row_sin = 0;
- float sum_row_cos = 0;
- CalcFirstRow:
- for (int i = 0;i<kern_size;i++){
-  int phi = i - ((float)kern_size / 2.0);
-  int temp = kern_size/2;
-  float angle = 3.14159265358979 * phi / temp;
-  float30 val_sin;
-  float30 val_cos;
-  cordic360_COS_SIN_fix(angle,val_sin,val_cos,5);
-  sin_filter_matrix_fix[0][i] = val_sin;
-  cos_filter_matrix_fix[0][i] = val_cos;
-  sum_row_sin += val_sin.to_float();
-  sum_row_cos += val_cos.to_float();
- }
-
- NormalizeFirstRow:
- for (int i = 0;i<kern_size;i++){
-  sin_filter_matrix_fix[0][i] = sin_filter_matrix_fix[0][i] - (floatGauss)(sum_row_sin/(float)kern_size);
-  cos_filter_matrix_fix[0][i] = cos_filter_matrix_fix[0][i] - (floatGauss)(sum_row_cos/(float)kern_size);
- }
-
- AssignCompleteMatrix:
- for (int i = 1;i<kern_size;i++){
-  for (int j = 0;j<kern_size;j++){
-   sin_filter_matrix_fix[i][j] = sin_filter_matrix_fix[0][j];
-   cos_filter_matrix_fix[i][j] = cos_filter_matrix_fix[0][j];
-  }
- }
-
- int peak = 8;
- float alpha = (kern_size - 1) * 0.47703;
- float alphaPower = alpha * alpha;
-
- CreateGauss:
- for (int i = 0; i<kern_size; i++){
-  float rho = i - ((float)kern_size / 2.0);
-  float rhoPower2 = rho*rho;
-  for(int j = 0; j<kern_size; j++){
-   float phi = j - ((float)kern_size / 2.0);
-   float temp1 = -(rhoPower2+phi*phi)/alphaPower;
-   gauss[i][j] = peak * hls::expf(temp1);
-  }
- }
-
- GaussMultiSine:
- for (int i = 0; i<kern_size; i++){
-  for(int j = 0; j<kern_size; j++){
-   sin_filter_matrix_fix[i][j] = sin_filter_matrix_fix[i][j] * gauss[i][j];
-   cos_filter_matrix_fix[i][j] = cos_filter_matrix_fix[i][j] * gauss[i][j];
-  }
- }
-
- NormalizeGausGabor:
- for(int i = 0 ; i < kern_size; i++ ){
-  floatGauss row_sum_sin = 0;
-  floatGauss row_sum_cos = 0;
-  for (int j = 0 ; j<kern_size; j++){
-   row_sum_sin += sin_filter_matrix_fix[i][j];
-   row_sum_cos += cos_filter_matrix_fix[i][j];
-  }
-  for (int j = 0 ; j<kern_size; j++){
-   sin_filter_matrix_fix[i][j] = sin_filter_matrix_fix[i][j] - (row_sum_sin/(floatGauss)kern_size);
-   cos_filter_matrix_fix[i][j] = cos_filter_matrix_fix[i][j] - (row_sum_cos/(floatGauss)kern_size);
-  }
- }
-
-}
-
-int2 gaborPixel_fix(int rho, int phi, uint8_t norm_img[64*360],int filter_size){_ssdm_SpecArrayDimSize(norm_img, 23040);
- int angles = 360;
- ap_fixed<16,12> total_i = 0.0;
- ap_fixed<16,12> total_r = 0.0;
-
- GaborPixeLoop:
- for (int i = 0; i<filter_size;i++){
-  for (int j = 0; j<filter_size;j++){
-   int image_y = j + phi - (filter_size / 2);
-   image_y = MODULO(image_y,angles);
-
-   int image_x = i + rho - (filter_size / 2);
-   uint8_t tmp = norm_img[image_x*360 +image_y];
-   total_i += sin_filter_matrix_fix[i][j] * tmp;
-   total_r += cos_filter_matrix_fix[i][j] * tmp;
-  }
- }
-
- uint8_t ret = 0;
- if (total_r >= 0.0 ){
-  ret = 2;
-
- }else{
-  ret = 0;
-
- }
-
- if (total_i >= 0.0 ){
-  ret = ret | 1;
-
- }else{
-  ret = ret | 0;
-
- }
- return ret;
-}
-
-void encode_fix(uint8_t norm_img[64*360],uint8_t bit_code[2048]){_ssdm_SpecArrayDimSize(norm_img, 23040);_ssdm_SpecArrayDimSize(bit_code, 2048);
- int height = 64;
- int width = 360;
-
- int angular_slice = 360;
- int radial_slice = 1024 / angular_slice;
-
- int max_filter = 64 / 3;
-
- int index = 0;
-
- for (int r_slice = 0 ;r_slice < radial_slice ;r_slice++){
-  int radius = ((r_slice * (height - 6)) / (2 * radial_slice)) + 3;
-  int filter_height;
-
-  if (radius < (height - radius)){
-   filter_height = 2 * radius - 1;
-  }else{
-   filter_height = 2 * (height - radius) - 1;
-  }
-  if (filter_height > max_filter) filter_height = max_filter;
-
-  generateGaborKernel_fix(filter_height);
-
-  for (int theta = 0;theta<angular_slice;theta++){
-   int2 temp = gaborPixel_fix(radius,theta,norm_img,filter_height);
-   bit_code[index] = (temp & 2)>>1;
-   bit_code[index+1] = temp & 1;
-   index+=2;
-  }
- }
-}
-
-
-
-
 void writeValues(int values[6],int x, int y,int r1, int r2){_ssdm_SpecArrayDimSize(values, 6);
  values[0] = x;
  values[1] = y;
  values[2] = r1;
  values[3] = r2;
 }
+
 void arrayMethod_fix(AXI_STREAM& INPUT_STREAM,uint8_t code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
  RGB_IMAGE img0(280, 320);
  GRAY_IMAGE img1(280, 320);
@@ -35327,7 +34703,7 @@ _ssdm_op_SpecDataflowPipeline(-1, 0, "");
  find_iris_high_accuracy(img2, r1, x, y,r2,img3);
  hls::Mat2Array<320>(img3, imageIn);
  writeValues(val,x,y,r1,r2);
- core_low(imageIn,imageOut,val);
+ norm_low(imageIn,imageOut,val);
  encode_fix(imageOut,code);
 
 
@@ -35352,12 +34728,11 @@ _ssdm_op_SpecDataflowPipeline(-1, 0, "");
  find_iris_high_accuracy(img2, r1, x, y,r2,img3);
  hls::Mat2Array<320>(img3, imageIn);
  writeValues(val,x,y,r1,r2);
- core_low(imageIn,imageOut,val);
+ norm_low(imageIn,imageOut,val);
  encode(imageOut,code);
 
 
 }
-
 
 void arrayMethodschnell(AXI_STREAM& INPUT_STREAM,uint8_t code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
  NORM_RGB_IMAGE img0(64, 360);
@@ -35376,7 +34751,6 @@ _ssdm_op_SpecDataflowPipeline(-1, 0, "");
 
 
 }
-
 
 void method1(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
  RGB_IMAGE img0(280, 320);
@@ -35398,7 +34772,7 @@ _ssdm_op_SpecDataflowPipeline(-1, 0, "");
  find_iris_high_accuracy(img2, r1, x, y,r2,img3);
  hls::Mat2Array<320>(img3, imageIn);
  writeValues(val,x,y,r1,r2);
- core_low(imageIn,imageOut,val);
+ norm_low(imageIn,imageOut,val);
  hls::Array2Mat<360>(imageOut, img4);
  hls::CvtColor<HLS_GRAY2RGB>(img4, img5);
  hls::Mat2AXIvideo(img5, outputStream);

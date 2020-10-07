@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
   <source>
-    <originFiles name="definitions.hpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\definitions.hpp"/>
-    <originFiles name="sine.cpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\sine.cpp"/>
-    <originFiles name="sine.hpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\sine.hpp"/>
-    <originFiles name="toplevel.cpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\toplevel.cpp"/>
     <originFiles name="toplevel.hpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\toplevel.hpp"/>
+    <originFiles name="toplevel.cpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\toplevel.cpp"/>
+    <originFiles name="sine.hpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\sine.hpp"/>
+    <originFiles name="sine.cpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\sine.cpp"/>
+    <originFiles name="definitions.hpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\definitions.hpp"/>
+    <originFiles name="segmentation.hpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\segmentation.hpp"/>
+    <originFiles name="segmentation.cpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\segmentation.cpp"/>
+    <originFiles name="gabor.hpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\gabor.hpp"/>
+    <originFiles name="gabor.cpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\gabor.cpp"/>
+    <originFiles name="normalization.hpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\normalization.hpp"/>
+    <originFiles name="normalization.cpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\normalization.cpp"/>
   </source>
   <testbench>
     <originFiles name="testfile.cpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\testfile.cpp"/>

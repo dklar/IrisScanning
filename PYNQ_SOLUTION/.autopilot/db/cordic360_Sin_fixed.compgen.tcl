@@ -1,7 +1,7 @@
 # This script segment is generated automatically by AutoPilot
 
-set id 67
-set name top_level_fptruncncg
+set id 65
+set name top_level2_fptrunncg
 set corename simcore_fptrunc
 set op fptrunc
 set stage_num 2
@@ -82,8 +82,8 @@ puts "@W \[IMPL-101\] Cannot find ::AESL_LIB_XILINX_FPV6::fpv6_gen, check your p
 }
 
 
-set id 69
-set name top_level_dadd_64ocq
+set id 67
+set name top_level2_dadd_6ocq
 set corename simcore_dadd
 set op dadd
 set stage_num 5
@@ -173,8 +173,8 @@ puts "@W \[IMPL-101\] Cannot find ::AESL_LIB_XILINX_FPV6::fpv6_gen, check your p
 }
 
 
-set id 70
-set name top_level_dcmp_64pcA
+set id 68
+set name top_level2_dcmp_6pcA
 set corename simcore_dcmp
 set op dcmp
 set stage_num 2
@@ -277,7 +277,7 @@ if {${::AESL::PGuard_autoexp_gen}} {
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 75 \
+    id 73 \
     name x \
     type other \
     dir I \

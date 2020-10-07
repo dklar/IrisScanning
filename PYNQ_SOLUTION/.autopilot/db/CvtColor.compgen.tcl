@@ -1,7 +1,7 @@
 # This script segment is generated automatically by AutoPilot
 
-set id 19
-set name top_level_mul_mulbkb
+set id 17
+set name top_level2_mul_mubkb
 set corename simcore_mul
 set op mul
 set stage_num 1
@@ -76,8 +76,8 @@ puts "@W \[IMPL-101\] Cannot find ::AESL_LIB_VIRTEX::xil_gen_dsp48, check your p
 }
 
 
-set id 20
-set name top_level_mac_mulcud
+set id 18
+set name top_level2_mac_mucud
 set corename simcore_mac
 set op mac
 set stage_num 1
@@ -158,8 +158,8 @@ puts "@W \[IMPL-101\] Cannot find ::AESL_LIB_VIRTEX::xil_gen_dsp48, check your p
 }
 
 
-set id 21
-set name top_level_mac_muldEe
+set id 19
+set name top_level2_mac_mudEe
 set corename simcore_mac
 set op mac
 set stage_num 1
@@ -250,7 +250,7 @@ if {${::AESL::PGuard_autoexp_gen}} {
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 25 \
+    id 23 \
     name p_src_rows_V \
     type fifo \
     dir I \
@@ -265,7 +265,7 @@ eval "cg_default_interface_gen_dc { \
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 26 \
+    id 24 \
     name p_src_cols_V \
     type fifo \
     dir I \
@@ -280,7 +280,7 @@ eval "cg_default_interface_gen_dc { \
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 27 \
+    id 25 \
     name p_src_data_stream_0_V \
     type fifo \
     dir I \
@@ -295,7 +295,7 @@ eval "cg_default_interface_gen_dc { \
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 28 \
+    id 26 \
     name p_src_data_stream_1_V \
     type fifo \
     dir I \
@@ -310,7 +310,7 @@ eval "cg_default_interface_gen_dc { \
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 29 \
+    id 27 \
     name p_src_data_stream_2_V \
     type fifo \
     dir I \
@@ -325,7 +325,7 @@ eval "cg_default_interface_gen_dc { \
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 30 \
+    id 28 \
     name p_dst_data_stream_V \
     type fifo \
     dir O \

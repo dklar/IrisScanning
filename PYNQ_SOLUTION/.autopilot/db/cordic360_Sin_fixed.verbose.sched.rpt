@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'cordic360_Sin_fixed'
 ================================================================
-* Date:           Thu Oct  1 13:57:15 2020
+* Date:           Tue Oct  6 18:21:00 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        Iris-recognition
@@ -20,7 +20,7 @@
     +--------+----------+----------+------------+
     |  Clock |  Target  | Estimated| Uncertainty|
     +--------+----------+----------+------------+
-    |ap_clk  | 10.00 ns | 8.670 ns |   1.25 ns  |
+    |ap_clk  | 10.00 ns | 8.621 ns |   1.25 ns  |
     +--------+----------+----------+------------+
 
 + Latency: 
@@ -139,14 +139,14 @@ ST_4 : Operation 55 [5/5] (8.23ns)   --->   "%tmp_2 = fadd double %tmp, 0xC01921
 State 5 <SV = 4> <Delay = 8.23>
 ST_5 : Operation 56 [1/2] (5.46ns)   --->   "%tmp_10 = fcmp ogt double %tmp, 0x400921FB54442D11" [Iris-recognition/sine.cpp:151]   --->   Operation 56 'dcmp' 'tmp_10' <Predicate = true> <Delay = 5.46> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 1> <II = 1> <Delay = 5.46> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
 ST_5 : Operation 57 [1/1] (0.97ns)   --->   "%and_ln151 = and i1 %or_ln148, %tmp_10" [Iris-recognition/sine.cpp:151]   --->   Operation 57 'and' 'and_ln151' <Predicate = true> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
-ST_5 : Operation 58 [1/1] (0.00ns)   --->   "br i1 %and_ln151, label %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit, label %3" [Iris-recognition/sine.cpp:151]   --->   Operation 58 'br' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 58 [1/1] (0.00ns)   --->   "br i1 %and_ln151, label %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit, label %3" [Iris-recognition/sine.cpp:151]   --->   Operation 58 'br' <Predicate = true> <Delay = 0.00>
 ST_5 : Operation 59 [2/2] (5.46ns)   --->   "%tmp_11 = fcmp ogt double %tmp, 0x3FF921FB54524550" [Iris-recognition/sine.cpp:154]   --->   Operation 59 'dcmp' 'tmp_11' <Predicate = (!and_ln151)> <Delay = 5.46> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 1> <II = 1> <Delay = 5.46> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
 ST_5 : Operation 60 [5/5] (8.23ns)   --->   "%tmp_4 = fadd double %tmp, 0xC00921FB54442D11" [Iris-recognition/sine.cpp:152]   --->   Operation 60 'dadd' 'tmp_4' <Predicate = (and_ln151)> <Delay = 8.23> <Core = "DAddSub">   --->   Core 115 'DAddSub' <Latency = 4> <II = 1> <Delay = 8.23> <FuncUnit> <Opcode : 'dadd' 'dsub'> <InPorts = 2> <OutPorts = 1>
 
 State 6 <SV = 5> <Delay = 8.23>
 ST_6 : Operation 61 [1/2] (5.46ns)   --->   "%tmp_11 = fcmp ogt double %tmp, 0x3FF921FB54524550" [Iris-recognition/sine.cpp:154]   --->   Operation 61 'dcmp' 'tmp_11' <Predicate = true> <Delay = 5.46> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 1> <II = 1> <Delay = 5.46> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
 ST_6 : Operation 62 [1/1] (0.97ns)   --->   "%and_ln154 = and i1 %or_ln148, %tmp_11" [Iris-recognition/sine.cpp:154]   --->   Operation 62 'and' 'and_ln154' <Predicate = true> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
-ST_6 : Operation 63 [1/1] (0.00ns)   --->   "br i1 %and_ln154, label %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35, label %4" [Iris-recognition/sine.cpp:154]   --->   Operation 63 'br' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 63 [1/1] (0.00ns)   --->   "br i1 %and_ln154, label %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35, label %4" [Iris-recognition/sine.cpp:154]   --->   Operation 63 'br' <Predicate = true> <Delay = 0.00>
 ST_6 : Operation 64 [2/2] (5.46ns)   --->   "%tmp_12 = fcmp ogt double %tmp, 0xC00921FB54442D11" [Iris-recognition/sine.cpp:157]   --->   Operation 64 'dcmp' 'tmp_12' <Predicate = (!and_ln154)> <Delay = 5.46> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 1> <II = 1> <Delay = 5.46> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
 ST_6 : Operation 65 [2/2] (5.46ns)   --->   "%tmp_13 = fcmp ole double %tmp, 0xBFF921FB54524550" [Iris-recognition/sine.cpp:157]   --->   Operation 65 'dcmp' 'tmp_13' <Predicate = (!and_ln154)> <Delay = 5.46> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 1> <II = 1> <Delay = 5.46> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
 ST_6 : Operation 66 [5/5] (8.23ns)   --->   "%tmp_7 = fadd double %tmp, 0xC00921FB54442D11" [Iris-recognition/sine.cpp:155]   --->   Operation 66 'dadd' 'tmp_7' <Predicate = (and_ln154)> <Delay = 8.23> <Core = "DAddSub">   --->   Core 115 'DAddSub' <Latency = 4> <II = 1> <Delay = 8.23> <FuncUnit> <Opcode : 'dadd' 'dsub'> <InPorts = 2> <OutPorts = 1>
@@ -156,7 +156,7 @@ ST_7 : Operation 67 [1/2] (5.46ns)   --->   "%tmp_12 = fcmp ogt double %tmp, 0xC
 ST_7 : Operation 68 [1/1] (0.00ns) (grouped into LUT with out node and_ln157_1)   --->   "%and_ln157 = and i1 %or_ln148, %tmp_12" [Iris-recognition/sine.cpp:157]   --->   Operation 68 'and' 'and_ln157' <Predicate = true> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
 ST_7 : Operation 69 [1/2] (5.46ns)   --->   "%tmp_13 = fcmp ole double %tmp, 0xBFF921FB54524550" [Iris-recognition/sine.cpp:157]   --->   Operation 69 'dcmp' 'tmp_13' <Predicate = true> <Delay = 5.46> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 1> <II = 1> <Delay = 5.46> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
 ST_7 : Operation 70 [1/1] (0.97ns) (out node of the LUT)   --->   "%and_ln157_1 = and i1 %and_ln157, %tmp_13" [Iris-recognition/sine.cpp:157]   --->   Operation 70 'and' 'and_ln157_1' <Predicate = true> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
-ST_7 : Operation 71 [1/1] (0.00ns)   --->   "br i1 %and_ln157_1, label %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26, label %5" [Iris-recognition/sine.cpp:157]   --->   Operation 71 'br' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 71 [1/1] (0.00ns)   --->   "br i1 %and_ln157_1, label %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26, label %5" [Iris-recognition/sine.cpp:157]   --->   Operation 71 'br' <Predicate = true> <Delay = 0.00>
 ST_7 : Operation 72 [2/2] (6.34ns)   --->   "%agg_result_ret3 = call fastcc i8 @cordicSin_fix(float %x_read)" [Iris-recognition/sine.cpp:160]   --->   Operation 72 'call' 'agg_result_ret3' <Predicate = (!and_ln157_1)> <Delay = 6.34> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
 ST_7 : Operation 73 [5/5] (8.23ns)   --->   "%tmp_s = fadd double %tmp, 0x400921FB54442D11" [Iris-recognition/sine.cpp:158]   --->   Operation 73 'dadd' 'tmp_s' <Predicate = (and_ln157_1)> <Delay = 8.23> <Core = "DAddSub">   --->   Core 115 'DAddSub' <Latency = 4> <II = 1> <Delay = 8.23> <FuncUnit> <Opcode : 'dadd' 'dsub'> <InPorts = 2> <OutPorts = 1>
 
@@ -183,13 +183,13 @@ State 14 <SV = 12> <Delay = 5.20>
 ST_14 : Operation 81 [1/2] (5.20ns)   --->   "%tmp_1 = fptrunc double %tmp_s to float" [Iris-recognition/sine.cpp:158]   --->   Operation 81 'fptrunc' 'tmp_1' <Predicate = true> <Delay = 5.20> <Core = "Double2Float">   --->   Core 123 'Double2Float' <Latency = 1> <II = 1> <Delay = 5.20> <FuncUnit> <Opcode : 'fptrunc'> <InPorts = 1> <OutPorts = 1>
 
 State 15 <SV = 13> <Delay = 6.34>
-ST_15 : Operation 82 [2/2] (6.34ns)   --->   "%p_Val2_49 = call fastcc i8 @cordicSin_fix(float %tmp_1)" [Iris-recognition/sine.cpp:158]   --->   Operation 82 'call' 'p_Val2_49' <Predicate = true> <Delay = 6.34> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_15 : Operation 82 [2/2] (6.34ns)   --->   "%p_Val2_115 = call fastcc i8 @cordicSin_fix(float %tmp_1)" [Iris-recognition/sine.cpp:158]   --->   Operation 82 'call' 'p_Val2_115' <Predicate = true> <Delay = 6.34> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
 
 State 16 <SV = 14> <Delay = 3.82>
-ST_16 : Operation 83 [1/2] (0.00ns)   --->   "%p_Val2_49 = call fastcc i8 @cordicSin_fix(float %tmp_1)" [Iris-recognition/sine.cpp:158]   --->   Operation 83 'call' 'p_Val2_49' <Predicate = (!and_ln148 & !and_ln151 & !and_ln154 & and_ln157_1)> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
-ST_16 : Operation 84 [1/1] (1.91ns)   --->   "%sub_ln703_2 = sub i8 0, %p_Val2_49" [Iris-recognition/sine.cpp:158]   --->   Operation 84 'sub' 'sub_ln703_2' <Predicate = (!and_ln148 & !and_ln151 & !and_ln154 & and_ln157_1)> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_16 : Operation 83 [1/2] (0.00ns)   --->   "%p_Val2_115 = call fastcc i8 @cordicSin_fix(float %tmp_1)" [Iris-recognition/sine.cpp:158]   --->   Operation 83 'call' 'p_Val2_115' <Predicate = (!and_ln148 & !and_ln151 & !and_ln154 & and_ln157_1)> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_16 : Operation 84 [1/1] (1.91ns)   --->   "%sub_ln703_5 = sub i8 0, %p_Val2_115" [Iris-recognition/sine.cpp:158]   --->   Operation 84 'sub' 'sub_ln703_5' <Predicate = (!and_ln148 & !and_ln151 & !and_ln154 & and_ln157_1)> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
 ST_16 : Operation 85 [1/1] (1.90ns)   --->   "br label %6" [Iris-recognition/sine.cpp:158]   --->   Operation 85 'br' <Predicate = (!and_ln148 & !and_ln151 & !and_ln154 & and_ln157_1)> <Delay = 1.90>
-ST_16 : Operation 86 [1/1] (0.00ns)   --->   "%agg_result_0 = phi i8 [ %sub_ln703, %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit ], [ %sub_ln703_1, %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35 ], [ %agg_result_ret3, %5 ], [ %sub_ln703_2, %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26 ], [ %agg_result_ret, %1 ]" [Iris-recognition/sine.cpp:152]   --->   Operation 86 'phi' 'agg_result_0' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 86 [1/1] (0.00ns)   --->   "%agg_result_0 = phi i8 [ %sub_ln703, %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit ], [ %sub_ln703_4, %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35 ], [ %agg_result_ret3, %5 ], [ %sub_ln703_5, %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26 ], [ %agg_result_ret, %1 ]" [Iris-recognition/sine.cpp:152]   --->   Operation 86 'phi' 'agg_result_0' <Predicate = true> <Delay = 0.00>
 ST_16 : Operation 87 [1/1] (0.00ns)   --->   "ret i8 %agg_result_0" [Iris-recognition/sine.cpp:161]   --->   Operation 87 'ret' <Predicate = true> <Delay = 0.00>
 
 State 17 <SV = 6> <Delay = 8.23>
@@ -211,11 +211,11 @@ State 22 <SV = 11> <Delay = 5.20>
 ST_22 : Operation 93 [1/2] (5.20ns)   --->   "%tmp_8 = fptrunc double %tmp_7 to float" [Iris-recognition/sine.cpp:155]   --->   Operation 93 'fptrunc' 'tmp_8' <Predicate = true> <Delay = 5.20> <Core = "Double2Float">   --->   Core 123 'Double2Float' <Latency = 1> <II = 1> <Delay = 5.20> <FuncUnit> <Opcode : 'fptrunc'> <InPorts = 1> <OutPorts = 1>
 
 State 23 <SV = 12> <Delay = 6.34>
-ST_23 : Operation 94 [2/2] (6.34ns)   --->   "%p_Val2_48 = call fastcc i8 @cordicSin_fix(float %tmp_8)" [Iris-recognition/sine.cpp:155]   --->   Operation 94 'call' 'p_Val2_48' <Predicate = true> <Delay = 6.34> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_23 : Operation 94 [2/2] (6.34ns)   --->   "%p_Val2_114 = call fastcc i8 @cordicSin_fix(float %tmp_8)" [Iris-recognition/sine.cpp:155]   --->   Operation 94 'call' 'p_Val2_114' <Predicate = true> <Delay = 6.34> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
 
 State 24 <SV = 13> <Delay = 1.91>
-ST_24 : Operation 95 [1/2] (0.00ns)   --->   "%p_Val2_48 = call fastcc i8 @cordicSin_fix(float %tmp_8)" [Iris-recognition/sine.cpp:155]   --->   Operation 95 'call' 'p_Val2_48' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
-ST_24 : Operation 96 [1/1] (1.91ns)   --->   "%sub_ln703_1 = sub i8 0, %p_Val2_48" [Iris-recognition/sine.cpp:155]   --->   Operation 96 'sub' 'sub_ln703_1' <Predicate = true> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_24 : Operation 95 [1/2] (0.00ns)   --->   "%p_Val2_114 = call fastcc i8 @cordicSin_fix(float %tmp_8)" [Iris-recognition/sine.cpp:155]   --->   Operation 95 'call' 'p_Val2_114' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_24 : Operation 96 [1/1] (1.91ns)   --->   "%sub_ln703_4 = sub i8 0, %p_Val2_114" [Iris-recognition/sine.cpp:155]   --->   Operation 96 'sub' 'sub_ln703_4' <Predicate = true> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
 ST_24 : Operation 97 [1/1] (1.90ns)   --->   "br label %6" [Iris-recognition/sine.cpp:155]   --->   Operation 97 'br' <Predicate = true> <Delay = 1.90>
 
 State 25 <SV = 5> <Delay = 8.23>
@@ -306,7 +306,7 @@ The critical path consists of the following:
 
  <State 8>: 1.91ns
 The critical path consists of the following:
-	multiplexor before 'phi' operation ('agg_result_0', Iris-recognition/sine.cpp:152) with incoming values : ('agg_result_ret3', Iris-recognition/sine.cpp:160) ('sub_ln703_2', Iris-recognition/sine.cpp:158) ('sub_ln703_1', Iris-recognition/sine.cpp:155) ('sub_ln703', Iris-recognition/sine.cpp:152) ('agg_result_ret', Iris-recognition/sine.cpp:149) [56]  (1.91 ns)
+	multiplexor before 'phi' operation ('agg_result_0', Iris-recognition/sine.cpp:152) with incoming values : ('agg_result_ret3', Iris-recognition/sine.cpp:160) ('sub_ln703_5', Iris-recognition/sine.cpp:158) ('sub_ln703_4', Iris-recognition/sine.cpp:155) ('sub_ln703', Iris-recognition/sine.cpp:152) ('agg_result_ret', Iris-recognition/sine.cpp:149) [56]  (1.91 ns)
 
  <State 9>: 8.23ns
 The critical path consists of the following:
@@ -339,9 +339,9 @@ The critical path consists of the following:
  <State 16>: 3.82ns
 The critical path consists of the following:
 	'call' operation ('__Val2__', Iris-recognition/sine.cpp:158) to 'cordicSin_fix' [35]  (0 ns)
-	'sub' operation ('sub_ln703_2', Iris-recognition/sine.cpp:158) [36]  (1.92 ns)
-	multiplexor before 'phi' operation ('agg_result_0', Iris-recognition/sine.cpp:152) with incoming values : ('agg_result_ret3', Iris-recognition/sine.cpp:160) ('sub_ln703_2', Iris-recognition/sine.cpp:158) ('sub_ln703_1', Iris-recognition/sine.cpp:155) ('sub_ln703', Iris-recognition/sine.cpp:152) ('agg_result_ret', Iris-recognition/sine.cpp:149) [56]  (1.91 ns)
-	'phi' operation ('agg_result_0', Iris-recognition/sine.cpp:152) with incoming values : ('agg_result_ret3', Iris-recognition/sine.cpp:160) ('sub_ln703_2', Iris-recognition/sine.cpp:158) ('sub_ln703_1', Iris-recognition/sine.cpp:155) ('sub_ln703', Iris-recognition/sine.cpp:152) ('agg_result_ret', Iris-recognition/sine.cpp:149) [56]  (0 ns)
+	'sub' operation ('sub_ln703_5', Iris-recognition/sine.cpp:158) [36]  (1.92 ns)
+	multiplexor before 'phi' operation ('agg_result_0', Iris-recognition/sine.cpp:152) with incoming values : ('agg_result_ret3', Iris-recognition/sine.cpp:160) ('sub_ln703_5', Iris-recognition/sine.cpp:158) ('sub_ln703_4', Iris-recognition/sine.cpp:155) ('sub_ln703', Iris-recognition/sine.cpp:152) ('agg_result_ret', Iris-recognition/sine.cpp:149) [56]  (1.91 ns)
+	'phi' operation ('agg_result_0', Iris-recognition/sine.cpp:152) with incoming values : ('agg_result_ret3', Iris-recognition/sine.cpp:160) ('sub_ln703_5', Iris-recognition/sine.cpp:158) ('sub_ln703_4', Iris-recognition/sine.cpp:155) ('sub_ln703', Iris-recognition/sine.cpp:152) ('agg_result_ret', Iris-recognition/sine.cpp:149) [56]  (0 ns)
 
  <State 17>: 8.23ns
 The critical path consists of the following:
@@ -374,7 +374,7 @@ The critical path consists of the following:
  <State 24>: 1.92ns
 The critical path consists of the following:
 	'call' operation ('__Val2__', Iris-recognition/sine.cpp:155) to 'cordicSin_fix' [41]  (0 ns)
-	'sub' operation ('sub_ln703_1', Iris-recognition/sine.cpp:155) [42]  (1.92 ns)
+	'sub' operation ('sub_ln703_4', Iris-recognition/sine.cpp:155) [42]  (1.92 ns)
 
  <State 25>: 8.23ns
 The critical path consists of the following:
@@ -439,7 +439,7 @@ The critical path consists of the following:
 
  <State 40>: 1.91ns
 The critical path consists of the following:
-	multiplexor before 'phi' operation ('agg_result_0', Iris-recognition/sine.cpp:152) with incoming values : ('agg_result_ret3', Iris-recognition/sine.cpp:160) ('sub_ln703_2', Iris-recognition/sine.cpp:158) ('sub_ln703_1', Iris-recognition/sine.cpp:155) ('sub_ln703', Iris-recognition/sine.cpp:152) ('agg_result_ret', Iris-recognition/sine.cpp:149) [56]  (1.91 ns)
+	multiplexor before 'phi' operation ('agg_result_0', Iris-recognition/sine.cpp:152) with incoming values : ('agg_result_ret3', Iris-recognition/sine.cpp:160) ('sub_ln703_5', Iris-recognition/sine.cpp:158) ('sub_ln703_4', Iris-recognition/sine.cpp:155) ('sub_ln703', Iris-recognition/sine.cpp:152) ('agg_result_ret', Iris-recognition/sine.cpp:149) [56]  (1.91 ns)
 
 
 ============================================================

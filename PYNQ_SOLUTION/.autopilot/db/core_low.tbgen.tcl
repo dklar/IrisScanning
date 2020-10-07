@@ -97,12 +97,12 @@ set RtlHierarchyInfo {[
 			{"Name" : "p_read1", "Type" : "None", "Direction" : "I", "DependentProc" : "0", "DependentChan" : "0"},
 			{"Name" : "p_read2", "Type" : "None", "Direction" : "I", "DependentProc" : "0", "DependentChan" : "0"},
 			{"Name" : "p_read3", "Type" : "None", "Direction" : "I", "DependentProc" : "0", "DependentChan" : "0"},
-			{"Name" : "arctan_V", "Type" : "Memory", "Direction" : "I",
+			{"Name" : "arctan_V233", "Type" : "Memory", "Direction" : "I",
 				"SubConnect" : [
-					{"ID" : "10", "SubInstance" : "grp_cordicCos_fix_fu_261", "Port" : "arctan_V"}]},
-			{"Name" : "arctan_V268", "Type" : "Memory", "Direction" : "I",
+					{"ID" : "10", "SubInstance" : "grp_cordicCos_fix_fu_261", "Port" : "arctan_V233"}]},
+			{"Name" : "arctan_V232", "Type" : "Memory", "Direction" : "I",
 				"SubConnect" : [
-					{"ID" : "1", "SubInstance" : "grp_cordic360_Sin_fixed_fu_254", "Port" : "arctan_V268"}]}]},
+					{"ID" : "1", "SubInstance" : "grp_cordic360_Sin_fixed_fu_254", "Port" : "arctan_V232"}]}]},
 	{"ID" : "1", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254", "Parent" : "0", "Child" : ["2", "5", "6", "7", "8", "9"],
 		"CDFG" : "cordic360_Sin_fixed",
 		"Protocol" : "ap_ctrl_hs",
@@ -124,9 +124,9 @@ set RtlHierarchyInfo {[
 			{"State" : "ap_ST_fsm_state40", "FSM" : "ap_CS_fsm", "SubInstance" : "grp_cordicSin_fix_fu_53"}],
 		"Port" : [
 			{"Name" : "x", "Type" : "None", "Direction" : "I"},
-			{"Name" : "arctan_V268", "Type" : "Memory", "Direction" : "I",
+			{"Name" : "arctan_V232", "Type" : "Memory", "Direction" : "I",
 				"SubConnect" : [
-					{"ID" : "2", "SubInstance" : "grp_cordicSin_fix_fu_53", "Port" : "arctan_V268"}]}]},
+					{"ID" : "2", "SubInstance" : "grp_cordicSin_fix_fu_53", "Port" : "arctan_V232"}]}]},
 	{"ID" : "2", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254.grp_cordicSin_fix_fu_53", "Parent" : "1", "Child" : ["3", "4"],
 		"CDFG" : "cordicSin_fix",
 		"Protocol" : "ap_ctrl_hs",
@@ -142,14 +142,14 @@ set RtlHierarchyInfo {[
 		"HasNonBlockingOperation" : "0",
 		"Port" : [
 			{"Name" : "x", "Type" : "None", "Direction" : "I"},
-			{"Name" : "arctan_V268", "Type" : "Memory", "Direction" : "I"}]},
-	{"ID" : "3", "Level" : "3", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254.grp_cordicSin_fix_fu_53.arctan_V268_U", "Parent" : "2"},
-	{"ID" : "4", "Level" : "3", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254.grp_cordicSin_fix_fu_53.top_level_fpext_3lbW_U65", "Parent" : "2"},
-	{"ID" : "5", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254.top_level_fptruncncg_U67", "Parent" : "1"},
-	{"ID" : "6", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254.top_level_fpext_3lbW_U68", "Parent" : "1"},
-	{"ID" : "7", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254.top_level_dadd_64ocq_U69", "Parent" : "1"},
-	{"ID" : "8", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254.top_level_dcmp_64pcA_U70", "Parent" : "1"},
-	{"ID" : "9", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254.top_level_dcmp_64pcA_U71", "Parent" : "1"},
+			{"Name" : "arctan_V232", "Type" : "Memory", "Direction" : "I"}]},
+	{"ID" : "3", "Level" : "3", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254.grp_cordicSin_fix_fu_53.arctan_V232_U", "Parent" : "2"},
+	{"ID" : "4", "Level" : "3", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254.grp_cordicSin_fix_fu_53.top_level2_fpext_lbW_U63", "Parent" : "2"},
+	{"ID" : "5", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254.top_level2_fptrunncg_U65", "Parent" : "1"},
+	{"ID" : "6", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254.top_level2_fpext_lbW_U66", "Parent" : "1"},
+	{"ID" : "7", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254.top_level2_dadd_6ocq_U67", "Parent" : "1"},
+	{"ID" : "8", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254.top_level2_dcmp_6pcA_U68", "Parent" : "1"},
+	{"ID" : "9", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordic360_Sin_fixed_fu_254.top_level2_dcmp_6pcA_U69", "Parent" : "1"},
 	{"ID" : "10", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_cordicCos_fix_fu_261", "Parent" : "0", "Child" : ["11", "12"],
 		"CDFG" : "cordicCos_fix",
 		"Protocol" : "ap_ctrl_hs",
@@ -165,28 +165,28 @@ set RtlHierarchyInfo {[
 		"HasNonBlockingOperation" : "0",
 		"Port" : [
 			{"Name" : "x", "Type" : "None", "Direction" : "I"},
-			{"Name" : "arctan_V", "Type" : "Memory", "Direction" : "I"}]},
-	{"ID" : "11", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordicCos_fix_fu_261.arctan_V_U", "Parent" : "10"},
-	{"ID" : "12", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordicCos_fix_fu_261.top_level_fpext_3lbW_U61", "Parent" : "10"},
-	{"ID" : "13", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_faddfsuqcK_U76", "Parent" : "0"},
-	{"ID" : "14", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_fadd_32g8j_U77", "Parent" : "0"},
-	{"ID" : "15", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_fadd_32g8j_U78", "Parent" : "0"},
-	{"ID" : "16", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_fadd_32g8j_U79", "Parent" : "0"},
-	{"ID" : "17", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_fmul_32hbi_U80", "Parent" : "0"},
-	{"ID" : "18", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_fmul_32hbi_U81", "Parent" : "0"},
-	{"ID" : "19", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_fmul_32hbi_U82", "Parent" : "0"},
-	{"ID" : "20", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_fmul_32hbi_U83", "Parent" : "0"},
-	{"ID" : "21", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_sitofp_ibs_U84", "Parent" : "0"},
-	{"ID" : "22", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_sitofp_ibs_U85", "Parent" : "0"},
-	{"ID" : "23", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_sitofp_ibs_U86", "Parent" : "0"},
-	{"ID" : "24", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_sitofp_ibs_U87", "Parent" : "0"},
-	{"ID" : "25", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_fptruncncg_U88", "Parent" : "0"},
-	{"ID" : "26", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_fpext_3lbW_U89", "Parent" : "0"},
-	{"ID" : "27", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_dadd_64ocq_U90", "Parent" : "0"},
-	{"ID" : "28", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_dmul_64rcU_U91", "Parent" : "0"},
-	{"ID" : "29", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_dcmp_64pcA_U92", "Parent" : "0"},
-	{"ID" : "30", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_dcmp_64pcA_U93", "Parent" : "0"},
-	{"ID" : "31", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_sitodp_sc4_U94", "Parent" : "0"}]}
+			{"Name" : "arctan_V233", "Type" : "Memory", "Direction" : "I"}]},
+	{"ID" : "11", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordicCos_fix_fu_261.arctan_V233_U", "Parent" : "10"},
+	{"ID" : "12", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordicCos_fix_fu_261.top_level2_fpext_lbW_U59", "Parent" : "10"},
+	{"ID" : "13", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_faddfsqcK_U74", "Parent" : "0"},
+	{"ID" : "14", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_fadd_3g8j_U75", "Parent" : "0"},
+	{"ID" : "15", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_fadd_3g8j_U76", "Parent" : "0"},
+	{"ID" : "16", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_fadd_3g8j_U77", "Parent" : "0"},
+	{"ID" : "17", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_fmul_3hbi_U78", "Parent" : "0"},
+	{"ID" : "18", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_fmul_3hbi_U79", "Parent" : "0"},
+	{"ID" : "19", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_fmul_3hbi_U80", "Parent" : "0"},
+	{"ID" : "20", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_fmul_3hbi_U81", "Parent" : "0"},
+	{"ID" : "21", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_sitofpibs_U82", "Parent" : "0"},
+	{"ID" : "22", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_sitofpibs_U83", "Parent" : "0"},
+	{"ID" : "23", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_sitofpibs_U84", "Parent" : "0"},
+	{"ID" : "24", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_sitofpibs_U85", "Parent" : "0"},
+	{"ID" : "25", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_fptrunncg_U86", "Parent" : "0"},
+	{"ID" : "26", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_fpext_lbW_U87", "Parent" : "0"},
+	{"ID" : "27", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_dadd_6ocq_U88", "Parent" : "0"},
+	{"ID" : "28", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_dmul_6rcU_U89", "Parent" : "0"},
+	{"ID" : "29", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_dcmp_6pcA_U90", "Parent" : "0"},
+	{"ID" : "30", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_dcmp_6pcA_U91", "Parent" : "0"},
+	{"ID" : "31", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_sitodpsc4_U92", "Parent" : "0"}]}
 
 
 set ArgLastReadFirstWriteLatency {
@@ -197,17 +197,17 @@ set ArgLastReadFirstWriteLatency {
 		p_read1 {Type I LastRead 0 FirstWrite -1}
 		p_read2 {Type I LastRead 0 FirstWrite -1}
 		p_read3 {Type I LastRead 0 FirstWrite -1}
-		arctan_V {Type I LastRead -1 FirstWrite -1}
-		arctan_V268 {Type I LastRead -1 FirstWrite -1}}
+		arctan_V233 {Type I LastRead -1 FirstWrite -1}
+		arctan_V232 {Type I LastRead -1 FirstWrite -1}}
 	cordic360_Sin_fixed {
 		x {Type I LastRead 0 FirstWrite -1}
-		arctan_V268 {Type I LastRead -1 FirstWrite -1}}
+		arctan_V232 {Type I LastRead -1 FirstWrite -1}}
 	cordicSin_fix {
 		x {Type I LastRead 0 FirstWrite -1}
-		arctan_V268 {Type I LastRead -1 FirstWrite -1}}
+		arctan_V232 {Type I LastRead -1 FirstWrite -1}}
 	cordicCos_fix {
 		x {Type I LastRead 0 FirstWrite -1}
-		arctan_V {Type I LastRead -1 FirstWrite -1}}}
+		arctan_V233 {Type I LastRead -1 FirstWrite -1}}}
 
 set hasDtUnsupportedChannel 0
 

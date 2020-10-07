@@ -1763,7 +1763,7 @@
 					<Obj>
 						<type>0</type>
 						<id>56</id>
-						<name>tmp_8</name>
+						<name>tmp_34</name>
 						<fileName>C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h</fileName>
 						<fileDirectory>C:\Users\Dennis\VivadoHLS\Final</fileDirectory>
 						<lineNumber>679</lineNumber>

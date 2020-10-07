@@ -1,5 +1,5 @@
 
-set TopModule "top_level"
+set TopModule "top_level2"
 set ClockPeriod 10
 set ClockList ap_clk
 set HasVivadoClockPeriod 0

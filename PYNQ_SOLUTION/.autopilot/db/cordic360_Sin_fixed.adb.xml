@@ -554,7 +554,7 @@
 
 <Node id="18" bw="0" op_0_bw="1" op_1_bw="0" op_2_bw="0">
 <![CDATA[
-:2  br i1 %and_ln151, label %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit, label %3
+:2  br i1 %and_ln151, label %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit, label %3
 
 ]]></Node>
 <StgValue><ssdm name="br_ln151"/></StgValue>
@@ -586,7 +586,7 @@
 
 <Node id="45" bw="64" op_0_bw="64" op_1_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp_4 = fadd double %tmp, 0xC00921FB54442D11
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp_4 = fadd double %tmp, 0xC00921FB54442D11
 
 ]]></Node>
 <StgValue><ssdm name="tmp_4"/></StgValue>
@@ -634,7 +634,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp
 
 <Node id="22" bw="0" op_0_bw="1" op_1_bw="0" op_2_bw="0">
 <![CDATA[
-:2  br i1 %and_ln154, label %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35, label %4
+:2  br i1 %and_ln154, label %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35, label %4
 
 ]]></Node>
 <StgValue><ssdm name="br_ln154"/></StgValue>
@@ -682,7 +682,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp
 
 <Node id="39" bw="64" op_0_bw="64" op_1_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %tmp_7 = fadd double %tmp, 0xC00921FB54442D11
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %tmp_7 = fadd double %tmp, 0xC00921FB54442D11
 
 ]]></Node>
 <StgValue><ssdm name="tmp_7"/></StgValue>
@@ -760,7 +760,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %t
 
 <Node id="28" bw="0" op_0_bw="1" op_1_bw="0" op_2_bw="0">
 <![CDATA[
-:4  br i1 %and_ln157_1, label %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26, label %5
+:4  br i1 %and_ln157_1, label %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26, label %5
 
 ]]></Node>
 <StgValue><ssdm name="br_ln157"/></StgValue>
@@ -774,7 +774,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %t
 </and_exp></or_exp>
 </condition>
 
-<Node id="30" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="6">
+<Node id="30" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="4">
 <![CDATA[
 :0  %agg_result_ret3 = call fastcc i8 @cordicSin_fix(float %x_read)
 
@@ -792,7 +792,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %t
 
 <Node id="33" bw="64" op_0_bw="64" op_1_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %tmp_s = fadd double %tmp, 0x400921FB54442D11
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %tmp_s = fadd double %tmp, 0x400921FB54442D11
 
 ]]></Node>
 <StgValue><ssdm name="tmp_s"/></StgValue>
@@ -808,7 +808,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %t
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="30" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="6">
+<Node id="30" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="4">
 <![CDATA[
 :0  %agg_result_ret3 = call fastcc i8 @cordicSin_fix(float %x_read)
 
@@ -843,7 +843,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %t
 
 <Node id="33" bw="64" op_0_bw="64" op_1_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %tmp_s = fadd double %tmp, 0x400921FB54442D11
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %tmp_s = fadd double %tmp, 0x400921FB54442D11
 
 ]]></Node>
 <StgValue><ssdm name="tmp_s"/></StgValue>
@@ -861,7 +861,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %t
 
 <Node id="33" bw="64" op_0_bw="64" op_1_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %tmp_s = fadd double %tmp, 0x400921FB54442D11
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %tmp_s = fadd double %tmp, 0x400921FB54442D11
 
 ]]></Node>
 <StgValue><ssdm name="tmp_s"/></StgValue>
@@ -879,7 +879,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %t
 
 <Node id="33" bw="64" op_0_bw="64" op_1_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %tmp_s = fadd double %tmp, 0x400921FB54442D11
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %tmp_s = fadd double %tmp, 0x400921FB54442D11
 
 ]]></Node>
 <StgValue><ssdm name="tmp_s"/></StgValue>
@@ -897,7 +897,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %t
 
 <Node id="33" bw="64" op_0_bw="64" op_1_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %tmp_s = fadd double %tmp, 0x400921FB54442D11
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %tmp_s = fadd double %tmp, 0x400921FB54442D11
 
 ]]></Node>
 <StgValue><ssdm name="tmp_s"/></StgValue>
@@ -915,7 +915,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:0  %t
 
 <Node id="34" bw="32" op_0_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:1  %tmp_1 = fptrunc double %tmp_s to float
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:1  %tmp_1 = fptrunc double %tmp_s to float
 
 ]]></Node>
 <StgValue><ssdm name="tmp_1"/></StgValue>
@@ -933,7 +933,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:1  %t
 
 <Node id="34" bw="32" op_0_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:1  %tmp_1 = fptrunc double %tmp_s to float
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:1  %tmp_1 = fptrunc double %tmp_s to float
 
 ]]></Node>
 <StgValue><ssdm name="tmp_1"/></StgValue>
@@ -949,12 +949,12 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:1  %t
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="35" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="6">
+<Node id="35" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="4">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:2  %p_Val2_49 = call fastcc i8 @cordicSin_fix(float %tmp_1)
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:2  %p_Val2_115 = call fastcc i8 @cordicSin_fix(float %tmp_1)
 
 ]]></Node>
-<StgValue><ssdm name="p_Val2_49"/></StgValue>
+<StgValue><ssdm name="p_Val2_115"/></StgValue>
 </operation>
 </state>
 
@@ -971,12 +971,12 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:2  %p
 </and_exp></or_exp>
 </condition>
 
-<Node id="35" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="6">
+<Node id="35" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="4">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:2  %p_Val2_49 = call fastcc i8 @cordicSin_fix(float %tmp_1)
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:2  %p_Val2_115 = call fastcc i8 @cordicSin_fix(float %tmp_1)
 
 ]]></Node>
-<StgValue><ssdm name="p_Val2_49"/></StgValue>
+<StgValue><ssdm name="p_Val2_115"/></StgValue>
 </operation>
 
 <operation id="84" st_id="16" stage="1" lat="1">
@@ -992,10 +992,10 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:2  %p
 
 <Node id="36" bw="8" op_0_bw="8" op_1_bw="8">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:3  %sub_ln703_2 = sub i8 0, %p_Val2_49
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:3  %sub_ln703_5 = sub i8 0, %p_Val2_115
 
 ]]></Node>
-<StgValue><ssdm name="sub_ln703_2"/></StgValue>
+<StgValue><ssdm name="sub_ln703_5"/></StgValue>
 </operation>
 
 <operation id="85" st_id="16" stage="1" lat="1">
@@ -1011,7 +1011,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:3  %s
 
 <Node id="37" bw="0" op_0_bw="0">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:4  br label %6
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:4  br label %6
 
 ]]></Node>
 <StgValue><ssdm name="br_ln158"/></StgValue>
@@ -1026,7 +1026,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:4  br
 
 <Node id="56" bw="8" op_0_bw="8" op_1_bw="0" op_2_bw="8" op_3_bw="0" op_4_bw="8" op_5_bw="0" op_6_bw="8" op_7_bw="0" op_8_bw="8" op_9_bw="0">
 <![CDATA[
-:0  %agg_result_0 = phi i8 [ %sub_ln703, %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit ], [ %sub_ln703_1, %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35 ], [ %agg_result_ret3, %5 ], [ %sub_ln703_2, %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26 ], [ %agg_result_ret, %1 ]
+:0  %agg_result_0 = phi i8 [ %sub_ln703, %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit ], [ %sub_ln703_4, %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35 ], [ %agg_result_ret3, %5 ], [ %sub_ln703_5, %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26 ], [ %agg_result_ret, %1 ]
 
 ]]></Node>
 <StgValue><ssdm name="agg_result_0"/></StgValue>
@@ -1059,7 +1059,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26:4  br
 
 <Node id="39" bw="64" op_0_bw="64" op_1_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %tmp_7 = fadd double %tmp, 0xC00921FB54442D11
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %tmp_7 = fadd double %tmp, 0xC00921FB54442D11
 
 ]]></Node>
 <StgValue><ssdm name="tmp_7"/></StgValue>
@@ -1077,7 +1077,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %t
 
 <Node id="39" bw="64" op_0_bw="64" op_1_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %tmp_7 = fadd double %tmp, 0xC00921FB54442D11
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %tmp_7 = fadd double %tmp, 0xC00921FB54442D11
 
 ]]></Node>
 <StgValue><ssdm name="tmp_7"/></StgValue>
@@ -1095,7 +1095,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %t
 
 <Node id="39" bw="64" op_0_bw="64" op_1_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %tmp_7 = fadd double %tmp, 0xC00921FB54442D11
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %tmp_7 = fadd double %tmp, 0xC00921FB54442D11
 
 ]]></Node>
 <StgValue><ssdm name="tmp_7"/></StgValue>
@@ -1113,7 +1113,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %t
 
 <Node id="39" bw="64" op_0_bw="64" op_1_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %tmp_7 = fadd double %tmp, 0xC00921FB54442D11
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %tmp_7 = fadd double %tmp, 0xC00921FB54442D11
 
 ]]></Node>
 <StgValue><ssdm name="tmp_7"/></StgValue>
@@ -1131,7 +1131,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:0  %t
 
 <Node id="40" bw="32" op_0_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:1  %tmp_8 = fptrunc double %tmp_7 to float
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:1  %tmp_8 = fptrunc double %tmp_7 to float
 
 ]]></Node>
 <StgValue><ssdm name="tmp_8"/></StgValue>
@@ -1149,7 +1149,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:1  %t
 
 <Node id="40" bw="32" op_0_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:1  %tmp_8 = fptrunc double %tmp_7 to float
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:1  %tmp_8 = fptrunc double %tmp_7 to float
 
 ]]></Node>
 <StgValue><ssdm name="tmp_8"/></StgValue>
@@ -1165,12 +1165,12 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:1  %t
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="41" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="6">
+<Node id="41" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="4">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:2  %p_Val2_48 = call fastcc i8 @cordicSin_fix(float %tmp_8)
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:2  %p_Val2_114 = call fastcc i8 @cordicSin_fix(float %tmp_8)
 
 ]]></Node>
-<StgValue><ssdm name="p_Val2_48"/></StgValue>
+<StgValue><ssdm name="p_Val2_114"/></StgValue>
 </operation>
 </state>
 
@@ -1183,12 +1183,12 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:2  %p
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="41" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="6">
+<Node id="41" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="4">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:2  %p_Val2_48 = call fastcc i8 @cordicSin_fix(float %tmp_8)
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:2  %p_Val2_114 = call fastcc i8 @cordicSin_fix(float %tmp_8)
 
 ]]></Node>
-<StgValue><ssdm name="p_Val2_48"/></StgValue>
+<StgValue><ssdm name="p_Val2_114"/></StgValue>
 </operation>
 
 <operation id="96" st_id="24" stage="1" lat="1">
@@ -1200,10 +1200,10 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:2  %p
 
 <Node id="42" bw="8" op_0_bw="8" op_1_bw="8">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:3  %sub_ln703_1 = sub i8 0, %p_Val2_48
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:3  %sub_ln703_4 = sub i8 0, %p_Val2_114
 
 ]]></Node>
-<StgValue><ssdm name="sub_ln703_1"/></StgValue>
+<StgValue><ssdm name="sub_ln703_4"/></StgValue>
 </operation>
 
 <operation id="97" st_id="24" stage="1" lat="1">
@@ -1215,7 +1215,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:3  %s
 
 <Node id="43" bw="0" op_0_bw="0">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:4  br label %6
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:4  br label %6
 
 ]]></Node>
 <StgValue><ssdm name="br_ln155"/></StgValue>
@@ -1233,7 +1233,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35:4  br
 
 <Node id="45" bw="64" op_0_bw="64" op_1_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp_4 = fadd double %tmp, 0xC00921FB54442D11
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp_4 = fadd double %tmp, 0xC00921FB54442D11
 
 ]]></Node>
 <StgValue><ssdm name="tmp_4"/></StgValue>
@@ -1251,7 +1251,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp
 
 <Node id="45" bw="64" op_0_bw="64" op_1_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp_4 = fadd double %tmp, 0xC00921FB54442D11
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp_4 = fadd double %tmp, 0xC00921FB54442D11
 
 ]]></Node>
 <StgValue><ssdm name="tmp_4"/></StgValue>
@@ -1269,7 +1269,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp
 
 <Node id="45" bw="64" op_0_bw="64" op_1_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp_4 = fadd double %tmp, 0xC00921FB54442D11
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp_4 = fadd double %tmp, 0xC00921FB54442D11
 
 ]]></Node>
 <StgValue><ssdm name="tmp_4"/></StgValue>
@@ -1287,7 +1287,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp
 
 <Node id="45" bw="64" op_0_bw="64" op_1_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp_4 = fadd double %tmp, 0xC00921FB54442D11
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp_4 = fadd double %tmp, 0xC00921FB54442D11
 
 ]]></Node>
 <StgValue><ssdm name="tmp_4"/></StgValue>
@@ -1305,7 +1305,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:0  %tmp
 
 <Node id="46" bw="32" op_0_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:1  %tmp_5 = fptrunc double %tmp_4 to float
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:1  %tmp_5 = fptrunc double %tmp_4 to float
 
 ]]></Node>
 <StgValue><ssdm name="tmp_5"/></StgValue>
@@ -1323,7 +1323,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:1  %tmp
 
 <Node id="46" bw="32" op_0_bw="64">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:1  %tmp_5 = fptrunc double %tmp_4 to float
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:1  %tmp_5 = fptrunc double %tmp_4 to float
 
 ]]></Node>
 <StgValue><ssdm name="tmp_5"/></StgValue>
@@ -1339,9 +1339,9 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:1  %tmp
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="47" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="6">
+<Node id="47" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="4">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:2  %p_Val2_s = call fastcc i8 @cordicSin_fix(float %tmp_5)
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:2  %p_Val2_s = call fastcc i8 @cordicSin_fix(float %tmp_5)
 
 ]]></Node>
 <StgValue><ssdm name="p_Val2_s"/></StgValue>
@@ -1357,9 +1357,9 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:2  %p_V
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="47" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="6">
+<Node id="47" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="4">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:2  %p_Val2_s = call fastcc i8 @cordicSin_fix(float %tmp_5)
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:2  %p_Val2_s = call fastcc i8 @cordicSin_fix(float %tmp_5)
 
 ]]></Node>
 <StgValue><ssdm name="p_Val2_s"/></StgValue>
@@ -1374,7 +1374,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:2  %p_V
 
 <Node id="48" bw="8" op_0_bw="8" op_1_bw="8">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:3  %sub_ln703 = sub i8 0, %p_Val2_s
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:3  %sub_ln703 = sub i8 0, %p_Val2_s
 
 ]]></Node>
 <StgValue><ssdm name="sub_ln703"/></StgValue>
@@ -1389,7 +1389,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:3  %sub
 
 <Node id="49" bw="0" op_0_bw="0">
 <![CDATA[
-_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:4  br label %6
+_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:4  br label %6
 
 ]]></Node>
 <StgValue><ssdm name="br_ln152"/></StgValue>
@@ -1513,7 +1513,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:4  br l
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="53" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="6">
+<Node id="53" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="4">
 <![CDATA[
 :2  %agg_result_ret = call fastcc i8 @cordicSin_fix(float %tmp_3)
 
@@ -1531,7 +1531,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:4  br l
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
 
-<Node id="53" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="6">
+<Node id="53" bw="8" op_0_bw="8" op_1_bw="32" op_2_bw="4">
 <![CDATA[
 :2  %agg_result_ret = call fastcc i8 @cordicSin_fix(float %tmp_3)
 
@@ -1561,8 +1561,8 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:4  br l
 <port id="168" name="x" dir="0" iftype="0">
 <core>NULL</core><StgValue><ssdm name="x"/></StgValue>
 </port>
-<port id="169" name="arctan_V268" dir="0" iftype="1">
-<core>ROM_nP</core><StgValue><ssdm name="arctan_V268"/><MemPortTyVec>1 </MemPortTyVec>
+<port id="169" name="arctan_V232" dir="0" iftype="1">
+<core>ROM_nP</core><StgValue><ssdm name="arctan_V232"/><MemPortTyVec>1 </MemPortTyVec>
 </StgValue>
 </port>
 </ports>
@@ -1685,7 +1685,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:4  br l
 </dataflow>
 <dataflow id="240" from="x_read" to="agg_result_ret3" fromId="41" toId="72">
 </dataflow>
-<dataflow id="241" from="arctan_V268" to="agg_result_ret3" fromId="169" toId="72">
+<dataflow id="241" from="arctan_V232" to="agg_result_ret3" fromId="169" toId="72">
 </dataflow>
 <dataflow id="242" from="tmp" to="tmp_s" fromId="43" toId="73">
 </dataflow>
@@ -1695,7 +1695,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:4  br l
 </dataflow>
 <dataflow id="245" from="x_read" to="agg_result_ret3" fromId="41" toId="74">
 </dataflow>
-<dataflow id="246" from="arctan_V268" to="agg_result_ret3" fromId="169" toId="74">
+<dataflow id="246" from="arctan_V232" to="agg_result_ret3" fromId="169" toId="74">
 </dataflow>
 <dataflow id="247" from="tmp" to="tmp_s" fromId="43" toId="76">
 </dataflow>
@@ -1717,21 +1717,21 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:4  br l
 </dataflow>
 <dataflow id="256" from="tmp_s" to="tmp_1" fromId="79" toId="81">
 </dataflow>
-<dataflow id="257" from="cordicSin_fix" to="p_Val2_49" fromId="238" toId="82">
+<dataflow id="257" from="cordicSin_fix" to="p_Val2_115" fromId="238" toId="82">
 </dataflow>
-<dataflow id="258" from="tmp_1" to="p_Val2_49" fromId="81" toId="82">
+<dataflow id="258" from="tmp_1" to="p_Val2_115" fromId="81" toId="82">
 </dataflow>
-<dataflow id="259" from="arctan_V268" to="p_Val2_49" fromId="169" toId="82">
+<dataflow id="259" from="arctan_V232" to="p_Val2_115" fromId="169" toId="82">
 </dataflow>
-<dataflow id="260" from="cordicSin_fix" to="p_Val2_49" fromId="238" toId="83">
+<dataflow id="260" from="cordicSin_fix" to="p_Val2_115" fromId="238" toId="83">
 </dataflow>
-<dataflow id="261" from="tmp_1" to="p_Val2_49" fromId="81" toId="83">
+<dataflow id="261" from="tmp_1" to="p_Val2_115" fromId="81" toId="83">
 </dataflow>
-<dataflow id="262" from="arctan_V268" to="p_Val2_49" fromId="169" toId="83">
+<dataflow id="262" from="arctan_V232" to="p_Val2_115" fromId="169" toId="83">
 </dataflow>
-<dataflow id="264" from="StgValue_263" to="sub_ln703_2" fromId="263" toId="84">
+<dataflow id="264" from="StgValue_263" to="sub_ln703_5" fromId="263" toId="84">
 </dataflow>
-<dataflow id="265" from="p_Val2_49" to="sub_ln703_2" fromId="83" toId="84">
+<dataflow id="265" from="p_Val2_115" to="sub_ln703_5" fromId="83" toId="84">
 </dataflow>
 <dataflow id="266" from="sub_ln703" to="agg_result_0" fromId="106" toId="86">
 <condition id="-1">
@@ -1740,7 +1740,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:4  br l
 </dataflow>
 <dataflow id="267" from="br_ln152" to="agg_result_0" fromId="107" toId="86">
 </dataflow>
-<dataflow id="268" from="sub_ln703_1" to="agg_result_0" fromId="96" toId="86">
+<dataflow id="268" from="sub_ln703_4" to="agg_result_0" fromId="96" toId="86">
 <condition id="-1">
 <or_exp><and_exp></and_exp></or_exp>
 </condition>
@@ -1754,7 +1754,7 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:4  br l
 </dataflow>
 <dataflow id="271" from="br_ln160" to="agg_result_0" fromId="75" toId="86">
 </dataflow>
-<dataflow id="272" from="sub_ln703_2" to="agg_result_0" fromId="84" toId="86">
+<dataflow id="272" from="sub_ln703_5" to="agg_result_0" fromId="84" toId="86">
 <condition id="-1">
 <or_exp><and_exp><literal name="and_ln148" val="0"/>
 <literal name="and_ln151" val="0"/>
@@ -1794,21 +1794,21 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:4  br l
 </dataflow>
 <dataflow id="286" from="tmp_7" to="tmp_8" fromId="91" toId="93">
 </dataflow>
-<dataflow id="287" from="cordicSin_fix" to="p_Val2_48" fromId="238" toId="94">
+<dataflow id="287" from="cordicSin_fix" to="p_Val2_114" fromId="238" toId="94">
 </dataflow>
-<dataflow id="288" from="tmp_8" to="p_Val2_48" fromId="93" toId="94">
+<dataflow id="288" from="tmp_8" to="p_Val2_114" fromId="93" toId="94">
 </dataflow>
-<dataflow id="289" from="arctan_V268" to="p_Val2_48" fromId="169" toId="94">
+<dataflow id="289" from="arctan_V232" to="p_Val2_114" fromId="169" toId="94">
 </dataflow>
-<dataflow id="290" from="cordicSin_fix" to="p_Val2_48" fromId="238" toId="95">
+<dataflow id="290" from="cordicSin_fix" to="p_Val2_114" fromId="238" toId="95">
 </dataflow>
-<dataflow id="291" from="tmp_8" to="p_Val2_48" fromId="93" toId="95">
+<dataflow id="291" from="tmp_8" to="p_Val2_114" fromId="93" toId="95">
 </dataflow>
-<dataflow id="292" from="arctan_V268" to="p_Val2_48" fromId="169" toId="95">
+<dataflow id="292" from="arctan_V232" to="p_Val2_114" fromId="169" toId="95">
 </dataflow>
-<dataflow id="293" from="StgValue_263" to="sub_ln703_1" fromId="263" toId="96">
+<dataflow id="293" from="StgValue_263" to="sub_ln703_4" fromId="263" toId="96">
 </dataflow>
-<dataflow id="294" from="p_Val2_48" to="sub_ln703_1" fromId="95" toId="96">
+<dataflow id="294" from="p_Val2_114" to="sub_ln703_4" fromId="95" toId="96">
 </dataflow>
 <dataflow id="295" from="tmp" to="tmp_4" fromId="43" toId="98">
 </dataflow>
@@ -1834,13 +1834,13 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:4  br l
 </dataflow>
 <dataflow id="306" from="tmp_5" to="p_Val2_s" fromId="103" toId="104">
 </dataflow>
-<dataflow id="307" from="arctan_V268" to="p_Val2_s" fromId="169" toId="104">
+<dataflow id="307" from="arctan_V232" to="p_Val2_s" fromId="169" toId="104">
 </dataflow>
 <dataflow id="308" from="cordicSin_fix" to="p_Val2_s" fromId="238" toId="105">
 </dataflow>
 <dataflow id="309" from="tmp_5" to="p_Val2_s" fromId="103" toId="105">
 </dataflow>
-<dataflow id="310" from="arctan_V268" to="p_Val2_s" fromId="169" toId="105">
+<dataflow id="310" from="arctan_V232" to="p_Val2_s" fromId="169" toId="105">
 </dataflow>
 <dataflow id="311" from="StgValue_263" to="sub_ln703" fromId="263" toId="106">
 </dataflow>
@@ -1870,13 +1870,13 @@ _ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit:4  br l
 </dataflow>
 <dataflow id="324" from="tmp_3" to="agg_result_ret" fromId="113" toId="114">
 </dataflow>
-<dataflow id="325" from="arctan_V268" to="agg_result_ret" fromId="169" toId="114">
+<dataflow id="325" from="arctan_V232" to="agg_result_ret" fromId="169" toId="114">
 </dataflow>
 <dataflow id="326" from="cordicSin_fix" to="agg_result_ret" fromId="238" toId="115">
 </dataflow>
 <dataflow id="327" from="tmp_3" to="agg_result_ret" fromId="113" toId="115">
 </dataflow>
-<dataflow id="328" from="arctan_V268" to="agg_result_ret" fromId="169" toId="115">
+<dataflow id="328" from="arctan_V232" to="agg_result_ret" fromId="169" toId="115">
 </dataflow>
 <dataflow id="329" from="and_ln148" to="StgValue_4" fromId="52" toId="4">
 </dataflow>

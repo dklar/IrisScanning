@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'cordic360_Sin_fixed'" level="0">
-<item name = "Date">Thu Oct  1 13:57:29 2020
+<item name = "Date">Tue Oct  6 18:21:20 2020
 </item>
 <item name = "Version">2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)</item>
 <item name = "Project">Iris-recognition</item>
@@ -15,7 +15,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="4">Clock, Target, Estimated, Uncertainty</keys>
-<column name="ap_clk">10.00 ns, 8.670 ns, 1.25 ns</column>
+<column name="ap_clk">10.00 ns, 8.621 ns, 1.25 ns</column>
 </table>
 </item>
 </section>
@@ -50,7 +50,7 @@
 <column name="DSP">-, -, -, -, -</column>
 <column name="Expression">-, -, 0, 69, -</column>
 <column name="FIFO">-, -, -, -, -</column>
-<column name="Instance">0, 3, 1189, 3468, -</column>
+<column name="Instance">0, 3, 1188, 3477, -</column>
 <column name="Memory">-, -, -, -, -</column>
 <column name="Multiplexer">-, -, -, 301, -</column>
 <column name="Register">-, -, 222, -, -</column>
@@ -62,12 +62,12 @@
 <section name = "" level="1">
 <item name = "Instance"><table name="" hasTotal="1">
 <keys size="7">Instance, Module, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
-<column name="grp_cordicSin_fix_fu_53">cordicSin_fix, 0, 0, 256, 966, 0</column>
-<column name="top_level_dadd_64ocq_U69">top_level_dadd_64ocq, 0, 3, 445, 1149, 0</column>
-<column name="top_level_dcmp_64pcA_U70">top_level_dcmp_64pcA, 0, 0, 130, 469, 0</column>
-<column name="top_level_dcmp_64pcA_U71">top_level_dcmp_64pcA, 0, 0, 130, 469, 0</column>
-<column name="top_level_fpext_3lbW_U68">top_level_fpext_3lbW, 0, 0, 100, 138, 0</column>
-<column name="top_level_fptruncncg_U67">top_level_fptruncncg, 0, 0, 128, 277, 0</column>
+<column name="grp_cordicSin_fix_fu_53">cordicSin_fix, 0, 0, 255, 975, 0</column>
+<column name="top_level2_dadd_6ocq_U67">top_level2_dadd_6ocq, 0, 3, 445, 1149, 0</column>
+<column name="top_level2_dcmp_6pcA_U68">top_level2_dcmp_6pcA, 0, 0, 130, 469, 0</column>
+<column name="top_level2_dcmp_6pcA_U69">top_level2_dcmp_6pcA, 0, 0, 130, 469, 0</column>
+<column name="top_level2_fpext_lbW_U66">top_level2_fpext_lbW, 0, 0, 100, 138, 0</column>
+<column name="top_level2_fptrunncg_U65">top_level2_fptrunncg, 0, 0, 128, 277, 0</column>
 </table>
 </item>
 <item name = "DSP48E"><table name="" hasTotal="0">

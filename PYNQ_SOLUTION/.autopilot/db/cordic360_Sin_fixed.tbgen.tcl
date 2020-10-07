@@ -63,9 +63,9 @@ set RtlHierarchyInfo {[
 			{"State" : "ap_ST_fsm_state40", "FSM" : "ap_CS_fsm", "SubInstance" : "grp_cordicSin_fix_fu_53"}],
 		"Port" : [
 			{"Name" : "x", "Type" : "None", "Direction" : "I"},
-			{"Name" : "arctan_V268", "Type" : "Memory", "Direction" : "I",
+			{"Name" : "arctan_V232", "Type" : "Memory", "Direction" : "I",
 				"SubConnect" : [
-					{"ID" : "1", "SubInstance" : "grp_cordicSin_fix_fu_53", "Port" : "arctan_V268"}]}]},
+					{"ID" : "1", "SubInstance" : "grp_cordicSin_fix_fu_53", "Port" : "arctan_V232"}]}]},
 	{"ID" : "1", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_cordicSin_fix_fu_53", "Parent" : "0", "Child" : ["2", "3"],
 		"CDFG" : "cordicSin_fix",
 		"Protocol" : "ap_ctrl_hs",
@@ -81,23 +81,23 @@ set RtlHierarchyInfo {[
 		"HasNonBlockingOperation" : "0",
 		"Port" : [
 			{"Name" : "x", "Type" : "None", "Direction" : "I"},
-			{"Name" : "arctan_V268", "Type" : "Memory", "Direction" : "I"}]},
-	{"ID" : "2", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordicSin_fix_fu_53.arctan_V268_U", "Parent" : "1"},
-	{"ID" : "3", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordicSin_fix_fu_53.top_level_fpext_3lbW_U65", "Parent" : "1"},
-	{"ID" : "4", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_fptruncncg_U67", "Parent" : "0"},
-	{"ID" : "5", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_fpext_3lbW_U68", "Parent" : "0"},
-	{"ID" : "6", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_dadd_64ocq_U69", "Parent" : "0"},
-	{"ID" : "7", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_dcmp_64pcA_U70", "Parent" : "0"},
-	{"ID" : "8", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_dcmp_64pcA_U71", "Parent" : "0"}]}
+			{"Name" : "arctan_V232", "Type" : "Memory", "Direction" : "I"}]},
+	{"ID" : "2", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordicSin_fix_fu_53.arctan_V232_U", "Parent" : "1"},
+	{"ID" : "3", "Level" : "2", "Path" : "`AUTOTB_DUT_INST.grp_cordicSin_fix_fu_53.top_level2_fpext_lbW_U63", "Parent" : "1"},
+	{"ID" : "4", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_fptrunncg_U65", "Parent" : "0"},
+	{"ID" : "5", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_fpext_lbW_U66", "Parent" : "0"},
+	{"ID" : "6", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_dadd_6ocq_U67", "Parent" : "0"},
+	{"ID" : "7", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_dcmp_6pcA_U68", "Parent" : "0"},
+	{"ID" : "8", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_dcmp_6pcA_U69", "Parent" : "0"}]}
 
 
 set ArgLastReadFirstWriteLatency {
 	cordic360_Sin_fixed {
 		x {Type I LastRead 0 FirstWrite -1}
-		arctan_V268 {Type I LastRead -1 FirstWrite -1}}
+		arctan_V232 {Type I LastRead -1 FirstWrite -1}}
 	cordicSin_fix {
 		x {Type I LastRead 0 FirstWrite -1}
-		arctan_V268 {Type I LastRead -1 FirstWrite -1}}}
+		arctan_V232 {Type I LastRead -1 FirstWrite -1}}}
 
 set hasDtUnsupportedChannel 0
 

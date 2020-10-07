@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'writeValues'
 ================================================================
-* Date:           Thu Oct  1 13:57:13 2020
+* Date:           Tue Oct  6 18:20:58 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        Iris-recognition
@@ -75,18 +75,18 @@ IsGatedGlobalClock: 0
 * FSM state operations: 
 
 State 1 <SV = 0> <Delay = 3.63>
-ST_1 : Operation 2 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %x, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str442, i32 0, i32 0, [1 x i8]* @p_str443, [1 x i8]* @p_str444, [1 x i8]* @p_str445, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str446, [11 x i8]* @ScalarProp_str)"   --->   Operation 2 'specinterface' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 3 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %y, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str447, i32 0, i32 0, [1 x i8]* @p_str448, [1 x i8]* @p_str449, [1 x i8]* @p_str450, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str451, [11 x i8]* @ScalarProp_str)"   --->   Operation 3 'specinterface' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 4 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %r1, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str452, i32 0, i32 0, [1 x i8]* @p_str453, [1 x i8]* @p_str454, [1 x i8]* @p_str455, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str456, [11 x i8]* @ScalarProp_str)"   --->   Operation 4 'specinterface' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%r2_read = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %r2)" [Iris-recognition/toplevel.cpp:792]   --->   Operation 5 'read' 'r2_read' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 6 [1/1] (3.63ns)   --->   "%x_read = call i32 @_ssdm_op_Read.ap_fifo.i32P(i32* %x)" [Iris-recognition/toplevel.cpp:792]   --->   Operation 6 'read' 'x_read' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
-ST_1 : Operation 7 [1/1] (3.63ns)   --->   "%y_read = call i32 @_ssdm_op_Read.ap_fifo.i32P(i32* %y)" [Iris-recognition/toplevel.cpp:792]   --->   Operation 7 'read' 'y_read' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
-ST_1 : Operation 8 [1/1] (3.63ns)   --->   "%r1_read = call i32 @_ssdm_op_Read.ap_fifo.i32P(i32* %r1)" [Iris-recognition/toplevel.cpp:792]   --->   Operation 8 'read' 'r1_read' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
-ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%mrv = insertvalue { i32, i32, i32, i32 } undef, i32 %x_read, 0" [Iris-recognition/toplevel.cpp:792]   --->   Operation 9 'insertvalue' 'mrv' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%mrv_1 = insertvalue { i32, i32, i32, i32 } %mrv, i32 %y_read, 1" [Iris-recognition/toplevel.cpp:792]   --->   Operation 10 'insertvalue' 'mrv_1' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%mrv_2 = insertvalue { i32, i32, i32, i32 } %mrv_1, i32 %r1_read, 2" [Iris-recognition/toplevel.cpp:792]   --->   Operation 11 'insertvalue' 'mrv_2' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%mrv_3 = insertvalue { i32, i32, i32, i32 } %mrv_2, i32 %r2_read, 3" [Iris-recognition/toplevel.cpp:792]   --->   Operation 12 'insertvalue' 'mrv_3' <Predicate = true> <Delay = 0.00>
-ST_1 : Operation 13 [1/1] (0.00ns)   --->   "ret { i32, i32, i32, i32 } %mrv_3" [Iris-recognition/toplevel.cpp:792]   --->   Operation 13 'ret' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 2 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %x, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str381, i32 0, i32 0, [1 x i8]* @p_str382, [1 x i8]* @p_str383, [1 x i8]* @p_str384, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str385, [11 x i8]* @ScalarProp_str)"   --->   Operation 2 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 3 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %y, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str386, i32 0, i32 0, [1 x i8]* @p_str387, [1 x i8]* @p_str388, [1 x i8]* @p_str389, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str390, [11 x i8]* @ScalarProp_str)"   --->   Operation 3 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 4 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecInterface(i32* %r1, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str391, i32 0, i32 0, [1 x i8]* @p_str392, [1 x i8]* @p_str393, [1 x i8]* @p_str394, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str395, [11 x i8]* @ScalarProp_str)"   --->   Operation 4 'specinterface' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%r2_read = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %r2)" [Iris-recognition/toplevel.cpp:718]   --->   Operation 5 'read' 'r2_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 6 [1/1] (3.63ns)   --->   "%x_read = call i32 @_ssdm_op_Read.ap_fifo.i32P(i32* %x)" [Iris-recognition/toplevel.cpp:718]   --->   Operation 6 'read' 'x_read' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 7 [1/1] (3.63ns)   --->   "%y_read = call i32 @_ssdm_op_Read.ap_fifo.i32P(i32* %y)" [Iris-recognition/toplevel.cpp:718]   --->   Operation 7 'read' 'y_read' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 8 [1/1] (3.63ns)   --->   "%r1_read = call i32 @_ssdm_op_Read.ap_fifo.i32P(i32* %r1)" [Iris-recognition/toplevel.cpp:718]   --->   Operation 8 'read' 'r1_read' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%mrv = insertvalue { i32, i32, i32, i32 } undef, i32 %x_read, 0" [Iris-recognition/toplevel.cpp:718]   --->   Operation 9 'insertvalue' 'mrv' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%mrv_1 = insertvalue { i32, i32, i32, i32 } %mrv, i32 %y_read, 1" [Iris-recognition/toplevel.cpp:718]   --->   Operation 10 'insertvalue' 'mrv_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%mrv_2 = insertvalue { i32, i32, i32, i32 } %mrv_1, i32 %r1_read, 2" [Iris-recognition/toplevel.cpp:718]   --->   Operation 11 'insertvalue' 'mrv_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%mrv_3 = insertvalue { i32, i32, i32, i32 } %mrv_2, i32 %r2_read, 3" [Iris-recognition/toplevel.cpp:718]   --->   Operation 12 'insertvalue' 'mrv_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "ret { i32, i32, i32, i32 } %mrv_3" [Iris-recognition/toplevel.cpp:718]   --->   Operation 13 'ret' <Predicate = true> <Delay = 0.00>
 
 
 ============================================================
@@ -121,7 +121,7 @@ mrv               (insertvalue  ) [ 00]
 mrv_1             (insertvalue  ) [ 00]
 mrv_2             (insertvalue  ) [ 00]
 mrv_3             (insertvalue  ) [ 00]
-ret_ln792         (ret          ) [ 00]
+ret_ln718         (ret          ) [ 00]
 </LifeTime>
 
 <model>
@@ -195,7 +195,7 @@ ret_ln792         (ret          ) [ 00]
 <pin id="15" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str442"/></StgValue>
+<StgValue><ssdm name="p_str381"/></StgValue>
 </bind>
 </comp>
 
@@ -204,7 +204,7 @@ ret_ln792         (ret          ) [ 00]
 <pin id="17" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str443"/></StgValue>
+<StgValue><ssdm name="p_str382"/></StgValue>
 </bind>
 </comp>
 
@@ -213,7 +213,7 @@ ret_ln792         (ret          ) [ 00]
 <pin id="19" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str444"/></StgValue>
+<StgValue><ssdm name="p_str383"/></StgValue>
 </bind>
 </comp>
 
@@ -222,7 +222,7 @@ ret_ln792         (ret          ) [ 00]
 <pin id="21" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str445"/></StgValue>
+<StgValue><ssdm name="p_str384"/></StgValue>
 </bind>
 </comp>
 
@@ -249,7 +249,7 @@ ret_ln792         (ret          ) [ 00]
 <pin id="27" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str446"/></StgValue>
+<StgValue><ssdm name="p_str385"/></StgValue>
 </bind>
 </comp>
 
@@ -267,7 +267,7 @@ ret_ln792         (ret          ) [ 00]
 <pin id="31" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str447"/></StgValue>
+<StgValue><ssdm name="p_str386"/></StgValue>
 </bind>
 </comp>
 
@@ -276,7 +276,7 @@ ret_ln792         (ret          ) [ 00]
 <pin id="33" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str448"/></StgValue>
+<StgValue><ssdm name="p_str387"/></StgValue>
 </bind>
 </comp>
 
@@ -285,7 +285,7 @@ ret_ln792         (ret          ) [ 00]
 <pin id="35" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str449"/></StgValue>
+<StgValue><ssdm name="p_str388"/></StgValue>
 </bind>
 </comp>
 
@@ -294,7 +294,7 @@ ret_ln792         (ret          ) [ 00]
 <pin id="37" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str450"/></StgValue>
+<StgValue><ssdm name="p_str389"/></StgValue>
 </bind>
 </comp>
 
@@ -303,7 +303,7 @@ ret_ln792         (ret          ) [ 00]
 <pin id="39" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str451"/></StgValue>
+<StgValue><ssdm name="p_str390"/></StgValue>
 </bind>
 </comp>
 
@@ -312,7 +312,7 @@ ret_ln792         (ret          ) [ 00]
 <pin id="41" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str452"/></StgValue>
+<StgValue><ssdm name="p_str391"/></StgValue>
 </bind>
 </comp>
 
@@ -321,7 +321,7 @@ ret_ln792         (ret          ) [ 00]
 <pin id="43" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str453"/></StgValue>
+<StgValue><ssdm name="p_str392"/></StgValue>
 </bind>
 </comp>
 
@@ -330,7 +330,7 @@ ret_ln792         (ret          ) [ 00]
 <pin id="45" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str454"/></StgValue>
+<StgValue><ssdm name="p_str393"/></StgValue>
 </bind>
 </comp>
 
@@ -339,7 +339,7 @@ ret_ln792         (ret          ) [ 00]
 <pin id="47" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str455"/></StgValue>
+<StgValue><ssdm name="p_str394"/></StgValue>
 </bind>
 </comp>
 
@@ -348,7 +348,7 @@ ret_ln792         (ret          ) [ 00]
 <pin id="49" dir="1" index="0" bw="1" slack="2147483647"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="p_str456"/></StgValue>
+<StgValue><ssdm name="p_str395"/></StgValue>
 </bind>
 </comp>
 
@@ -527,7 +527,7 @@ ret_ln792         (ret          ) [ 00]
 		mrv_1 : 1
 		mrv_2 : 2
 		mrv_3 : 3
-		ret_ln792 : 4
+		ret_ln718 : 4
 
 
 ============================================================

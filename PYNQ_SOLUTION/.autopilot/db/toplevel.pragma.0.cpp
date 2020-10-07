@@ -34444,13 +34444,17 @@ typedef hls::Scalar<3, uint8_t> PIXEL;
 typedef hls::Scalar<1, uint8_t> PIXELGRAY;
 typedef hls::Mat<64, 360, (((0) & ((1 << 11) - 1)) + (((1)-1) << 11))> GRAY_IMAGE_NORM;
 typedef hls::Mat<64, 360, (((0) & ((1 << 11) - 1)) + (((3)-1) << 11))> RGB_IMAGE_NORM;
+
+typedef ap_uint<2> int2;
+typedef ap_uint<6> int6;
 # 2 "Iris-recognition/toplevel.hpp" 2
 # 1 "Iris-recognition/sine.hpp" 1
 # 10 "Iris-recognition/sine.hpp"
-typedef ap_fixed<8,2> float30;
-typedef ap_fixed<8,0> float8;
-
-static const float30 arctan[] = {
+typedef ap_fixed<8,1> float30;
+typedef ap_fixed<4,1> floatIntern;
+typedef ap_ufixed<4,0> float8;
+typedef ap_fixed<8,4> floatGauss;
+static const float8 arctan[] = {
   0.7853981633974483,
   0.4636476090008061,
   0.24497866312686414,
@@ -34587,6 +34591,7 @@ float cordic360_SIN(float x, int nMax);
 float30 cordic360_Sin_fixed(float x, int nMax);
 float30 cordic360_Cos_fixed(float x, int nMax);
 void cordic360_COS_SIN(float x, float &s, float &c,int nMax);
+void cordic360_COS_SIN_fix(float x, float30 &s, float30 &c,int nMax);
 # 3 "Iris-recognition/toplevel.hpp" 2
 
 void top_level(AXI_STREAM& inputStream,AXI_STREAM& outputStream);
@@ -34609,8 +34614,8 @@ void test_detection_top(AXI_STREAM& inputStream,int& x,int& y, int& r1, int& r2)
 float sin_filter_matrix[64/3][64/3];
 float cos_filter_matrix[64/3][64/3];
 
-float sin_filter_matrix_fix[64/3][64/3];
-float cos_filter_matrix_fix[64/3][64/3];
+floatGauss sin_filter_matrix_fix[64/3][64/3];
+floatGauss cos_filter_matrix_fix[64/3][64/3];
 
 
 
@@ -35014,8 +35019,10 @@ void generateGaborKernel(int kern_size){
  CalcFirstRow:for (int i = 0;i<kern_size;i++){
   int phi = i - (kern_size / 2);
   int temp = kern_size/2;
-  float val_sin = (float) cordic360_Sin_fixed(3.14159265358979 * phi / temp,10);
-  float val_cos = (float) cordic360_Cos_fixed(3.14159265358979 * phi / temp,10 );
+  float val_sin;
+  float val_cos;
+  cordic360_COS_SIN(3.14159265358979 * phi / temp,val_sin,val_cos,5);
+
   sin_filter_matrix[0][i] = val_sin;
   cos_filter_matrix[0][i] = val_cos;
   sum_row_sin += val_sin;
@@ -35035,7 +35042,7 @@ void generateGaborKernel(int kern_size){
    cos_filter_matrix[i][j] = cos_filter_matrix[0][j];
   }
  }
- int peak = 15;
+ int peak = 8;
  float alpha = (kern_size - 1) * 0.4770322291;
  float alphaPower = alpha * alpha;
  CreateGauss:for (int i = 0; i<kern_size; i++){
@@ -35078,7 +35085,6 @@ void generateGaborKernel(int kern_size){
   }
 
 }
-
 
 uint8_t gaborPixel(int rho, int phi, uint8_t norm_img[64*360],int filter_size){_ssdm_SpecArrayDimSize(norm_img, 23040);
  int angles = 360;
@@ -35150,87 +35156,83 @@ void encode(uint8_t norm_img[64*360],uint8_t bit_code[2048]){_ssdm_SpecArrayDimS
  }
 }
 
-
-
 void generateGaborKernel_fix(int kern_size){
- float gauss[64/3][64/3];
+ floatGauss gauss[64/3][64/3];
  if (kern_size>64/3) kern_size = 64/3;
 
  float sum_row_sin = 0;
  float sum_row_cos = 0;
- CalcFirstRow:for (int i = 0;i<kern_size;i++){
-  int phi = i - (kern_size / 2);
+ CalcFirstRow:
+ for (int i = 0;i<kern_size;i++){
+  int phi = i - ((float)kern_size / 2.0);
   int temp = kern_size/2;
-  float val_sin = cordic360_SIN(3.14159265358979 * phi / temp,5);
-  float val_cos = cordic360_COS(3.14159265358979 * phi / temp,5 );
+  float angle = 3.14159265358979 * phi / temp;
+  float30 val_sin;
+  float30 val_cos;
+  cordic360_COS_SIN_fix(angle,val_sin,val_cos,5);
   sin_filter_matrix_fix[0][i] = val_sin;
   cos_filter_matrix_fix[0][i] = val_cos;
-  sum_row_sin += val_sin;
-  sum_row_cos += val_cos;
+  sum_row_sin += val_sin.to_float();
+  sum_row_cos += val_cos.to_float();
  }
 
- NormalizeFirstRow:for (int i = 0;i<kern_size;i++){
-  float old_v_s = sin_filter_matrix_fix[0][i];
-  float old_v_c = cos_filter_matrix_fix[0][i];
-  sin_filter_matrix_fix[0][i] = old_v_s - (sum_row_sin/(float)kern_size);
-  cos_filter_matrix_fix[0][i] = old_v_c - (sum_row_cos/(float)kern_size);
+ NormalizeFirstRow:
+ for (int i = 0;i<kern_size;i++){
+  sin_filter_matrix_fix[0][i] = sin_filter_matrix_fix[0][i] - (floatGauss)(sum_row_sin/(float)kern_size);
+  cos_filter_matrix_fix[0][i] = cos_filter_matrix_fix[0][i] - (floatGauss)(sum_row_cos/(float)kern_size);
  }
 
- AssignCompleteMatrix:for (int i = 1;i<kern_size;i++){
+ AssignCompleteMatrix:
+ for (int i = 1;i<kern_size;i++){
   for (int j = 0;j<kern_size;j++){
    sin_filter_matrix_fix[i][j] = sin_filter_matrix_fix[0][j];
    cos_filter_matrix_fix[i][j] = cos_filter_matrix_fix[0][j];
   }
  }
- int peak = 15;
- float alpha = (kern_size - 1) * 0.4770322291;
+
+ int peak = 8;
+ float alpha = (kern_size - 1) * 0.47703;
  float alphaPower = alpha * alpha;
- CreateGauss:for (int i = 0; i<kern_size; i++){
+
+ CreateGauss:
+ for (int i = 0; i<kern_size; i++){
   float rho = i - ((float)kern_size / 2.0);
   float rhoPower2 = rho*rho;
-  CreateGaussInner:for(int j = 0; j<kern_size; j++){
+  for(int j = 0; j<kern_size; j++){
    float phi = j - ((float)kern_size / 2.0);
-
-
-
    float temp1 = -(rhoPower2+phi*phi)/alphaPower;
-   float temp = peak * hls::expf(temp1);
-   gauss[i][j] = temp;
+   gauss[i][j] = peak * hls::expf(temp1);
   }
  }
- GaussMulti:for (int i = 0; i<kern_size; i++){
-   float rho = i - (kern_size / 2);
-   for(int j = 0; j<kern_size; j++){
-    float temp_sin = sin_filter_matrix_fix[i][j] * gauss[i][j];
-    float temp_cos = cos_filter_matrix_fix[i][j] * gauss[i][j];
-    sin_filter_matrix_fix[i][j] = temp_sin;
-    cos_filter_matrix_fix[i][j] = temp_cos;
-   }
+
+ GaussMultiSine:
+ for (int i = 0; i<kern_size; i++){
+  for(int j = 0; j<kern_size; j++){
+   sin_filter_matrix_fix[i][j] = sin_filter_matrix_fix[i][j] * gauss[i][j];
+   cos_filter_matrix_fix[i][j] = cos_filter_matrix_fix[i][j] * gauss[i][j];
   }
+ }
 
  NormalizeGausGabor:
  for(int i = 0 ; i < kern_size; i++ ){
-  float row_sum_sin = 0;
-  float row_sum_cos = 0;
-   for (int j = 0 ; j<kern_size; j++){
-    row_sum_sin += sin_filter_matrix_fix[i][j];
-    row_sum_cos += cos_filter_matrix_fix[i][j];
-   }
-   for (int j = 0 ; j<kern_size; j++){
-    float old_sin = sin_filter_matrix_fix[i][j];
-    float old_cos = cos_filter_matrix_fix[i][j];
-    sin_filter_matrix_fix[i][j] = old_sin - (row_sum_sin/(float)kern_size);
-    cos_filter_matrix_fix[i][j] = old_cos - (row_sum_cos/(float)kern_size);
-   }
+  floatGauss row_sum_sin = 0;
+  floatGauss row_sum_cos = 0;
+  for (int j = 0 ; j<kern_size; j++){
+   row_sum_sin += sin_filter_matrix_fix[i][j];
+   row_sum_cos += cos_filter_matrix_fix[i][j];
   }
+  for (int j = 0 ; j<kern_size; j++){
+   sin_filter_matrix_fix[i][j] = sin_filter_matrix_fix[i][j] - (row_sum_sin/(floatGauss)kern_size);
+   cos_filter_matrix_fix[i][j] = cos_filter_matrix_fix[i][j] - (row_sum_cos/(floatGauss)kern_size);
+  }
+ }
 
 }
 
-
-uint8_t gaborPixel_fix(int rho, int phi, uint8_t norm_img[64*360],int filter_size){_ssdm_SpecArrayDimSize(norm_img, 23040);
+int2 gaborPixel_fix(int rho, int phi, uint8_t norm_img[64*360],int filter_size){_ssdm_SpecArrayDimSize(norm_img, 23040);
  int angles = 360;
- float total_i = 0.0;
- float total_r = 0.0;
+ ap_fixed<16,12> total_i = 0.0;
+ ap_fixed<16,12> total_r = 0.0;
 
  GaborPixeLoop:
  for (int i = 0; i<filter_size;i++){
@@ -35239,7 +35241,7 @@ uint8_t gaborPixel_fix(int rho, int phi, uint8_t norm_img[64*360],int filter_siz
    image_y = MODULO(image_y,angles);
 
    int image_x = i + rho - (filter_size / 2);
-   int tmp = norm_img[image_x*360 +image_y];
+   uint8_t tmp = norm_img[image_x*360 +image_y];
    total_i += sin_filter_matrix_fix[i][j] * tmp;
    total_r += cos_filter_matrix_fix[i][j] * tmp;
   }
@@ -35289,7 +35291,7 @@ void encode_fix(uint8_t norm_img[64*360],uint8_t bit_code[2048]){_ssdm_SpecArray
   generateGaborKernel_fix(filter_height);
 
   for (int theta = 0;theta<angular_slice;theta++){
-   uint8_t temp = gaborPixel_fix(radius,theta,norm_img,filter_height);
+   int2 temp = gaborPixel_fix(radius,theta,norm_img,filter_height);
    bit_code[index] = (temp & 2)>>1;
    bit_code[index+1] = temp & 1;
    index+=2;
@@ -35424,6 +35426,14 @@ void top_level(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
 #pragma HLS INTERFACE ap_ctrl_none port=return
 
  method1(inputStream,outputStream);
+}
+
+void top_level2(AXI_STREAM& inputStream,uint8_t code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
+#pragma HLS INTERFACE axis port=&inputStream
+#pragma HLS INTERFACE s_axilite port=&code
+#pragma HLS INTERFACE ap_ctrl_none port=return
+
+ arrayMethod_fix(inputStream,code);
 }
 
 void test_detection_top(AXI_STREAM& inputStream,int& x,int& y, int& r1, int& r2){

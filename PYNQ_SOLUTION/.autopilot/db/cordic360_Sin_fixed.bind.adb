@@ -1323,7 +1323,7 @@
 					<Obj>
 						<type>0</type>
 						<id>35</id>
-						<name>p_Val2_49</name>
+						<name>p_Val2_115</name>
 						<fileName>Iris-recognition/sine.cpp</fileName>
 						<fileDirectory>C:\Users\Dennis\VivadoHLS\Final</fileDirectory>
 						<lineNumber>158</lineNumber>
@@ -1373,7 +1373,7 @@
 					<Obj>
 						<type>0</type>
 						<id>36</id>
-						<name>sub_ln703_2</name>
+						<name>sub_ln703_5</name>
 						<fileName>Iris-recognition/sine.cpp</fileName>
 						<fileDirectory>C:\Users\Dennis\VivadoHLS\Final</fileDirectory>
 						<lineNumber>158</lineNumber>
@@ -1567,7 +1567,7 @@
 					<Obj>
 						<type>0</type>
 						<id>41</id>
-						<name>p_Val2_48</name>
+						<name>p_Val2_114</name>
 						<fileName>Iris-recognition/sine.cpp</fileName>
 						<fileDirectory>C:\Users\Dennis\VivadoHLS\Final</fileDirectory>
 						<lineNumber>155</lineNumber>
@@ -1617,7 +1617,7 @@
 					<Obj>
 						<type>0</type>
 						<id>42</id>
-						<name>sub_ln703_1</name>
+						<name>sub_ln703_4</name>
 						<fileName>Iris-recognition/sine.cpp</fileName>
 						<fileDirectory>C:\Users\Dennis\VivadoHLS\Final</fileDirectory>
 						<lineNumber>155</lineNumber>
@@ -2675,7 +2675,7 @@
 				<Obj>
 					<type>3</type>
 					<id>38</id>
-					<name>_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26</name>
+					<name>_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26</name>
 					<fileName></fileName>
 					<fileDirectory></fileDirectory>
 					<lineNumber>0</lineNumber>
@@ -2702,7 +2702,7 @@
 				<Obj>
 					<type>3</type>
 					<id>44</id>
-					<name>_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35</name>
+					<name>_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35</name>
 					<fileName></fileName>
 					<fileDirectory></fileDirectory>
 					<lineNumber>0</lineNumber>
@@ -2729,7 +2729,7 @@
 				<Obj>
 					<type>3</type>
 					<id>50</id>
-					<name>_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit</name>
+					<name>_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit</name>
 					<fileName></fileName>
 					<fileDirectory></fileDirectory>
 					<lineNumber>0</lineNumber>
@@ -5770,7 +5770,7 @@
 		<item_version>0</item_version>
 		<item class_id="50" tracking_level="0" version="0">
 			<first class_id="51" tracking_level="0" version="0">
-				<first>arctan_V268</first>
+				<first>arctan_V232</first>
 				<second>100</second>
 			</first>
 			<second>
@@ -5996,7 +5996,7 @@
 			</second>
 		</item>
 		<item>
-			<first>sub_ln703_1_reg_197</first>
+			<first>sub_ln703_4_reg_197</first>
 			<second>
 				<count>1</count>
 				<item_version>0</item_version>

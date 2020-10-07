@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'cordic360_Sin_fixed'
 ================================================================
-* Date:           Thu Oct  1 13:57:15 2020
+* Date:           Tue Oct  6 18:21:00 2020
 
 * Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
 * Project:        Iris-recognition
@@ -20,7 +20,7 @@
     +--------+----------+----------+------------+
     |  Clock |  Target  | Estimated| Uncertainty|
     +--------+----------+----------+------------+
-    |ap_clk  | 10.00 ns | 8.670 ns |   1.25 ns  |
+    |ap_clk  | 10.00 ns | 8.621 ns |   1.25 ns  |
     +--------+----------+----------+------------+
 
 + Latency: 
@@ -144,14 +144,14 @@ ST_4 : Operation 55 [5/5] (8.23ns)   --->   "%tmp_2 = fadd double %tmp, 0xC01921
 State 5 <SV = 4> <Delay = 8.23>
 ST_5 : Operation 56 [1/2] (5.46ns)   --->   "%tmp_10 = fcmp ogt double %tmp, 0x400921FB54442D11" [Iris-recognition/sine.cpp:151]   --->   Operation 56 'dcmp' 'tmp_10' <Predicate = true> <Delay = 5.46> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 1> <II = 1> <Delay = 5.46> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
 ST_5 : Operation 57 [1/1] (0.97ns)   --->   "%and_ln151 = and i1 %or_ln148, %tmp_10" [Iris-recognition/sine.cpp:151]   --->   Operation 57 'and' 'and_ln151' <Predicate = true> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
-ST_5 : Operation 58 [1/1] (0.00ns)   --->   "br i1 %and_ln151, label %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit, label %3" [Iris-recognition/sine.cpp:151]   --->   Operation 58 'br' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 58 [1/1] (0.00ns)   --->   "br i1 %and_ln151, label %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit, label %3" [Iris-recognition/sine.cpp:151]   --->   Operation 58 'br' <Predicate = true> <Delay = 0.00>
 ST_5 : Operation 59 [2/2] (5.46ns)   --->   "%tmp_11 = fcmp ogt double %tmp, 0x3FF921FB54524550" [Iris-recognition/sine.cpp:154]   --->   Operation 59 'dcmp' 'tmp_11' <Predicate = (!and_ln151)> <Delay = 5.46> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 1> <II = 1> <Delay = 5.46> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
 ST_5 : Operation 60 [5/5] (8.23ns)   --->   "%tmp_4 = fadd double %tmp, 0xC00921FB54442D11" [Iris-recognition/sine.cpp:152]   --->   Operation 60 'dadd' 'tmp_4' <Predicate = (and_ln151)> <Delay = 8.23> <Core = "DAddSub">   --->   Core 115 'DAddSub' <Latency = 4> <II = 1> <Delay = 8.23> <FuncUnit> <Opcode : 'dadd' 'dsub'> <InPorts = 2> <OutPorts = 1>
 
 State 6 <SV = 5> <Delay = 8.23>
 ST_6 : Operation 61 [1/2] (5.46ns)   --->   "%tmp_11 = fcmp ogt double %tmp, 0x3FF921FB54524550" [Iris-recognition/sine.cpp:154]   --->   Operation 61 'dcmp' 'tmp_11' <Predicate = true> <Delay = 5.46> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 1> <II = 1> <Delay = 5.46> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
 ST_6 : Operation 62 [1/1] (0.97ns)   --->   "%and_ln154 = and i1 %or_ln148, %tmp_11" [Iris-recognition/sine.cpp:154]   --->   Operation 62 'and' 'and_ln154' <Predicate = true> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
-ST_6 : Operation 63 [1/1] (0.00ns)   --->   "br i1 %and_ln154, label %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35, label %4" [Iris-recognition/sine.cpp:154]   --->   Operation 63 'br' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 63 [1/1] (0.00ns)   --->   "br i1 %and_ln154, label %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35, label %4" [Iris-recognition/sine.cpp:154]   --->   Operation 63 'br' <Predicate = true> <Delay = 0.00>
 ST_6 : Operation 64 [2/2] (5.46ns)   --->   "%tmp_12 = fcmp ogt double %tmp, 0xC00921FB54442D11" [Iris-recognition/sine.cpp:157]   --->   Operation 64 'dcmp' 'tmp_12' <Predicate = (!and_ln154)> <Delay = 5.46> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 1> <II = 1> <Delay = 5.46> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
 ST_6 : Operation 65 [2/2] (5.46ns)   --->   "%tmp_13 = fcmp ole double %tmp, 0xBFF921FB54524550" [Iris-recognition/sine.cpp:157]   --->   Operation 65 'dcmp' 'tmp_13' <Predicate = (!and_ln154)> <Delay = 5.46> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 1> <II = 1> <Delay = 5.46> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
 ST_6 : Operation 66 [5/5] (8.23ns)   --->   "%tmp_7 = fadd double %tmp, 0xC00921FB54442D11" [Iris-recognition/sine.cpp:155]   --->   Operation 66 'dadd' 'tmp_7' <Predicate = (and_ln154)> <Delay = 8.23> <Core = "DAddSub">   --->   Core 115 'DAddSub' <Latency = 4> <II = 1> <Delay = 8.23> <FuncUnit> <Opcode : 'dadd' 'dsub'> <InPorts = 2> <OutPorts = 1>
@@ -161,7 +161,7 @@ ST_7 : Operation 67 [1/2] (5.46ns)   --->   "%tmp_12 = fcmp ogt double %tmp, 0xC
 ST_7 : Operation 68 [1/1] (0.00ns) (grouped into LUT with out node and_ln157_1)   --->   "%and_ln157 = and i1 %or_ln148, %tmp_12" [Iris-recognition/sine.cpp:157]   --->   Operation 68 'and' 'and_ln157' <Predicate = true> <Delay = 0.00> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
 ST_7 : Operation 69 [1/2] (5.46ns)   --->   "%tmp_13 = fcmp ole double %tmp, 0xBFF921FB54524550" [Iris-recognition/sine.cpp:157]   --->   Operation 69 'dcmp' 'tmp_13' <Predicate = true> <Delay = 5.46> <Core = "DCmp">   --->   Core 120 'DCmp' <Latency = 1> <II = 1> <Delay = 5.46> <FuncUnit> <Opcode : 'dcmp'> <InPorts = 2> <OutPorts = 1>
 ST_7 : Operation 70 [1/1] (0.97ns) (out node of the LUT)   --->   "%and_ln157_1 = and i1 %and_ln157, %tmp_13" [Iris-recognition/sine.cpp:157]   --->   Operation 70 'and' 'and_ln157_1' <Predicate = true> <Delay = 0.97> <Core = "LogicGate">   --->   Core 27 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.97> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
-ST_7 : Operation 71 [1/1] (0.00ns)   --->   "br i1 %and_ln157_1, label %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26, label %5" [Iris-recognition/sine.cpp:157]   --->   Operation 71 'br' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 71 [1/1] (0.00ns)   --->   "br i1 %and_ln157_1, label %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26, label %5" [Iris-recognition/sine.cpp:157]   --->   Operation 71 'br' <Predicate = true> <Delay = 0.00>
 ST_7 : Operation 72 [2/2] (7.48ns)   --->   "%agg_result_ret3 = call fastcc i8 @cordicSin_fix(float %x_read)" [Iris-recognition/sine.cpp:160]   --->   Operation 72 'call' 'agg_result_ret3' <Predicate = (!and_ln157_1)> <Delay = 7.48> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
 ST_7 : Operation 73 [5/5] (8.23ns)   --->   "%tmp_s = fadd double %tmp, 0x400921FB54442D11" [Iris-recognition/sine.cpp:158]   --->   Operation 73 'dadd' 'tmp_s' <Predicate = (and_ln157_1)> <Delay = 8.23> <Core = "DAddSub">   --->   Core 115 'DAddSub' <Latency = 4> <II = 1> <Delay = 8.23> <FuncUnit> <Opcode : 'dadd' 'dsub'> <InPorts = 2> <OutPorts = 1>
 
@@ -188,13 +188,13 @@ State 14 <SV = 12> <Delay = 5.20>
 ST_14 : Operation 81 [1/2] (5.20ns)   --->   "%tmp_1 = fptrunc double %tmp_s to float" [Iris-recognition/sine.cpp:158]   --->   Operation 81 'fptrunc' 'tmp_1' <Predicate = true> <Delay = 5.20> <Core = "Double2Float">   --->   Core 123 'Double2Float' <Latency = 1> <II = 1> <Delay = 5.20> <FuncUnit> <Opcode : 'fptrunc'> <InPorts = 1> <OutPorts = 1>
 
 State 15 <SV = 13> <Delay = 7.48>
-ST_15 : Operation 82 [2/2] (7.48ns)   --->   "%p_Val2_49 = call fastcc i8 @cordicSin_fix(float %tmp_1)" [Iris-recognition/sine.cpp:158]   --->   Operation 82 'call' 'p_Val2_49' <Predicate = true> <Delay = 7.48> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_15 : Operation 82 [2/2] (7.48ns)   --->   "%p_Val2_115 = call fastcc i8 @cordicSin_fix(float %tmp_1)" [Iris-recognition/sine.cpp:158]   --->   Operation 82 'call' 'p_Val2_115' <Predicate = true> <Delay = 7.48> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
 
 State 16 <SV = 14> <Delay = 3.82>
-ST_16 : Operation 83 [1/2] (0.00ns)   --->   "%p_Val2_49 = call fastcc i8 @cordicSin_fix(float %tmp_1)" [Iris-recognition/sine.cpp:158]   --->   Operation 83 'call' 'p_Val2_49' <Predicate = (!and_ln148 & !and_ln151 & !and_ln154 & and_ln157_1)> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
-ST_16 : Operation 84 [1/1] (1.91ns)   --->   "%sub_ln703_2 = sub i8 0, %p_Val2_49" [Iris-recognition/sine.cpp:158]   --->   Operation 84 'sub' 'sub_ln703_2' <Predicate = (!and_ln148 & !and_ln151 & !and_ln154 & and_ln157_1)> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_16 : Operation 83 [1/2] (0.00ns)   --->   "%p_Val2_115 = call fastcc i8 @cordicSin_fix(float %tmp_1)" [Iris-recognition/sine.cpp:158]   --->   Operation 83 'call' 'p_Val2_115' <Predicate = (!and_ln148 & !and_ln151 & !and_ln154 & and_ln157_1)> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_16 : Operation 84 [1/1] (1.91ns)   --->   "%sub_ln703_5 = sub i8 0, %p_Val2_115" [Iris-recognition/sine.cpp:158]   --->   Operation 84 'sub' 'sub_ln703_5' <Predicate = (!and_ln148 & !and_ln151 & !and_ln154 & and_ln157_1)> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
 ST_16 : Operation 85 [1/1] (1.90ns)   --->   "br label %6" [Iris-recognition/sine.cpp:158]   --->   Operation 85 'br' <Predicate = (!and_ln148 & !and_ln151 & !and_ln154 & and_ln157_1)> <Delay = 1.90>
-ST_16 : Operation 86 [1/1] (0.00ns)   --->   "%agg_result_0 = phi i8 [ %sub_ln703, %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit ], [ %sub_ln703_1, %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35 ], [ %agg_result_ret3, %5 ], [ %sub_ln703_2, %_ZNK13ap_fixed_baseILi8ELi2ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26 ], [ %agg_result_ret, %1 ]" [Iris-recognition/sine.cpp:152]   --->   Operation 86 'phi' 'agg_result_0' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 86 [1/1] (0.00ns)   --->   "%agg_result_0 = phi i8 [ %sub_ln703, %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit ], [ %sub_ln703_4, %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit35 ], [ %agg_result_ret3, %5 ], [ %sub_ln703_5, %_ZNK13ap_fixed_baseILi8ELi1ELb1EL9ap_q_mode5EL9ap_o_mode3ELi0EEngEv.exit26 ], [ %agg_result_ret, %1 ]" [Iris-recognition/sine.cpp:152]   --->   Operation 86 'phi' 'agg_result_0' <Predicate = true> <Delay = 0.00>
 ST_16 : Operation 87 [1/1] (0.00ns)   --->   "ret i8 %agg_result_0" [Iris-recognition/sine.cpp:161]   --->   Operation 87 'ret' <Predicate = true> <Delay = 0.00>
 
 State 17 <SV = 6> <Delay = 8.23>
@@ -216,11 +216,11 @@ State 22 <SV = 11> <Delay = 5.20>
 ST_22 : Operation 93 [1/2] (5.20ns)   --->   "%tmp_8 = fptrunc double %tmp_7 to float" [Iris-recognition/sine.cpp:155]   --->   Operation 93 'fptrunc' 'tmp_8' <Predicate = true> <Delay = 5.20> <Core = "Double2Float">   --->   Core 123 'Double2Float' <Latency = 1> <II = 1> <Delay = 5.20> <FuncUnit> <Opcode : 'fptrunc'> <InPorts = 1> <OutPorts = 1>
 
 State 23 <SV = 12> <Delay = 7.48>
-ST_23 : Operation 94 [2/2] (7.48ns)   --->   "%p_Val2_48 = call fastcc i8 @cordicSin_fix(float %tmp_8)" [Iris-recognition/sine.cpp:155]   --->   Operation 94 'call' 'p_Val2_48' <Predicate = true> <Delay = 7.48> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_23 : Operation 94 [2/2] (7.48ns)   --->   "%p_Val2_114 = call fastcc i8 @cordicSin_fix(float %tmp_8)" [Iris-recognition/sine.cpp:155]   --->   Operation 94 'call' 'p_Val2_114' <Predicate = true> <Delay = 7.48> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
 
 State 24 <SV = 13> <Delay = 1.91>
-ST_24 : Operation 95 [1/2] (0.00ns)   --->   "%p_Val2_48 = call fastcc i8 @cordicSin_fix(float %tmp_8)" [Iris-recognition/sine.cpp:155]   --->   Operation 95 'call' 'p_Val2_48' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
-ST_24 : Operation 96 [1/1] (1.91ns)   --->   "%sub_ln703_1 = sub i8 0, %p_Val2_48" [Iris-recognition/sine.cpp:155]   --->   Operation 96 'sub' 'sub_ln703_1' <Predicate = true> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_24 : Operation 95 [1/2] (0.00ns)   --->   "%p_Val2_114 = call fastcc i8 @cordicSin_fix(float %tmp_8)" [Iris-recognition/sine.cpp:155]   --->   Operation 95 'call' 'p_Val2_114' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_24 : Operation 96 [1/1] (1.91ns)   --->   "%sub_ln703_4 = sub i8 0, %p_Val2_114" [Iris-recognition/sine.cpp:155]   --->   Operation 96 'sub' 'sub_ln703_4' <Predicate = true> <Delay = 1.91> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.91> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
 ST_24 : Operation 97 [1/1] (1.90ns)   --->   "br label %6" [Iris-recognition/sine.cpp:155]   --->   Operation 97 'br' <Predicate = true> <Delay = 1.90>
 
 State 25 <SV = 5> <Delay = 8.23>
@@ -287,7 +287,7 @@ STG Binding:
 - Is top level: 0
 Port [ Return ] is wired: 1; IO mode=ap_ctrl_hs:ce=0
 Port [ x]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
-Port [ arctan_V268]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
+Port [ arctan_V232]:  wired=0; compound=1; hidden=1; nouse=1; global=1; static=1; extern=0; dir=0; type=1; pingpong=0; private_global=0; linkage=7; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
 ---------------- STG Properties END ------------------
 
 ---------------- Datapath Model BEGIN ----------------
@@ -320,15 +320,15 @@ agg_result_ret3 (call      ) [ 00000000100000001000000010000000100000001]
 br_ln160        (br        ) [ 00000000100000001000000010000000100000001]
 tmp_s           (dadd      ) [ 00000000000001100000000000000000000000000]
 tmp_1           (fptrunc   ) [ 00000000000000011000000000000000000000000]
-p_Val2_49       (call      ) [ 00000000000000000000000000000000000000000]
-sub_ln703_2     (sub       ) [ 00000000000000000000000000000000000000000]
+p_Val2_115      (call      ) [ 00000000000000000000000000000000000000000]
+sub_ln703_5     (sub       ) [ 00000000000000000000000000000000000000000]
 br_ln158        (br        ) [ 00000000000000000000000000000000000000000]
 agg_result_0    (phi       ) [ 00000000000000001000000000000000000000000]
 ret_ln161       (ret       ) [ 00000000000000000000000000000000000000000]
 tmp_7           (dadd      ) [ 00000000000000000000011000000000000000000]
 tmp_8           (fptrunc   ) [ 00000000000000000000000110000000000000000]
-p_Val2_48       (call      ) [ 00000000000000000000000000000000000000000]
-sub_ln703_1     (sub       ) [ 00000000100000001000000010000000100000001]
+p_Val2_114      (call      ) [ 00000000000000000000000000000000000000000]
+sub_ln703_4     (sub       ) [ 00000000100000001000000010000000100000001]
 br_ln155        (br        ) [ 00000000100000001000000010000000100000001]
 tmp_4           (dadd      ) [ 00000000000000000000000000000110000000000]
 tmp_5           (fptrunc   ) [ 00000000000000000000000000000001100000000]
@@ -353,12 +353,12 @@ br_ln149        (br        ) [ 00000000100000001000000010000000100000001]
 </bind>
 </comp>
 
-<comp id="2" class="1000" name="arctan_V268">
+<comp id="2" class="1000" name="arctan_V232">
 <pin_list>
 <pin id="3" dir="1" index="0" bw="1" slack="0"/>
 </pin_list>
 <bind>
-<StgValue><ssdm name="arctan_V268"/><MemPortTyVec>1 </MemPortTyVec>
+<StgValue><ssdm name="arctan_V232"/><MemPortTyVec>1 </MemPortTyVec>
 </StgValue>
 </bind>
 </comp>
@@ -535,12 +535,12 @@ br_ln149        (br        ) [ 00000000100000001000000010000000100000001]
 <pin_list>
 <pin id="54" dir="0" index="0" bw="8" slack="0"/>
 <pin id="55" dir="0" index="1" bw="32" slack="1"/>
-<pin id="56" dir="0" index="2" bw="6" slack="0"/>
+<pin id="56" dir="0" index="2" bw="4" slack="0"/>
 <pin id="57" dir="1" index="3" bw="8" slack="0"/>
 </pin_list>
 <bind>
 <opcode="call(48) " fcode="call"/>
-<opset="agg_result_ret3/7 p_Val2_49/15 p_Val2_48/23 p_Val2_s/31 agg_result_ret/39 "/>
+<opset="agg_result_ret3/7 p_Val2_115/15 p_Val2_114/23 p_Val2_s/31 agg_result_ret/39 "/>
 </bind>
 </comp>
 
@@ -622,7 +622,7 @@ br_ln149        (br        ) [ 00000000100000001000000010000000100000001]
 </pin_list>
 <bind>
 <opcode="sub(10) " fcode="sub"/>
-<opset="sub_ln703_2/16 sub_ln703_1/24 sub_ln703/32 "/>
+<opset="sub_ln703_5/16 sub_ln703_4/24 sub_ln703/32 "/>
 </bind>
 </comp>
 
@@ -822,13 +822,13 @@ br_ln149        (br        ) [ 00000000100000001000000010000000100000001]
 </bind>
 </comp>
 
-<comp id="197" class="1005" name="sub_ln703_1_reg_197">
+<comp id="197" class="1005" name="sub_ln703_4_reg_197">
 <pin_list>
 <pin id="198" dir="0" index="0" bw="8" slack="1"/>
 <pin id="199" dir="1" index="1" bw="8" slack="1"/>
 </pin_list>
 <bind>
-<opset="sub_ln703_1 "/>
+<opset="sub_ln703_4 "/>
 </bind>
 </comp>
 
@@ -982,7 +982,7 @@ br_ln149        (br        ) [ 00000000100000001000000010000000100000001]
   - Output states:
  - Input state : 
 	Port: cordic360_Sin_fixed : x | {1 }
-	Port: cordic360_Sin_fixed : arctan_V268 | {7 8 15 16 23 24 31 32 39 40 }
+	Port: cordic360_Sin_fixed : arctan_V232 | {7 8 15 16 23 24 31 32 39 40 }
   - Chain level:
 	State 1
 	State 2
@@ -1014,7 +1014,7 @@ br_ln149        (br        ) [ 00000000100000001000000010000000100000001]
 	State 14
 	State 15
 	State 16
-		sub_ln703_2 : 1
+		sub_ln703_5 : 1
 		agg_result_0 : 2
 		ret_ln161 : 3
 	State 17
@@ -1025,7 +1025,7 @@ br_ln149        (br        ) [ 00000000100000001000000010000000100000001]
 	State 22
 	State 23
 	State 24
-		sub_ln703_1 : 1
+		sub_ln703_4 : 1
 	State 25
 	State 26
 	State 27
@@ -1055,7 +1055,7 @@ br_ln149        (br        ) [ 00000000100000001000000010000000100000001]
 |----------|-------------------------|---------|---------|---------|---------|
 |   dadd   |        grp_fu_67        |    3    |    0    |   445   |   1149  |
 |----------|-------------------------|---------|---------|---------|---------|
-|   call   | grp_cordicSin_fix_fu_53 |    0    |  7.076  |   306   |   911   |
+|   call   | grp_cordicSin_fix_fu_53 |    0    |  7.076  |   307   |   921   |
 |----------|-------------------------|---------|---------|---------|---------|
 |   dcmp   |        grp_fu_74        |    0    |    0    |   130   |   469   |
 |          |        grp_fu_82        |    0    |    0    |   130   |   469   |
@@ -1081,7 +1081,7 @@ br_ln149        (br        ) [ 00000000100000001000000010000000100000001]
 |----------|-------------------------|---------|---------|---------|---------|
 |   trunc  |    trunc_ln148_fu_122   |    0    |    0    |    0    |    0    |
 |----------|-------------------------|---------|---------|---------|---------|
-|   Total  |                         |    3    |  7.076  |   1239  |   3478  |
+|   Total  |                         |    3    |  7.076  |   1240  |   3488  |
 |----------|-------------------------|---------|---------|---------|---------|
 
 Memories:
@@ -1101,7 +1101,7 @@ N/A
 |    or_ln148_reg_170   |    1   |
 |        reg_104        |   32   |
 |         reg_99        |   64   |
-|  sub_ln703_1_reg_197  |    8   |
+|  sub_ln703_4_reg_197  |    8   |
 |   sub_ln703_reg_202   |    8   |
 |      tmp_reg_162      |   64   |
 |     x_read_reg_156    |   32   |
@@ -1128,10 +1128,10 @@ N/A
 +-----------+--------+--------+--------+--------+
 |           | DSP48E |  Delay |   FF   |   LUT  |
 +-----------+--------+--------+--------+--------+
-|  Function |    3   |    7   |  1239  |  3478  |
+|  Function |    3   |    7   |  1240  |  3488  |
 |   Memory  |    -   |    -   |    -   |    -   |
 |Multiplexer|    -   |    8   |    -   |   36   |
 |  Register |    -   |    -   |   237  |    -   |
 +-----------+--------+--------+--------+--------+
-|   Total   |    3   |   16   |  1476  |  3514  |
+|   Total   |    3   |   16   |  1477  |  3524  |
 +-----------+--------+--------+--------+--------+

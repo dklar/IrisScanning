@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'find_iris_high_accur'" level="0">
-<item name = "Date">Thu Oct  1 13:57:25 2020
+<item name = "Date">Tue Oct  6 18:21:16 2020
 </item>
 <item name = "Version">2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)</item>
 <item name = "Project">Iris-recognition</item>
@@ -68,17 +68,17 @@
 <section name = "" level="1">
 <item name = "Instance"><table name="" hasTotal="1">
 <keys size="7">Instance, Module, BRAM_18K, DSP48E, FF, LUT, URAM</keys>
-<column name="top_level_fadd_32g8j_U36">top_level_fadd_32g8j, 0, 2, 205, 390, 0</column>
-<column name="top_level_fadd_32g8j_U37">top_level_fadd_32g8j, 0, 2, 205, 390, 0</column>
-<column name="top_level_fmul_32hbi_U38">top_level_fmul_32hbi, 0, 3, 143, 321, 0</column>
-<column name="top_level_fmul_32hbi_U39">top_level_fmul_32hbi, 0, 3, 143, 321, 0</column>
-<column name="top_level_sitofp_ibs_U40">top_level_sitofp_ibs, 0, 0, 340, 554, 0</column>
-<column name="top_level_sitofp_ibs_U41">top_level_sitofp_ibs, 0, 0, 340, 554, 0</column>
+<column name="top_level2_fadd_3g8j_U34">top_level2_fadd_3g8j, 0, 2, 205, 390, 0</column>
+<column name="top_level2_fadd_3g8j_U35">top_level2_fadd_3g8j, 0, 2, 205, 390, 0</column>
+<column name="top_level2_fmul_3hbi_U36">top_level2_fmul_3hbi, 0, 3, 143, 321, 0</column>
+<column name="top_level2_fmul_3hbi_U37">top_level2_fmul_3hbi, 0, 3, 143, 321, 0</column>
+<column name="top_level2_sitofpibs_U38">top_level2_sitofpibs, 0, 0, 340, 554, 0</column>
+<column name="top_level2_sitofpibs_U39">top_level2_sitofpibs, 0, 0, 340, 554, 0</column>
 </table>
 </item>
 <item name = "DSP48E"><table name="" hasTotal="0">
 <keys size="3">Instance, Module, Expression</keys>
-<column name="top_level_mul_muljbC_U42">top_level_mul_muljbC, i0 * i1</column>
+<column name="top_level2_mul_mujbC_U40">top_level2_mul_mujbC, i0 * i1</column>
 </table>
 </item>
 <item name = "Memory"><table name="" hasTotal="1">
@@ -109,8 +109,8 @@
 <column name="x_1_fu_1226_p2">+, 0, 0, 15, 9, 1</column>
 <column name="y_1_fu_1210_p2">+, 0, 0, 15, 9, 1</column>
 <column name="i_max_fu_1339_p2">-, 0, 0, 39, 32, 32</column>
-<column name="result_V_1_fu_1140_p2">-, 0, 0, 39, 1, 32</column>
-<column name="result_V_3_fu_1152_p2">-, 0, 0, 39, 1, 32</column>
+<column name="result_V_2_fu_1140_p2">-, 0, 0, 39, 1, 32</column>
+<column name="result_V_4_fu_1152_p2">-, 0, 0, 39, 1, 32</column>
 <column name="sub_ln1311_1_fu_1068_p2">-, 0, 0, 15, 7, 8</column>
 <column name="sub_ln1311_fu_939_p2">-, 0, 0, 15, 7, 8</column>
 <column name="sub_ln227_fu_555_p2">-, 0, 0, 12, 12, 12</column>
@@ -141,7 +141,7 @@
 <column name="icmp_ln246_fu_1247_p2">icmp, 0, 0, 18, 32, 32</column>
 <column name="icmp_ln255_fu_1305_p2">icmp, 0, 0, 11, 6, 6</column>
 <column name="icmp_ln259_fu_1345_p2">icmp, 0, 0, 18, 32, 32</column>
-<column name="r_V_2_fu_1098_p2">lshr, 0, 0, 73, 25, 25</column>
+<column name="r_V_12_fu_1098_p2">lshr, 0, 0, 73, 25, 25</column>
 <column name="r_V_fu_969_p2">lshr, 0, 0, 73, 25, 25</column>
 <column name="ap_block_state1">or, 0, 0, 2, 1, 1</column>
 <column name="ap_block_state28">or, 0, 0, 2, 1, 1</column>
@@ -158,8 +158,8 @@
 <column name="or_ln9_fu_867_p2">or, 0, 0, 2, 1, 1</column>
 <column name="grp_fu_500_p1">select, 0, 0, 32, 1, 32</column>
 <column name="grp_fu_504_p1">select, 0, 0, 32, 1, 32</column>
-<column name="p_Val2_10_fu_1003_p3">select, 0, 0, 32, 1, 32</column>
-<column name="p_Val2_12_fu_1132_p3">select, 0, 0, 32, 1, 32</column>
+<column name="p_Val2_60_fu_1003_p3">select, 0, 0, 32, 1, 32</column>
+<column name="p_Val2_62_fu_1132_p3">select, 0, 0, 32, 1, 32</column>
 <column name="points_d0">select, 0, 0, 32, 1, 32</column>
 <column name="points_d1">select, 0, 0, 32, 1, 32</column>
 <column name="sel_tmp40_fu_795_p3">select, 0, 0, 32, 1, 32</column>
@@ -178,8 +178,8 @@
 <column name="select_ln9_fu_859_p3">select, 0, 0, 32, 1, 32</column>
 <column name="ush_1_fu_1078_p3">select, 0, 0, 9, 1, 9</column>
 <column name="ush_fu_949_p3">select, 0, 0, 9, 1, 9</column>
-<column name="r_V_1_fu_975_p2">shl, 0, 0, 243, 79, 79</column>
-<column name="r_V_3_fu_1104_p2">shl, 0, 0, 243, 79, 79</column>
+<column name="r_V_11_fu_975_p2">shl, 0, 0, 243, 79, 79</column>
+<column name="r_V_13_fu_1104_p2">shl, 0, 0, 243, 79, 79</column>
 <column name="xor_ln15_fu_633_p2">xor, 0, 0, 2, 1, 2</column>
 <column name="xor_ln16_fu_645_p2">xor, 0, 0, 2, 1, 2</column>
 <column name="xor_ln17_fu_657_p2">xor, 0, 0, 2, 1, 2</column>
@@ -245,24 +245,24 @@
 <column name="or_ln18_1_reg_1463">1, 0, 1, 0</column>
 <column name="or_ln18_reg_1434">1, 0, 1, 0</column>
 <column name="p_0_i_reg_445">9, 0, 9, 0</column>
-<column name="p_Result_1_reg_1537">1, 0, 1, 0</column>
+<column name="p_Result_53_reg_1537">1, 0, 1, 0</column>
 <column name="p_Result_s_reg_1526">1, 0, 1, 0</column>
-<column name="p_Val2_10_reg_1531">32, 0, 32, 0</column>
-<column name="p_Val2_12_reg_1542">32, 0, 32, 0</column>
+<column name="p_Val2_60_reg_1531">32, 0, 32, 0</column>
+<column name="p_Val2_62_reg_1542">32, 0, 32, 0</column>
 <column name="r_0_i_reg_366">8, 0, 8, 0</column>
 <column name="r_1_reg_1631">6, 0, 6, 0</column>
 <column name="start_once_reg">1, 0, 1, 0</column>
 <column name="sub_ln227_reg_1410">10, 0, 12, 2</column>
 <column name="sums_addr_3_reg_1608">6, 0, 6, 0</column>
-<column name="tmp_2_i_reg_1506">32, 0, 32, 0</column>
-<column name="tmp_4_i_reg_1386">32, 0, 32, 0</column>
-<column name="tmp_5_i_reg_1511">32, 0, 32, 0</column>
-<column name="tmp_i_48_reg_1404">32, 0, 32, 0</column>
+<column name="tmp_17_i_reg_1506">32, 0, 32, 0</column>
+<column name="tmp_19_i_reg_1386">32, 0, 32, 0</column>
+<column name="tmp_20_i_reg_1511">32, 0, 32, 0</column>
+<column name="tmp_i_38_reg_1404">32, 0, 32, 0</column>
 <column name="tmp_i_reg_1381">32, 0, 32, 0</column>
 <column name="val_assign_reg_390">9, 0, 9, 0</column>
 <column name="x2_0_i_reg_434">9, 0, 9, 0</column>
 <column name="x_1_reg_1577">9, 0, 9, 0</column>
-<column name="x_assign_1_reg_1521">32, 0, 32, 0</column>
+<column name="x_assign_3_reg_1521">32, 0, 32, 0</column>
 <column name="x_assign_reg_1516">32, 0, 32, 0</column>
 <column name="x_read_reg_1371">32, 0, 32, 0</column>
 <column name="y1_0_i_reg_423">9, 0, 9, 0</column>

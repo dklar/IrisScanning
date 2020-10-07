@@ -1,7 +1,7 @@
 # This script segment is generated automatically by AutoPilot
 
-set id 61
-set name top_level_fpext_3lbW
+set id 59
+set name top_level2_fpext_lbW
 set corename simcore_fpext
 set op fpext
 set stage_num 2
@@ -83,17 +83,17 @@ puts "@W \[IMPL-101\] Cannot find ::AESL_LIB_XILINX_FPV6::fpv6_gen, check your p
 
 
 # Memory (RAM/ROM)  definition:
-set ID 63
+set ID 61
 set hasByteEnable 0
 set MemName cordicCos_fix_arckbM
 set CoreName ap_simcore_mem
 set PortList { 1 }
-set DataWd 6
+set DataWd 4
 set AddrRange 50
 set AddrWd 6
 set TrueReset 0
 set IsROM 1
-set ROMData { "110010" "011101" "001111" "000111" "000011" "000001" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" "000000" }
+set ROMData { "1100" "0111" "0011" "0001" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" "0000" }
 set HasInitializer 1
 set Initializer $ROMData
 set NumOfStage 2
@@ -175,7 +175,7 @@ if {${::AESL::PGuard_autoexp_gen}} {
 # Direct connection:
 if {${::AESL::PGuard_autoexp_gen}} {
 eval "cg_default_interface_gen_dc { \
-    id 64 \
+    id 62 \
     name x \
     type other \
     dir I \

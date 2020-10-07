@@ -19,7 +19,7 @@
 
 <Node id="5" bw="0" op_0_bw="0" op_1_bw="32" op_2_bw="0" op_3_bw="32" op_4_bw="32" op_5_bw="0" op_6_bw="32" op_7_bw="32" op_8_bw="0" op_9_bw="0" op_10_bw="0" op_11_bw="32" op_12_bw="32" op_13_bw="32" op_14_bw="32" op_15_bw="0" op_16_bw="0">
 <![CDATA[
-entry:0  call void (...)* @_ssdm_op_SpecInterface(i32* %x, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str442, i32 0, i32 0, [1 x i8]* @p_str443, [1 x i8]* @p_str444, [1 x i8]* @p_str445, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str446, [11 x i8]* @ScalarProp_str)
+entry:0  call void (...)* @_ssdm_op_SpecInterface(i32* %x, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str381, i32 0, i32 0, [1 x i8]* @p_str382, [1 x i8]* @p_str383, [1 x i8]* @p_str384, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str385, [11 x i8]* @ScalarProp_str)
 
 ]]></Node>
 <StgValue><ssdm name="specinterface_ln0"/></StgValue>
@@ -34,7 +34,7 @@ entry:0  call void (...)* @_ssdm_op_SpecInterface(i32* %x, [8 x i8]* @ap_fifo_st
 
 <Node id="6" bw="0" op_0_bw="0" op_1_bw="32" op_2_bw="0" op_3_bw="32" op_4_bw="32" op_5_bw="0" op_6_bw="32" op_7_bw="32" op_8_bw="0" op_9_bw="0" op_10_bw="0" op_11_bw="32" op_12_bw="32" op_13_bw="32" op_14_bw="32" op_15_bw="0" op_16_bw="0">
 <![CDATA[
-entry:1  call void (...)* @_ssdm_op_SpecInterface(i32* %y, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str447, i32 0, i32 0, [1 x i8]* @p_str448, [1 x i8]* @p_str449, [1 x i8]* @p_str450, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str451, [11 x i8]* @ScalarProp_str)
+entry:1  call void (...)* @_ssdm_op_SpecInterface(i32* %y, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str386, i32 0, i32 0, [1 x i8]* @p_str387, [1 x i8]* @p_str388, [1 x i8]* @p_str389, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str390, [11 x i8]* @ScalarProp_str)
 
 ]]></Node>
 <StgValue><ssdm name="specinterface_ln0"/></StgValue>
@@ -49,7 +49,7 @@ entry:1  call void (...)* @_ssdm_op_SpecInterface(i32* %y, [8 x i8]* @ap_fifo_st
 
 <Node id="7" bw="0" op_0_bw="0" op_1_bw="32" op_2_bw="0" op_3_bw="32" op_4_bw="32" op_5_bw="0" op_6_bw="32" op_7_bw="32" op_8_bw="0" op_9_bw="0" op_10_bw="0" op_11_bw="32" op_12_bw="32" op_13_bw="32" op_14_bw="32" op_15_bw="0" op_16_bw="0">
 <![CDATA[
-entry:2  call void (...)* @_ssdm_op_SpecInterface(i32* %r1, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str452, i32 0, i32 0, [1 x i8]* @p_str453, [1 x i8]* @p_str454, [1 x i8]* @p_str455, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str456, [11 x i8]* @ScalarProp_str)
+entry:2  call void (...)* @_ssdm_op_SpecInterface(i32* %r1, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str391, i32 0, i32 0, [1 x i8]* @p_str392, [1 x i8]* @p_str393, [1 x i8]* @p_str394, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str395, [11 x i8]* @ScalarProp_str)
 
 ]]></Node>
 <StgValue><ssdm name="specinterface_ln0"/></StgValue>
@@ -187,7 +187,7 @@ entry:10  %mrv_3 = insertvalue { i32, i32, i32, i32 } %mrv_2, i32 %r2_read, 3
 entry:11  ret { i32, i32, i32, i32 } %mrv_3
 
 ]]></Node>
-<StgValue><ssdm name="ret_ln792"/></StgValue>
+<StgValue><ssdm name="ret_ln718"/></StgValue>
 </operation>
 </state>
 </state_list>

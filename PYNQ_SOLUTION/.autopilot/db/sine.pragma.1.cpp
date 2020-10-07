@@ -34441,10 +34441,11 @@ _ssdm_op_SpecDataflowPipeline(-1, 0, "");
 
 
 
-typedef ap_fixed<8,2> float30;
-typedef ap_fixed<8,0> float8;
-
-static const float30 arctan[] = {
+typedef ap_fixed<8,1> float30;
+typedef ap_fixed<4,1> floatIntern;
+typedef ap_ufixed<4,0> float8;
+typedef ap_fixed<8,4> floatGauss;
+static const float8 arctan[] = {
   0.7853981633974483,
   0.4636476090008061,
   0.24497866312686414,
@@ -34581,6 +34582,7 @@ float cordic360_SIN(float x, int nMax);
 float30 cordic360_Sin_fixed(float x, int nMax);
 float30 cordic360_Cos_fixed(float x, int nMax);
 void cordic360_COS_SIN(float x, float &s, float &c,int nMax);
+void cordic360_COS_SIN_fix(float x, float30 &s, float30 &c,int nMax);
 # 2 "Iris-recognition/sine.cpp" 2
 
 float replaceCOS(int val){
@@ -34680,7 +34682,7 @@ float30 cordicSin_fix(float x, int nMax){
  float30 z_i = 0;
  float30 val = (float30)1;
  for (int n =0;n<nMax;n++){
-  float30 a = arctan[n];
+  float8 a = arctan[n];
   float30 temp1 = val>>n;
   float30 z_r_old = z_r;
   float30 z_i_old = z_i;
@@ -34753,6 +34755,50 @@ float30 cordic360_Cos_fixed(float x, int nMax){
   return cordicCos_fix(x + 3.14159265358979,nMax);
  }
  return cordicCos_fix(x,nMax);
+}
+
+void cordic_fix(float x,int nMax,float30 &s,float30 &c){
+ floatIntern phi = (floatIntern) x;
+ floatIntern z_r = 0.60725293500888;
+ floatIntern z_i = 0;
+ floatIntern val = 1;
+ for (int n =0;n<nMax;n++){
+  float8 a = arctan[n];
+  floatIntern temp1 = val>>n;
+  floatIntern z_r_old = z_r;
+  floatIntern z_i_old = z_i;
+
+
+  if (phi>=0){
+   phi -= a;
+   z_r = z_r_old - z_i_old * temp1;
+   z_i = z_i_old + z_r_old * temp1;
+
+  }else{
+   phi += a;
+
+   z_r = z_r_old + z_i_old * temp1;
+   z_i = z_i_old - z_r_old * temp1;
+  }
+ }
+ s = z_i;
+ c = z_r;
+}
+
+void cordic360_COS_SIN_fix(float x, float30 &s, float30 &c,int nMax){
+ if(x>=4.7123889803846898){
+  cordic_fix(x-6.28318530717958647692,nMax,s,c);
+ }else if(x>1.570796327){
+  cordic_fix(x-3.14159265358979,nMax,s,c);
+  s = -s;
+  c = -c;
+ }else if(x>-3.14159265358979 && x<=-1.570796327){
+  cordic_fix(x+3.14159265358979,nMax,s,c);
+  s =-s;
+  c =-c;
+ }else if(x>-1.570796327 && x<=1.570796327){
+  cordic_fix(x,nMax,s,c);
+ }
 }
 
 float cordicSine(float x,int nMax){
@@ -34855,8 +34901,6 @@ void cordic(float x,int nMax,float &s,float &c){
  s = z_i;
  c = z_r;
 }
-
-
 
 void cordic360_COS_SIN(float x, float &s, float &c,int nMax){
  if(x>=4.7123889803846898){

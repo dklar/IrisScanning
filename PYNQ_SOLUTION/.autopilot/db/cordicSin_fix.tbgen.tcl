@@ -57,15 +57,15 @@ set RtlHierarchyInfo {[
 		"HasNonBlockingOperation" : "0",
 		"Port" : [
 			{"Name" : "x", "Type" : "None", "Direction" : "I"},
-			{"Name" : "arctan_V268", "Type" : "Memory", "Direction" : "I"}]},
-	{"ID" : "1", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.arctan_V268_U", "Parent" : "0"},
-	{"ID" : "2", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level_fpext_3lbW_U65", "Parent" : "0"}]}
+			{"Name" : "arctan_V232", "Type" : "Memory", "Direction" : "I"}]},
+	{"ID" : "1", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.arctan_V232_U", "Parent" : "0"},
+	{"ID" : "2", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.top_level2_fpext_lbW_U63", "Parent" : "0"}]}
 
 
 set ArgLastReadFirstWriteLatency {
 	cordicSin_fix {
 		x {Type I LastRead 0 FirstWrite -1}
-		arctan_V268 {Type I LastRead -1 FirstWrite -1}}}
+		arctan_V232 {Type I LastRead -1 FirstWrite -1}}}
 
 set hasDtUnsupportedChannel 0
 

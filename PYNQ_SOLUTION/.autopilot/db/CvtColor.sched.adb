@@ -847,7 +847,7 @@
 					<Obj>
 						<type>0</type>
 						<id>40</id>
-						<name>tmp_36</name>
+						<name>tmp_66</name>
 						<fileName>C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h</fileName>
 						<fileDirectory>C:\Users\Dennis\VivadoHLS\Final</fileDirectory>
 						<lineNumber>679</lineNumber>
@@ -910,7 +910,7 @@
 					<Obj>
 						<type>0</type>
 						<id>41</id>
-						<name>tmp_37</name>
+						<name>tmp_67</name>
 						<fileName>C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h</fileName>
 						<fileDirectory>C:\Users\Dennis\VivadoHLS\Final</fileDirectory>
 						<lineNumber>679</lineNumber>
@@ -973,7 +973,7 @@
 					<Obj>
 						<type>0</type>
 						<id>42</id>
-						<name>tmp_38</name>
+						<name>tmp_68</name>
 						<fileName>C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h</fileName>
 						<fileDirectory>C:\Users\Dennis\VivadoHLS\Final</fileDirectory>
 						<lineNumber>679</lineNumber>
@@ -1598,7 +1598,7 @@
 					<Obj>
 						<type>0</type>
 						<id>53</id>
-						<name>ret_V_7</name>
+						<name>ret_V_12</name>
 						<fileName>C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h</fileName>
 						<fileDirectory>C:\Users\Dennis\VivadoHLS\Final</fileDirectory>
 						<lineNumber>1497</lineNumber>
@@ -1894,7 +1894,7 @@
 					<Obj>
 						<type>0</type>
 						<id>57</id>
-						<name>p_Val2_52</name>
+						<name>p_Val2_120</name>
 						<fileName>C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_types.h</fileName>
 						<fileDirectory>C:\Users\Dennis\VivadoHLS\Final</fileDirectory>
 						<lineNumber>409</lineNumber>
@@ -1971,7 +1971,7 @@
 					<Obj>
 						<type>0</type>
 						<id>58</id>
-						<name>tmp_33</name>
+						<name>tmp_63</name>
 						<fileName>C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_types.h</fileName>
 						<fileDirectory>C:\Users\Dennis\VivadoHLS\Final</fileDirectory>
 						<lineNumber>409</lineNumber>
@@ -2126,7 +2126,7 @@
 					<Obj>
 						<type>0</type>
 						<id>60</id>
-						<name>tmp_34</name>
+						<name>tmp_64</name>
 						<fileName>C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_types.h</fileName>
 						<fileDirectory>C:\Users\Dennis\VivadoHLS\Final</fileDirectory>
 						<lineNumber>409</lineNumber>

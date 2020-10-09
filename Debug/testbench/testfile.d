@@ -1,4 +1,4 @@
-testbench/testfile.o: \
+testbench/testfile.d: \
  C:/Users/Dennis/VivadoHLS/Final/Iris-recognition/testfile.cpp \
  C:/Users/Dennis/VivadoHLS/Final/Iris-recognition/toplevel.hpp \
  C:/Users/Dennis/VivadoHLS/Final/Iris-recognition/definitions.hpp \
@@ -71,8 +71,11 @@ testbench/testfile.o: \
  C:/Xilinx/Vivado/2019.2/include/hls/hls_video_harris.h \
  C:/Xilinx/Vivado/2019.2/include/hls/hls_video_haar.h \
  C:/Xilinx/Vivado/2019.2/include/hls/hls_video_stereobm.h \
- C:/Users/Dennis/VivadoHLS/Final/Iris-recognition/sine.hpp \
  C:/Xilinx/Vivado/2019.2/include/hls_math.h \
+ C:/Users/Dennis/VivadoHLS/Final/Iris-recognition/sine.hpp \
+ C:/Users/Dennis/VivadoHLS/Final/Iris-recognition/segmentation.hpp \
+ C:/Users/Dennis/VivadoHLS/Final/Iris-recognition/gabor.hpp \
+ C:/Users/Dennis/VivadoHLS/Final/Iris-recognition/normalization.hpp \
  C:/Xilinx/Vivado/2019.2/include/hls_opencv.h \
  C:/Xilinx/Vivado/2019.2/include/opencv2/opencv.hpp \
  C:/Xilinx/Vivado/2019.2/include/opencv2/core/core_c.h \
@@ -245,9 +248,15 @@ C:/Xilinx/Vivado/2019.2/include/hls/hls_video_haar.h:
 
 C:/Xilinx/Vivado/2019.2/include/hls/hls_video_stereobm.h:
 
+C:/Xilinx/Vivado/2019.2/include/hls_math.h:
+
 C:/Users/Dennis/VivadoHLS/Final/Iris-recognition/sine.hpp:
 
-C:/Xilinx/Vivado/2019.2/include/hls_math.h:
+C:/Users/Dennis/VivadoHLS/Final/Iris-recognition/segmentation.hpp:
+
+C:/Users/Dennis/VivadoHLS/Final/Iris-recognition/gabor.hpp:
+
+C:/Users/Dennis/VivadoHLS/Final/Iris-recognition/normalization.hpp:
 
 C:/Xilinx/Vivado/2019.2/include/hls_opencv.h:
 

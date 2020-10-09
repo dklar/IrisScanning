@@ -12,7 +12,7 @@
 #define PUPIL_RADIUS_MAX  60
 
 
-#define NORM_HEIGHT 64
+#define NORM_HEIGHT 32
 #define NORM_WIDTH  360
 
 #define MAX_KERN_SIZE NORM_HEIGHT/3
@@ -23,12 +23,12 @@
 typedef hls::stream<ap_axiu<32,1,1,1> > 								AXI_STREAM;//32 bit data stream
 typedef hls::Mat<MAX_HEIGHT_CASIA,   MAX_WIDTH_CASIA,   HLS_8UC3> 		RGB_IMAGE;//RGB image from type HLS::Mat
 typedef hls::Mat<MAX_HEIGHT_CASIA,   MAX_WIDTH_CASIA,   HLS_8UC1> 		GRAY_IMAGE;//Gray image from type HLS::Mat
-typedef hls::Mat<64,   360,   HLS_8UC3> 								NORM_RGB_IMAGE;//RGB image from type HLS::Mat
-typedef hls::Mat<64,   360,   HLS_8UC1> 								NORM_GRAY_IMAGE;//Gray image from type HLS::Mat
+typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,   HLS_8UC3> 					NORM_RGB_IMAGE;//RGB image from type HLS::Mat
+typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,   HLS_8UC1> 					NORM_GRAY_IMAGE;//Gray image from type HLS::Mat
 typedef hls::Scalar<3, uint8_t> 										PIXEL;
 typedef hls::Scalar<1, uint8_t> 										PIXELGRAY;
-typedef hls::Mat<64,   360,   HLS_8UC1>									GRAY_IMAGE_NORM;
-typedef hls::Mat<64,   360,   HLS_8UC3>									RGB_IMAGE_NORM;
+typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,HLS_8UC1>						GRAY_IMAGE_NORM;
+typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,HLS_8UC3>						RGB_IMAGE_NORM;
 
 typedef ap_uint<2> int2;//for return value of gabor pixel ->00,01,10,11
 typedef ap_uint<6> int6;//for other small values

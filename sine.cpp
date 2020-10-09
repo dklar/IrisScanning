@@ -54,241 +54,47 @@ float cosTaylor(float x){
 	return sinTaylor(v);
 }
 
-float30 sin90_fix(float x){
-	float30 x2,p3,p2,p1,p0;
-	float30 c1 = - 0.0001984126;
-	float30 c2 = 0.000002755731;
-	float30 c3 = 0.008333333;
-	float30 c4 = - 0.166666666;
-
-	x2 = x*x;
-	p3 = c1 + c2*x2;
-	p2 = c3	+ x2*p3;
-	p1 = c4	+ x2*p2;
-	p0 =  1 + x2*p1;
-	float30 sine2 = ((float30)x) *p0;
-
-	return sine2;
-}
-
-float30 sin180_fix(float x){
-	if (x<PIHALF){
-		return sin90_fix(x);
-	}else return sin90_fix(PI-x);
-
-}
-
-float30 sinTaylor_fix(float x){
-	if (x>PI) return -sin180_fix(x-PI);
-	else return sin180_fix(x);
-}
-
-float30 cosTaylor_fix(float x){
-	float v = x+PIHALF;
-	if (v>=TWOPI){
-		v -= TWOPI;
-	}
-	return sinTaylor_fix(v);
-}
-
-float30 cordicSin_fix(float x, int nMax){
-	float30 phi = (float30) x;
-	float30 z_r = 0.60725293500888;
-	float30 z_i = 0;
-	float30 val = (float30)1;
+void cordic_fix(floatArg phi,int nMax,floatSin &s,floatSin &c){
+	floatSin z_r = 0.60725293500888;
+	floatSin z_i = 0;
+	floatSin val = 1;
 	for (int n =0;n<nMax;n++){
-		float8 a = arctan[n];
-		float30 temp1 = val>>n;
-		float30 z_r_old = z_r;
-		float30 z_i_old = z_i;
+		floatTan a = arctan[n];
+		floatSin temp1 = val>>n;
+		floatSin z_r_old = z_r;
+		floatSin z_i_old = z_i;
 
-		if (phi>=0){
+		if (phi.is_neg()){
+			phi += a;
+			z_r = z_r_old + z_i_old * temp1;
+			z_i = z_i_old - z_r_old * temp1;
+		}else{
 			phi -= a;
 			z_r = z_r_old - z_i_old * temp1;
 			z_i = z_i_old + z_r_old * temp1;
-
-		}else{
-			phi += a;
-
-			z_r = z_r_old + z_i_old * temp1;
-			z_i = z_i_old - z_r_old * temp1;
-		}
-	}
-	return z_i;
-}
-
-float30 cordicCos_fix(float x, int nMax){
-	float30 phi = (float30) x;
-	float30 z_r = 0.60725293500888;
-	float30 z_i = 0;
-	float30 val = (float30)1.0f;
-	for (int n =0;n<nMax;n++){
-		float30 a = arctan[n];
-		float30 temp1 = val>>n;
-		float30 z_r_old = z_r;
-		float30 z_i_old = z_i;
-
-		if (phi>=0){
-			phi -= a;
-			z_r = z_r_old - z_i_old * temp1;
-			z_i = z_i_old + z_r_old * temp1;
-
-		}else{
-			phi += a;
-
-			z_r = z_r_old + z_i_old * temp1;
-			z_i = z_i_old - z_r_old * temp1;
-		}
-	}
-	return z_r;
-}
-
-float30 cordic360_Sin_fixed(float x, int nMax){
-
-	if (x>=ThreeHalfPI){
-		return  cordicSin_fix(x-TWOPI,nMax);
-
-	}else if (x>PI){
-		return  - cordicSin_fix(x-PI,nMax);
-
-	}else if(x>PIHALF){
-		return  -cordicSin_fix(x - PI,nMax);
-
-	}else if(x>-PI && x<=-PIHALF){
-		return -cordicSin_fix(x + PI,nMax);
-	}
-	return cordicSin_fix(x,nMax);
-}
-
-float30 cordic360_Cos_fixed(float x, int nMax){
-
-	if (x>=ThreeHalfPI){
-		return  cordicCos_fix(x-TWOPI,nMax);
-	}else if(x>PIHALF){
-		return  -cordicCos_fix(x - PI,nMax);
-	}else if(x>-PI && x<=-PIHALF){
-		return cordicCos_fix(x + PI,nMax);
-	}
-	return cordicCos_fix(x,nMax);
-}
-
-void cordic_fix(float x,int nMax,float30 &s,float30 &c){
-	floatIntern phi = (floatIntern) x;
-	floatIntern z_r = 0.60725293500888;
-	floatIntern z_i = 0;
-	floatIntern val = 1;
-	for (int n =0;n<nMax;n++){
-		float8 a = arctan[n];
-		floatIntern temp1 = val>>n;
-		floatIntern z_r_old = z_r;
-		floatIntern z_i_old = z_i;
-
-		//phi.is_neg();
-		if (phi>=0){
-			phi -= a;
-			z_r = z_r_old - z_i_old * temp1;
-			z_i = z_i_old + z_r_old * temp1;
-
-		}else{
-			phi += a;
-
-			z_r = z_r_old + z_i_old * temp1;
-			z_i = z_i_old - z_r_old * temp1;
 		}
 	}
 	s = z_i;
 	c = z_r;
 }
 
-void cordic360_COS_SIN_fix(float x, float30 &s, float30 &c,int nMax){
-	if(x>=ThreeHalfPI){
-		cordic_fix(x-TWOPI,nMax,s,c);
-	}else if(x>PIHALF){
-		cordic_fix(x-PI,nMax,s,c);
+void cordic360_COS_SIN_fix(floatArg x, floatSin &s, floatSin &c,int nMax){
+	if(x>=(floatArg)ThreeHalfPI){
+		floatArg t = x - (floatArg)TWOPI;
+		cordic_fix(t,nMax,s,c);
+	}else if(x>(floatSin)PIHALF){
+		floatArg t = x - (floatArg)PI;
+		cordic_fix(t,nMax,s,c);
 		s = -s;
 		c = -c;
-	}else if(x>-PI && x<=-PIHALF){
-		cordic_fix(x+PI,nMax,s,c);
+	}else if(x>(floatArg)-PI && x<=(floatArg)-PIHALF){
+		floatArg t = x + (floatArg)PI;
+		cordic_fix(t,nMax,s,c);
 		s =-s;
 		c =-c;
-	}else if(x>-PIHALF && x<=PIHALF){
+	}else if(x>(floatArg)-PIHALF && x<=(floatArg)PIHALF){
 		cordic_fix(x,nMax,s,c);
 	}
-}
-
-float cordicSine(float x,int nMax){
-	float z_r = 0.60725293500888;//sin
-	float z_i = 0;//cos
-	for (int n =0;n<nMax;n++){
-		float a = arctan_double[n];
-		float temp1 = 1.0f/(float)hls::powf(2,n);
-		float z_r_old = z_r;
-		float z_i_old = z_i;
-
-		if (x>=0){
-			x -= a;
-			z_r = z_r_old - z_i_old * temp1;
-			z_i = z_i_old + z_r_old * temp1;
-
-		}else{
-			x += a;
-
-			z_r = z_r_old + z_i_old * temp1;
-			z_i = z_i_old - z_r_old * temp1;
-		}
-	}
-
-	return z_i;
-}
-
-float cordicCOS(float x,int nMax){
-	float z_r = 0.60725293500888;//sin
-	float z_i = 0;//cos
-	for (int n =0;n<nMax;n++){
-		float a = arctan_double[n];
-		float temp1 = 1.0f/(float)hls::powf(2,n);
-		float z_r_old = z_r;
-		float z_i_old = z_i;
-
-		if (x>=0){
-			x -= a;
-			z_r = z_r_old - z_i_old * temp1;
-			z_i = z_i_old + z_r_old * temp1;
-
-		}else{
-			x += a;
-
-			z_r = z_r_old + z_i_old * temp1;
-			z_i = z_i_old - z_r_old * temp1;
-		}
-	}
-
-	return z_r;
-}
-
-float cordic360_SIN(float x, int nMax){
-	if (x>=ThreeHalfPI){
-		return  cordicSine(x-TWOPI,nMax);
-	}else if (x>PI){
-		return - cordicSine(x-PI,nMax);
-	}else if(x>PIHALF){
-		return -cordicSine(x - PI,nMax);
-	}else if(x>-PI && x<=-PIHALF){
-		return -cordicSine(x + PI,nMax);
-	}
-	return cordicSine(x,nMax);
-}
-
-float cordic360_COS(float x, int nMax){
-
-	if (x>=ThreeHalfPI){
-		return cordicCOS(x-TWOPI,nMax);
-	}else if(x>PIHALF){
-		return -cordicCOS(x - PI,nMax);
-	}else if(x>-PI && x<=-PIHALF){
-		return cordicCOS(x + PI,nMax);
-	}
-	return cordicCOS(x,nMax);
 }
 
 void cordic(float x,int nMax,float &s,float &c){
@@ -312,7 +118,6 @@ void cordic(float x,int nMax,float &s,float &c){
 			z_i = z_i_old - z_r_old * temp1;
 		}
 	}
-
 	s = z_i;
 	c = z_r;
 }
@@ -328,8 +133,16 @@ void cordic360_COS_SIN(float x, float &s, float &c,int nMax){
 		cordic(x+PI,nMax,s,c);
 		s =-s;
 		c =-c;
+	}else if(x>=-ThreeHalfPI && x<-PI){
+		cordic(x+PI,nMax,s,c);
+		s = -s;
+		c = -c;
+	}else if (x>=-TWOPI && x<-ThreeHalfPI){
+		cordic(x+TWOPI,nMax,s,c);
 	}else if(x>-PIHALF && x<=PIHALF){
 		cordic(x,nMax,s,c);
 	}
 
 }
+
+

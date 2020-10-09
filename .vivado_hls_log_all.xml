@@ -8,7 +8,62 @@
       <simLog/>
       <mgLog/>
       <packageLog/>
-      <csimLog/>
+      <csimLog>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-09T12:39:59.682+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-09T12:38:53.453+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-09T12:37:01.020+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-09T12:34:44.726+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-09T09:39:07.547+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-09T09:33:31.854+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim failed with errors." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-09T08:16:53.231+0200"/>
+        <logs message="1.304299&#x9;1.643704&#x9;2@E Simulation failed: SIGSEGV." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-09T08:16:53.212+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-09T08:13:10.899+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T23:45:54.490+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T22:39:15.677+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T22:35:59.498+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed with errors." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T21:27:35.355+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim failed with errors.&#xD;&#xA;" projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T21:26:41.553+0200"/>
+        <logs message="@E Simulation failed." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T21:26:41.514+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T20:58:31.220+0200"/>
+        <logs message="@E Simulation failed.&#xD;&#xA;" projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T20:56:14.504+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T20:21:50.056+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T18:18:13.152+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T18:06:39.666+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim failed with errors." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T17:28:49.197+0200"/>
+        <logs message="@E Simulation failed." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T17:28:49.184+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim failed with errors." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T17:18:42.163+0200"/>
+        <logs message="@E Simulation failed." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T17:18:42.150+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim failed with errors.&#xD;&#xA;" projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T17:13:13.712+0200"/>
+        <logs message="@E Simulation failed." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T17:13:13.685+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T17:07:19.551+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T17:05:47.655+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T17:02:44.375+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T17:00:44.732+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T16:59:47.921+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T16:59:11.592+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T16:05:16.790+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T15:57:09.033+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T15:52:02.993+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T15:45:41.166+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim failed with errors." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T15:44:34.586+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T13:39:43.258+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T13:28:14.728+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T13:26:22.112+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T13:22:15.704+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T13:15:43.306+0200"/>
+        <logs message="ERROR: [SIM 211-100] CSim file generation failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T13:12:36.687+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T12:33:06.249+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T12:12:50.510+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T11:58:56.434+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T11:57:16.701+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T11:39:20.940+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T11:36:53.229+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T11:34:58.731+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T11:31:44.907+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T11:30:28.561+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T11:28:34.982+0200"/>
+        <logs message="ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s)." projectName="Iris-recognition" solutionName="PYNQ_SOLUTION" date="2020-10-08T11:26:44.300+0200"/>
+      </csimLog>
     </logs>
   </errorLogs>
   <warningLogs>

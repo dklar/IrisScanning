@@ -1,17 +1,24 @@
 #include "hls_video.h"
 #include <ap_fixed.h>
 #include "hls_math.h"
-#define PI 3.14159265358979
-#define TWOPI 6.28318530717958647692
-#define ThreeHalfPI 4.7123889803846898
-#define PIHALF 1.570796327
-#define DEGtoRAD 0.01745329252
+const float PI = 3.14159265358979;
+const float TWOPI = 6.28318530717958647692;
+const float ThreeHalfPI = 4.7123889803846898;
+const float PIHALF = 1.570796327;
+const float DEGtoRAD = 0.01745329252;
 
 typedef ap_fixed<8,1> float30;
 typedef ap_fixed<4,1> floatIntern;
-typedef ap_ufixed<4,0> float8;//only decimal point .00000000
-typedef ap_fixed<8,4> floatGauss;
-static const float8 arctan[] = {
+typedef ap_fixed<16,5> floatGauss;
+
+
+typedef ap_fixed<8,5> floatGabor;//orginal 16,5
+typedef ap_ufixed<4,0> floatTan;
+typedef ap_fixed<4,2> floatSin;
+typedef ap_fixed<16,4> floatArg;
+typedef ap_uint<9> IntPoints;
+
+static const floatTan arctan[] = {
 		0.7853981633974483,//0.1100100100..
 		0.4636476090008061,//0.0111011010..
 		0.24497866312686414,//0.0011111010..
@@ -130,23 +137,7 @@ float replaceSIN(int val);
  */
 float replaceCOS(int val);
 
-/*
- * CORDIC implementaion for sine
- * defined in a range up to 2pi, for values bigger than 2 pi
- * the functions returns not defined/correct values
- */
-float cordic360_COS(float x, int nMax);
-/*
- * CORDIC implementaion for sine
- * defined in a range up to 2pi, for values bigger than 2 pi
- * the functions returns not defined/correct values
- * @param x angle
- * @param nMax iterationsteps
- */
-float cordic360_SIN(float x, int nMax);
 
-float30 cordic360_Sin_fixed(float x, int nMax);
-float30 cordic360_Cos_fixed(float x, int nMax);
 void cordic360_COS_SIN(float x, float &s, float &c,int nMax);
-void cordic360_COS_SIN_fix(float x, float30 &s, float30 &c,int nMax);
 
+void cordic360_COS_SIN_fix(floatArg x, floatSin &s, floatSin &c,int nMax);

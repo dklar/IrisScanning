@@ -11,6 +11,36 @@
 #include <fstream>
 using namespace std;
 
+
+void test_detection(const char* filename,int i){
+	IplImage* src_image = new IplImage;
+	AXI_STREAM src_stream;
+	int r1,r2,x,y;
+
+	src_image = cvLoadImage(filename);
+	IplImage2AXIvideo(src_image, src_stream);
+	detect_Array(src_stream,x,y,r1,r2);
+
+	fstream f;
+	f.open("eye.txt", ios::app);
+	f << std::to_string(i)<<"#" << x <<"#" << y<<"#" << r1 <<"#" <<r2<<"\n";
+	f.close();
+
+	cvReleaseImage(&src_image);
+}
+
+void test_main(){
+	std::string path;
+	remove("eye.txt");
+	for (int i = 1; i< 100;i++){//ordner
+		if (i<10){
+			path = "C://Users//Dennis//OneDrive//Dokumente//Informatik//Iris recognition//Iris_detection_dennis//CASIA1//"+std::to_string(i)+"//00"+std::to_string(i)+"_1_1.jpg";
+		}else{
+			path = "C://Users//Dennis//OneDrive//Dokumente//Informatik//Iris recognition//Iris_detection_dennis//CASIA1//"+std::to_string(i)+"//0"+std::to_string(i)+"_1_1.jpg";
+		}
+		test_detection(path.c_str(),i);
+	}
+}
 void test_norm(const char* filename,int i){
 	IplImage* src_image = new IplImage;
 	IplImage* dst_image = new IplImage;
@@ -52,24 +82,7 @@ void test_norm_high(const char* filename,int i){
 	cvReleaseImage(&src_image);
 	cvReleaseImage(&dst_image);
 }
-
-void test_detection(const char* filename,int i){
-	IplImage* src_image = new IplImage;
-	AXI_STREAM src_stream;
-	int r1,r2,x,y;
-
-	src_image = cvLoadImage(filename);
-	IplImage2AXIvideo(src_image, src_stream);
-	test_detection_top(src_stream,x,y,r1,r2);
-
-	fstream f;
-	f.open("eye.txt", ios::app);
-	f << std::to_string(i)<<"#" << x <<"#" << y<<"#" << r1 <<"#" <<r2<<"\n";
-	f.close();
-
-	cvReleaseImage(&src_image);
-}
-
+/*
 void test_gabor(const char* filename,int i){
 	uint8_t bit_code[BITCODE_LENGTH];
 	for (int i=0;i<2048;i++){
@@ -109,7 +122,7 @@ void test_gabor_fix(const char* filename,int i){
 
 	IplImage2AXIvideo(src_image, src_stream);
 
-	arrayMethod_fix(src_stream,bit_code);
+	//arrayMethod_fix(src_stream,bit_code);
 	std::string path = "gabor_fix_5_iter_"+std::to_string(i)+".txt";
 	fstream f;
 
@@ -146,19 +159,6 @@ void test_gabor2(const char* filename,int i){
 
 	f.close();
 	cvReleaseImage(&src_image);
-}
-
-void test_main(){
-	std::string path;
-	remove("eye.txt");
-	for (int i = 1; i< 100;i++){//ordner
-		if (i<10){
-			path = "C://Users//Dennis//OneDrive//Dokumente//Informatik//Iris recognition//Iris_detection_dennis//CASIA1//"+std::to_string(i)+"//00"+std::to_string(i)+"_1_1.jpg";
-		}else{
-			path = "C://Users//Dennis//OneDrive//Dokumente//Informatik//Iris recognition//Iris_detection_dennis//CASIA1//"+std::to_string(i)+"//0"+std::to_string(i)+"_1_1.jpg";
-		}
-		test_norm(path.c_str(),i);
-	}
 }
 
 void create_gabor_codes(const char* path,const char* filename,uint8_t bit_code[BITCODE_LENGTH]){
@@ -214,27 +214,6 @@ void test_main2(){
 	file.close();
 
 }
-
-/*
-void testCORDIC(){
-	std::cout.setf( std::ios::fixed, std:: ios::floatfield );
-	std::cout.precision(6);
-	float s=0;
-	float c=0;
-	std::cout <<"Alpha\tsin\tcordicSin\tcos\tcordicCos\n";
-	for (int i = 0 ;i<=360;i++){
-		float s1 = sin(i*DEGtoRAD);
-		float c1 = cos(i*DEGtoRAD);
-		cordic360_COS_SIN(i*DEGtoRAD,s,c,20);
-		float rel = ((s1-s)/s1)*100;
-		float absErr = abs(((s1-s)/s1)*100);
-		std::cout.precision(3);
-		std::cout <<  i << "\t" << s1 << "\t" << s <<"\t"<< c1 <<"\t"<< c<<"\n";
-
-	}
-}
-*/
-
 
 void testCORDIC_fix(){
 	std::cout.setf( std::ios::fixed, std:: ios::floatfield );
@@ -561,14 +540,8 @@ void testGAUSS(){
 	testGaussFixKernel();
 	std::cout<<"\n\n";
 }
-
+*/
 int main(int argc, char *argv[]){
-	/*
-	testGAUSS();
-	testSINKernel();
-	testGabor();
-	*/
-
-	//compareGabor();
 	test_main();
+	return 0;
 }

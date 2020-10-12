@@ -34435,17 +34435,25 @@ _ssdm_op_SpecDataflowPipeline(-1, 0, "");
 # 2 "Iris-recognition/sine.hpp" 2
 
 
-
-
-
-
-
+const float PI = 3.14159265358979;
+const float TWOPI = 6.28318530717958647692;
+const float ThreeHalfPI = 4.7123889803846898;
+const float PIHALF = 1.570796327;
+const float DEGtoRAD = 0.01745329252;
 
 typedef ap_fixed<8,1> float30;
 typedef ap_fixed<4,1> floatIntern;
-typedef ap_ufixed<4,0> float8;
-typedef ap_fixed<8,4> floatGauss;
-static const float8 arctan[] = {
+typedef ap_fixed<16,5> floatGauss;
+
+
+typedef ap_fixed<16,5> floatGabor;
+typedef ap_ufixed<16,0> floatTan;
+typedef ap_fixed<16,2> floatSin;
+typedef ap_fixed<16,4> floatArg;
+typedef ap_uint<9> IntPoints;
+typedef ap_uint<2> codeINT;
+
+static const floatTan arctan[] = {
   0.7853981633974483,
   0.4636476090008061,
   0.24497866312686414,
@@ -34565,45 +34573,32 @@ float replaceSIN(int val);
 float replaceCOS(int val);
 
 
-
-
-
-
-float cordic360_COS(float x, int nMax);
-
-
-
-
-
-
-
-float cordic360_SIN(float x, int nMax);
-
-float30 cordic360_Sin_fixed(float x, int nMax);
-float30 cordic360_Cos_fixed(float x, int nMax);
 void cordic360_COS_SIN(float x, float &s, float &c,int nMax);
-void cordic360_COS_SIN_fix(float x, float30 &s, float30 &c,int nMax);
+
+void cordic360_COS_SIN_fix(floatArg x, floatSin &s, floatSin &c,int nMax);
 # 2 "Iris-recognition/sine.cpp" 2
 
 float replaceCOS(int val){
  if (val==0) return 1;
- if (val==45) return 0.707;
+ if (val==45) return 0.7071;
  if (val==90) return 0.0;
- if (val==135) return -0.707;
+ if (val==135) return -0.7071;
  if (val==180) return -1;
- if (val==225) return -0.707;
- if (val==315) return 0.707;
+ if (val==225) return -0.7071;
+ if (val==270) return 0;
+ if (val==315) return 0.7071;
  else return 42;
 }
 
 float replaceSIN(int val){
  if (val==0) return 0;
- if (val==45) return 0.707;
+ if (val==45) return 0.7071;
  if (val==90) return 1.0;
- if (val==135) return 0.707;
+ if (val==135) return 0.7071;
  if (val==180) return 0;
- if (val==225) return -0.707;
- if (val==315) return -0.707;
+ if (val==225) return -0.7071;
+ if (val==270) return -1;
+ if (val==315) return -0.7071;
  else return 42;
 }
 
@@ -34620,260 +34615,66 @@ float sin90(float x){
 }
 
 float sin180(float x){
- if (x<1.570796327){
+ if (x<PIHALF){
   return sin90(x);
- }else return sin90(3.14159265358979 -x);
+ }else return sin90(PI-x);
 
 }
 
 float sinTaylor(float x){
- if (x>3.14159265358979) return -sin180(x-3.14159265358979);
+ if (x>PI) return -sin180(x-PI);
  else return sin180(x);
 }
 
 float cosTaylor(float x){
- float v = x+3.14159265358979/2;
- if (v>=2*3.14159265358979){
-  v -= 2*3.14159265358979;
+ float v = x+PI/2;
+ if (v>=2*PI){
+  v -= 2*PI;
  }
  return sinTaylor(v);
 }
 
-float30 sin90_fix(float x){
- float30 x2,p3,p2,p1,p0;
- float30 c1 = - 0.0001984126;
- float30 c2 = 0.000002755731;
- float30 c3 = 0.008333333;
- float30 c4 = - 0.166666666;
-
- x2 = x*x;
- p3 = c1 + c2*x2;
- p2 = c3 + x2*p3;
- p1 = c4 + x2*p2;
- p0 = 1 + x2*p1;
- float30 sine2 = ((float30)x) *p0;
-
- return sine2;
-}
-
-float30 sin180_fix(float x){
- if (x<1.570796327){
-  return sin90_fix(x);
- }else return sin90_fix(3.14159265358979 -x);
-
-}
-
-float30 sinTaylor_fix(float x){
- if (x>3.14159265358979) return -sin180_fix(x-3.14159265358979);
- else return sin180_fix(x);
-}
-
-float30 cosTaylor_fix(float x){
- float v = x+1.570796327;
- if (v>=6.28318530717958647692){
-  v -= 6.28318530717958647692;
- }
- return sinTaylor_fix(v);
-}
-
-float30 cordicSin_fix(float x, int nMax){
- float30 phi = (float30) x;
- float30 z_r = 0.60725293500888;
- float30 z_i = 0;
- float30 val = (float30)1;
+void cordic_fix(floatArg phi,int nMax,floatSin &s,floatSin &c){
+ floatSin z_r = 0.60725293500888;
+ floatSin z_i = 0;
+ floatSin val = 1;
  for (int n =0;n<nMax;n++){
-  float8 a = arctan[n];
-  float30 temp1 = val>>n;
-  float30 z_r_old = z_r;
-  float30 z_i_old = z_i;
+  floatTan a = arctan[n];
+  floatSin temp1 = val>>n;
+  floatSin z_r_old = z_r;
+  floatSin z_i_old = z_i;
 
-  if (phi>=0){
+  if (phi.is_neg()){
+   phi += a;
+   z_r = z_r_old + z_i_old * temp1;
+   z_i = z_i_old - z_r_old * temp1;
+  }else{
    phi -= a;
    z_r = z_r_old - z_i_old * temp1;
    z_i = z_i_old + z_r_old * temp1;
-
-  }else{
-   phi += a;
-
-   z_r = z_r_old + z_i_old * temp1;
-   z_i = z_i_old - z_r_old * temp1;
-  }
- }
- return z_i;
-}
-
-float30 cordicCos_fix(float x, int nMax){
- float30 phi = (float30) x;
- float30 z_r = 0.60725293500888;
- float30 z_i = 0;
- float30 val = (float30)1.0f;
- for (int n =0;n<nMax;n++){
-  float30 a = arctan[n];
-  float30 temp1 = val>>n;
-  float30 z_r_old = z_r;
-  float30 z_i_old = z_i;
-
-  if (phi>=0){
-   phi -= a;
-   z_r = z_r_old - z_i_old * temp1;
-   z_i = z_i_old + z_r_old * temp1;
-
-  }else{
-   phi += a;
-
-   z_r = z_r_old + z_i_old * temp1;
-   z_i = z_i_old - z_r_old * temp1;
-  }
- }
- return z_r;
-}
-
-float30 cordic360_Sin_fixed(float x, int nMax){
-
- if (x>=4.7123889803846898){
-  return cordicSin_fix(x-6.28318530717958647692,nMax);
-
- }else if (x>3.14159265358979){
-  return - cordicSin_fix(x-3.14159265358979,nMax);
-
- }else if(x>1.570796327){
-  return -cordicSin_fix(x - 3.14159265358979,nMax);
-
- }else if(x>-3.14159265358979 && x<=-1.570796327){
-  return -cordicSin_fix(x + 3.14159265358979,nMax);
- }
- return cordicSin_fix(x,nMax);
-}
-
-float30 cordic360_Cos_fixed(float x, int nMax){
-
- if (x>=4.7123889803846898){
-  return cordicCos_fix(x-6.28318530717958647692,nMax);
- }else if(x>1.570796327){
-  return -cordicCos_fix(x - 3.14159265358979,nMax);
- }else if(x>-3.14159265358979 && x<=-1.570796327){
-  return cordicCos_fix(x + 3.14159265358979,nMax);
- }
- return cordicCos_fix(x,nMax);
-}
-
-void cordic_fix(float x,int nMax,float30 &s,float30 &c){
- floatIntern phi = (floatIntern) x;
- floatIntern z_r = 0.60725293500888;
- floatIntern z_i = 0;
- floatIntern val = 1;
- for (int n =0;n<nMax;n++){
-  float8 a = arctan[n];
-  floatIntern temp1 = val>>n;
-  floatIntern z_r_old = z_r;
-  floatIntern z_i_old = z_i;
-
-
-  if (phi>=0){
-   phi -= a;
-   z_r = z_r_old - z_i_old * temp1;
-   z_i = z_i_old + z_r_old * temp1;
-
-  }else{
-   phi += a;
-
-   z_r = z_r_old + z_i_old * temp1;
-   z_i = z_i_old - z_r_old * temp1;
   }
  }
  s = z_i;
  c = z_r;
 }
 
-void cordic360_COS_SIN_fix(float x, float30 &s, float30 &c,int nMax){
- if(x>=4.7123889803846898){
-  cordic_fix(x-6.28318530717958647692,nMax,s,c);
- }else if(x>1.570796327){
-  cordic_fix(x-3.14159265358979,nMax,s,c);
+void cordic360_COS_SIN_fix(floatArg x, floatSin &s, floatSin &c,int nMax){
+ if(x>=(floatArg)ThreeHalfPI){
+  floatArg t = x - (floatArg)TWOPI;
+  cordic_fix(t,nMax,s,c);
+ }else if(x>(floatSin)PIHALF){
+  floatArg t = x - (floatArg)PI;
+  cordic_fix(t,nMax,s,c);
   s = -s;
   c = -c;
- }else if(x>-3.14159265358979 && x<=-1.570796327){
-  cordic_fix(x+3.14159265358979,nMax,s,c);
+ }else if(x>(floatArg)-PI && x<=(floatArg)-PIHALF){
+  floatArg t = x + (floatArg)PI;
+  cordic_fix(t,nMax,s,c);
   s =-s;
   c =-c;
- }else if(x>-1.570796327 && x<=1.570796327){
+ }else if(x>(floatArg)-PIHALF && x<=(floatArg)PIHALF){
   cordic_fix(x,nMax,s,c);
  }
-}
-
-float cordicSine(float x,int nMax){
- float z_r = 0.60725293500888;
- float z_i = 0;
- for (int n =0;n<nMax;n++){
-  float a = arctan_double[n];
-  float temp1 = 1.0f/(float)hls::powf(2,n);
-  float z_r_old = z_r;
-  float z_i_old = z_i;
-
-  if (x>=0){
-   x -= a;
-   z_r = z_r_old - z_i_old * temp1;
-   z_i = z_i_old + z_r_old * temp1;
-
-  }else{
-   x += a;
-
-   z_r = z_r_old + z_i_old * temp1;
-   z_i = z_i_old - z_r_old * temp1;
-  }
- }
-
- return z_i;
-}
-
-float cordicCOS(float x,int nMax){
- float z_r = 0.60725293500888;
- float z_i = 0;
- for (int n =0;n<nMax;n++){
-  float a = arctan_double[n];
-  float temp1 = 1.0f/(float)hls::powf(2,n);
-  float z_r_old = z_r;
-  float z_i_old = z_i;
-
-  if (x>=0){
-   x -= a;
-   z_r = z_r_old - z_i_old * temp1;
-   z_i = z_i_old + z_r_old * temp1;
-
-  }else{
-   x += a;
-
-   z_r = z_r_old + z_i_old * temp1;
-   z_i = z_i_old - z_r_old * temp1;
-  }
- }
-
- return z_r;
-}
-
-float cordic360_SIN(float x, int nMax){
- if (x>=4.7123889803846898){
-  return cordicSine(x-6.28318530717958647692,nMax);
- }else if (x>3.14159265358979){
-  return - cordicSine(x-3.14159265358979,nMax);
- }else if(x>1.570796327){
-  return -cordicSine(x - 3.14159265358979,nMax);
- }else if(x>-3.14159265358979 && x<=-1.570796327){
-  return -cordicSine(x + 3.14159265358979,nMax);
- }
- return cordicSine(x,nMax);
-}
-
-float cordic360_COS(float x, int nMax){
-
- if (x>=4.7123889803846898){
-  return cordicCOS(x-6.28318530717958647692,nMax);
- }else if(x>1.570796327){
-  return -cordicCOS(x - 3.14159265358979,nMax);
- }else if(x>-3.14159265358979 && x<=-1.570796327){
-  return cordicCOS(x + 3.14159265358979,nMax);
- }
- return cordicCOS(x,nMax);
 }
 
 void cordic(float x,int nMax,float &s,float &c){
@@ -34897,23 +34698,28 @@ void cordic(float x,int nMax,float &s,float &c){
    z_i = z_i_old - z_r_old * temp1;
   }
  }
-
  s = z_i;
  c = z_r;
 }
 
 void cordic360_COS_SIN(float x, float &s, float &c,int nMax){
- if(x>=4.7123889803846898){
-  cordic(x-6.28318530717958647692,nMax,s,c);
- }else if(x>1.570796327){
-  cordic(x-3.14159265358979,nMax,s,c);
+ if(x>=ThreeHalfPI){
+  cordic(x-TWOPI,nMax,s,c);
+ }else if(x>PIHALF){
+  cordic(x-PI,nMax,s,c);
   s = -s;
   c = -c;
- }else if(x>-3.14159265358979 && x<=-1.570796327){
-  cordic(x+3.14159265358979,nMax,s,c);
+ }else if(x>-PI && x<=-PIHALF){
+  cordic(x+PI,nMax,s,c);
   s =-s;
   c =-c;
- }else if(x>-1.570796327 && x<=1.570796327){
+ }else if(x>=-ThreeHalfPI && x<-PI){
+  cordic(x+PI,nMax,s,c);
+  s = -s;
+  c = -c;
+ }else if (x>=-TWOPI && x<-ThreeHalfPI){
+  cordic(x+TWOPI,nMax,s,c);
+ }else if(x>-PIHALF && x<=PIHALF){
   cordic(x,nMax,s,c);
  }
 

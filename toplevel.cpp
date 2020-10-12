@@ -13,32 +13,16 @@ void writeValues(ap_uint<9> values[6],int x, int y,int r1, int r2){
 	values[3] = r2;
 }
 
-void arrayMethod_fix(AXI_STREAM& INPUT_STREAM,uint8_t code[BITCODE_LENGTH]){
-	RGB_IMAGE  img0(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
-	GRAY_IMAGE img1(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
-	GRAY_IMAGE img2(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
-	GRAY_IMAGE img3(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
-	NORM_GRAY_IMAGE img4(NORM_HEIGHT, NORM_WIDTH);
-	NORM_RGB_IMAGE  img5(NORM_HEIGHT, NORM_WIDTH);
-	int r1,r2,x,y;
+void tmp(uint8_t imageIn[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA],
+		uint8_t imageOut[NORM_HEIGHT * NORM_WIDTH], int& r1, int& x,
+		int& y, int &r2) {
 	ap_uint<9> val[6]={0,0,0,0,0,0};
-
-	uint8_t imageIn[MAX_HEIGHT_CASIA*MAX_WIDTH_CASIA];
-	uint8_t imageOut[NORM_HEIGHT*NORM_WIDTH];
-#pragma HLS dataflow
-	hls::AXIvideo2Mat(INPUT_STREAM, img0);
-	hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
-	findPupil(img1,r1,x,y,img2);
-	find_iris_high_accuracy(img2, r1, x, y,r2,img3);
-	hls::Mat2Array<MAX_WIDTH_CASIA>(img3, imageIn);
-	writeValues(val,x,y,r1,r2);
-	norm_low(imageIn,imageOut,val);
-	encode_fix(imageOut,code);
-	//code = bit_code;
-
+	Iris(imageIn, r1, x, y, r2);
+	writeValues(val, x, y, r1, r2);
+	norm_low(imageIn, imageOut, val);
 }
 
-void arrayMethod(AXI_STREAM& INPUT_STREAM,uint8_t code[BITCODE_LENGTH]){
+void arrayMethod_fix(AXI_STREAM& INPUT_STREAM,ap_uint<1> code[BITCODE_LENGTH]){
 	RGB_IMAGE  img0(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
 	GRAY_IMAGE img1(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
 	GRAY_IMAGE img2(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
@@ -54,13 +38,32 @@ void arrayMethod(AXI_STREAM& INPUT_STREAM,uint8_t code[BITCODE_LENGTH]){
 	hls::AXIvideo2Mat(INPUT_STREAM, img0);
 	hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
 	findPupil(img1,r1,x,y,img2);
-	find_iris_high_accuracy(img2, r1, x, y,r2,img3);
-	hls::Mat2Array<MAX_WIDTH_CASIA>(img3, imageIn);
-	writeValues(val,x,y,r1,r2);
-	norm_low(imageIn,imageOut,val);
-	encode(imageOut,code);
-	//code = bit_code;
+	hls::Mat2Array<MAX_WIDTH_CASIA>(img2, imageIn);
+	tmp(imageIn,imageOut,r1,x,y,r2);
+	encode_fix(imageOut,code);
+}
 
+void arrayMethod(AXI_STREAM& INPUT_STREAM, uint8_t code[BITCODE_LENGTH]) {
+	RGB_IMAGE img0(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
+	GRAY_IMAGE img1(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
+	GRAY_IMAGE img2(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
+	GRAY_IMAGE img3(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
+	NORM_GRAY_IMAGE img4(NORM_HEIGHT, NORM_WIDTH);
+	NORM_RGB_IMAGE img5(NORM_HEIGHT, NORM_WIDTH);
+	int r1, r2, x, y;
+	ap_uint<9> val[6] = { 0, 0, 0, 0, 0, 0 };
+
+	uint8_t imageIn[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA];
+	uint8_t imageOut[NORM_HEIGHT * NORM_WIDTH];
+#pragma HLS dataflow
+	hls::AXIvideo2Mat(INPUT_STREAM, img0);
+	hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
+	findPupil(img1, r1, x, y, img2);
+	find_iris_high_accuracy(img2, r1, x, y, r2, img3);
+	hls::Mat2Array<MAX_WIDTH_CASIA>(img3, imageIn);
+	writeValues(val, x, y, r1, r2);
+	norm_low(imageIn, imageOut, val);
+	encode(imageOut, code);
 }
 
 void arrayMethodschnell(AXI_STREAM& INPUT_STREAM,uint8_t code[BITCODE_LENGTH]){
@@ -105,6 +108,7 @@ void detectNormFix(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
 	hls::CvtColor<HLS_GRAY2RGB>(img4, img5);
 	hls::Mat2AXIvideo(img5, outputStream);
 }
+
 void detectNorm(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
 	RGB_IMAGE  img0(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
 	GRAY_IMAGE img1(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
@@ -157,7 +161,6 @@ void detectNorm_float(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
 	hls::Mat2AXIvideo(img5, outputStream);
 }
 
-
 void top_level_compare_gabor(AXI_STREAM& inputStream,uint8_t code[BITCODE_LENGTH],uint8_t codeFIX[BITCODE_LENGTH]){
 #pragma HLS INTERFACE axis port=inputStream
 #pragma HLS INTERFACE s_axilite port=code
@@ -189,22 +192,7 @@ void top_level_compare_gabor(AXI_STREAM& inputStream,uint8_t code[BITCODE_LENGTH
 }
 
 
-void top_level(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
-#pragma HLS INTERFACE axis port=inputStream
-#pragma HLS INTERFACE axis port=outputStream
-#pragma HLS INTERFACE ap_ctrl_none port=return
 
-	detectNorm(inputStream,outputStream);
-}
-
-
-void top_level2(AXI_STREAM& inputStream,uint8_t code[BITCODE_LENGTH]){
-#pragma HLS INTERFACE axis port=inputStream
-#pragma HLS INTERFACE s_axilite port=code
-#pragma HLS INTERFACE ap_ctrl_none port=return
-
-	arrayMethod_fix(inputStream,code);
-}
 
 void test_detection_top(AXI_STREAM& inputStream,int& x,int& y, int& r1, int& r2){
 #pragma HLS INTERFACE axis port=inputStream
@@ -225,4 +213,41 @@ void test_detection_top(AXI_STREAM& inputStream,int& x,int& y, int& r1, int& r2)
 	findPupil(img1,r1,x,y,img2);
 	find_iris_high_accuracy(img2, r1, x, y,r2,img3);
 
+}
+
+
+void detect_Array(AXI_STREAM& inputStream,int& x,int& y, int& r1, int& r2){
+	RGB_IMAGE  img0(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
+	GRAY_IMAGE img1(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
+	GRAY_IMAGE img2(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
+	GRAY_IMAGE img3(MAX_HEIGHT_CASIA, MAX_WIDTH_CASIA);
+	NORM_GRAY_IMAGE img4(NORM_HEIGHT, NORM_WIDTH);
+	NORM_RGB_IMAGE  img5(NORM_HEIGHT, NORM_WIDTH);
+
+	uint8_t imageIn[MAX_WIDTH_CASIA*MAX_HEIGHT_CASIA];
+#pragma HLS dataflow
+	hls::AXIvideo2Mat(inputStream, img0);
+	hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
+	findPupil(img1,r1,x,y,img2);
+	hls::Mat2Array<MAX_WIDTH_CASIA>(img2, imageIn);
+	Iris(imageIn,r1,x,y,r2);
+
+}
+
+
+
+void top_level(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
+#pragma HLS INTERFACE axis port=inputStream
+#pragma HLS INTERFACE axis port=outputStream
+#pragma HLS INTERFACE ap_ctrl_none port=return
+
+}
+
+
+void top_level2(AXI_STREAM& inputStream,ap_uint<1> code[BITCODE_LENGTH]){
+#pragma HLS INTERFACE axis port=inputStream
+#pragma HLS INTERFACE s_axilite port=code
+#pragma HLS INTERFACE ap_ctrl_none port=return
+
+	arrayMethod_fix(inputStream,code);
 }

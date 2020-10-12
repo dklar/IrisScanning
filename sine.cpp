@@ -2,23 +2,25 @@
 
 float replaceCOS(int val){
 	if (val==0) return 1;
-	if (val==45) return 0.707;
+	if (val==45) return 0.7071;
 	if (val==90) return 0.0;
-	if (val==135) return -0.707;
+	if (val==135) return -0.7071;
 	if (val==180) return -1;
-	if (val==225) return -0.707;
-	if (val==315) return 0.707;
+	if (val==225) return -0.7071;
+	if (val==270) return 0;
+	if (val==315) return 0.7071;
 	else return 42;
 }
 
 float replaceSIN(int val){
 	if (val==0) return 0;
-	if (val==45) return 0.707;
+	if (val==45) return 0.7071;
 	if (val==90) return 1.0;
-	if (val==135) return 0.707;
+	if (val==135) return 0.7071;
 	if (val==180) return 0;
-	if (val==225) return -0.707;
-	if (val==315) return -0.707;
+	if (val==225) return -0.7071;
+	if (val==270) return -1;
+	if (val==315) return -0.7071;
 	else return 42;
 }
 

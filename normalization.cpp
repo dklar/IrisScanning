@@ -1,7 +1,7 @@
 #include "normalization.hpp"
 
-void norm_high(unsigned char image_in[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA],
-		unsigned char image_out[NORM_HEIGHT * NORM_WIDTH], int values[6]) {
+void norm_high(uint8_t image_in[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA],
+		uint8_t image_out[NORM_HEIGHT * NORM_WIDTH], int values[6]) {
 	int x_p = values[0];
 	int y_p = values[1];
 	int r_p = values[2];
@@ -31,8 +31,8 @@ void norm_high(unsigned char image_in[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA],
 	}
 }
 
-void norm_low(unsigned char image_in[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA],
-		unsigned char image_out[NORM_HEIGHT * NORM_WIDTH], ap_uint<9> values[6]) {
+void norm_low(uint8_t image_in[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA],
+		uint8_t image_out[NORM_HEIGHT * NORM_WIDTH], ap_uint<9> values[6]) {
 	ap_uint<9> x_p = values[0];
 	ap_uint<9> y_p = values[1];
 	ap_uint<9> r_p = values[2];
@@ -53,7 +53,7 @@ void norm_low(unsigned char image_in[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA],
 		temp3 = (ap_ufixed<13,9>) (y_p + r_p * tempSin);
 		temp4 = (ap_ufixed<13,9>) (y_p + r_i * tempSin);
 
-		//TODO maybe turn the loop so that only one bitshift operation for each loop cycle
+		//TODO maybe turn the loop so that only one bitshift operation for each loop cycle would turn the picture
 		for (int r = 0; r < NORM_HEIGHT; r++) {
 			ap_ufixed<8, 0> radius = ((ap_ufixed<16, 8> ) r) >> 5;
 

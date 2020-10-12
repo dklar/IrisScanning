@@ -144,61 +144,6 @@ void findPupil2(GRAY_IMAGE& img, int& r, int& x, int& y,GRAY_IMAGE &dst_img){
 	y = total_y;
 }
 
-void improve(GRAY_IMAGE& img, int& r_estimate, int& x_estimate, int& y_estimate,GRAY_IMAGE &dst_img){
-	//					45		135		225		   315
-	float angleList[8] = {0.7,0.7,-0.7,0.7,-0.7,-0.7,0.7,-0.7};
-	//x range * y range * points on circle * radii
-	int neededValues[10*10*8*3];//2400
-	int sums[3*10*10];
-	int j = 0;
-	for (int x = x_estimate-5; x < x_estimate+5; x++)
-	{
-		for (int y = y_estimate-5; y < y_estimate+5; x++)
-		{
-			for (int r = r_estimate;r<=r_estimate+3;r++){
-				for(int i=0;i<8;i+=2){
-					neededValues[j] = x + r*angleList[i];
-					neededValues[j+1] = y + r*angleList[i+1];
-					j += 2;
-				}
-
-			}
-		}
-	}
-	PIXELGRAY pixel;
-	loopPixel:
-	for (int y=0;y<MAX_HEIGHT_CASIA;y++){
-		for (int x=0;x<MAX_WIDTH_CASIA;x++){
-			#pragma HLS loop_flatten off
-			#pragma HLS pipeline II=1
-			img >> pixel;
-			dst_img <<pixel;
-			for (int i=0;i<2400;i+=2){
-				if (neededValues[i]==x and neededValues[i+1]==y){
-					int pos = (int) i/4;
-					sums[pos] +=  pixel.val[0];
-				}
-			}
-		}
-	}
-
-	int i_max 		= 0;
-	int iris_radius = 0;
-	int sum1 = 0;
-	int sum2 = 0;
-	int nr = 0;
-	for (int r= 1;r<300;r++){
-		sum1 = sums[r+1];
-		sum2 = sums[r-1];
-		int diff = sum1 - sum2;
-		if (diff > i_max){
-			i_max = diff;
-			iris_radius = r;//bester kreis ist nummer r von der ersten schleife
-			nr = r;
-		}
-	}
-}
-
 void find_iris_high_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,int& irisRadius,GRAY_IMAGE &dst_img){
 	int i_max 		= 0;
 	int iris_radius = 0;
@@ -312,4 +257,35 @@ void find_iris_low_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,in
 	}
 
 		irisRadius = IRIS_RADIUS_MIN + iris_radius;
+}
+
+int calcCircleSum(uint8_t image_in[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA],
+		int x, int y, int r) {
+	int sum = 0;
+
+	IrisSumUpLoop:
+	for (int alpha = 0 ;alpha < 360;alpha+=45){
+		if (alpha != 90 and alpha != 270){
+			int PointX = (int) (x + r * replaceCOS(alpha));
+			int PointY = (int) (x + r * replaceSIN(alpha));
+			sum += image_in[MAX_HEIGHT_CASIA*PointY+MAX_WIDTH_CASIA];
+		}
+	}
+	return sum;
+}
+
+void Iris(uint8_t image_in[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA],
+		int& pupilRadius, int& x, int& y, int &irisRadius) {
+	int Amax = 0;
+
+	IrisSegmentaionLoop:
+	for (int r = pupilRadius+50;r<IRIS_RADIUS_MAX;r++){//pupilRadius*5
+		int outer = calcCircleSum(image_in,x,y,r+1);
+		int inner = calcCircleSum(image_in,x,y,r-1);
+		int gradient = outer - inner;
+		if (gradient > Amax){
+			Amax = gradient;
+			irisRadius = r;
+		}
+	}
 }

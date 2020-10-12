@@ -282,61 +282,60 @@ void generateGaborKernel_fix(int kern_size,
 
 }
 
-ap_uint<2> gaborPixel_fix(int rho, int phi, uint8_t norm_img[NORM_HEIGHT*NORM_WIDTH],int filter_size,
+void gaborPixel_fix(int rho, int phi,
+		uint8_t norm_img[NORM_HEIGHT * NORM_WIDTH], int filter_size,
 		floatGabor sin_filter_matrix[MAX_KERN_SIZE][MAX_KERN_SIZE],
-		floatGabor cos_filter_matrix[MAX_KERN_SIZE][MAX_KERN_SIZE]){
+		floatGabor cos_filter_matrix[MAX_KERN_SIZE][MAX_KERN_SIZE],
+		ap_uint<1> code[BITCODE_LENGTH], int pos) {
 	ap_uint<9> angles = NORM_WIDTH;
-	ap_int<14> total_i = 0;
-	ap_int<14> total_r = 0;
+	ap_fixed<15,1> total_i = 0;
+	ap_fixed<15,1> total_r = 0;
 
-	GaborPixeLoop:
-	for (int i = 0; i<filter_size;i++){
-		ap_uint<9> image_x =  i + rho - (filter_size / 2);
-		for (int j = 0; j<filter_size;j++){
+	GaborPixeLoop: for (int i = 0; i < filter_size; i++) {
+		ap_uint<9> image_x = i + rho - (filter_size / 2);
+		for (int j = 0; j < filter_size; j++) {
 			ap_uint<9> image_y = j + phi - (filter_size / 2);
-			image_y = MODULO(image_y,angles);
-			int index = image_x*angles+image_y;
-			uint8_t tmp = norm_img[index];
-			total_i += sin_filter_matrix[i][j] * tmp;//255*6.4
-			total_r += cos_filter_matrix[i][j] * tmp;
+			image_y = MODULO(image_y, angles);
+			int index = image_x * angles + image_y;
+			ap_int<14> tmp = (ap_int<14>)norm_img[index];
+			ap_fixed<15,1> valueS = (sin_filter_matrix[i][j])*tmp;
+			ap_fixed<15,1> valueC = (cos_filter_matrix[i][j])*tmp;
+
+			total_i = total_i + valueS; //255*6.4
+			total_r = total_r + valueC;
 		}
 	}
-	//bitcode_t << 1;
-	uint8_t ret = 0;
-	if (total_r >= 0 ){
-		ret = 2;
-		//bitcode_t |=1;
-	}else{
-		ret = 0;
-		//bitcode_t |=0;
+	code[pos] = total_r >= 0 ? 1:0;
+	code[pos+1] = total_i >= 0 ? 1:0;
+
+	/*
+	if (total_r >= 0) {
+		code[pos] = 1;
+	} else {
+		code[pos] = 0;
 	}
-	//bitcode_t << 1;
-	if (total_i >= 0 ){
-		ret = ret | 1;
-		//bitcode_t |=1;
-	}else{
-		ret = ret | 0;
-		//bitcode_t |=0;
+	if (total_i >= 0) {
+		code[pos+1] = 1;
+	} else {
+		code[pos+1] = 0;
 	}
-	return ret;
+*/
 }
 
 //template<int RESULT_W,int RESULT_H,int INTERN_W,int INTERN_H>
 //compiler error for template function no function body, without template okay. Why?
-void encode_fix(uint8_t norm_img[NORM_HEIGHT*NORM_WIDTH],uint8_t bit_code[BITCODE_LENGTH]){
+void encode_fix(uint8_t norm_img[NORM_HEIGHT * NORM_WIDTH],
+		ap_uint<1> bit_code[BITCODE_LENGTH]) {
 	floatGabor sin_filter_matrix[MAX_KERN_SIZE][MAX_KERN_SIZE];
 	floatGabor cos_filter_matrix[MAX_KERN_SIZE][MAX_KERN_SIZE];
 	int height = NORM_HEIGHT;
-	int width  = NORM_WIDTH;
+	int width = NORM_WIDTH;
 
 	int angular_slice = NORM_WIDTH;
-	int radial_slice  = ENCODED_PIXELS / angular_slice;
+	int radial_slice = ENCODED_PIXELS / angular_slice;
 
 	int max_filter = NORM_HEIGHT / 3;
 
-	int index = 0;
-//0,1
-	//								2
 	for (int r_slice = 0; r_slice < radial_slice; r_slice++) {
 		int radius = ((r_slice * (height - 6)) / (2 * radial_slice)) + 3;
 		int filter_height;
@@ -349,15 +348,73 @@ void encode_fix(uint8_t norm_img[NORM_HEIGHT*NORM_WIDTH],uint8_t bit_code[BITCOD
 		if (filter_height > max_filter)
 			filter_height = max_filter;
 
-		generateGaborKernel_fix(
-				filter_height, sin_filter_matrix, cos_filter_matrix);
+		generateGaborKernel_fix(filter_height, sin_filter_matrix,
+				cos_filter_matrix);
 
-		for (int theta = 0; theta < angular_slice; theta++) {
-			int2 temp = gaborPixel_fix(radius, theta, norm_img, filter_height,
-					sin_filter_matrix, cos_filter_matrix);
-			bit_code[index] = (temp & 2) >> 1; //real
-			bit_code[index + 1] = temp & 1; //imag
+		int index = 0;
+
+		CountConvLoop: for (int theta = 0; theta < angular_slice; theta++) {
+			gaborPixel_fix(radius, theta, norm_img, filter_height,
+					sin_filter_matrix, cos_filter_matrix, bit_code, index);
 			index += 2;
 		}
 	}
 }
+
+
+/*----------------------------------------------------------------------------
+ * 									MASEK
+ *----------------------------------------------------------------------------
+ */
+
+
+void LogGaborConvole(uint8_t norm_img[NORM_HEIGHT*NORM_WIDTH],int nscale, int minWaveLength, int mult){
+	int width = NORM_WIDTH;
+	int height = NORM_HEIGHT;
+	int wavelength = minWaveLength;
+	float sigmaOnf = 0.5;
+
+	int ndata = width;
+	if (ndata % 2 == 1)
+		ndata -= 1;
+
+	float radius[NORM_WIDTH/2 + 1];
+
+	float logGabor[NORM_WIDTH];
+	float filtersum[NORM_WIDTH];
+	float imagefft[NORM_WIDTH];
+
+	int tmp = ndata/2;
+	radius[0] = 1;
+	for (int i = 1; i<=ndata/2;i++){
+		radius[i] = ((float)i*2)/tmp;
+	}
+
+	for (int s = 0; s<nscale; s++){
+		float  fo = 1.0/wavelength;
+		float rfo = fo/0.5;
+
+		for (int j = 0; j<tmp+1; j++)
+		{
+			logGabor[j] = exp(-log(radius[j]/fo)*log(radius[j]/fo)/(2*log(sigmaOnf)*log(sigmaOnf)));
+		}
+		logGabor[0] = 0;
+		for (int j = 0; j < ndata / 2 + 1; j++)
+		{
+			filtersum[j] += logGabor[j];
+		}
+	}
+
+}
+
+void createLogGaborKernel(){
+
+}
+
+
+
+
+
+
+
+

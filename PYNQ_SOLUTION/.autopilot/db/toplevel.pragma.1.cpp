@@ -34436,27 +34436,43 @@ _ssdm_op_SpecDataflowPipeline(-1, 0, "");
 }
 # 70 "C:/Xilinx/Vivado/2019.2/common/technology/autopilot\\hls_video.h" 2
 # 2 "Iris-recognition/definitions.hpp" 2
-# 23 "Iris-recognition/definitions.hpp"
+# 26 "Iris-recognition/definitions.hpp"
 typedef hls::stream<ap_axiu<32,1,1,1> > AXI_STREAM;
 typedef hls::Mat<280, 320, (((0) & ((1 << 11) - 1)) + (((3)-1) << 11))> RGB_IMAGE;
 typedef hls::Mat<280, 320, (((0) & ((1 << 11) - 1)) + (((1)-1) << 11))> GRAY_IMAGE;
-typedef hls::Mat<64, 360, (((0) & ((1 << 11) - 1)) + (((3)-1) << 11))> NORM_RGB_IMAGE;
-typedef hls::Mat<64, 360, (((0) & ((1 << 11) - 1)) + (((1)-1) << 11))> NORM_GRAY_IMAGE;
+typedef hls::Mat<32,360, (((0) & ((1 << 11) - 1)) + (((3)-1) << 11))> NORM_RGB_IMAGE;
+typedef hls::Mat<32,360, (((0) & ((1 << 11) - 1)) + (((1)-1) << 11))> NORM_GRAY_IMAGE;
 typedef hls::Scalar<3, uint8_t> PIXEL;
 typedef hls::Scalar<1, uint8_t> PIXELGRAY;
-typedef hls::Mat<64, 360, (((0) & ((1 << 11) - 1)) + (((1)-1) << 11))> GRAY_IMAGE_NORM;
-typedef hls::Mat<64, 360, (((0) & ((1 << 11) - 1)) + (((3)-1) << 11))> RGB_IMAGE_NORM;
+typedef hls::Mat<32,360,(((0) & ((1 << 11) - 1)) + (((1)-1) << 11))> GRAY_IMAGE_NORM;
+typedef hls::Mat<32,360,(((0) & ((1 << 11) - 1)) + (((3)-1) << 11))> RGB_IMAGE_NORM;
 
 typedef ap_uint<2> int2;
 typedef ap_uint<6> int6;
 # 4 "Iris-recognition/toplevel.hpp" 2
 # 1 "Iris-recognition/sine.hpp" 1
-# 10 "Iris-recognition/sine.hpp"
+
+
+
+const float PI = 3.14159265358979;
+const float TWOPI = 6.28318530717958647692;
+const float ThreeHalfPI = 4.7123889803846898;
+const float PIHALF = 1.570796327;
+const float DEGtoRAD = 0.01745329252;
+
 typedef ap_fixed<8,1> float30;
 typedef ap_fixed<4,1> floatIntern;
-typedef ap_ufixed<4,0> float8;
-typedef ap_fixed<8,4> floatGauss;
-static const float8 arctan[] = {
+typedef ap_fixed<16,5> floatGauss;
+
+
+typedef ap_fixed<16,5> floatGabor;
+typedef ap_ufixed<16,0> floatTan;
+typedef ap_fixed<16,2> floatSin;
+typedef ap_fixed<16,4> floatArg;
+typedef ap_uint<9> IntPoints;
+typedef ap_uint<2> codeINT;
+
+static const floatTan arctan[] = {
   0.7853981633974483,
   0.4636476090008061,
   0.24497866312686414,
@@ -34576,24 +34592,9 @@ float replaceSIN(int val);
 float replaceCOS(int val);
 
 
-
-
-
-
-float cordic360_COS(float x, int nMax);
-
-
-
-
-
-
-
-float cordic360_SIN(float x, int nMax);
-
-float30 cordic360_Sin_fixed(float x, int nMax);
-float30 cordic360_Cos_fixed(float x, int nMax);
 void cordic360_COS_SIN(float x, float &s, float &c,int nMax);
-void cordic360_COS_SIN_fix(float x, float30 &s, float30 &c,int nMax);
+
+void cordic360_COS_SIN_fix(floatArg x, floatSin &s, floatSin &c,int nMax);
 # 5 "Iris-recognition/toplevel.hpp" 2
 
 
@@ -34604,13 +34605,18 @@ void cordic360_COS_SIN_fix(float x, float30 &s, float30 &c,int nMax);
 
 
 
-void findPupil(GRAY_IMAGE& img, int& r, int& x, int& y,GRAY_IMAGE &dst_img);
+void findPupil(GRAY_IMAGE& img, int& r, int& x, int& y, GRAY_IMAGE &dst_img);
 
-void findPupil2(GRAY_IMAGE& img, int& r, int& x, int& y,GRAY_IMAGE &dst_img);
+void findPupil2(GRAY_IMAGE& img, int& r, int& x, int& y, GRAY_IMAGE &dst_img);
 
-void find_iris_high_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,int& irisRadius,GRAY_IMAGE &dst_img);
+void find_iris_high_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,
+  int& irisRadius, GRAY_IMAGE &dst_img);
 
-void find_iris_low_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,int& irisRadius,GRAY_IMAGE &dst_img);
+void find_iris_low_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,
+  int& irisRadius, GRAY_IMAGE &dst_img);
+
+void Iris(uint8_t image_in[280 * 320],
+  int& pupilRadius, int& x, int& y, int &irisRadius);
 # 8 "Iris-recognition/toplevel.hpp" 2
 # 1 "Iris-recognition/gabor.hpp" 1
 
@@ -34620,39 +34626,41 @@ void find_iris_low_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,in
 
 
 
-void encode_fix(uint8_t norm_img[64 * 360],
+void encode_fix(uint8_t norm_img[32*360],ap_uint<1> bit_code[2048]);
+
+void gaborPixel_fix(int rho, int phi,
+  uint8_t norm_img[32 * 360], int filter_size,
+  floatGabor sin_filter_matrix[32/3][32/3],
+  floatGabor cos_filter_matrix[32/3][32/3],
+  ap_uint<1> code[2048], int pos);
+
+void generateGaborKernel_fix(int kern_size,
+  floatGabor sin_filter_matrix[32/3][32/3],
+  floatGabor cos_filter_matrix[32/3][32/3]);
+
+void generateGaussKernel_fix(int kern_size, int peak,
+  floatGauss gauss[32/3][32/3]);
+
+void generateSinKernel(int kern_size, float sin[32/3][32/3],
+  float cos[32/3][32/3]);
+
+void generateSinKernel_fix(int kern_size,
+  floatSin sin[32/3][32/3],
+  floatSin cos[32/3][32/3]);
+
+void encode(uint8_t norm_img[32 * 360],
   uint8_t bit_code[2048]);
 
-template<int RESULT_W, int RESULT_H, int INTERN_W, int INTERN_H>
-ap_uint<2> gaborPixel_fix(int rho, int phi,
-  uint8_t norm_img[64 * 360], int filter_size,
-  ap_fixed<RESULT_W, RESULT_H> sin_filter_matrix[64/3][64/3],
-  ap_fixed<RESULT_W, RESULT_H> cos_filter_matrix[64/3][64/3]);
-
-template<int RESULT_W, int RESULT_H, int INTERN_W, int INTERN_H>
-void generateGaborKernel_fix(int kern_size,
-  ap_fixed<RESULT_W, RESULT_H> sin_filter_matrix[64/3][64/3],
-  ap_fixed<RESULT_W, RESULT_H> cos_filter_matrix[64/3][64/3]);
-
-template<int RESULT_W,int RESULT_H,int INTERN_W,int INTERN_H>
-void generateGaussKernel_fix(int kern_size,
-  ap_fixed<RESULT_W,RESULT_H> gauss[64/3][64/3]);
-
-
-
-
-void encode(uint8_t norm_img[64*360],uint8_t bit_code[2048]);
-
-uint8_t gaborPixel(int rho, int phi, uint8_t norm_img[64 * 360],
-  int filter_size, float sin_filter_matrix[64/3][64/3],
-  float cos_filter_matrix[64/3][64/3]);
+uint8_t gaborPixel(int rho, int phi, uint8_t norm_img[32 * 360],
+  int filter_size, float sin_filter_matrix[32/3][32/3],
+  float cos_filter_matrix[32/3][32/3]);
 
 void generateGaborKernel(int kern_size,
-  float sin_filter_matrix[64/3][64/3],
-  float cos_filter_matrix[64/3][64/3]);
+  float sin_filter_matrix[32/3][32/3],
+  float cos_filter_matrix[32/3][32/3]);
 
-void generateGaussKernel(int kern_size,
-  float gauss[64/3][64/3]);
+void generateGaussKernel(int kern_size, int peak,
+  float gauss[32/3][32/3]);
 # 9 "Iris-recognition/toplevel.hpp" 2
 # 1 "Iris-recognition/normalization.hpp" 1
 
@@ -34661,20 +34669,23 @@ void generateGaussKernel(int kern_size,
 
 
 
-void norm_low(unsigned char image_in[280*320],
-  uint8_t image_out[64*360],int values[6]);
+void norm_low(unsigned char image_in[280 * 320],
+  unsigned char image_out[32 * 360], ap_uint<9> values[6]);
 
 void norm_high(unsigned char image_in[280*320],
-  uint8_t image_out[64*360],int values[6]);
+  uint8_t image_out[32*360],int values[6]);
 # 10 "Iris-recognition/toplevel.hpp" 2
 
-void top_level(AXI_STREAM& inputStream,AXI_STREAM& outputStream);
+void top_level(AXI_STREAM& inputStream, AXI_STREAM& outputStream);
 
-
-void arrayMethod(AXI_STREAM& INPUT_STREAM,uint8_t code[2048]);
-void arrayMethodschnell(AXI_STREAM& INPUT_STREAM,uint8_t code[2048]);
-void arrayMethod_fix(AXI_STREAM& INPUT_STREAM,uint8_t code[2048]);
-void test_detection_top(AXI_STREAM& inputStream,int& x,int& y, int& r1, int& r2);
+void arrayMethod(AXI_STREAM& INPUT_STREAM, uint8_t code[2048]);
+void arrayMethodschnell(AXI_STREAM& INPUT_STREAM, uint8_t code[2048]);
+void arrayMethod_fix(AXI_STREAM& INPUT_STREAM, uint8_t code[2048]);
+void test_detection_top(AXI_STREAM& inputStream, int& x, int& y, int& r1,
+  int& r2);
+void top_level_compare_gabor(AXI_STREAM& inputStream,
+  uint8_t code[2048], uint8_t codeFIX[2048]);
+void detect_Array(AXI_STREAM& inputStream, int& x, int& y, int& r1, int& r2);
 # 2 "Iris-recognition/toplevel.cpp" 2
 
 void writeValues(int values[6],int x, int y,int r1, int r2){_ssdm_SpecArrayDimSize(values, 6);
@@ -34683,66 +34694,74 @@ void writeValues(int values[6],int x, int y,int r1, int r2){_ssdm_SpecArrayDimSi
  values[2] = r1;
  values[3] = r2;
 }
-
-void arrayMethod_fix(AXI_STREAM& INPUT_STREAM,uint8_t code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
- RGB_IMAGE img0(280, 320);
- GRAY_IMAGE img1(280, 320);
- GRAY_IMAGE img2(280, 320);
- GRAY_IMAGE img3(280, 320);
- NORM_GRAY_IMAGE img4(64, 360);
- NORM_RGB_IMAGE img5(64, 360);
- int r1,r2,x,y;
- int val[6]={0,0,0,0,0,0};
-
- uint8_t imageIn[280*320];
- uint8_t imageOut[64*360];
-_ssdm_op_SpecDataflowPipeline(-1, 0, "");
- hls::AXIvideo2Mat(INPUT_STREAM, img0);
- hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
- findPupil(img1,r1,x,y,img2);
- find_iris_high_accuracy(img2, r1, x, y,r2,img3);
- hls::Mat2Array<320>(img3, imageIn);
- writeValues(val,x,y,r1,r2);
- norm_low(imageIn,imageOut,val);
- encode_fix(imageOut,code);
-
-
+void writeValues(ap_uint<9> values[6],int x, int y,int r1, int r2){_ssdm_SpecArrayDimSize(values, 6);
+ values[0] = x;
+ values[1] = y;
+ values[2] = r1;
+ values[3] = r2;
 }
 
-void arrayMethod(AXI_STREAM& INPUT_STREAM,uint8_t code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
+void tmp(uint8_t imageIn[280 * 320],
+  uint8_t imageOut[32 * 360], int& r1, int& x,
+  int& y, int &r2) {_ssdm_SpecArrayDimSize(imageIn, 89600);_ssdm_SpecArrayDimSize(imageOut, 11520);
+ ap_uint<9> val[6]={0,0,0,0,0,0};
+ Iris(imageIn, r1, x, y, r2);
+ writeValues(val, x, y, r1, r2);
+ norm_low(imageIn, imageOut, val);
+}
+
+void arrayMethod_fix(AXI_STREAM& INPUT_STREAM,ap_uint<1> code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
  RGB_IMAGE img0(280, 320);
  GRAY_IMAGE img1(280, 320);
  GRAY_IMAGE img2(280, 320);
  GRAY_IMAGE img3(280, 320);
- NORM_GRAY_IMAGE img4(64, 360);
- NORM_RGB_IMAGE img5(64, 360);
+ NORM_GRAY_IMAGE img4(32, 360);
+ NORM_RGB_IMAGE img5(32, 360);
  int r1,r2,x,y;
- int val[6]={0,0,0,0,0,0};
+ ap_uint<9> val[6]={0,0,0,0,0,0};
 
  uint8_t imageIn[280*320];
- uint8_t imageOut[64*360];
+ uint8_t imageOut[32*360];
 _ssdm_op_SpecDataflowPipeline(-1, 0, "");
  hls::AXIvideo2Mat(INPUT_STREAM, img0);
  hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
  findPupil(img1,r1,x,y,img2);
- find_iris_high_accuracy(img2, r1, x, y,r2,img3);
+ hls::Mat2Array<320>(img2, imageIn);
+ tmp(imageIn,imageOut,r1,x,y,r2);
+ encode_fix(imageOut,code);
+}
+
+void arrayMethod(AXI_STREAM& INPUT_STREAM, uint8_t code[2048]) {_ssdm_SpecArrayDimSize(code, 2048);
+ RGB_IMAGE img0(280, 320);
+ GRAY_IMAGE img1(280, 320);
+ GRAY_IMAGE img2(280, 320);
+ GRAY_IMAGE img3(280, 320);
+ NORM_GRAY_IMAGE img4(32, 360);
+ NORM_RGB_IMAGE img5(32, 360);
+ int r1, r2, x, y;
+ ap_uint<9> val[6] = { 0, 0, 0, 0, 0, 0 };
+
+ uint8_t imageIn[280 * 320];
+ uint8_t imageOut[32 * 360];
+_ssdm_op_SpecDataflowPipeline(-1, 0, "");
+ hls::AXIvideo2Mat(INPUT_STREAM, img0);
+ hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
+ findPupil(img1, r1, x, y, img2);
+ find_iris_high_accuracy(img2, r1, x, y, r2, img3);
  hls::Mat2Array<320>(img3, imageIn);
- writeValues(val,x,y,r1,r2);
- norm_low(imageIn,imageOut,val);
- encode(imageOut,code);
-
-
+ writeValues(val, x, y, r1, r2);
+ norm_low(imageIn, imageOut, val);
+ encode(imageOut, code);
 }
 
 void arrayMethodschnell(AXI_STREAM& INPUT_STREAM,uint8_t code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
- NORM_RGB_IMAGE img0(64, 360);
- NORM_GRAY_IMAGE img1(64, 360);
+ NORM_RGB_IMAGE img0(32, 360);
+ NORM_GRAY_IMAGE img1(32, 360);
 
  int r1,r2,x,y;
- int val[6]={0,0,0,0,0,0};
 
  uint8_t imageIn[280*320];
- uint8_t imageOut[64*360];
+ uint8_t imageOut[32*360];
 _ssdm_op_SpecDataflowPipeline(-1, 0, "");
  hls::AXIvideo2Mat(INPUT_STREAM, img0);
  hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
@@ -34752,19 +34771,19 @@ _ssdm_op_SpecDataflowPipeline(-1, 0, "");
 
 }
 
-void method1(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
+void detectNormFix(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
  RGB_IMAGE img0(280, 320);
  GRAY_IMAGE img1(280, 320);
  GRAY_IMAGE img2(280, 320);
  GRAY_IMAGE img3(280, 320);
- NORM_GRAY_IMAGE img4(64, 360);
- NORM_RGB_IMAGE img5(64, 360);
+ NORM_GRAY_IMAGE img4(32, 360);
+ NORM_RGB_IMAGE img5(32, 360);
 
  unsigned char imageIn[320*280];
- unsigned char imageOut[64*360];
+ unsigned char imageOut[32*360];
 
  int r1,r2,x,y;
- int val[6]={0,0,0,0,0,0};
+ ap_uint<9> val[6]={0,0,0,0,0,0};
 _ssdm_op_SpecDataflowPipeline(-1, 0, "");
  hls::AXIvideo2Mat(inputStream, img0);
  hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
@@ -34776,39 +34795,92 @@ _ssdm_op_SpecDataflowPipeline(-1, 0, "");
  hls::Array2Mat<360>(imageOut, img4);
  hls::CvtColor<HLS_GRAY2RGB>(img4, img5);
  hls::Mat2AXIvideo(img5, outputStream);
-
 }
 
-void method2(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
+void detectNorm(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
  RGB_IMAGE img0(280, 320);
  GRAY_IMAGE img1(280, 320);
  GRAY_IMAGE img2(280, 320);
  GRAY_IMAGE img3(280, 320);
- RGB_IMAGE img4(280, 320);
+ NORM_GRAY_IMAGE img4(32, 360);
+ NORM_RGB_IMAGE img5(32, 360);
+
+ unsigned char imageIn[320*280];
+ unsigned char imageOut[32*360];
+
+ int r1,r2,x,y;
+ ap_uint<9> val[6]={0,0,0,0,0,0};
+_ssdm_op_SpecDataflowPipeline(-1, 0, "");
+ hls::AXIvideo2Mat(inputStream, img0);
+ hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
+ findPupil(img1,r1,x,y,img2);
+ find_iris_high_accuracy(img2, r1, x, y,r2,img3);
+ hls::Mat2Array<320>(img3, imageIn);
+ writeValues(val,x,y,r1,r2);
+ norm_low(imageIn,imageOut,val);
+ hls::Array2Mat<360>(imageOut, img4);
+ hls::CvtColor<HLS_GRAY2RGB>(img4, img5);
+ hls::Mat2AXIvideo(img5, outputStream);
+}
+
+void detectNorm_float(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
+ RGB_IMAGE img0(280, 320);
+ GRAY_IMAGE img1(280, 320);
+ GRAY_IMAGE img2(280, 320);
+ GRAY_IMAGE img3(280, 320);
+ NORM_GRAY_IMAGE img4(32, 360);
+ NORM_RGB_IMAGE img5(32, 360);
+
+ unsigned char imageIn[320*280];
+ unsigned char imageOut[32*360];
 
  int r1,r2,x,y;
  int val[6]={0,0,0,0,0,0};
 _ssdm_op_SpecDataflowPipeline(-1, 0, "");
  hls::AXIvideo2Mat(inputStream, img0);
  hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
-
+ findPupil(img1,r1,x,y,img2);
+ find_iris_high_accuracy(img2, r1, x, y,r2,img3);
+ hls::Mat2Array<320>(img3, imageIn);
+ writeValues(val,x,y,r1,r2);
+ norm_high(imageIn,imageOut,val);
+ hls::Array2Mat<360>(imageOut, img4);
+ hls::CvtColor<HLS_GRAY2RGB>(img4, img5);
+ hls::Mat2AXIvideo(img5, outputStream);
 }
 
-void top_level(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
-_ssdm_op_SpecInterface(&inputStream, "axis", 1, 1, "both", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-_ssdm_op_SpecInterface(&outputStream, "axis", 1, 1, "both", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-_ssdm_op_SpecInterface(0, "ap_ctrl_none", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-
- method1(inputStream,outputStream);
-}
-
-void top_level2(AXI_STREAM& inputStream,uint8_t code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
+void top_level_compare_gabor(AXI_STREAM& inputStream,uint8_t code[2048],uint8_t codeFIX[2048]){_ssdm_SpecArrayDimSize(code, 2048);_ssdm_SpecArrayDimSize(codeFIX, 2048);
 _ssdm_op_SpecInterface(&inputStream, "axis", 1, 1, "both", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
 _ssdm_op_SpecInterface(code, "s_axilite", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
+_ssdm_op_SpecInterface(codeFIX, "s_axilite", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
 _ssdm_op_SpecInterface(0, "ap_ctrl_none", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
 
- arrayMethod_fix(inputStream,code);
+ RGB_IMAGE img0(280, 320);
+ GRAY_IMAGE img1(280, 320);
+ GRAY_IMAGE img2(280, 320);
+ GRAY_IMAGE img3(280, 320);
+ NORM_GRAY_IMAGE img4(32, 360);
+ NORM_RGB_IMAGE img5(32, 360);
+ int r1,r2,x,y;
+ int val[6]={0,0,0,0,0,0};
+
+ uint8_t imageIn[280*320];
+ uint8_t imageOut[32*360];
+_ssdm_op_SpecDataflowPipeline(-1, 0, "");
+ hls::AXIvideo2Mat(inputStream, img0);
+ hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
+ findPupil(img1,r1,x,y,img2);
+ find_iris_high_accuracy(img2, r1, x, y,r2,img3);
+ hls::Mat2Array<320>(img3, imageIn);
+ writeValues(val,x,y,r1,r2);
+ norm_high(imageIn,imageOut,val);
+ encode(imageOut,code);
+ encode(imageOut,codeFIX);
+
 }
+
+
+
 
 void test_detection_top(AXI_STREAM& inputStream,int& x,int& y, int& r1, int& r2){
 _ssdm_op_SpecInterface(&inputStream, "axis", 1, 1, "both", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
@@ -34829,4 +34901,41 @@ _ssdm_op_SpecDataflowPipeline(-1, 0, "");
  findPupil(img1,r1,x,y,img2);
  find_iris_high_accuracy(img2, r1, x, y,r2,img3);
 
+}
+
+
+void detect_Array(AXI_STREAM& inputStream,int& x,int& y, int& r1, int& r2){
+ RGB_IMAGE img0(280, 320);
+ GRAY_IMAGE img1(280, 320);
+ GRAY_IMAGE img2(280, 320);
+ GRAY_IMAGE img3(280, 320);
+ NORM_GRAY_IMAGE img4(32, 360);
+ NORM_RGB_IMAGE img5(32, 360);
+
+ uint8_t imageIn[320*280];
+_ssdm_op_SpecDataflowPipeline(-1, 0, "");
+ hls::AXIvideo2Mat(inputStream, img0);
+ hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
+ findPupil(img1,r1,x,y,img2);
+ hls::Mat2Array<320>(img2, imageIn);
+ Iris(imageIn,r1,x,y,r2);
+
+}
+
+
+
+void top_level(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
+_ssdm_op_SpecInterface(&inputStream, "axis", 1, 1, "both", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
+_ssdm_op_SpecInterface(&outputStream, "axis", 1, 1, "both", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
+_ssdm_op_SpecInterface(0, "ap_ctrl_none", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
+
+}
+
+
+void top_level2(AXI_STREAM& inputStream,ap_uint<1> code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
+_ssdm_op_SpecInterface(&inputStream, "axis", 1, 1, "both", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
+_ssdm_op_SpecInterface(code, "s_axilite", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
+_ssdm_op_SpecInterface(0, "ap_ctrl_none", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
+
+ arrayMethod_fix(inputStream,code);
 }

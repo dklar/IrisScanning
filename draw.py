@@ -1,7 +1,9 @@
 import cv2
+import os
 
+f = open("eye.txt")
+os.mkdir("Test")
 
-f = open("C:/Users/Dennis/VivadoHLS/Final/SegmentNormal/solution1/csim/build/eye.txt")
 for line in f:
     values = line.split("#")
     nr = int(values[0])
@@ -16,4 +18,4 @@ for line in f:
     image = cv2.imread(path)
     cv2.circle(image,(x,y),r,(0,255,0),2)
     cv2.circle(image,(x,y),r2,(0,255,0),2)
-    cv2.imwrite("C:/Users/Dennis/VivadoHLS/Final/SegmentNormal/Results/Iris/"+values[0]+".jpg",image)
+    cv2.imwrite("Test/"+values[0]+".jpg",image)

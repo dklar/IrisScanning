@@ -12,11 +12,12 @@ typedef ap_fixed<4,1> floatIntern;
 typedef ap_fixed<16,5> floatGauss;
 
 
-typedef ap_fixed<8,5> floatGabor;//orginal 16,5
-typedef ap_ufixed<4,0> floatTan;
-typedef ap_fixed<4,2> floatSin;
+typedef ap_fixed<16,5> floatGabor;//orginal 16,5
+typedef ap_ufixed<16,0> floatTan;
+typedef ap_fixed<16,2> floatSin;
 typedef ap_fixed<16,4> floatArg;
 typedef ap_uint<9> IntPoints;
+typedef ap_uint<2> codeINT;
 
 static const floatTan arctan[] = {
 		0.7853981633974483,//0.1100100100..

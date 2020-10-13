@@ -120,7 +120,7 @@ architecture behav of CvtColor is
     signal grp_fu_257_p3 : STD_LOGIC_VECTOR (29 downto 0);
     signal ret_V_20_reg_323 : STD_LOGIC_VECTOR (29 downto 0);
     signal ap_enable_reg_pp0_iter3 : STD_LOGIC := '0';
-    signal p_Val2_75_reg_328 : STD_LOGIC_VECTOR (7 downto 0);
+    signal p_Val2_68_reg_328 : STD_LOGIC_VECTOR (7 downto 0);
     signal tmp_1_reg_333 : STD_LOGIC_VECTOR (0 downto 0);
     signal ap_block_pp0_stage0_subdone : BOOLEAN;
     signal ap_condition_pp0_exit_iter0_state3 : STD_LOGIC;
@@ -134,7 +134,7 @@ architecture behav of CvtColor is
     signal grp_fu_267_p3 : STD_LOGIC_VECTOR (28 downto 0);
     signal zext_ln415_fu_207_p1 : STD_LOGIC_VECTOR (7 downto 0);
     signal tmp_16_fu_215_p3 : STD_LOGIC_VECTOR (0 downto 0);
-    signal p_Val2_76_fu_210_p2 : STD_LOGIC_VECTOR (7 downto 0);
+    signal p_Val2_69_fu_210_p2 : STD_LOGIC_VECTOR (7 downto 0);
     signal tmp_17_fu_228_p3 : STD_LOGIC_VECTOR (0 downto 0);
     signal xor_ln777_fu_222_p2 : STD_LOGIC_VECTOR (0 downto 0);
     signal deleted_zeros_fu_236_p2 : STD_LOGIC_VECTOR (0 downto 0);
@@ -428,7 +428,7 @@ begin
     begin
         if (ap_clk'event and ap_clk = '1') then
             if (((icmp_ln1968_reg_294_pp0_iter2_reg = ap_const_lv1_1) and (ap_const_boolean_0 = ap_block_pp0_stage0_11001))) then
-                p_Val2_75_reg_328 <= grp_fu_257_p3(29 downto 22);
+                p_Val2_68_reg_328 <= grp_fu_257_p3(29 downto 22);
                 tmp_1_reg_333 <= grp_fu_257_p3(21 downto 21);
             end if;
         end if;
@@ -602,7 +602,7 @@ begin
     mul_ln703_fu_251_p0 <= ap_const_lv29_1322D0(22 - 1 downto 0);
     mul_ln703_fu_251_p1 <= mul_ln703_fu_251_p10(8 - 1 downto 0);
     mul_ln703_fu_251_p10 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(tmp_19_reg_303),29));
-    p_Val2_76_fu_210_p2 <= std_logic_vector(unsigned(zext_ln415_fu_207_p1) + unsigned(p_Val2_75_reg_328));
+    p_Val2_69_fu_210_p2 <= std_logic_vector(unsigned(zext_ln415_fu_207_p1) + unsigned(p_Val2_68_reg_328));
 
     p_dst_data_stream_V_blk_n_assign_proc : process(p_dst_data_stream_V_full_n, ap_block_pp0_stage0, ap_enable_reg_pp0_iter4, icmp_ln1968_reg_294_pp0_iter3_reg)
     begin
@@ -614,7 +614,7 @@ begin
     end process;
 
     p_dst_data_stream_V_din <= 
-        p_Val2_76_fu_210_p2 when (deleted_zeros_fu_236_p2(0) = '1') else 
+        p_Val2_69_fu_210_p2 when (deleted_zeros_fu_236_p2(0) = '1') else 
         ap_const_lv8_FF;
 
     p_dst_data_stream_V_write_assign_proc : process(ap_enable_reg_pp0_iter4, icmp_ln1968_reg_294_pp0_iter3_reg, ap_block_pp0_stage0_11001)
@@ -748,7 +748,7 @@ begin
     end process;
 
     tmp_16_fu_215_p3 <= ret_V_20_reg_323(29 downto 29);
-    tmp_17_fu_228_p3 <= p_Val2_76_fu_210_p2(7 downto 7);
+    tmp_17_fu_228_p3 <= p_Val2_69_fu_210_p2(7 downto 7);
     xor_ln777_fu_222_p2 <= (tmp_16_fu_215_p3 xor ap_const_lv1_1);
     zext_ln1967_fu_149_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(i_0_i_reg_127),10));
     zext_ln1968_fu_164_p1 <= std_logic_vector(IEEE.numeric_std.resize(unsigned(j_0_i_reg_138),10));

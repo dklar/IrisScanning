@@ -34465,10 +34465,10 @@ typedef ap_fixed<4,1> floatIntern;
 typedef ap_fixed<16,5> floatGauss;
 
 
-typedef ap_fixed<16,5> floatGabor;
-typedef ap_ufixed<16,0> floatTan;
-typedef ap_fixed<16,2> floatSin;
-typedef ap_fixed<16,4> floatArg;
+typedef ap_fixed<8,5> floatGabor;
+typedef ap_ufixed<8,0> floatTan;
+typedef ap_fixed<8,2> floatSin;
+typedef ap_fixed<8,4> floatArg;
 typedef ap_uint<9> IntPoints;
 typedef ap_uint<2> codeINT;
 

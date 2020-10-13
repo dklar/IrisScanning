@@ -129,7 +129,7 @@ reg   [28:0] mul_ln703_reg_318;
 wire   [29:0] grp_fu_257_p3;
 reg   [29:0] ret_V_20_reg_323;
 reg    ap_enable_reg_pp0_iter3;
-reg   [7:0] p_Val2_75_reg_328;
+reg   [7:0] p_Val2_68_reg_328;
 reg   [0:0] tmp_1_reg_333;
 reg    ap_block_pp0_stage0_subdone;
 reg    ap_condition_pp0_exit_iter0_state3;
@@ -142,7 +142,7 @@ wire   [9:0] zext_ln1968_fu_164_p1;
 wire   [28:0] grp_fu_267_p3;
 wire   [7:0] zext_ln415_fu_207_p1;
 wire   [0:0] tmp_16_fu_215_p3;
-wire   [7:0] p_Val2_76_fu_210_p2;
+wire   [7:0] p_Val2_69_fu_210_p2;
 wire   [0:0] tmp_17_fu_228_p3;
 wire   [0:0] xor_ln777_fu_222_p2;
 wire   [0:0] deleted_zeros_fu_236_p2;
@@ -349,7 +349,7 @@ end
 
 always @ (posedge ap_clk) begin
     if (((icmp_ln1968_reg_294_pp0_iter2_reg == 1'd1) & (1'b0 == ap_block_pp0_stage0_11001))) begin
-        p_Val2_75_reg_328 <= {{grp_fu_257_p3[29:22]}};
+        p_Val2_68_reg_328 <= {{grp_fu_257_p3[29:22]}};
         tmp_1_reg_333 <= grp_fu_257_p3[32'd21];
     end
 end
@@ -637,15 +637,15 @@ assign mul_ln703_fu_251_p1 = mul_ln703_fu_251_p10;
 
 assign mul_ln703_fu_251_p10 = tmp_19_reg_303;
 
-assign p_Val2_76_fu_210_p2 = (zext_ln415_fu_207_p1 + p_Val2_75_reg_328);
+assign p_Val2_69_fu_210_p2 = (zext_ln415_fu_207_p1 + p_Val2_68_reg_328);
 
-assign p_dst_data_stream_V_din = ((deleted_zeros_fu_236_p2[0:0] === 1'b1) ? p_Val2_76_fu_210_p2 : 8'd255);
+assign p_dst_data_stream_V_din = ((deleted_zeros_fu_236_p2[0:0] === 1'b1) ? p_Val2_69_fu_210_p2 : 8'd255);
 
 assign start_out = real_start;
 
 assign tmp_16_fu_215_p3 = ret_V_20_reg_323[32'd29];
 
-assign tmp_17_fu_228_p3 = p_Val2_76_fu_210_p2[32'd7];
+assign tmp_17_fu_228_p3 = p_Val2_69_fu_210_p2[32'd7];
 
 assign xor_ln777_fu_222_p2 = (tmp_16_fu_215_p3 ^ 1'd1);
 

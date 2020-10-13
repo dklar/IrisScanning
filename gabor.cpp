@@ -1,5 +1,5 @@
 #include "gabor.hpp"
-
+#include <math.h>
 int MODULO(int a, int b) {
 #pragma HLS inline
 	//negative mod is not defined very well
@@ -29,39 +29,39 @@ void generateGaussKernel(int kern_size,int peak,
 }
 
 void generateSinKernel(int kern_size,
-		float sin[MAX_KERN_SIZE][MAX_KERN_SIZE],
-		float cos[MAX_KERN_SIZE][MAX_KERN_SIZE]) {
+		float sinK[MAX_KERN_SIZE][MAX_KERN_SIZE],
+		float cosK[MAX_KERN_SIZE][MAX_KERN_SIZE]) {
 	float sum_row_sin = 0;
-		float sum_row_cos = 0;
-		CalcFirstRow:
-		for (int i = 0; i < kern_size; i++) {
-			int phi = i - (kern_size / 2);
-			int temp = kern_size / 2;
-			float val_sin;
-			float val_cos;
-			cordic360_COS_SIN(PI * phi / temp, val_sin, val_cos, 15);
+	float sum_row_cos = 0;
+	CalcFirstRow:
+	for (int i = 0; i < kern_size; i++) {
+		int phi = i - (kern_size / 2);
+		int temp = kern_size / 2;
+		float val_sin = sin(PI * phi / temp);
+		float val_cos = cos(PI * phi / temp);
+		//cordic360_COS_SIN(PI * phi / temp, val_sin, val_cos, 15);
 
-			sin[0][i] = val_sin;
-			cos[0][i] = val_cos;
-			sum_row_sin += val_sin;
-			sum_row_cos += val_cos;
-		}
+		sinK[0][i] = val_sin;
+		cosK[0][i] = val_cos;
+		sum_row_sin += val_sin;
+		sum_row_cos += val_cos;
+	}
 
-		NormalizeFirstRow:
-		for (int i = 0; i < kern_size; i++) {
-			float old_v_s = sin[0][i];
-			float old_v_c = cos[0][i];
-			sin[0][i] = old_v_s - (sum_row_sin / (float) kern_size);
-			cos[0][i] = old_v_c - (sum_row_cos / (float) kern_size);
-		}
+	NormalizeFirstRow:
+	for (int i = 0; i < kern_size; i++) {
+		float old_v_s = sinK[0][i];
+		float old_v_c = cosK[0][i];
+		sinK[0][i] = old_v_s - (sum_row_sin / (float) kern_size);
+		cosK[0][i] = old_v_c - (sum_row_cos / (float) kern_size);
+	}
 
-		AssignCompleteMatrix:
-		for (int i = 1; i < kern_size; i++) {
-			for (int j = 0; j < kern_size; j++) {
-				sin[i][j] = sin[0][j];
-				cos[i][j] = cos[0][j];
-			}
+	AssignCompleteMatrix:
+	for (int i = 1; i < kern_size; i++) {
+		for (int j = 0; j < kern_size; j++) {
+			sinK[i][j] = sinK[0][j];
+			cosK[i][j] = cosK[0][j];
 		}
+	}
 }
 
 void generateGaborKernel(int kern_size,
@@ -83,7 +83,7 @@ void generateGaborKernel(int kern_size,
 			cos_filter_matrix[i][j] = cos_filter_matrix[i][j] * gauss[i][j];
 		}
 	}
-
+/*
 	NormalizeGausGabor:
 	for (int i = 0; i < kern_size; i++) {
 		float row_sum_sin = 0;
@@ -100,7 +100,7 @@ void generateGaborKernel(int kern_size,
 			cos_filter_matrix[i][j] = old_cos
 					- (row_sum_cos / (float) kern_size);
 		}
-	}
+	}*/
 }
 
 uint8_t gaborPixel(int rho, int phi, uint8_t norm_img[NORM_HEIGHT * NORM_WIDTH],
@@ -264,7 +264,7 @@ void generateGaborKernel_fix(int kern_size,
 			cos_filter_matrix[i][j] = cos[i][j] * gauss[i][j];
 		}
 	}
-
+	/*
 	NormalizeGausGabor: for (int i = 0; i < kern_size; i++) {
 		ap_fixed<16,5> row_sum_sin = 0;
 		ap_fixed<16,5> row_sum_cos = 0;
@@ -279,7 +279,7 @@ void generateGaborKernel_fix(int kern_size,
 					- (row_sum_cos / (ap_fixed<16,5>) kern_size);
 		}
 	}
-
+*/
 }
 
 void gaborPixel_fix(int rho, int phi,

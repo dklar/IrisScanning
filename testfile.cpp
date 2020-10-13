@@ -41,6 +41,7 @@ void test_main(){
 		test_detection(path.c_str(),i);
 	}
 }
+
 void test_norm(const char* filename,int i){
 	IplImage* src_image = new IplImage;
 	IplImage* dst_image = new IplImage;
@@ -82,7 +83,8 @@ void test_norm_high(const char* filename,int i){
 	cvReleaseImage(&src_image);
 	cvReleaseImage(&dst_image);
 }
-/*
+
+
 void test_gabor(const char* filename,int i){
 	uint8_t bit_code[BITCODE_LENGTH];
 	for (int i=0;i<2048;i++){
@@ -217,7 +219,7 @@ void test_main2(){
 
 void testCORDIC_fix(){
 	std::cout.setf( std::ios::fixed, std:: ios::floatfield );
-	std::cout.precision(6);
+	std::cout.precision(10);
 	floatSin s = 0;
 	floatSin c = 0;
 	std::cout <<"Alpha\tsin\tcordicSin\n";
@@ -228,7 +230,7 @@ void testCORDIC_fix(){
 		float debugS = s.to_float();
 		float debugC = c.to_float();
 		float debugA = arg.to_float();
-		cordic360_COS_SIN_fix(arg,s,c,30);
+		cordic360_COS_SIN_fix(arg,s,c,5);
 		std::cout <<  i << "\t" << s1 << "\t" << s <<"\n";
 
 	}
@@ -293,17 +295,30 @@ void compareGabor(){
 	}
 }
 
+void test_main3(){
+	std::string path;
+	remove("eye.txt");
+	for (int i = 1; i< 100;i++){//ordner
+		if (i<10){
+			path = "C://Users//Dennis//OneDrive//Dokumente//Informatik//Iris recognition//Iris_detection_dennis//CASIA1//"+std::to_string(i)+"//00"+std::to_string(i)+"_1_1.jpg";
+		}else{
+			path = "C://Users//Dennis//OneDrive//Dokumente//Informatik//Iris recognition//Iris_detection_dennis//CASIA1//"+std::to_string(i)+"//0"+std::to_string(i)+"_1_1.jpg";
+		}
+		simulate_gabor_codes(path.c_str());
+	}
+}
+
 void testCORDIC(){
 	std::cout.setf( std::ios::fixed, std:: ios::floatfield );
-	std::cout.precision(6);
+	std::cout.precision(9);
 	float s = 0;
 	float c = 0;
 	std::cout <<"Alpha\tsin\tcordicSin\n";
-	for (int i = -500 ;i<=500;i++){
+	for (int i = 0 ;i<=360;i++){
 		float s1 = sin(i*DEGtoRAD);
 		float c1 = cos(i*DEGtoRAD);
 		float arg = i*DEGtoRAD;
-		cordic360_COS_SIN(arg,s,c,30);
+		cordic360_COS_SIN(arg,s,c,5);
 		std::cout <<  i << "\t" << s1 << "\t" << s <<"\n";
 
 	}
@@ -322,8 +337,8 @@ void testGaborKernel(){
 	}
 	generateGaborKernel(3,gabor,gaborI);
 
-	for (int i=0;i<3;i++){
-		for (int j=0;j<3;j++){
+	for (int i=0;i<4;i++){
+		for (int j=0;j<4;j++){
 			std::cout << gabor[i][j]<<"\t";
 		}
 		std::cout << "\n";
@@ -355,10 +370,10 @@ void testGaborKernel_FIX(){
 			gabor[i][j] = 0;
 		}
 	}
-	generateGaborKernel_fix(3,gabor,gaborI);
+	generateGaborKernel_fix(4,gabor,gaborI);
 
-	for (int i=0;i<3;i++){
-		for (int j=0;j<3;j++){
+	for (int i=0;i<4;i++){
+		for (int j=0;j<4;j++){
 			std::cout << gabor[i][j]<<"\t";
 		}
 		std::cout << "\n";
@@ -390,10 +405,10 @@ void testSinKernel_FIX(){
 			sin[i][j] = 0;
 		}
 	}
-	generateSinKernel_fix(3,sin,cos);
+	generateSinKernel_fix(4,sin,cos);
 
-	for (int i=0;i<3;i++){
-		for (int j=0;j<3;j++){
+	for (int i=0;i<4;i++){
+		for (int j=0;j<4;j++){
 			std::cout << sin[i][j]<<"\t";
 		}
 		std::cout << "\n";
@@ -425,10 +440,10 @@ void testSinKernel(){
 			sin[i][j] = 0;
 		}
 	}
-	generateSinKernel(3,sin,cos);
+	generateSinKernel(4,sin,cos);
 
-	for (int i=0;i<3;i++){
-		for (int j=0;j<3;j++){
+	for (int i=0;i<4;i++){
+		for (int j=0;j<4;j++){
 			std::cout << sin[i][j]<<"\t";
 		}
 		std::cout << "\n";
@@ -461,8 +476,8 @@ void testGaussKernel(){
 	}
 	generateGaussKernel(5,8,gauss);
 
-	for (int i=0;i<3;i++){
-		for (int j=0;j<3;j++){
+	for (int i=0;i<4;i++){
+		for (int j=0;j<4;j++){
 			std::cout << gauss[i][j]<<"\t";
 		}
 		std::cout << "\n";
@@ -495,8 +510,8 @@ void testGaussFixKernel(){
 	}
 	generateGaussKernel_fix(5,8,gauss);
 
-	for (int i=0;i<3;i++){
-		for (int j=0;j<3;j++){
+	for (int i=0;i<4;i++){
+		for (int j=0;j<4;j++){
 			std::cout << gauss[i][j]<<"\t";
 		}
 		std::cout << "\n";
@@ -540,8 +555,10 @@ void testGAUSS(){
 	testGaussFixKernel();
 	std::cout<<"\n\n";
 }
-*/
+
+
 int main(int argc, char *argv[]){
-	test_main();
+	testCORDIC_fix();
+
 	return 0;
 }

@@ -1,6 +1,6 @@
 #include "normalization.hpp"
 
-void norm_high(uint8_t image_in[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA],
+void norm_high(uint8_t image_in[MAX_HEIGHT * MAX_WIDTH],
 		uint8_t image_out[NORM_HEIGHT * NORM_WIDTH], int values[6]) {
 	int x_p = values[0];
 	int y_p = values[1];
@@ -26,12 +26,12 @@ void norm_high(uint8_t image_in[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA],
 			int y = int((1 - radius) * temp3 + radius * temp4);
 
 			image_out[r * NORM_WIDTH + theta] =
-					image_in[y * MAX_WIDTH_CASIA + x];
+					image_in[y * MAX_WIDTH + x];
 		}
 	}
 }
 
-void norm_low(uint8_t image_in[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA],
+void norm_low(uint8_t image_in[MAX_HEIGHT * MAX_WIDTH],
 		uint8_t image_out[NORM_HEIGHT * NORM_WIDTH], ap_uint<9> values[6]) {
 	ap_uint<9> x_p = values[0];
 	ap_uint<9> y_p = values[1];

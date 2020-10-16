@@ -2,11 +2,19 @@
 #include <ap_fixed.h>
 #include "hls_math.h"
 
+//-----differnt image sizes of database--------
+//-----to change database set MAX_WIDTH/ MAX_HEIGHT either to _CASIA or _IITD
+
 #define MAX_WIDTH_CASIA  320
 #define MAX_HEIGHT_CASIA  280
 
-#define MAX_WIDTH MAX_WIDTH_CASIA
-#define MAX_HEIGHT MAX_HEIGHT_CASIA
+#define MAX_WIDTH_IITD 320
+#define MAX_HEIGHT_IITD 240
+//----End------
+
+
+#define MAX_WIDTH MAX_WIDTH_IITD
+#define MAX_HEIGHT MAX_HEIGHT_IITD
 
 #define IRIS_RADIUS_MIN 85
 #define IRIS_RADIUS_MAX 150
@@ -23,15 +31,15 @@
 #define ENCODED_PIXELS  1024     //should be divisible by 32(int) or 64(long)
 #define BITCODE_LENGTH  2048     //each encoded pixel brings 2 bits to the bitcode
 
-typedef hls::stream<ap_axiu<32,1,1,1> > 								AXI_STREAM;//32 bit data stream
-typedef hls::Mat<MAX_HEIGHT_CASIA,   MAX_WIDTH_CASIA,   HLS_8UC3> 		RGB_IMAGE;//RGB image from type HLS::Mat
-typedef hls::Mat<MAX_HEIGHT_CASIA,   MAX_WIDTH_CASIA,   HLS_8UC1> 		GRAY_IMAGE;//Gray image from type HLS::Mat
-typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,   HLS_8UC3> 					NORM_RGB_IMAGE;//RGB image from type HLS::Mat
-typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,   HLS_8UC1> 					NORM_GRAY_IMAGE;//Gray image from type HLS::Mat
-typedef hls::Scalar<3, uint8_t> 										PIXEL;
-typedef hls::Scalar<1, uint8_t> 										PIXELGRAY;
-typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,HLS_8UC1>						GRAY_IMAGE_NORM;
-typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,HLS_8UC3>						RGB_IMAGE_NORM;
+typedef hls::stream<ap_axiu<32,1,1,1> > 					AXI_STREAM;//32 bit data stream
+typedef hls::Mat<MAX_HEIGHT,   MAX_WIDTH,  HLS_8UC3> 		RGB_IMAGE;//RGB image from type HLS::Mat
+typedef hls::Mat<MAX_HEIGHT,   MAX_WIDTH,  HLS_8UC1> 		GRAY_IMAGE;//Gray image from type HLS::Mat
+typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,   HLS_8UC3> 		NORM_RGB_IMAGE;//RGB image from type HLS::Mat
+typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,   HLS_8UC1> 		NORM_GRAY_IMAGE;//Gray image from type HLS::Mat
+typedef hls::Scalar<3, uint8_t> 							PIXEL;
+typedef hls::Scalar<1, uint8_t> 							PIXELGRAY;
+typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,HLS_8UC1>			GRAY_IMAGE_NORM;
+typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,HLS_8UC3>			RGB_IMAGE_NORM;
 
 typedef ap_uint<2> int2;//for return value of gabor pixel ->00,01,10,11
 typedef ap_uint<6> int6;//for other small values

@@ -9,81 +9,62 @@
 #include <tchar.h>
 #include <stdio.h>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 
+const std::string casia1path = "C://Users//Dennis//VivadoHLS//Final//Database//CASIA1//";
+const std::string IITDpath   = "C://Users//Dennis//VivadoHLS//Final//Database//IITD Database//";
+std::string databasePath =IITDpath;
 
-void test_detection(const char* filename,int i){
+void test_segmentaion(const char* path, int &r1,int &r2,int &x, int &y){
 	IplImage* src_image = new IplImage;
-	AXI_STREAM src_stream;
-	int r1,r2,x,y;
+	AXI_STREAM src_stream,iris_in_stream;
+	src_image = cvLoadImage(path);//load image file
+	IplImage2AXIvideo(src_image, src_stream);//convert image to AXI stream
 
-	src_image = cvLoadImage(filename);
-	IplImage2AXIvideo(src_image, src_stream);
-	detect_Array(src_stream,x,y,r1,r2);
+	uint8_t imageIn[MAX_HEIGHT*MAX_WIDTH];
+	RGB_IMAGE  img0(MAX_HEIGHT, MAX_WIDTH);
+	GRAY_IMAGE img1(MAX_HEIGHT, MAX_WIDTH);
+	GRAY_IMAGE img2(MAX_HEIGHT, MAX_WIDTH);
+	hls::AXIvideo2Mat(src_stream, img0);
+	hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
+	findPupil(img1,r1,x,y,5,img2);
+	hls::Mat2Array<MAX_WIDTH>(img2, imageIn);
+	Iris(imageIn, r1, x, y, r2);
+}
 
+void test_segmentation_top(int N){
+	remove("eye.txt");
 	fstream f;
 	f.open("eye.txt", ios::app);
-	f << std::to_string(i)<<"#" << x <<"#" << y<<"#" << r1 <<"#" <<r2<<"\n";
-	f.close();
 
-	cvReleaseImage(&src_image);
-}
-
-void test_main(){
-	std::string path;
-	remove("eye.txt");
-	for (int i = 1; i< 100;i++){//ordner
-		if (i<10){
-			path = "C://Users//Dennis//OneDrive//Dokumente//Informatik//Iris recognition//Iris_detection_dennis//CASIA1//"+std::to_string(i)+"//00"+std::to_string(i)+"_1_1.jpg";
-		}else{
-			path = "C://Users//Dennis//OneDrive//Dokumente//Informatik//Iris recognition//Iris_detection_dennis//CASIA1//"+std::to_string(i)+"//0"+std::to_string(i)+"_1_1.jpg";
+	for (int i=1;i<=N;i++){
+		std::string path =
+				i < 10 ? databasePath + "00" + std::to_string(i) + "//*" :
+				i < 100 ?
+						databasePath + "0" + std::to_string(i) + "//*" :
+						databasePath + std::to_string(i) + "//*";
+		WIN32_FIND_DATA FindFileData;
+		HANDLE hFind = FindFirstFile(path.c_str(), &FindFileData);
+		if (hFind == INVALID_HANDLE_VALUE) {
+		    printf ("FindFirstFile failed (%d)\n", GetLastError());
+		    return;
 		}
-		test_detection(path.c_str(),i);
+		path = path.substr(0, path.size()-1);
+		do{
+			if(!(FindFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)){
+				std::string pathTemp = path + FindFileData.cFileName;
+				std::cout << pathTemp<<"\n";
+				int r1,r2,x,y;
+				test_segmentaion(pathTemp.c_str(),r1,r2,x,y);
+				f << pathTemp<<"#" << x <<"#" << y<<"#" << r1 <<"#" <<r2<<"\n";
+			}
+		}while(FindNextFile(hFind, &FindFileData) != 0);
+
+		FindClose(hFind);
 	}
+	f.close();
 }
-
-void test_norm(const char* filename,int i){
-	IplImage* src_image = new IplImage;
-	IplImage* dst_image = new IplImage;
-
-	AXI_STREAM src_stream,iris_in_stream;
-
-	src_image = cvLoadImage(filename);
-	dst_image = cvCreateImage(cvSize(NORM_WIDTH,NORM_HEIGHT), src_image->depth, src_image->nChannels);
-
-
-	IplImage2AXIvideo(src_image, src_stream);
-
-	top_level(src_stream,iris_in_stream);
-	AXIvideo2IplImage(iris_in_stream, dst_image);
-
-
-	cvSaveImage((std::to_string(i)+"_cord_4_5.jpg").c_str(), dst_image);
-	cvReleaseImage(&src_image);
-	cvReleaseImage(&dst_image);
-}
-
-void test_norm_high(const char* filename,int i){
-	IplImage* src_image = new IplImage;
-	IplImage* dst_image = new IplImage;
-
-	AXI_STREAM src_stream,iris_in_stream;
-
-	src_image = cvLoadImage(filename);
-	dst_image = cvCreateImage(cvSize(NORM_WIDTH,NORM_HEIGHT), src_image->depth, src_image->nChannels);
-
-
-	IplImage2AXIvideo(src_image, src_stream);
-
-	top_level(src_stream,iris_in_stream);
-	AXIvideo2IplImage(iris_in_stream, dst_image);
-
-
-	cvSaveImage((std::to_string(i)+"high.jpg").c_str(), dst_image);
-	cvReleaseImage(&src_image);
-	cvReleaseImage(&dst_image);
-}
-
 
 void test_gabor(const char* filename,int i){
 	uint8_t bit_code[BITCODE_LENGTH];
@@ -558,7 +539,7 @@ void testGAUSS(){
 
 
 int main(int argc, char *argv[]){
-	testCORDIC_fix();
+	test_segmentation_top(100);
 
 	return 0;
 }

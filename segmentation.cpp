@@ -1,6 +1,6 @@
 #include "segmentation.hpp"
 
-void findPupil(GRAY_IMAGE& img, int& r, int& x, int& y,GRAY_IMAGE &dst_img){
+void findPupil(GRAY_IMAGE& img, int& r, int& x, int& y, int threshold,GRAY_IMAGE &dst_img){
 	PIXELGRAY pixel_value;
 	int startX_line = 0;
 	int length_line = 0;
@@ -17,13 +17,13 @@ void findPupil(GRAY_IMAGE& img, int& r, int& x, int& y,GRAY_IMAGE &dst_img){
 
 
 	loopPixel:
-	for (int y=0;y<MAX_HEIGHT_CASIA;y++){
-		for (int x=0;x<MAX_WIDTH_CASIA;x++){
+	for (int y=0;y<MAX_HEIGHT;y++){
+		for (int x=0;x<MAX_WIDTH;x++){
 			#pragma HLS loop_flatten off
 			#pragma HLS pipeline II=1
 			img >> pixel_value;
 			dst_img <<pixel_value;
-			if (pixel_value.val[0]<=70){
+			if (pixel_value.val[0]<=threshold){
 				//pixel is black
 				if (!is_line){
 					startX_line  = x;
@@ -66,7 +66,7 @@ void findPupil(GRAY_IMAGE& img, int& r, int& x, int& y,GRAY_IMAGE &dst_img){
 	y = total_y;
 }
 
-void findPupil2(GRAY_IMAGE& img, int& r, int& x, int& y,GRAY_IMAGE &dst_img){
+void findPupil2(GRAY_IMAGE& img, int& r, int& x, int& y, int threshold,GRAY_IMAGE &dst_img){
 	PIXELGRAY pixel_value;
 	int startX_line = 0;
 	int length_line = 0;
@@ -89,8 +89,8 @@ void findPupil2(GRAY_IMAGE& img, int& r, int& x, int& y,GRAY_IMAGE &dst_img){
 
 
 	loopPixel:
-	for (int y=0;y<MAX_HEIGHT_CASIA;y++){
-		for (int x=0;x<MAX_WIDTH_CASIA;x++){
+	for (int y=0;y<MAX_HEIGHT;y++){
+		for (int x=0;x<MAX_WIDTH;x++){
 			#pragma HLS loop_flatten off
 			#pragma HLS pipeline II=1
 			img >> pixel_value;
@@ -98,7 +98,7 @@ void findPupil2(GRAY_IMAGE& img, int& r, int& x, int& y,GRAY_IMAGE &dst_img){
 
 			if (y>startSearchingAreaY && y< endSearchingAreaY){
 				if(x>startSearchingAreaX && x < endSearchingAreaX){
-					if (pixel_value.val[0]<=70){
+					if (pixel_value.val[0]<=threshold){
 						//pixel is black
 						if (!is_line){
 							startX_line  = x;
@@ -172,8 +172,8 @@ void find_iris_high_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,i
 	for (int i=0;i<37;i++)sums[i]=0;
 	int count =0;
 	loopPixel:
-	for (int y=0;y<MAX_HEIGHT_CASIA;y++){
-		for (int x=0;x<MAX_WIDTH_CASIA;x++){
+	for (int y=0;y<MAX_HEIGHT;y++){
+		for (int x=0;x<MAX_WIDTH;x++){
 			//#pragma HLS loop_flatten off
 			//#pragma HLS pipeline II=1
 			img >> pixel_value;
@@ -230,8 +230,8 @@ void find_iris_low_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,in
 	for (int i=0;i<37;i++)sums[i]=0;
 	int count =0;
 	loopPixel:
-	for (int y=0;y<MAX_HEIGHT_CASIA;y++){
-		for (int x=0;x<MAX_WIDTH_CASIA;x++){
+	for (int y=0;y<MAX_HEIGHT;y++){
+		for (int x=0;x<MAX_WIDTH;x++){
 			//#pragma HLS loop_flatten off
 			//#pragma HLS pipeline II=1
 			img >> pixel_value;
@@ -259,7 +259,7 @@ void find_iris_low_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,in
 		irisRadius = IRIS_RADIUS_MIN + iris_radius;
 }
 
-int calcCircleSum(uint8_t image_in[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA],
+int calcCircleSum(uint8_t image_in[MAX_HEIGHT * MAX_WIDTH],
 		int x, int y, int r) {
 	int sum = 0;
 
@@ -268,18 +268,18 @@ int calcCircleSum(uint8_t image_in[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA],
 		if (alpha != 90 and alpha != 270){
 			int PointX = (int) (x + r * replaceCOS(alpha));
 			int PointY = (int) (x + r * replaceSIN(alpha));
-			sum += image_in[MAX_HEIGHT_CASIA*PointY+MAX_WIDTH_CASIA];
+			sum += image_in[MAX_HEIGHT*PointY+MAX_WIDTH];
 		}
 	}
 	return sum;
 }
 
-void Iris(uint8_t image_in[MAX_HEIGHT_CASIA * MAX_WIDTH_CASIA],
+void Iris(uint8_t image_in[MAX_HEIGHT * MAX_WIDTH],
 		int& pupilRadius, int& x, int& y, int &irisRadius) {
 	int Amax = 0;
 
 	IrisSegmentaionLoop:
-	for (int r = pupilRadius+50;r<IRIS_RADIUS_MAX;r++){//pupilRadius*5
+	for (int r = pupilRadius+50;r<pupilRadius*4;r++){//pupilRadius*5
 		int outer = calcCircleSum(image_in,x,y,r+1);
 		int inner = calcCircleSum(image_in,x,y,r-1);
 		int gradient = outer - inner;

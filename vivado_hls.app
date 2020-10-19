@@ -1,4 +1,4 @@
-<project xmlns="com.autoesl.autopilot.project" name="Iris-recognition" top="top_level2">
+<project xmlns="com.autoesl.autopilot.project" name="Iris-recognition" top="top_level_fix">
     <files>
         <file name="Iris-recognition/definitions.hpp" sc="0" tb="false" cflags="" blackbox="false"/>
         <file name="Iris-recognition/gabor.cpp" sc="0" tb="false" cflags="" blackbox="false"/>
@@ -19,7 +19,7 @@
     <includePaths/>
     <libraryPaths/>
     <Simulation>
-        <SimFlow name="csim" csimMode="0" lastCsimMode="0"/>
+        <SimFlow name="csim" clean="true" csimMode="0" lastCsimMode="0"/>
     </Simulation>
     <solutions xmlns="">
         <solution name="PYNQ_SOLUTION" status="active"/>

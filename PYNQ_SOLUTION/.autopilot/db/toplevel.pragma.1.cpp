@@ -34436,16 +34436,15 @@ _ssdm_op_SpecDataflowPipeline(-1, 0, "");
 }
 # 70 "C:/Xilinx/Vivado/2019.2/common/technology/autopilot\\hls_video.h" 2
 # 2 "Iris-recognition/definitions.hpp" 2
-# 26 "Iris-recognition/definitions.hpp"
+# 39 "Iris-recognition/definitions.hpp"
 typedef hls::stream<ap_axiu<32,1,1,1> > AXI_STREAM;
-typedef hls::Mat<280, 320, (((0) & ((1 << 11) - 1)) + (((3)-1) << 11))> RGB_IMAGE;
-typedef hls::Mat<280, 320, (((0) & ((1 << 11) - 1)) + (((1)-1) << 11))> GRAY_IMAGE;
+typedef hls::Mat<240, 320, (((0) & ((1 << 11) - 1)) + (((3)-1) << 11))> RGB_IMAGE;
+typedef hls::Mat<240, 320, (((0) & ((1 << 11) - 1)) + (((1)-1) << 11))> GRAY_IMAGE;
 typedef hls::Mat<32,360, (((0) & ((1 << 11) - 1)) + (((3)-1) << 11))> NORM_RGB_IMAGE;
 typedef hls::Mat<32,360, (((0) & ((1 << 11) - 1)) + (((1)-1) << 11))> NORM_GRAY_IMAGE;
-typedef hls::Scalar<3, uint8_t> PIXEL;
+typedef hls::Scalar<3, uint8_t> RGBPIXEL;
 typedef hls::Scalar<1, uint8_t> PIXELGRAY;
-typedef hls::Mat<32,360,(((0) & ((1 << 11) - 1)) + (((1)-1) << 11))> GRAY_IMAGE_NORM;
-typedef hls::Mat<32,360,(((0) & ((1 << 11) - 1)) + (((3)-1) << 11))> RGB_IMAGE_NORM;
+
 
 typedef ap_uint<2> int2;
 typedef ap_uint<6> int6;
@@ -34460,17 +34459,13 @@ const float ThreeHalfPI = 4.7123889803846898;
 const float PIHALF = 1.570796327;
 const float DEGtoRAD = 0.01745329252;
 
-typedef ap_fixed<8,1> float30;
-typedef ap_fixed<4,1> floatIntern;
-typedef ap_fixed<16,5> floatGauss;
 
-
+typedef ap_fixed<8,5> floatGauss;
 typedef ap_fixed<8,5> floatGabor;
 typedef ap_ufixed<8,0> floatTan;
 typedef ap_fixed<8,2> floatSin;
 typedef ap_fixed<8,4> floatArg;
-typedef ap_uint<9> IntPoints;
-typedef ap_uint<2> codeINT;
+
 
 static const floatTan arctan[] = {
   0.7853981633974483,
@@ -34504,25 +34499,8 @@ static const floatTan arctan[] = {
   3.725290298461914e-09,
   1.862645149230957e-09,
   9.313225746154785e-10,
-  4.656612873077393e-10,
-  2.3283064365386963e-10,
-  1.1641532182693481e-10,
-  5.820766091346741e-11,
-  2.9103830456733704e-11,
-  1.4551915228366852e-11,
-  7.275957614183426e-12,
-  3.637978807091713e-12,
-  1.8189894035458565e-12,
-  9.094947017729282e-13,
-  4.547473508864641e-13,
-  2.2737367544323206e-13,
-  1.1368683772161603e-13,
-  5.684341886080802e-14,
-  2.842170943040401e-14,
-  1.4210854715202004e-14,
-  7.105427357601002e-15,
-  3.552713678800501e-15,
-  1.7763568394002505e-15};
+  4.656612873077393e-10
+  };
 static const float arctan_double[] = {
   0.7853981633974483,
   0.4636476090008061,
@@ -34557,30 +34535,11 @@ static const float arctan_double[] = {
   9.313225746154785e-10,
   4.656612873077393e-10,
   2.3283064365386963e-10,
-  1.1641532182693481e-10,
-  5.820766091346741e-11,
-  2.9103830456733704e-11,
-  1.4551915228366852e-11,
-  7.275957614183426e-12,
-  3.637978807091713e-12,
-  1.8189894035458565e-12,
-  9.094947017729282e-13,
-  4.547473508864641e-13,
-  2.2737367544323206e-13,
-  1.1368683772161603e-13,
-  5.684341886080802e-14,
-  2.842170943040401e-14,
-  1.4210854715202004e-14,
-  7.105427357601002e-15,
-  3.552713678800501e-15,
-  1.7763568394002505e-15
+  1.1641532182693481e-10
   };
 
 float sinTaylor(float x);
 float cosTaylor(float x);
-
-float30 cosTaylor_fix(float x);
-float30 sinTaylor_fix(float x);
 
 
 
@@ -34605,18 +34564,515 @@ void cordic360_COS_SIN_fix(floatArg x, floatSin &s, floatSin &c,int nMax);
 
 
 
-void findPupil(GRAY_IMAGE& img, int& r, int& x, int& y, GRAY_IMAGE &dst_img);
+void findPupil(GRAY_IMAGE &img, int &r, int &x, int &y, int threshold, GRAY_IMAGE &dst_img);
 
-void findPupil2(GRAY_IMAGE& img, int& r, int& x, int& y, GRAY_IMAGE &dst_img);
+void findPupil2(GRAY_IMAGE &img, int &r, int &x, int &y, int threshold, GRAY_IMAGE &dst_img);
 
-void find_iris_high_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,
-  int& irisRadius, GRAY_IMAGE &dst_img);
+void find_iris_high_accuracy(GRAY_IMAGE &img, int &pupilRadius, int &x, int &y,
+        int &irisRadius, GRAY_IMAGE &dst_img);
 
-void find_iris_low_accuracy(GRAY_IMAGE& img, int& pupilRadius, int& x, int& y,
-  int& irisRadius, GRAY_IMAGE &dst_img);
+void find_iris_low_accuracy(GRAY_IMAGE &img, int &pupilRadius, int &x, int &y,
+       int &irisRadius, GRAY_IMAGE &dst_img);
 
-void Iris(uint8_t image_in[280 * 320],
-  int& pupilRadius, int& x, int& y, int &irisRadius);
+void Iris(uint8_t image_in[240 * 320], int &pupilRadius, int &x,
+  int &y, int &irisRadius, uint8_t image_out[240 * 320]);
+
+void Iris_fix_border(uint8_t image_in[240 * 320], int &pupilRadius, int &x,
+  int &y, int &irisRadius, uint8_t image_out[240 * 320]);
+namespace hlsCanny{
+
+ enum Direction{
+  GRAD_0,
+  GRAD_45,
+  GRAD_90,
+  GRAD_135
+ };
+
+ struct Pixel{
+  uint8_t color;
+  Direction dir;
+ };
+
+ struct line{
+  int begin;
+  int end;
+ };
+
+ class Canny{
+ public:
+  template<int w,int h>
+  static void ArrayToMat(uint8_t* in,hls::Mat<h,w,(((0) & ((1 << 11) - 1)) + (((3)-1) << 11))> &out);
+
+  template<int w,int h>
+  static void MatToArray(GRAY_IMAGE &in, uint8_t* out);
+
+        template<uint32_t WIDTH, uint32_t HEIGHT>
+        static void SobelXY(uint8_t* src, Pixel* dst);
+
+        template<uint32_t WIDTH, uint32_t HEIGHT>
+        static void NonMaxSuppression(Pixel* src, uint8_t* dst);
+
+        template<uint32_t WIDTH, uint32_t HEIGHT>
+        static void HystThreshold(uint8_t* src, uint8_t* dst, uint8_t hthr, uint8_t low_threshold);
+
+        template<uint32_t WIDTH, uint32_t HEIGHT>
+        static void HystThresholdComp(uint8_t* src, uint8_t* dst);
+
+        template<int w,int h>
+        static void show0degree(Pixel* src, uint8_t* dst);
+
+     template<int w,int h>
+     void getPossibleCircles(uint8_t* src,int minimum,int threshold,int &x,int &y,int &r);
+ };
+
+ template<int w,int h>
+ void MatToArray(GRAY_IMAGE &in, uint8_t* out){
+  PIXELGRAY pixel_value;
+
+  loopPixel:
+  for (int y=0;y<h;y++){
+   for (int x=0;x<w;x++){
+_ssdm_SpecLoopFlatten(1, "");
+_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
+ in >> pixel_value;
+    out[x+y*w] = pixel_value.val[0];
+   }
+  }
+ }
+
+ template<int w,int h>
+ void ArrayToMat(uint8_t* in, hls::Mat<h,w,(((0) & ((1 << 11) - 1)) + (((3)-1) << 11))> &out){
+  RGBPIXEL px1;
+
+  backConvertLoop:
+  for (int y=0;y<h;y++){
+   for(int x=0;x<w;x++){
+_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
+_ssdm_SpecLoopFlatten(1, "");
+ px1.val[0] = in[x+y*w];
+    px1.val[1] = in[x+y*w];
+    px1.val[2] = in[x+y*w];
+    out << px1;
+   }
+  }
+ }
+
+ template<uint32_t WIDTH, uint32_t HEIGHT>
+ void SobelXY(uint8_t* src, Pixel* dst) {
+         const int KERNEL_SIZE = 3;
+
+         uint8_t line_buf[KERNEL_SIZE][WIDTH];
+         uint8_t window_buf[KERNEL_SIZE][KERNEL_SIZE];
+
+_ssdm_SpecArrayReshape( &line_buf, 1,  "COMPLETE",  0, "");
+_ssdm_SpecArrayPartition( &window_buf, 0, "COMPLETE", 0, "");
+
+
+ const int H_SOBEL_KERNEL[KERNEL_SIZE][KERNEL_SIZE] = { { 1, 0, -1},
+                                                                 { 2, 0, -2},
+                                                                 { 1, 0, -1} };
+
+         const int V_SOBEL_KERNEL[KERNEL_SIZE][KERNEL_SIZE] = { { 1, 2, 1},
+                                                                 { 0, 0, 0},
+                                                                 {-1, -2, -1} };
+
+_ssdm_SpecArrayPartition( &H_SOBEL_KERNEL, 0, "COMPLETE", 0, "");
+_ssdm_SpecArrayPartition( &V_SOBEL_KERNEL, 0, "COMPLETE", 0, "");
+
+
+ for(int yi = 0; yi < HEIGHT; yi++) {
+             for(int xi = 0; xi < WIDTH; xi++) {
+_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
+_ssdm_SpecLoopFlatten(1, "");
+
+
+ int pix_sobel;
+                 Direction grad_sobel;
+
+
+                 for(int yl = 0; yl < KERNEL_SIZE - 1; yl++) {
+                     line_buf[yl][xi] = line_buf[yl + 1][xi];
+                 }
+
+                 line_buf[KERNEL_SIZE - 1][xi] = src[xi + yi*WIDTH];
+
+
+                 for(int yw = 0; yw < KERNEL_SIZE; yw++) {
+                     for(int xw = 0; xw < KERNEL_SIZE - 1; xw++) {
+                         window_buf[yw][xw] = window_buf[yw][xw + 1];
+                     }
+                 }
+
+                 for(int yw = 0; yw < KERNEL_SIZE; yw++) {
+                     window_buf[yw][KERNEL_SIZE - 1] = line_buf[yw][xi];
+                 }
+
+
+                 int pix_h_sobel = 0;
+                 int pix_v_sobel = 0;
+
+
+                 for(int yw = 0; yw < KERNEL_SIZE; yw++) {
+                     for(int xw = 0; xw < KERNEL_SIZE; xw++) {
+                         pix_h_sobel += window_buf[yw][xw] * H_SOBEL_KERNEL[yw][xw];
+                     }
+                 }
+
+
+                 for(int yw = 0; yw < KERNEL_SIZE; yw++) {
+                     for(int xw = 0; xw < KERNEL_SIZE; xw++) {
+                         pix_v_sobel += window_buf[yw][xw] * V_SOBEL_KERNEL[yw][xw];
+                     }
+                 }
+
+
+                 pix_sobel = hls::abs(pix_h_sobel) + hls::abs(pix_v_sobel);
+
+
+                 if(255 < pix_sobel) {
+                     pix_sobel = 255;
+                 }
+
+
+                 int t_int;
+                 if(pix_h_sobel != 0) {
+                     t_int = pix_v_sobel * 256 / pix_h_sobel;
+                 }
+                 else {
+                     t_int = 0x7FFFFFFF;
+                 }
+
+
+                 if(-618 < t_int && t_int <= -106) {
+                     grad_sobel = GRAD_135;
+                 }
+
+                 else if(-106 < t_int && t_int <= 106) {
+                     grad_sobel = GRAD_0;
+                 }
+
+                 else if(106 < t_int && t_int < 618) {
+                     grad_sobel = GRAD_45;
+                 }
+
+                 else {
+                     grad_sobel = GRAD_90;
+                 }
+
+
+                 if((KERNEL_SIZE < xi && xi < WIDTH - KERNEL_SIZE) &&
+                    (KERNEL_SIZE < yi && yi < HEIGHT - KERNEL_SIZE)) {
+                     dst[xi + yi*WIDTH].color = pix_sobel;
+                     dst[xi + yi*WIDTH].dir = grad_sobel;
+                 }
+                 else {
+                     dst[xi + yi*WIDTH].color = 0;
+                     dst[xi + yi*WIDTH].dir = grad_sobel;
+                 }
+             }
+         }
+     }
+
+ template<uint32_t WIDTH, uint32_t HEIGHT>
+ void NonMaxSuppression(Pixel* src, uint8_t* dst) {
+  const int WINDOW_SIZE = 3;
+
+  Pixel line_buf[WINDOW_SIZE][WIDTH];
+  Pixel window_buf[WINDOW_SIZE][WINDOW_SIZE];
+
+_ssdm_SpecArrayReshape( &line_buf, 1,  "COMPLETE",  0, "");
+_ssdm_SpecArrayPartition( &window_buf, 0, "COMPLETE", 0, "");
+
+ NonMaxLoop:
+  for(int yi = 0; yi < HEIGHT; yi++) {
+   for(int xi = 0; xi < WIDTH; xi++) {
+_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
+_ssdm_SpecLoopFlatten(1, "");
+
+
+ uint8_t value_nms;
+    Direction grad_nms;
+
+
+    for(int yl = 0; yl < WINDOW_SIZE - 1; yl++) {
+     line_buf[yl][xi] = line_buf[yl + 1][xi];
+    }
+
+    line_buf[WINDOW_SIZE - 1][xi] = src[xi + yi*WIDTH];
+
+
+    for(int yw = 0; yw < WINDOW_SIZE; yw++) {
+     for(int xw = 0; xw < WINDOW_SIZE - 1; xw++) {
+      window_buf[yw][xw] = window_buf[yw][xw + 1];
+     }
+    }
+
+    for(int yw = 0; yw < WINDOW_SIZE; yw++) {
+     window_buf[yw][WINDOW_SIZE - 1] = line_buf[yw][xi];
+    }
+
+    value_nms = window_buf[WINDOW_SIZE / 2][WINDOW_SIZE / 2].color;
+    grad_nms = window_buf[WINDOW_SIZE / 2][WINDOW_SIZE / 2].dir;
+
+
+
+
+
+
+    if(grad_nms == GRAD_0) {
+     if(value_nms < window_buf[WINDOW_SIZE / 2][0].color ||
+        value_nms < window_buf[WINDOW_SIZE / 2][WINDOW_SIZE - 1].color) {
+      value_nms = 0;
+     }
+    }
+
+
+
+
+
+
+
+    else if(grad_nms == GRAD_45) {
+     if(value_nms < window_buf[0][0].color ||
+        value_nms < window_buf[WINDOW_SIZE - 1][WINDOW_SIZE - 1].color) {
+      value_nms = 0;
+     }
+    }
+
+
+
+
+
+
+    else if(grad_nms == GRAD_90) {
+     if(value_nms < window_buf[0][WINDOW_SIZE - 1].color ||
+        value_nms < window_buf[WINDOW_SIZE - 1][WINDOW_SIZE / 2].color) {
+      value_nms = 0;
+     }
+    }
+
+    else if(grad_nms == GRAD_135) {
+     if(value_nms < window_buf[WINDOW_SIZE - 1][0].color ||
+        value_nms < window_buf[0][WINDOW_SIZE - 1].color) {
+      value_nms = 0;
+     }
+    }
+
+
+    if((WINDOW_SIZE < xi && xi < WIDTH - WINDOW_SIZE) &&
+       (WINDOW_SIZE < yi && yi < HEIGHT - WINDOW_SIZE)) {
+     dst[xi + yi*WIDTH] = value_nms;
+    }
+    else {
+     dst[xi + yi*WIDTH] = 0;
+    }
+   }
+  }
+ }
+
+ template<uint32_t WIDTH, uint32_t HEIGHT>
+ void HystThreshold(uint8_t* src, uint8_t* dst, uint8_t hthr, uint8_t low_threshold) {
+
+  ThresholdLoop:
+  for(int yi = 0; yi < HEIGHT; yi++) {
+   for(int xi = 0; xi < WIDTH; xi++) {
+_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
+_ssdm_SpecLoopFlatten(1, "");
+
+
+ int pix_hyst;
+
+    if(src[xi + yi*WIDTH] < low_threshold) {
+     pix_hyst = 0;
+    }
+    else if(src[xi + yi*WIDTH] > hthr) {
+     pix_hyst = 255;
+    }
+    else {
+     pix_hyst = 1;
+    }
+
+
+    dst[xi + yi*WIDTH] = pix_hyst;
+   }
+  }
+ }
+
+ template<uint32_t WIDTH, uint32_t HEIGHT>
+ void HystThresholdComp(uint8_t* src, uint8_t* dst) {
+  const int WINDOW_SIZE = 3;
+
+  uint8_t line_buf[WINDOW_SIZE][WIDTH];
+  uint8_t window_buf[WINDOW_SIZE][WINDOW_SIZE];
+
+_ssdm_SpecArrayReshape( &line_buf, 1,  "COMPLETE",  0, "");
+_ssdm_SpecArrayPartition( &window_buf, 0, "COMPLETE", 0, "");
+
+
+ for(int yi = 0; yi < HEIGHT; yi++) {
+   for(int xi = 0; xi < WIDTH; xi++) {
+_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
+_ssdm_SpecLoopFlatten(1, "");
+
+
+ uint8_t pix_hyst = 0;
+
+
+    for(int yl = 0; yl < WINDOW_SIZE - 1; yl++) {
+     line_buf[yl][xi] = line_buf[yl + 1][xi];
+    }
+
+    line_buf[WINDOW_SIZE - 1][xi] = src[xi + yi*WIDTH];
+
+
+    for(int yw = 0; yw < WINDOW_SIZE; yw++) {
+     for(int xw = 0; xw < WINDOW_SIZE - 1; xw++) {
+      window_buf[yw][xw] = window_buf[yw][xw + 1];
+     }
+    }
+
+    for(int yw = 0; yw < WINDOW_SIZE; yw++) {
+     window_buf[yw][WINDOW_SIZE - 1] = line_buf[yw][xi];
+    }
+
+
+    for(int yw = 0; yw < WINDOW_SIZE; yw++) {
+     for(int xw = 0; xw < WINDOW_SIZE; xw++) {
+      if(window_buf[WINDOW_SIZE / 2][WINDOW_SIZE / 2] != 0) {
+       if(window_buf[yw][xw] == 0xFF) {
+        pix_hyst = 0xFF;
+       }
+      }
+     }
+    }
+
+
+    dst[xi + yi*WIDTH] = pix_hyst;
+   }
+  }
+ }
+
+ template<int w,int h>
+ void getPossibleCircles(uint8_t* src,int minimum,int threshold,int &x,int &y,int &r){
+  line line1;
+  bool firstX = true;
+  bool firstY = true;
+  int votingX[w];
+  int votingY[h];
+
+_ssdm_SpecArrayMap( &votingX, "array3", -1, "HORIZONTAL", "");
+_ssdm_SpecArrayMap( &votingY, "array3", -1, "HORIZONTAL", "");
+
+
+
+
+ initVotingX:
+  for (int i = 0;i<w;i++){
+_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
+ votingX[i] = 0;
+  }
+  initVotingY:
+  for (int i = 0;i<h;i++){
+_ssdm_op_SpecPipeline(1, 1, 1, 0, "");
+ votingY[i] = 0;
+  }
+
+  int radii[76];
+  initRadiiLoop:
+  for(int i=0;i<76;i++){
+   radii[i]=0;
+  }
+
+  searchForX:
+  for (int y = 0;y<h;y++){
+   for(int x = 0;x<w;x++){
+    if (src[x + y*w]>threshold){
+     if (firstX){
+      line1.begin = x;
+      firstX = false;
+     }
+     if (!firstX){
+      line1.end = x;
+      int l = line1.end-line1.begin;
+      if (l>minimum)
+       votingX[line1.begin+l/2]+=1;
+      line1.begin = x;
+     }
+    }
+   }
+  }
+  line1.begin = 0;
+  line1.end = 0;
+  searchForY:
+  for (int x = 0; x < w; x++) {
+   for (int y = 0; y < h; y++) {
+    if (src[x + y*w]>threshold){
+     if (firstY) {
+      line1.begin = y;
+      firstY = false;
+     }
+     if (!firstY) {
+      line1.end = y;
+      int l = line1.end - line1.begin;
+      if (l > minimum)
+       votingY[line1.begin + l / 2] += 1;
+      line1.begin = y;
+     }
+    }
+   }
+  }
+  int Xmax = 0;
+  int Ymax = 0;
+  int posX = 0;
+  int posY = 0;
+
+  for (int i = 0;i<w;i++){
+   if (votingX[i]>Xmax){
+    Xmax = votingX[i];
+    posX = i;
+   }
+  }
+  for (int i = 0;i<h;i++){
+   if (votingY[i]>Ymax){
+    Ymax = votingY[i];
+    posY = i;
+   }
+  }
+
+  bruteforceSearch:
+  for (int x0 = 0; x0 < w; x0++) {
+   int a = (x0-posX)*(x0-posX);
+   for (int y0 = 0; y0 < h; y0++) {
+    if (src[x0 + y0*w]>threshold){
+     int b = (y0-posY)*(y0-posY);
+     uint32_t c = a + b;
+     if(c<=10000 || c>=625){
+
+
+
+      int radius = (int)hls::sqrt(c);
+      radii[radius-25]+=1;
+     }
+    }
+   }
+  }
+
+  int max=0;
+  int r_temp=0;
+
+  CheckLoop:
+  for(int i=0;i<76;i++){
+   if (radii[i]>max){
+    max = radii[i];
+    r_temp = i+25;
+   }
+  }
+  x = posX;
+  y = posY;
+  r = r_temp;
+ }
+
+}
 # 8 "Iris-recognition/toplevel.hpp" 2
 # 1 "Iris-recognition/gabor.hpp" 1
 
@@ -34625,14 +35081,14 @@ void Iris(uint8_t image_in[280 * 320],
 
 
 
-
-void encode_fix(uint8_t norm_img[32*360],ap_uint<1> bit_code[2048]);
+void encode_fix(uint8_t norm_img[32 * 360],
+  ap_uint<2> bit_code[2048]);
 
 void gaborPixel_fix(int rho, int phi,
   uint8_t norm_img[32 * 360], int filter_size,
   floatGabor sin_filter_matrix[32/3][32/3],
   floatGabor cos_filter_matrix[32/3][32/3],
-  ap_uint<1> code[2048], int pos);
+  ap_uint<2> code[2048], int pos);
 
 void generateGaborKernel_fix(int kern_size,
   floatGabor sin_filter_matrix[32/3][32/3],
@@ -34641,19 +35097,19 @@ void generateGaborKernel_fix(int kern_size,
 void generateGaussKernel_fix(int kern_size, int peak,
   floatGauss gauss[32/3][32/3]);
 
-void generateSinKernel(int kern_size, float sin[32/3][32/3],
-  float cos[32/3][32/3]);
+void generateSinKernel(int kern_size, float sin[32/3],
+  float cos[32/3]);
 
-void generateSinKernel_fix(int kern_size,
-  floatSin sin[32/3][32/3],
-  floatSin cos[32/3][32/3]);
+void generateSinKernel_fix(int kern_size, floatSin sin[32/3],
+  floatSin cos[32/3]);
 
 void encode(uint8_t norm_img[32 * 360],
   uint8_t bit_code[2048]);
 
-uint8_t gaborPixel(int rho, int phi, uint8_t norm_img[32 * 360],
+void gaborPixel(int rho, int phi, uint8_t norm_img[32 * 360],
   int filter_size, float sin_filter_matrix[32/3][32/3],
-  float cos_filter_matrix[32/3][32/3]);
+  float cos_filter_matrix[32/3][32/3],
+  uint8_t code[2048], int pos);
 
 void generateGaborKernel(int kern_size,
   float sin_filter_matrix[32/3][32/3],
@@ -34669,273 +35125,85 @@ void generateGaussKernel(int kern_size, int peak,
 
 
 
-void norm_low(unsigned char image_in[280 * 320],
-  unsigned char image_out[32 * 360], ap_uint<9> values[6]);
-
-void norm_high(unsigned char image_in[280*320],
-  uint8_t image_out[32*360],int values[6]);
+void norm_float(uint8_t image_in[240 * 320],
+  uint8_t image_out[32 * 360], int &x, int &y, int &r1,
+  int &r2);
+void norm_fix(uint8_t image_in[240 * 320],
+  uint8_t image_out[32 * 360], ap_uint<9> &x,
+  ap_uint<9> &y, ap_uint<9> &r1, ap_uint<9> &r2);
 # 10 "Iris-recognition/toplevel.hpp" 2
 
-void top_level(AXI_STREAM& inputStream, AXI_STREAM& outputStream);
-
-void arrayMethod(AXI_STREAM& INPUT_STREAM, uint8_t code[2048]);
-void arrayMethodschnell(AXI_STREAM& INPUT_STREAM, uint8_t code[2048]);
-void arrayMethod_fix(AXI_STREAM& INPUT_STREAM, uint8_t code[2048]);
-void test_detection_top(AXI_STREAM& inputStream, int& x, int& y, int& r1,
-  int& r2);
-void top_level_compare_gabor(AXI_STREAM& inputStream,
-  uint8_t code[2048], uint8_t codeFIX[2048]);
-void detect_Array(AXI_STREAM& inputStream, int& x, int& y, int& r1, int& r2);
+void top_level_float(AXI_STREAM& inputStream,uint8_t code[2048]);
+void top_level_fix(AXI_STREAM& inputStream,ap_uint<2> code[2048]);
 # 2 "Iris-recognition/toplevel.cpp" 2
-
-void writeValues(int values[6],int x, int y,int r1, int r2){_ssdm_SpecArrayDimSize(values, 6);
- values[0] = x;
- values[1] = y;
- values[2] = r1;
- values[3] = r2;
-}
-void writeValues(ap_uint<9> values[6],int x, int y,int r1, int r2){_ssdm_SpecArrayDimSize(values, 6);
- values[0] = x;
- values[1] = y;
- values[2] = r1;
- values[3] = r2;
-}
-
-void tmp(uint8_t imageIn[280 * 320],
-  uint8_t imageOut[32 * 360], int& r1, int& x,
-  int& y, int &r2) {_ssdm_SpecArrayDimSize(imageIn, 89600);_ssdm_SpecArrayDimSize(imageOut, 11520);
- ap_uint<9> val[6]={0,0,0,0,0,0};
- Iris(imageIn, r1, x, y, r2);
- writeValues(val, x, y, r1, r2);
- norm_low(imageIn, imageOut, val);
-}
-
-void arrayMethod_fix(AXI_STREAM& INPUT_STREAM,ap_uint<1> code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
- RGB_IMAGE img0(280, 320);
- GRAY_IMAGE img1(280, 320);
- GRAY_IMAGE img2(280, 320);
- GRAY_IMAGE img3(280, 320);
- NORM_GRAY_IMAGE img4(32, 360);
- NORM_RGB_IMAGE img5(32, 360);
- int r1,r2,x,y;
- ap_uint<9> val[6]={0,0,0,0,0,0};
-
- uint8_t imageIn[280*320];
- uint8_t imageOut[32*360];
-_ssdm_op_SpecDataflowPipeline(-1, 0, "");
- hls::AXIvideo2Mat(INPUT_STREAM, img0);
- hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
- findPupil(img1,r1,x,y,img2);
- hls::Mat2Array<320>(img2, imageIn);
- tmp(imageIn,imageOut,r1,x,y,r2);
- encode_fix(imageOut,code);
-}
-
-void arrayMethod(AXI_STREAM& INPUT_STREAM, uint8_t code[2048]) {_ssdm_SpecArrayDimSize(code, 2048);
- RGB_IMAGE img0(280, 320);
- GRAY_IMAGE img1(280, 320);
- GRAY_IMAGE img2(280, 320);
- GRAY_IMAGE img3(280, 320);
- NORM_GRAY_IMAGE img4(32, 360);
- NORM_RGB_IMAGE img5(32, 360);
- int r1, r2, x, y;
- ap_uint<9> val[6] = { 0, 0, 0, 0, 0, 0 };
-
- uint8_t imageIn[280 * 320];
- uint8_t imageOut[32 * 360];
-_ssdm_op_SpecDataflowPipeline(-1, 0, "");
- hls::AXIvideo2Mat(INPUT_STREAM, img0);
- hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
- findPupil(img1, r1, x, y, img2);
- find_iris_high_accuracy(img2, r1, x, y, r2, img3);
- hls::Mat2Array<320>(img3, imageIn);
- writeValues(val, x, y, r1, r2);
- norm_low(imageIn, imageOut, val);
- encode(imageOut, code);
-}
-
-void arrayMethodschnell(AXI_STREAM& INPUT_STREAM,uint8_t code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
- NORM_RGB_IMAGE img0(32, 360);
- NORM_GRAY_IMAGE img1(32, 360);
-
- int r1,r2,x,y;
-
- uint8_t imageIn[280*320];
- uint8_t imageOut[32*360];
-_ssdm_op_SpecDataflowPipeline(-1, 0, "");
- hls::AXIvideo2Mat(INPUT_STREAM, img0);
- hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
- hls::Mat2Array<360>(img1, imageOut);
- encode(imageOut,code);
-
-
-}
-
-void detectNormFix(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
- RGB_IMAGE img0(280, 320);
- GRAY_IMAGE img1(280, 320);
- GRAY_IMAGE img2(280, 320);
- GRAY_IMAGE img3(280, 320);
+# 14 "Iris-recognition/toplevel.cpp"
+void iris_scanning_float(AXI_STREAM& inputStream,uint8_t code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
+ RGB_IMAGE img0(240, 320);
+ GRAY_IMAGE img1(240, 320);
+ GRAY_IMAGE img2(240, 320);
+ GRAY_IMAGE img3(240, 320);
  NORM_GRAY_IMAGE img4(32, 360);
  NORM_RGB_IMAGE img5(32, 360);
 
- unsigned char imageIn[320*280];
- unsigned char imageOut[32*360];
-
- int r1,r2,x,y;
- ap_uint<9> val[6]={0,0,0,0,0,0};
+ int x,y,r1,r2;
 _ssdm_op_SpecDataflowPipeline(-1, 0, "");
+ uint8_t fifo1[240 * 320];
+ uint8_t fifo2[240 * 320];
+ uint8_t fifo3[32 * 360];
+_ssdm_SpecStream( fifo1, 1, 1, "");
+_ssdm_SpecStream( fifo2, 1, 1, "");
+_ssdm_SpecStream( fifo3, 1, 1, "");
  hls::AXIvideo2Mat(inputStream, img0);
  hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
- findPupil(img1,r1,x,y,img2);
- find_iris_high_accuracy(img2, r1, x, y,r2,img3);
- hls::Mat2Array<320>(img3, imageIn);
- writeValues(val,x,y,r1,r2);
- norm_low(imageIn,imageOut,val);
- hls::Array2Mat<360>(imageOut, img4);
- hls::CvtColor<HLS_GRAY2RGB>(img4, img5);
- hls::Mat2AXIvideo(img5, outputStream);
+ findPupil(img1, r1, x, y, 5, img2);
+ hls::Mat2Array<320>(img2, fifo1);
+ Iris_fix_border(fifo1, r1, x, y, r2,fifo2);
+ norm_float(fifo2, fifo3, x,y,r1,r2);
+ encode(fifo3,code);
+
+
 }
 
-void detectNorm(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
- RGB_IMAGE img0(280, 320);
- GRAY_IMAGE img1(280, 320);
- GRAY_IMAGE img2(280, 320);
- GRAY_IMAGE img3(280, 320);
+
+void iris_scanning_fix(AXI_STREAM& inputStream,ap_uint<2> code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
+ RGB_IMAGE img0(240, 320);
+ GRAY_IMAGE img1(240, 320);
+ GRAY_IMAGE img2(240, 320);
+ GRAY_IMAGE img3(240, 320);
  NORM_GRAY_IMAGE img4(32, 360);
  NORM_RGB_IMAGE img5(32, 360);
 
- unsigned char imageIn[320*280];
- unsigned char imageOut[32*360];
-
- int r1,r2,x,y;
- ap_uint<9> val[6]={0,0,0,0,0,0};
+ int x,y,r1,r2;
 _ssdm_op_SpecDataflowPipeline(-1, 0, "");
+ uint8_t fifo1[240 * 320];
+ uint8_t fifo2[240 * 320];
+ uint8_t fifo3[32 * 360];
+_ssdm_SpecStream( fifo1, 1, 1, "");
+_ssdm_SpecStream( fifo2, 1, 1, "");
+_ssdm_SpecStream( fifo3, 1, 1, "");
  hls::AXIvideo2Mat(inputStream, img0);
  hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
- findPupil(img1,r1,x,y,img2);
- find_iris_high_accuracy(img2, r1, x, y,r2,img3);
- hls::Mat2Array<320>(img3, imageIn);
- writeValues(val,x,y,r1,r2);
- norm_low(imageIn,imageOut,val);
- hls::Array2Mat<360>(imageOut, img4);
- hls::CvtColor<HLS_GRAY2RGB>(img4, img5);
- hls::Mat2AXIvideo(img5, outputStream);
-}
+ findPupil(img1, r1, x, y, 5, img2);
+ hls::Mat2Array<320>(img2, fifo1);
+ Iris_fix_border(fifo1, r1, x, y, r2,fifo2);
+ norm_float(fifo2, fifo3, x,y,r1,r2);
+ encode_fix(fifo3,code);
 
-void detectNorm_float(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
- RGB_IMAGE img0(280, 320);
- GRAY_IMAGE img1(280, 320);
- GRAY_IMAGE img2(280, 320);
- GRAY_IMAGE img3(280, 320);
- NORM_GRAY_IMAGE img4(32, 360);
- NORM_RGB_IMAGE img5(32, 360);
-
- unsigned char imageIn[320*280];
- unsigned char imageOut[32*360];
-
- int r1,r2,x,y;
- int val[6]={0,0,0,0,0,0};
-_ssdm_op_SpecDataflowPipeline(-1, 0, "");
- hls::AXIvideo2Mat(inputStream, img0);
- hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
- findPupil(img1,r1,x,y,img2);
- find_iris_high_accuracy(img2, r1, x, y,r2,img3);
- hls::Mat2Array<320>(img3, imageIn);
- writeValues(val,x,y,r1,r2);
- norm_high(imageIn,imageOut,val);
- hls::Array2Mat<360>(imageOut, img4);
- hls::CvtColor<HLS_GRAY2RGB>(img4, img5);
- hls::Mat2AXIvideo(img5, outputStream);
-}
-
-void top_level_compare_gabor(AXI_STREAM& inputStream,uint8_t code[2048],uint8_t codeFIX[2048]){_ssdm_SpecArrayDimSize(code, 2048);_ssdm_SpecArrayDimSize(codeFIX, 2048);
-_ssdm_op_SpecInterface(&inputStream, "axis", 1, 1, "both", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-_ssdm_op_SpecInterface(code, "s_axilite", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-_ssdm_op_SpecInterface(codeFIX, "s_axilite", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-_ssdm_op_SpecInterface(0, "ap_ctrl_none", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-
- RGB_IMAGE img0(280, 320);
- GRAY_IMAGE img1(280, 320);
- GRAY_IMAGE img2(280, 320);
- GRAY_IMAGE img3(280, 320);
- NORM_GRAY_IMAGE img4(32, 360);
- NORM_RGB_IMAGE img5(32, 360);
- int r1,r2,x,y;
- int val[6]={0,0,0,0,0,0};
-
- uint8_t imageIn[280*320];
- uint8_t imageOut[32*360];
-_ssdm_op_SpecDataflowPipeline(-1, 0, "");
- hls::AXIvideo2Mat(inputStream, img0);
- hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
- findPupil(img1,r1,x,y,img2);
- find_iris_high_accuracy(img2, r1, x, y,r2,img3);
- hls::Mat2Array<320>(img3, imageIn);
- writeValues(val,x,y,r1,r2);
- norm_high(imageIn,imageOut,val);
- encode(imageOut,code);
- encode(imageOut,codeFIX);
 
 }
 
 
-
-
-void test_detection_top(AXI_STREAM& inputStream,int& x,int& y, int& r1, int& r2){
-_ssdm_op_SpecInterface(&inputStream, "axis", 1, 1, "both", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-_ssdm_op_SpecInterface(x, "s_axilite", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-_ssdm_op_SpecInterface(y, "s_axilite", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-_ssdm_op_SpecInterface(r1, "s_axilite", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-_ssdm_op_SpecInterface(r2, "s_axilite", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-_ssdm_op_SpecInterface(0, "ap_ctrl_none", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-
- RGB_IMAGE img0(280, 320);
- GRAY_IMAGE img1(280, 320);
- GRAY_IMAGE img2(280, 320);
- GRAY_IMAGE img3(280, 320);
-
-_ssdm_op_SpecDataflowPipeline(-1, 0, "");
- hls::AXIvideo2Mat(inputStream, img0);
- hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
- findPupil(img1,r1,x,y,img2);
- find_iris_high_accuracy(img2, r1, x, y,r2,img3);
-
-}
-
-
-void detect_Array(AXI_STREAM& inputStream,int& x,int& y, int& r1, int& r2){
- RGB_IMAGE img0(280, 320);
- GRAY_IMAGE img1(280, 320);
- GRAY_IMAGE img2(280, 320);
- GRAY_IMAGE img3(280, 320);
- NORM_GRAY_IMAGE img4(32, 360);
- NORM_RGB_IMAGE img5(32, 360);
-
- uint8_t imageIn[320*280];
-_ssdm_op_SpecDataflowPipeline(-1, 0, "");
- hls::AXIvideo2Mat(inputStream, img0);
- hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
- findPupil(img1,r1,x,y,img2);
- hls::Mat2Array<320>(img2, imageIn);
- Iris(imageIn,r1,x,y,r2);
-
-}
-
-
-
-void top_level(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
-_ssdm_op_SpecInterface(&inputStream, "axis", 1, 1, "both", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-_ssdm_op_SpecInterface(&outputStream, "axis", 1, 1, "both", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-_ssdm_op_SpecInterface(0, "ap_ctrl_none", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
-
-}
-
-
-void top_level2(AXI_STREAM& inputStream,ap_uint<1> code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
+void top_level_float(AXI_STREAM& inputStream,uint8_t code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
 _ssdm_op_SpecInterface(&inputStream, "axis", 1, 1, "both", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
 _ssdm_op_SpecInterface(code, "s_axilite", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
 _ssdm_op_SpecInterface(0, "ap_ctrl_none", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
+ iris_scanning_float(inputStream,code);
+}
 
- arrayMethod_fix(inputStream,code);
+void top_level_fix(AXI_STREAM& inputStream,ap_uint<2> code[2048]){_ssdm_SpecArrayDimSize(code, 2048);
+_ssdm_op_SpecInterface(&inputStream, "axis", 1, 1, "both", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
+_ssdm_op_SpecInterface(code, "s_axilite", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
+_ssdm_op_SpecInterface(0, "ap_ctrl_none", 0, 0, "", 0, 0, "", "", "", 0, 0, 0, 0, "", "");
+ iris_scanning_fix(inputStream,code);
+
 }

@@ -14,9 +14,9 @@
     <originFiles name="toplevel.hpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\toplevel.hpp"/>
   </source>
   <testbench>
-    <originFiles name="testfile.cpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\testfile.cpp"/>
     <originFiles name="draw.py" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\draw.py"/>
     <originFiles name="hamming.py" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\hamming.py"/>
     <originFiles name="psnr.py" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\psnr.py"/>
+    <originFiles name="testfile.cpp" path="C:\Users\Dennis\VivadoHLS\Final\Iris-recognition\testfile.cpp"/>
   </testbench>
 </autopilotfilemapping:AutoPilotFileMapping>

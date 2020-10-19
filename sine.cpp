@@ -57,7 +57,7 @@ float cosTaylor(float x){
 }
 
 void cordic_fix(floatArg phi,int nMax,floatSin &s,floatSin &c){
-	floatSin z_r = 0.60725293500888;
+	floatSin z_r = 0.607252935;
 	floatSin z_i = 0;
 	floatSin val = 1;
 	for (int n =0;n<nMax;n++){
@@ -89,7 +89,7 @@ void cordic360_COS_SIN_fix(floatArg x, floatSin &s, floatSin &c,int nMax){
 		cordic_fix(t,nMax,s,c);
 		s = -s;
 		c = -c;
-	}else if(x>(floatArg)-PI && x<=(floatArg)-PIHALF){
+	}else if(x>=(floatArg)-PI && x<=(floatArg)-PIHALF){
 		floatArg t = x + (floatArg)PI;
 		cordic_fix(t,nMax,s,c);
 		s =-s;

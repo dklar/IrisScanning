@@ -9,7 +9,7 @@
         <clock default="false" name="default" period="10"/>
     </clockList>
     <config>
-        <schedule model="top_level2"/>
+        <schedule model="top_level_fix"/>
         <config_export display_name="Gabor" format="ip_catalog" rtl="verilog"/>
     </config>
     <UIConfigurations>

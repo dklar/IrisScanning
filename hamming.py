@@ -3,15 +3,26 @@ import os
 
 def compare(str1,str2):
     hd = 0
-    str1 = str1.replace("4","")
-    str2 = str2.replace("4","")
+    str1 = str1.replace("3","")
+    str2 = str2.replace("3","")
     for x,y in zip(str1,str2):
         if x != y:
-            if x!= "4":
+            if x!= "3":
                 hd +=1
             else:
                 print("TEST")
     return hd/2048
+
+def testFinal():
+    val =0
+    for i in range(0,9):
+        file1 = open(str(i)+"_high.txt","r")
+        file2 = open(str(i)+"_FIX.txt","r")
+        str1 = file1.readline()
+        str2 = file2.readline()
+        val = compare(str1,str2)
+    print(val/9)
+
 
 def test_all():
     ref = "gabor_acc_001_1_1.txt"
@@ -145,6 +156,6 @@ def compareAprox3():
     show_hist(hd,30)
 
 
-compareAprox()
+testFinal()
 # hamming_dist = test_all()
 # show_hist(hamming_dist)

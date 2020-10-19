@@ -1,9 +1,14 @@
 #include "hls_video.h"
 #include <ap_fixed.h>
 #include "hls_math.h"
+//#include <stdint.h>
 
 //-----differnt image sizes of database--------
 //-----to change database set MAX_WIDTH/ MAX_HEIGHT either to _CASIA or _IITD
+
+#define MAX_TEST_WIDTH 432
+#define MAX_TEST_HEIGHT 48
+
 
 #define MAX_WIDTH_CASIA  320
 #define MAX_HEIGHT_CASIA  280
@@ -23,8 +28,8 @@
 #define PUPIL_RADIUS_MAX  60
 
 
-#define NORM_HEIGHT 32
-#define NORM_WIDTH  360
+#define NORM_HEIGHT 32//48//32
+#define NORM_WIDTH  360//432//360
 
 #define MAX_KERN_SIZE NORM_HEIGHT/3
 
@@ -36,10 +41,9 @@ typedef hls::Mat<MAX_HEIGHT,   MAX_WIDTH,  HLS_8UC3> 		RGB_IMAGE;//RGB image fro
 typedef hls::Mat<MAX_HEIGHT,   MAX_WIDTH,  HLS_8UC1> 		GRAY_IMAGE;//Gray image from type HLS::Mat
 typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,   HLS_8UC3> 		NORM_RGB_IMAGE;//RGB image from type HLS::Mat
 typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,   HLS_8UC1> 		NORM_GRAY_IMAGE;//Gray image from type HLS::Mat
-typedef hls::Scalar<3, uint8_t> 							PIXEL;
+typedef hls::Scalar<3, uint8_t> 							RGBPIXEL;
 typedef hls::Scalar<1, uint8_t> 							PIXELGRAY;
-typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,HLS_8UC1>			GRAY_IMAGE_NORM;
-typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,HLS_8UC3>			RGB_IMAGE_NORM;
+
 
 typedef ap_uint<2> int2;//for return value of gabor pixel ->00,01,10,11
 typedef ap_uint<6> int6;//for other small values

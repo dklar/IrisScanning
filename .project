@@ -37,6 +37,11 @@
 			<location>C:/Users/Dennis/VivadoHLS/Final/Iris-recognition/.apc/.tb</location>
 		</link>
 		<link>
+			<name>.reference/hls_video_io.h</name>
+			<type>1</type>
+			<location>C:/Xilinx/Vivado/2019.2/include/hls/hls_video_io.h</location>
+		</link>
+		<link>
 			<name>PYNQ_SOLUTION/constraints</name>
 			<type>2</type>
 			<location>C:/Users/Dennis/VivadoHLS/Final/Iris-recognition/PYNQ_SOLUTION/.tcls</location>

@@ -6,33 +6,33 @@
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;Iris-recognition/segmentation.cpp&apos; ..."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;Iris-recognition/normalization.cpp&apos; ..."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1312" tag="" content="Analyzing design file &apos;Iris-recognition/gabor.cpp&apos; ..."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Linking Time (s): cpu = 00:00:05 ; elapsed = 00:03:16 . Memory (MB): peak = 196.055 ; gain = 106.359"/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Checking Pragmas Time (s): cpu = 00:00:05 ; elapsed = 00:03:16 . Memory (MB): peak = 196.055 ; gain = 106.359"/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Linking Time (s): cpu = 00:00:06 ; elapsed = 00:03:04 . Memory (MB): peak = 195.875 ; gain = 105.086"/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Checking Pragmas Time (s): cpu = 00:00:06 ; elapsed = 00:03:04 . Memory (MB): peak = 195.875 ; gain = 105.086"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1467" tag="" content="Starting code transformations ..."/>
-	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;loop_channels&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:247) in function &apos;int hls::Mat2Array&lt;320, unsigned char, 280, 320, 0&gt;(hls::Mat&lt;FORWARD_REFERENCE, FORWARD_REFERENCE, FORWARD_REFERENCE&gt;&amp;, FORWARD_REFERENCE*, int)&apos; completely with a factor of 1."/>
-	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;Loop-1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:677) in function &apos;hls::Mat&lt;280, 320, 0&gt;::read()&apos; completely with a factor of 1."/>
-	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;Loop-1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:701) in function &apos;hls::Mat&lt;280, 320, 0&gt;::write(hls::Scalar&lt;1, unsigned char&gt;)&apos; completely with a factor of 1."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;280, 320, 4096&gt;::init&apos; into &apos;hls::Mat&lt;280, 320, 4096&gt;::Mat.1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642)."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;280, 320, 0&gt;::init&apos; into &apos;hls::Mat&lt;280, 320, 0&gt;::Mat.1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642)."/>
+	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;loop_channels&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:247) in function &apos;int hls::Mat2Array&lt;320, unsigned char, 240, 320, 0&gt;(hls::Mat&lt;FORWARD_REFERENCE, FORWARD_REFERENCE, FORWARD_REFERENCE&gt;&amp;, FORWARD_REFERENCE*, int)&apos; completely with a factor of 1."/>
+	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;Loop-1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:677) in function &apos;hls::Mat&lt;240, 320, 0&gt;::read()&apos; completely with a factor of 1."/>
+	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;Loop-1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:701) in function &apos;hls::Mat&lt;240, 320, 0&gt;::write(hls::Scalar&lt;1, unsigned char&gt;)&apos; completely with a factor of 1."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;240, 320, 4096&gt;::init&apos; into &apos;hls::Mat&lt;240, 320, 4096&gt;::Mat.1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;240, 320, 0&gt;::init&apos; into &apos;hls::Mat&lt;240, 320, 0&gt;::Mat.1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642)."/>
 	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;32, 360, 0&gt;::init&apos; into &apos;hls::Mat&lt;32, 360, 0&gt;::Mat.1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642)."/>
 	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;32, 360, 4096&gt;::init&apos; into &apos;hls::Mat&lt;32, 360, 4096&gt;::Mat.1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:642)."/>
 	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::AXIGetBitFields&lt;32, unsigned char&gt;.1&apos; into &apos;hls::AXIGetBitFields&lt;32, unsigned char&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_axi_io.h:71)."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::AXIGetBitFields&lt;32, unsigned char&gt;&apos; into &apos;hls::AXIvideo2Mat&lt;32, 280, 320, 4096&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:92)."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;280, 320, 4096&gt;::write&apos; into &apos;hls::Mat&lt;280, 320, 4096&gt;::operator&lt;&lt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:717)."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;280, 320, 4096&gt;::operator&lt;&lt;&apos; into &apos;hls::AXIvideo2Mat&lt;32, 280, 320, 4096&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:94)."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;280, 320, 4096&gt;::read&apos; into &apos;hls::Mat&lt;280, 320, 4096&gt;::operator&gt;&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:711)."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;280, 320, 4096&gt;::operator&gt;&gt;&apos; into &apos;hls::CvtColor&lt;HLS_RGB2GRAY, 4096, 0, 280, 320&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1971)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::AXIGetBitFields&lt;32, unsigned char&gt;&apos; into &apos;hls::AXIvideo2Mat&lt;32, 240, 320, 4096&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:92)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;240, 320, 4096&gt;::write&apos; into &apos;hls::Mat&lt;240, 320, 4096&gt;::operator&lt;&lt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:717)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;240, 320, 4096&gt;::operator&lt;&lt;&apos; into &apos;hls::AXIvideo2Mat&lt;32, 240, 320, 4096&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:94)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;240, 320, 4096&gt;::read&apos; into &apos;hls::Mat&lt;240, 320, 4096&gt;::operator&gt;&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:711)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;240, 320, 4096&gt;::operator&gt;&gt;&apos; into &apos;hls::CvtColor&lt;HLS_RGB2GRAY, 4096, 0, 240, 320&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1971)."/>
 	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::ColorConverter&lt;unsigned char, unsigned char&gt;::convert&lt;3&gt;&apos; into &apos;hls::kernel_CvtColor&lt;HLS_RGB2GRAY, unsigned char, unsigned char&gt;::apply&lt;3, 1&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545)."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;280, 320, 0&gt;::write&apos; into &apos;hls::Mat&lt;280, 320, 0&gt;::operator&lt;&lt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:717)."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;280, 320, 0&gt;::operator&lt;&lt;&apos; into &apos;findPupil&apos; (Iris-recognition/segmentation.cpp:25)."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;280, 320, 0&gt;::operator&lt;&lt;&apos; into &apos;hls::CvtColor&lt;HLS_RGB2GRAY, 4096, 0, 280, 320&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1973)."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;280, 320, 0&gt;::read&apos; into &apos;hls::Mat&lt;280, 320, 0&gt;::operator&gt;&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:711)."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;280, 320, 0&gt;::operator&gt;&gt;&apos; into &apos;findPupil&apos; (Iris-recognition/segmentation.cpp:24)."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;280, 320, 0&gt;::operator&gt;&gt;&apos; into &apos;hls::Mat2Array&lt;320, unsigned char, 280, 320, 0&gt;.1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:245)."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::AXISetBitFields&lt;8, unsigned char&gt;&apos; into &apos;hls::Mat2Array&lt;320, unsigned char, 280, 320, 0&gt;.1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:249)."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::AXIGetBitFields&lt;8, unsigned char&gt;&apos; into &apos;hls::Mat2Array&lt;320, unsigned char, 280, 320, 0&gt;.1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:252)."/>
-	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;MODULO&apos; into &apos;gaborPixel_fix&apos; (Iris-recognition/gabor.cpp:298)."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Standard Transforms Time (s): cpu = 00:00:14 ; elapsed = 00:03:31 . Memory (MB): peak = 747.605 ; gain = 657.910"/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;240, 320, 0&gt;::write&apos; into &apos;hls::Mat&lt;240, 320, 0&gt;::operator&lt;&lt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:717)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;240, 320, 0&gt;::operator&lt;&lt;&apos; into &apos;findPupil&apos; (Iris-recognition/segmentation.cpp:32)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;240, 320, 0&gt;::operator&lt;&lt;&apos; into &apos;hls::CvtColor&lt;HLS_RGB2GRAY, 4096, 0, 240, 320&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1973)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;240, 320, 0&gt;::read&apos; into &apos;hls::Mat&lt;240, 320, 0&gt;::operator&gt;&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:711)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;240, 320, 0&gt;::operator&gt;&gt;&apos; into &apos;findPupil&apos; (Iris-recognition/segmentation.cpp:31)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::Mat&lt;240, 320, 0&gt;::operator&gt;&gt;&apos; into &apos;hls::Mat2Array&lt;320, unsigned char, 240, 320, 0&gt;.1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:245)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::AXISetBitFields&lt;8, unsigned char&gt;&apos; into &apos;hls::Mat2Array&lt;320, unsigned char, 240, 320, 0&gt;.1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:249)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;hls::AXIGetBitFields&lt;8, unsigned char&gt;&apos; into &apos;hls::Mat2Array&lt;320, unsigned char, 240, 320, 0&gt;.1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:252)."/>
+	<Message severity="INFO" prefix="[XFORM 203-603]" key="XFORM_INLINE_STATUS_221" tag="" content="Inlining function &apos;MODULO&apos; into &apos;gaborPixel_fix&apos; (Iris-recognition/gabor.cpp:265)."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Standard Transforms Time (s): cpu = 00:00:14 ; elapsed = 00:03:20 . Memory (MB): peak = 779.004 ; gain = 688.215"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1472" tag="" content="Checking synthesizability ..."/>
 	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hls::sr_cast_class&lt;ap_uint&lt;8&gt; &gt;::operator()&lt;35, 13, (ap_q_mode)5, (ap_o_mode)3&gt;&apos; into &apos;hls::sr_cast&lt;unsigned char, ap_fixed&lt;35, 13, (ap_q_mode)5, (ap_o_mode)3, 0&gt; &gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_types.h:500) automatically."/>
 	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hls::sr_cast&lt;unsigned char, ap_fixed&lt;35, 13, (ap_q_mode)5, (ap_o_mode)3, 0&gt; &gt;&apos; into &apos;hls::kernel_CvtColor&lt;HLS_RGB2GRAY, unsigned char, unsigned char&gt;::apply&lt;3, 1&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1498-&gt;C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545) automatically."/>
@@ -41,116 +41,150 @@
 	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;fp_struct&lt;float&gt;::__signbit&apos; into &apos;generic_cast_IEEE754&lt;int, (ap_q_mode)6, float&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59) automatically."/>
 	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;generic_cast_IEEE754&lt;int, (ap_q_mode)6, float&gt;&apos; into &apos;generic_cast_IEEE754&lt;int, float&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117) automatically."/>
 	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;generic_cast_IEEE754&lt;int, float&gt;&apos; into &apos;__hls_fptosi_float_i32&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51) automatically."/>
-	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;replaceCOS&apos; into &apos;calcCircleSum&apos; (Iris-recognition/segmentation.cpp:269) automatically."/>
-	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;replaceSIN&apos; into &apos;calcCircleSum&apos; (Iris-recognition/segmentation.cpp:270) automatically."/>
-	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;Iris&apos; into &apos;tmp&apos; (Iris-recognition/toplevel.cpp:20) automatically."/>
-	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;writeValues&apos; into &apos;tmp&apos; (Iris-recognition/toplevel.cpp:21) automatically."/>
-	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hls::exp&lt;16, 6&gt;&apos; into &apos;generateGaussKernel_fix&apos; (Iris-recognition/gabor.cpp:202) automatically."/>
-	<Message severity="WARNING" prefix="[SYNCHK 200-23]" key="SYNCHK_VAR_INDEX_RANGE_359" tag="" content="C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_axi_io.h:49: variable-indexed range selection may cause suboptimal QoR."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;replaceCOS&apos; into &apos;calcCircleSum&apos; (Iris-recognition/segmentation.cpp:229) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;replaceSIN&apos; into &apos;calcCircleSum&apos; (Iris-recognition/segmentation.cpp:230) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;_ZN9fp_structIdEC2Ed8&apos; into &apos;_ZN9fp_structIdEC1Ed4&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:479) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;_ZN9fp_structIdEC1Ed4&apos; into &apos;range_redux_payne_hanek_hotbm&lt;61, double, 63, 63&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_range_redux.h:469) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;_ZNK9fp_structIdE4expvEv6&apos; into &apos;range_redux_payne_hanek_hotbm&lt;61, double, 63, 63&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_range_redux.h:470) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;table_lookup_4oPi_hotbm&lt;52, 61&gt;&apos; into &apos;range_redux_payne_hanek_hotbm&lt;61, double, 63, 63&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_range_redux.h:496) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;clz&lt;61, 124, 0&gt;&apos; into &apos;range_redux_payne_hanek_hotbm&lt;61, double, 63, 63&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_range_redux.h:524) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;fp_struct&lt;double&gt;::data&apos; into &apos;fp_struct&lt;double&gt;::to_double&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:512) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;fp_struct&lt;double&gt;::to_double&apos; into &apos;fp_struct&lt;double&gt;::to_ieee&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:526) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;clz&apos; into &apos;scaled_fixed2ieee&lt;63, 1&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_float_utils.h:435) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;fp_struct&lt;double&gt;::set_mantissa&apos; into &apos;scaled_fixed2ieee&lt;63, 1&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_float_utils.h:463) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;fp_struct&lt;double&gt;::to_ieee&apos; into &apos;scaled_fixed2ieee&lt;63, 1&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_float_utils.h:466) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;_ZN9fp_structIdEC1Ed4&apos; into &apos;hotbm_::sin_or_cos&lt;double&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_hotbm.h:252) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hotbm_::value_list&lt;double&gt;::sin_or_cos_approximation&lt;63, 63&gt;&apos; into &apos;hotbm_::sin_or_cos&lt;double&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_hotbm.h:279) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;fp_struct&lt;double&gt;::to_ieee&apos; into &apos;hotbm_::sin_or_cos&lt;double&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_hotbm.h:316) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hotbm_::sin&apos; into &apos;sin&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/c/sincosdouble.cpp:8) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hotbm_::cos&apos; into &apos;cos&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/c/sincosdouble.cpp:13) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;sin&apos; into &apos;norm_float&apos; (Iris-recognition/normalization.cpp:12) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;cos&apos; into &apos;norm_float&apos; (Iris-recognition/normalization.cpp:13) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hls::exp&lt;16, 6&gt;&apos; into &apos;generateGaussKernel_fix&apos; (Iris-recognition/gabor.cpp:177) automatically."/>
+	<Message severity="WARNING" prefix="[SYNCHK 200-23]" key="SYNCHK_VAR_INDEX_RANGE_359" tag="" content="r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_float_utils.h:425: variable-indexed range selection may cause suboptimal QoR."/>
 	<Message severity="INFO" prefix="[SYNCHK 200-10]" key="SYNCHK_SYNCHK_SUMMARY_377" tag="" content="0 error(s), 1 warning(s)."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Checking Synthesizability Time (s): cpu = 00:00:18 ; elapsed = 00:03:36 . Memory (MB): peak = 989.012 ; gain = 899.316"/>
-	<Message severity="WARNING" prefix="[XFORM 203-1103]" key="XFORM_DATA_PACK_INVALID_346" tag="" content="Ignored data pack directive on non-struct variable &apos;img1.data_stream.V&apos; (Iris-recognition/toplevel.cpp:27)."/>
-	<Message severity="WARNING" prefix="[XFORM 203-1103]" key="XFORM_DATA_PACK_INVALID_346" tag="" content="Ignored data pack directive on non-struct variable &apos;img0.data_stream.V&apos; (Iris-recognition/toplevel.cpp:26)."/>
-	<Message severity="WARNING" prefix="[XFORM 203-1103]" key="XFORM_DATA_PACK_INVALID_346" tag="" content="Ignored data pack directive on non-struct variable &apos;img2.data_stream.V&apos; (Iris-recognition/toplevel.cpp:28)."/>
-	<Message severity="INFO" prefix="[XFORM 203-502]" key="XFORM_AUTO_UNROLL_STATUS_246" tag="" content="Unrolling all sub-loops inside loop &apos;loop_width&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1968) in function &apos;hls::CvtColor&lt;HLS_RGB2GRAY, 4096, 0, 280, 320&gt;&apos; for pipelining."/>
-	<Message severity="INFO" prefix="[XFORM 203-502]" key="XFORM_AUTO_UNROLL_STATUS_246" tag="" content="Unrolling all sub-loops inside loop &apos;loop_width&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:73) in function &apos;hls::AXIvideo2Mat&lt;32, 280, 320, 4096&gt;&apos; for pipelining."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Checking Synthesizability Time (s): cpu = 00:00:19 ; elapsed = 00:03:25 . Memory (MB): peak = 1079.129 ; gain = 988.340"/>
+	<Message severity="WARNING" prefix="[XFORM 203-1103]" key="XFORM_DATA_PACK_INVALID_346" tag="" content="Ignored data pack directive on non-struct variable &apos;img1.data_stream.V&apos; (Iris-recognition/toplevel.cpp:44)."/>
+	<Message severity="WARNING" prefix="[XFORM 203-1103]" key="XFORM_DATA_PACK_INVALID_346" tag="" content="Ignored data pack directive on non-struct variable &apos;img0.data_stream.V&apos; (Iris-recognition/toplevel.cpp:43)."/>
+	<Message severity="WARNING" prefix="[XFORM 203-1103]" key="XFORM_DATA_PACK_INVALID_346" tag="" content="Ignored data pack directive on non-struct variable &apos;img2.data_stream.V&apos; (Iris-recognition/toplevel.cpp:45)."/>
+	<Message severity="INFO" prefix="[XFORM 203-502]" key="XFORM_AUTO_UNROLL_STATUS_246" tag="" content="Unrolling all sub-loops inside loop &apos;loop_width&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1968) in function &apos;hls::CvtColor&lt;HLS_RGB2GRAY, 4096, 0, 240, 320&gt;&apos; for pipelining."/>
+	<Message severity="INFO" prefix="[XFORM 203-502]" key="XFORM_AUTO_UNROLL_STATUS_246" tag="" content="Unrolling all sub-loops inside loop &apos;loop_width&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:73) in function &apos;hls::AXIvideo2Mat&lt;32, 240, 320, 4096&gt;&apos; for pipelining."/>
 	<Message severity="INFO" prefix="[XFORM 203-502]" key="XFORM_AUTO_UNROLL_STATUS_250" tag="" content="Unrolling all loops for pipelining in function &apos;exp_reduce::exp&lt;16, 6&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:41:29)."/>
-	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;Loop-1.1.1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:677) in function &apos;hls::CvtColor&lt;HLS_RGB2GRAY, 4096, 0, 280, 320&gt;&apos; completely with a factor of 3."/>
-	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;loop_channels&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:91) in function &apos;hls::AXIvideo2Mat&lt;32, 280, 320, 4096&gt;&apos; completely with a factor of 3."/>
-	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;Loop-2.1.2&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:701) in function &apos;hls::AXIvideo2Mat&lt;32, 280, 320, 4096&gt;&apos; completely with a factor of 3."/>
+	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;Loop-1.1.1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:677) in function &apos;hls::CvtColor&lt;HLS_RGB2GRAY, 4096, 0, 240, 320&gt;&apos; completely with a factor of 3."/>
+	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;loop_channels&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:91) in function &apos;hls::AXIvideo2Mat&lt;32, 240, 320, 4096&gt;&apos; completely with a factor of 3."/>
+	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;Loop-2.1.2&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:701) in function &apos;hls::AXIvideo2Mat&lt;32, 240, 320, 4096&gt;&apos; completely with a factor of 3."/>
 	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;Loop-1&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:190) in function &apos;exp_reduce::exp&lt;16, 6&gt;&apos; completely with a factor of 8."/>
 	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;Loop-2&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:197) in function &apos;exp_reduce::exp&lt;16, 6&gt;&apos; completely with a factor of 22."/>
 	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;Loop-3&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:254) in function &apos;exp_reduce::exp&lt;16, 6&gt;&apos; completely with a factor of 6."/>
 	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;Loop-4&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:260) in function &apos;exp_reduce::exp&lt;16, 6&gt;&apos; completely with a factor of 6."/>
 	<Message severity="INFO" prefix="[HLS 200-489]" key="HLS 200-489" tag="" content="Unrolling loop &apos;Loop-5&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:263) in function &apos;exp_reduce::exp&lt;16, 6&gt;&apos; completely with a factor of 16."/>
 	<Message severity="INFO" prefix="[XFORM 203-102]" key="XFORM_AUTO_PARTITION_STATUS_120" tag="" content="Partitioning array &apos;s.val.assign&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:589) automatically."/>
-	<Message severity="INFO" prefix="[XFORM 203-102]" key="XFORM_AUTO_PARTITION_STATUS_120" tag="" content="Partitioning array &apos;val&apos; automatically."/>
-	<Message severity="INFO" prefix="[XFORM 203-102]" key="XFORM_AUTO_PARTITION_STATUS_112" tag="" content="Automatically partitioning streamed array &apos;img0.data_stream.V&apos; (Iris-recognition/toplevel.cpp:26) ."/>
-	<Message severity="INFO" prefix="[XFORM 203-102]" key="XFORM_AUTO_PARTITION_STATUS_112" tag="" content="Automatically partitioning streamed array &apos;img1.data_stream.V&apos; (Iris-recognition/toplevel.cpp:27) ."/>
-	<Message severity="INFO" prefix="[XFORM 203-102]" key="XFORM_AUTO_PARTITION_STATUS_112" tag="" content="Automatically partitioning streamed array &apos;img2.data_stream.V&apos; (Iris-recognition/toplevel.cpp:28) ."/>
+	<Message severity="INFO" prefix="[XFORM 203-102]" key="XFORM_AUTO_PARTITION_STATUS_112" tag="" content="Automatically partitioning streamed array &apos;img0.data_stream.V&apos; (Iris-recognition/toplevel.cpp:43) ."/>
+	<Message severity="INFO" prefix="[XFORM 203-102]" key="XFORM_AUTO_PARTITION_STATUS_112" tag="" content="Automatically partitioning streamed array &apos;img1.data_stream.V&apos; (Iris-recognition/toplevel.cpp:44) ."/>
+	<Message severity="INFO" prefix="[XFORM 203-102]" key="XFORM_AUTO_PARTITION_STATUS_112" tag="" content="Automatically partitioning streamed array &apos;img2.data_stream.V&apos; (Iris-recognition/toplevel.cpp:45) ."/>
+	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;swap_table.1&apos;  in dimension 1 completely."/>
+	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;swap_table&apos;  in dimension 1 completely."/>
+	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;neg_sin_table&apos;  in dimension 1 completely."/>
+	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;neg_cos_table&apos;  in dimension 1 completely."/>
 	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;kernel_opr.par.val.V&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1960) in dimension 1 completely."/>
 	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;_s.val&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1965) in dimension 1 completely."/>
 	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;_d.val&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1966) in dimension 1 completely."/>
 	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;scl.val&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:670) in dimension 1 completely."/>
 	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;pix.val&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:56) in dimension 1 completely."/>
-	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;pixel_value.val&apos; (Iris-recognition/segmentation.cpp:4) in dimension 1 completely."/>
+	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;pixel_value.val&apos; (Iris-recognition/segmentation.cpp:10) in dimension 1 completely."/>
 	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;scl.val&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:670) in dimension 1 completely."/>
 	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;pix.val&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:238) in dimension 1 completely."/>
 	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;scl.val&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_core.h:670) in dimension 1 completely."/>
-	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;img0.data_stream.V&apos; (Iris-recognition/toplevel.cpp:26) in dimension 1 completely."/>
-	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;img1.data_stream.V&apos; (Iris-recognition/toplevel.cpp:27) in dimension 1 completely."/>
-	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;img2.data_stream.V&apos; (Iris-recognition/toplevel.cpp:28) in dimension 1 completely."/>
+	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;img0.data_stream.V&apos; (Iris-recognition/toplevel.cpp:43) in dimension 1 completely."/>
+	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;img1.data_stream.V&apos; (Iris-recognition/toplevel.cpp:44) in dimension 1 completely."/>
+	<Message severity="INFO" prefix="[XFORM 203-101]" key="XFORM_PARTITION_STATUS_116" tag="" content="Partitioning array &apos;img2.data_stream.V&apos; (Iris-recognition/toplevel.cpp:45) in dimension 1 completely."/>
 	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hls::sr_cast_class&lt;ap_uint&lt;8&gt; &gt;::operator()&lt;35, 13, (ap_q_mode)5, (ap_o_mode)3&gt;&apos; into &apos;hls::sr_cast&lt;unsigned char, ap_fixed&lt;35, 13, (ap_q_mode)5, (ap_o_mode)3, 0&gt; &gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_types.h:500) automatically."/>
 	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hls::sr_cast&lt;unsigned char, ap_fixed&lt;35, 13, (ap_q_mode)5, (ap_o_mode)3, 0&gt; &gt;&apos; into &apos;hls::kernel_CvtColor&lt;HLS_RGB2GRAY, unsigned char, unsigned char&gt;::apply&lt;3, 1&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1498-&gt;C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545) automatically."/>
-	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hls::kernel_CvtColor&lt;HLS_RGB2GRAY, unsigned char, unsigned char&gt;::apply&lt;3, 1&gt;&apos; into &apos;hls::CvtColor&lt;HLS_RGB2GRAY, 4096, 0, 280, 320&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1972) automatically."/>
-	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hls::Mat2Array&lt;320, unsigned char, 280, 320, 0&gt;.1&apos; into &apos;hls::Mat2Array&lt;320, unsigned char, 280, 320, 0&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:264) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hls::kernel_CvtColor&lt;HLS_RGB2GRAY, unsigned char, unsigned char&gt;::apply&lt;3, 1&gt;&apos; into &apos;hls::CvtColor&lt;HLS_RGB2GRAY, 4096, 0, 240, 320&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1972) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hls::Mat2Array&lt;320, unsigned char, 240, 320, 0&gt;.1&apos; into &apos;hls::Mat2Array&lt;320, unsigned char, 240, 320, 0&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:264) automatically."/>
 	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;fp_struct&lt;float&gt;::mantissa&apos; into &apos;generic_cast_IEEE754&lt;int, (ap_q_mode)6, float&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:15) automatically."/>
 	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;fp_struct&lt;float&gt;::expv&apos; into &apos;generic_cast_IEEE754&lt;int, (ap_q_mode)6, float&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:18) automatically."/>
 	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;fp_struct&lt;float&gt;::__signbit&apos; into &apos;generic_cast_IEEE754&lt;int, (ap_q_mode)6, float&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:59) automatically."/>
 	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;generic_cast_IEEE754&lt;int, (ap_q_mode)6, float&gt;&apos; into &apos;generic_cast_IEEE754&lt;int, float&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_case_IEEE754.h:117) automatically."/>
 	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;generic_cast_IEEE754&lt;int, float&gt;&apos; into &apos;__hls_fptosi_float_i32&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51) automatically."/>
-	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;__hls_fptosi_float_i32&apos; into &apos;calcCircleSum&apos; (Iris-recognition/segmentation.cpp:270) automatically."/>
-	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;Iris&apos; into &apos;tmp&apos; (Iris-recognition/toplevel.cpp:20) automatically."/>
-	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;writeValues&apos; into &apos;tmp&apos; (Iris-recognition/toplevel.cpp:21) automatically."/>
-	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hls::exp&lt;16, 6&gt;&apos; into &apos;generateGaussKernel_fix&apos; (Iris-recognition/gabor.cpp:202) automatically."/>
-	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;generateGaborKernel_fix&apos; into &apos;encode_fix&apos; (Iris-recognition/gabor.cpp:351) automatically."/>
-	<Message severity="WARNING" prefix="[XFORM 203-561]" key="XFORM_LOOPBOUND_INVALID_405" tag="" content="Updating loop lower bound from 0 to 320 for loop &apos;Loop-0-0&apos; in function &apos;hls::Mat2Array&lt;320, unsigned char, 280, 320, 0&gt;&apos;."/>
-	<Message severity="WARNING" prefix="[XFORM 203-561]" key="XFORM_LOOPBOUND_INVALID_405" tag="" content="Updating loop lower bound from 0 to 280 for loop &apos;loop_pixel&apos; in function &apos;hls::Mat2Array&lt;320, unsigned char, 280, 320, 0&gt;&apos;."/>
-	<Message severity="WARNING" prefix="[XFORM 203-713]" key="XFORM_DATAFLOW_WARNING_193" tag="ARRAY,SDX_ARRAY,DATAFLOW" content="All the elements of global array &apos;imageOut&apos; should be updated in process function &apos;tmp&apos;, otherwise it may not be synthesized correctly."/>
-	<Message severity="INFO" prefix="[XFORM 203-712]" key="XFORM_DATAFLOW_TRANSFORM_230" tag="DATAFLOW" content="Applying dataflow to function &apos;arrayMethod_fix&apos;, detected/extracted 7 process function(s): 
-	 &apos;arrayMethod_fix_Block__proc&apos;
-	 &apos;hls::AXIvideo2Mat&lt;32, 280, 320, 4096&gt;&apos;
-	 &apos;hls::CvtColor&lt;HLS_RGB2GRAY, 4096, 0, 280, 320&gt;&apos;
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;__hls_fptosi_float_i32&apos; into &apos;calcCircleSum&apos; (Iris-recognition/segmentation.cpp:230) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;_ZN9fp_structIdEC2Ed8&apos; into &apos;_ZN9fp_structIdEC1Ed4&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:479) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;_ZN9fp_structIdEC1Ed4&apos; into &apos;range_redux_payne_hanek_hotbm&lt;61, double, 63, 63&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_range_redux.h:469) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;_ZNK9fp_structIdE4expvEv6&apos; into &apos;range_redux_payne_hanek_hotbm&lt;61, double, 63, 63&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_range_redux.h:470) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;table_lookup_4oPi_hotbm&lt;52, 61&gt;&apos; into &apos;range_redux_payne_hanek_hotbm&lt;61, double, 63, 63&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_range_redux.h:496) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;clz&lt;61, 124, 0&gt;&apos; into &apos;range_redux_payne_hanek_hotbm&lt;61, double, 63, 63&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_range_redux.h:524) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;fp_struct&lt;double&gt;::data&apos; into &apos;fp_struct&lt;double&gt;::to_double&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:512) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;fp_struct&lt;double&gt;::to_double&apos; into &apos;fp_struct&lt;double&gt;::to_ieee&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_utils.h:526) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;clz&apos; into &apos;scaled_fixed2ieee&lt;63, 1&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_float_utils.h:435) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;fp_struct&lt;double&gt;::set_mantissa&apos; into &apos;scaled_fixed2ieee&lt;63, 1&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_float_utils.h:463) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;fp_struct&lt;double&gt;::to_ieee&apos; into &apos;scaled_fixed2ieee&lt;63, 1&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_float_utils.h:466) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;_ZN9fp_structIdEC1Ed4&apos; into &apos;hotbm_::sin_or_cos&lt;double&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_hotbm.h:252) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;range_redux_payne_hanek_hotbm&lt;61, double, 63, 63&gt;&apos; into &apos;hotbm_::sin_or_cos&lt;double&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_hotbm.h:268) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hotbm_::value_list&lt;double&gt;::sin_or_cos_approximation&lt;63, 63&gt;&apos; into &apos;hotbm_::sin_or_cos&lt;double&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_hotbm.h:279) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;fp_struct&lt;double&gt;::to_ieee&apos; into &apos;hotbm_::sin_or_cos&lt;double&gt;&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_hotbm.h:316) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hotbm_::sin&apos; into &apos;sin&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/c/sincosdouble.cpp:8) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hotbm_::cos&apos; into &apos;cos&apos; (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/c/sincosdouble.cpp:13) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;sin&apos; into &apos;norm_float&apos; (Iris-recognition/normalization.cpp:12) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;cos&apos; into &apos;norm_float&apos; (Iris-recognition/normalization.cpp:13) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;__hls_fptosi_float_i32&apos; into &apos;norm_float&apos; (Iris-recognition/normalization.cpp:22) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;hls::exp&lt;16, 6&gt;&apos; into &apos;generateGaussKernel_fix&apos; (Iris-recognition/gabor.cpp:177) automatically."/>
+	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;generateGaborKernel_fix&apos; into &apos;encode_fix&apos; (Iris-recognition/gabor.cpp:298) automatically."/>
+	<Message severity="WARNING" prefix="[XFORM 203-561]" key="XFORM_LOOPBOUND_INVALID_405" tag="" content="Updating loop lower bound from 0 to 320 for loop &apos;Loop-0-0&apos; in function &apos;hls::Mat2Array&lt;320, unsigned char, 240, 320, 0&gt;&apos;."/>
+	<Message severity="WARNING" prefix="[XFORM 203-561]" key="XFORM_LOOPBOUND_INVALID_405" tag="" content="Updating loop lower bound from 0 to 240 for loop &apos;loop_pixel&apos; in function &apos;hls::Mat2Array&lt;320, unsigned char, 240, 320, 0&gt;&apos;."/>
+	<Message severity="INFO" prefix="[XFORM 203-712]" key="XFORM_DATAFLOW_TRANSFORM_230" tag="DATAFLOW" content="Applying dataflow to function &apos;iris_scanning_fix&apos;, detected/extracted 8 process function(s): 
+	 &apos;iris_scanning_fix_Block__proc&apos;
+	 &apos;hls::AXIvideo2Mat&lt;32, 240, 320, 4096&gt;&apos;
+	 &apos;hls::CvtColor&lt;HLS_RGB2GRAY, 4096, 0, 240, 320&gt;&apos;
 	 &apos;findPupil&apos;
-	 &apos;hls::Mat2Array&lt;320, unsigned char, 280, 320, 0&gt;&apos;
-	 &apos;tmp&apos;
+	 &apos;hls::Mat2Array&lt;320, unsigned char, 240, 320, 0&gt;&apos;
+	 &apos;Iris_fix_border&apos;
+	 &apos;norm_float&apos;
 	 &apos;encode_fix&apos;."/>
-	<Message severity="INFO" prefix="[XFORM 203-401]" key="XFORM_IFCONV_STATUS_239" tag="" content="Performing if-conversion on hyperblock from (Iris-recognition/sine.cpp:15:22) to (Iris-recognition/sine.cpp:25:1) in function &apos;replaceSIN&apos;... converting 9 basic blocks."/>
-	<Message severity="INFO" prefix="[XFORM 203-401]" key="XFORM_IFCONV_STATUS_239" tag="" content="Performing if-conversion on hyperblock from (Iris-recognition/normalization.cpp:47:34) to (Iris-recognition/normalization.cpp:57:17) in function &apos;norm_low&apos;... converting 10 basic blocks."/>
-	<Message severity="INFO" prefix="[XFORM 203-401]" key="XFORM_IFCONV_STATUS_239" tag="" content="Performing if-conversion on hyperblock from (Iris-recognition/gabor.cpp:215:39) to (Iris-recognition/gabor.cpp:215:33) in function &apos;generateSinKernel_fix&apos;... converting 10 basic blocks."/>
-	<Message severity="INFO" prefix="[XFORM 203-401]" key="XFORM_IFCONV_STATUS_239" tag="" content="Performing if-conversion on hyperblock from (Iris-recognition/gabor.cpp:189:34) to (Iris-recognition/gabor.cpp:196:16) in function &apos;generateGaussKernel_fix&apos;... converting 10 basic blocks."/>
-	<Message severity="INFO" prefix="[XFORM 203-401]" key="XFORM_IFCONV_STATUS_239" tag="" content="Performing if-conversion on hyperblock from (Iris-recognition/segmentation.cpp:21:27) to (Iris-recognition/segmentation.cpp:21:22) in function &apos;findPupil&apos;... converting 7 basic blocks."/>
+	<Message severity="WARNING" prefix="[XFORM 203-124]" key="XFORM_ARRAY_STREAM_WARNING_632" tag="" content="Array  &apos;fifo1&apos;: may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order."/>
+	<Message severity="WARNING" prefix="[XFORM 203-124]" key="XFORM_ARRAY_STREAM_WARNING_632" tag="" content="Array  &apos;fifo2&apos;: may have improper streaming access(es), possible reasons: (1) some entries are accessed more than once; (2) some entries are not used; (3) the entries are not accessed in sequential order."/>
+	<Message severity="WARNING" prefix="[XFORM 203-124]" key="XFORM_ARRAY_STREAM_WARNING_632" tag="" content="Array  &apos;fifo3&apos;: The entries are not accessed in sequential order."/>
+	<Message severity="INFO" prefix="[XFORM 203-401]" key="XFORM_IFCONV_STATUS_239" tag="" content="Performing if-conversion on hyperblock from (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_float_utils.h:443:20) to (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/src/hls\utils/x_hls_float_utils.h:467:1) in function &apos;scaled_fixed2ieee&lt;63, 1&gt;&apos;... converting 3 basic blocks."/>
+	<Message severity="INFO" prefix="[XFORM 203-401]" key="XFORM_IFCONV_STATUS_239" tag="" content="Performing if-conversion on hyperblock from (r:/builds/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint\hls_hotbm.h:238:18) in function &apos;hotbm_::sin_or_cos&lt;double&gt;&apos;... converting 3 basic blocks."/>
+	<Message severity="INFO" prefix="[XFORM 203-401]" key="XFORM_IFCONV_STATUS_239" tag="" content="Performing if-conversion on hyperblock from (Iris-recognition/gabor.cpp:190:39) to (Iris-recognition/gabor.cpp:190:33) in function &apos;generateSinKernel_fix&apos;... converting 10 basic blocks."/>
+	<Message severity="INFO" prefix="[XFORM 203-401]" key="XFORM_IFCONV_STATUS_239" tag="" content="Performing if-conversion on hyperblock from (Iris-recognition/gabor.cpp:204:39) to (Iris-recognition/gabor.cpp:204:33) in function &apos;generateSinKernel_fix&apos;... converting 37 basic blocks."/>
+	<Message severity="INFO" prefix="[XFORM 203-401]" key="XFORM_IFCONV_STATUS_239" tag="" content="Performing if-conversion on hyperblock from (Iris-recognition/gabor.cpp:164:34) to (Iris-recognition/gabor.cpp:171:16) in function &apos;generateGaussKernel_fix&apos;... converting 10 basic blocks."/>
+	<Message severity="INFO" prefix="[XFORM 203-401]" key="XFORM_IFCONV_STATUS_239" tag="" content="Performing if-conversion on hyperblock from (Iris-recognition/segmentation.cpp:28:4) to (Iris-recognition/segmentation.cpp:27:28) in function &apos;findPupil&apos;... converting 7 basic blocks."/>
 	<Message severity="INFO" prefix="[XFORM 203-401]" key="XFORM_IFCONV_STATUS_239" tag="" content="Performing if-conversion on hyperblock from (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:41:1) to (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:867:1) in function &apos;exp_reduce::exp&lt;16, 6&gt;&apos;... converting 5 basic blocks."/>
 	<Message severity="INFO" prefix="[XFORM 203-401]" key="XFORM_IFCONV_STATUS_239" tag="" content="Performing if-conversion on hyperblock from (Iris-recognition/sine.cpp:64:25) to (Iris-recognition/sine.cpp:63:23) in function &apos;cordic_fix&apos;... converting 4 basic blocks."/>
-	<Message severity="INFO" prefix="[XFORM 203-602]" key="XFORM_AUTO_INLINE_STATUS_223" tag="" content="Inlining function &apos;replaceSIN&apos; into &apos;calcCircleSum&apos; (Iris-recognition/segmentation.cpp:270) automatically."/>
 	<Message severity="INFO" prefix="[XFORM 203-11]" key="XFORM_EXPR_BALANCE_STATUS_178" tag="" content="Balancing expressions in function &apos;exp_reduce::exp&lt;16, 6&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:41:1)...12 expression(s) balanced."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Pre-synthesis Time (s): cpu = 00:00:24 ; elapsed = 00:03:44 . Memory (MB): peak = 1359.480 ; gain = 1269.785"/>
-	<Message severity="WARNING" prefix="[XFORM 203-631]" key="XFORM_FRN_STATUS_336" tag="" content="Renaming function &apos;hls::Mat2Array&lt;320, unsigned char, 280, 320, 0&gt;&apos; to &apos;Mat2Array&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:240:46)"/>
-	<Message severity="WARNING" prefix="[XFORM 203-631]" key="XFORM_FRN_STATUS_336" tag="" content="Renaming function &apos;hls::CvtColor&lt;HLS_RGB2GRAY, 4096, 0, 280, 320&gt;&apos; to &apos;CvtColor&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:409:39)"/>
-	<Message severity="WARNING" prefix="[XFORM 203-631]" key="XFORM_FRN_STATUS_336" tag="" content="Renaming function &apos;hls::AXIvideo2Mat&lt;32, 280, 320, 4096&gt;&apos; to &apos;AXIvideo2Mat&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:49:9)"/>
-	<Message severity="WARNING" prefix="[XFORM 203-631]" key="XFORM_FRN_STATUS_336" tag="" content="Renaming function &apos;generateSinKernel_fix&apos; to &apos;generateSinKernel_fi&apos; (Iris-recognition/gabor.cpp:207:34)"/>
-	<Message severity="WARNING" prefix="[XFORM 203-631]" key="XFORM_FRN_STATUS_336" tag="" content="Renaming function &apos;generateGaussKernel_fix&apos; to &apos;generateGaussKernel_&apos; (Iris-recognition/gabor.cpp:192:34)"/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Pre-synthesis Time (s): cpu = 00:00:26 ; elapsed = 00:03:34 . Memory (MB): peak = 1403.969 ; gain = 1313.180"/>
+	<Message severity="WARNING" prefix="[XFORM 203-631]" key="XFORM_FRN_STATUS_336" tag="" content="Renaming function &apos;iris_scanning_fix_Block__proc&apos; to &apos;iris_scanning_fix_Bl&apos; (Iris-recognition/toplevel.cpp:43)"/>
+	<Message severity="WARNING" prefix="[XFORM 203-631]" key="XFORM_FRN_STATUS_336" tag="" content="Renaming function &apos;hls::Mat2Array&lt;320, unsigned char, 240, 320, 0&gt;&apos; to &apos;Mat2Array&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:240:46)"/>
+	<Message severity="WARNING" prefix="[XFORM 203-631]" key="XFORM_FRN_STATUS_336" tag="" content="Renaming function &apos;hls::CvtColor&lt;HLS_RGB2GRAY, 4096, 0, 240, 320&gt;&apos; to &apos;CvtColor&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:409:39)"/>
+	<Message severity="WARNING" prefix="[XFORM 203-631]" key="XFORM_FRN_STATUS_336" tag="" content="Renaming function &apos;hls::AXIvideo2Mat&lt;32, 240, 320, 4096&gt;&apos; to &apos;AXIvideo2Mat&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:49:9)"/>
+	<Message severity="WARNING" prefix="[XFORM 203-631]" key="XFORM_FRN_STATUS_336" tag="" content="Renaming function &apos;generateSinKernel_fix&apos; to &apos;generateSinKernel_fi&apos; (Iris-recognition/gabor.cpp:182:33)"/>
+	<Message severity="WARNING" prefix="[XFORM 203-631]" key="XFORM_FRN_STATUS_336" tag="" content="Renaming function &apos;generateGaussKernel_fix&apos; to &apos;generateGaussKernel_&apos; (Iris-recognition/gabor.cpp:167:34)"/>
 	<Message severity="WARNING" prefix="[XFORM 203-631]" key="XFORM_FRN_STATUS_336" tag="" content="Renaming function &apos;exp_reduce::exp&lt;16, 6&gt;&apos; to &apos;exp&lt;16, 6&gt;&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls_exp_apfixed.h:41:1)"/>
 	<Message severity="WARNING" prefix="[XFORM 203-631]" key="XFORM_FRN_STATUS_336" tag="" content="Renaming function &apos;cordic360_COS_SIN_fix&apos; to &apos;cordic360_COS_SIN_fi&apos; (Iris-recognition/sine.cpp:84:2)"/>
-	<Message severity="WARNING" prefix="[XFORM 203-631]" key="XFORM_FRN_STATUS_336" tag="" content="Renaming function &apos;arrayMethod_fix_Block__proc&apos; to &apos;arrayMethod_fix_Bloc&apos; (Iris-recognition/toplevel.cpp:26)"/>
-	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;image_out&apos; (Iris-recognition/normalization.cpp:64:4)"/>
-	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;sin.V&apos; (Iris-recognition/gabor.cpp:222:3)"/>
-	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;cos.V&apos; (Iris-recognition/gabor.cpp:223:3)"/>
-	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;sin.V&apos; (Iris-recognition/gabor.cpp:230:25)"/>
-	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;cos.V&apos; (Iris-recognition/gabor.cpp:232:25)"/>
-	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;sin.V&apos; (Iris-recognition/gabor.cpp:238:4)"/>
-	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;cos.V&apos; (Iris-recognition/gabor.cpp:239:4)"/>
-	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;gauss.V&apos; (Iris-recognition/gabor.cpp:202:25)"/>
-	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;sin_filter_matrix.V&apos; (Iris-recognition/gabor.cpp:263:30)"/>
-	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;cos_filter_matrix.V&apos; (Iris-recognition/gabor.cpp:264:30)"/>
-	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;fb&apos; (C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_io.h:253:16)"/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Architecture Synthesis Time (s): cpu = 00:00:28 ; elapsed = 00:03:48 . Memory (MB): peak = 1576.227 ; gain = 1486.531"/>
+	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;sink.V&apos; (Iris-recognition/gabor.cpp:198:3)"/>
+	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;cosk.V&apos; (Iris-recognition/gabor.cpp:199:3)"/>
+	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;sink.V&apos; (Iris-recognition/gabor.cpp:210:39)"/>
+	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;cosk.V&apos; (Iris-recognition/gabor.cpp:211:39)"/>
+	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;gauss.V&apos; (Iris-recognition/gabor.cpp:177:25)"/>
+	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;sin_filter_matrix.V&apos; (Iris-recognition/gabor.cpp:230:30)"/>
+	<Message severity="INFO" prefix="[HLS 200-472]" key="HLS 200-472" tag="" content="Inferring partial write operation for &apos;cos_filter_matrix.V&apos; (Iris-recognition/gabor.cpp:231:30)"/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished Architecture Synthesis Time (s): cpu = 00:00:30 ; elapsed = 00:03:38 . Memory (MB): peak = 1598.594 ; gain = 1507.805"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1317" tag="" content="Starting hardware synthesis ..."/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1385" tag="" content="Synthesizing &apos;top_level2&apos; ..."/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1385" tag="" content="Synthesizing &apos;top_level_fix&apos; ..."/>
 	<Message severity="WARNING" prefix="[SYN 201-103]" key="SYN_MODULE_NAME_ILLEGAL_445" tag="" content="Legalizing function name &apos;exp&lt;16, 6&gt;&apos; to &apos;exp_16_6_s&apos;."/>
 	<Message severity="WARNING" prefix="[SYN 201-103]" key="SYN_MODULE_NAME_ILLEGAL_445" tag="" content="Legalizing function name &apos;generateGaussKernel_&apos; to &apos;generateGaussKernel_s&apos;."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;arrayMethod_fix_Bloc&apos;"/>
+	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;iris_scanning_fix_Bl&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_597" tag="" content="Starting scheduling ..."/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 228.247 seconds; current allocated memory: 1.434 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 218.276 seconds; current allocated memory: 1.452 GB."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.395 seconds; current allocated memory: 1.435 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.363 seconds; current allocated memory: 1.452 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;AXIvideo2Mat&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
@@ -162,13 +196,13 @@
 	<Message severity="INFO" prefix="[SCHED 204-61]" key="SCHED_PIPELINING_STATUS_41" tag="" content="Pipelining loop &apos;loop_wait_for_eol&apos;."/>
 	<Message severity="INFO" prefix="[SCHED 204-61]" key="SCHED_PIPELINING_STATUS_44" tag="" content="Pipelining result : Target II = 1, Final II = 1, Depth = 1."/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.717 seconds; current allocated memory: 1.435 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.729 seconds; current allocated memory: 1.452 GB."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.435 seconds; current allocated memory: 1.435 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.439 seconds; current allocated memory: 1.452 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;CvtColor&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
@@ -181,13 +215,13 @@
 	&apos;add&apos; operation of DSP[51] (&apos;ret.V&apos;, C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1497-&gt;C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545-&gt;C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1972) [51]  (3.02 ns)
 	&apos;add&apos; operation of DSP[53] (&apos;ret.V&apos;, C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1497-&gt;C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1545-&gt;C:/Xilinx/Vivado/2019.2/common/technology/autopilot/hls/hls_video_imgproc.h:1972) [53]  (3.02 ns)"/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.737 seconds; current allocated memory: 1.435 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.738 seconds; current allocated memory: 1.453 GB."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.422 seconds; current allocated memory: 1.435 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.436 seconds; current allocated memory: 1.453 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;findPupil&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
@@ -195,13 +229,13 @@
 	<Message severity="INFO" prefix="[SCHED 204-61]" key="SCHED_PIPELINING_STATUS_41" tag="" content="Pipelining loop &apos;loopPixel.1&apos;."/>
 	<Message severity="INFO" prefix="[SCHED 204-61]" key="SCHED_PIPELINING_STATUS_44" tag="" content="Pipelining result : Target II = 1, Final II = 1, Depth = 3."/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.682 seconds; current allocated memory: 1.436 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.682 seconds; current allocated memory: 1.453 GB."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.476 seconds; current allocated memory: 1.436 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.483 seconds; current allocated memory: 1.453 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;Mat2Array&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
@@ -209,85 +243,73 @@
 	<Message severity="INFO" prefix="[SCHED 204-61]" key="SCHED_PIPELINING_STATUS_41" tag="" content="Pipelining loop &apos;loop_pixel.1&apos;."/>
 	<Message severity="INFO" prefix="[SCHED 204-61]" key="SCHED_PIPELINING_STATUS_44" tag="" content="Pipelining result : Target II = 1, Final II = 1, Depth = 2."/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.568 seconds; current allocated memory: 1.436 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.605 seconds; current allocated memory: 1.454 GB."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.397 seconds; current allocated memory: 1.437 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.393 seconds; current allocated memory: 1.454 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;calcCircleSum&apos;"/>
+	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;Iris_fix_border&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_597" tag="" content="Starting scheduling ..."/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.448 seconds; current allocated memory: 1.437 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.644 seconds; current allocated memory: 1.454 GB."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.487 seconds; current allocated memory: 1.437 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.401 seconds; current allocated memory: 1.454 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
+	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;norm_float&apos;"/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
+	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_597" tag="" content="Starting scheduling ..."/>
+	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.487 seconds; current allocated memory: 1.454 GB."/>
+	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
+	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
+	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
+	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
+	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.385 seconds; current allocated memory: 1.454 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;cordic_fix&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_597" tag="" content="Starting scheduling ..."/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.557 seconds; current allocated memory: 1.437 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.417 seconds; current allocated memory: 1.454 GB."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.401 seconds; current allocated memory: 1.438 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.41 seconds; current allocated memory: 1.454 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;cordic360_COS_SIN_fi&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_597" tag="" content="Starting scheduling ..."/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.447 seconds; current allocated memory: 1.438 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.448 seconds; current allocated memory: 1.455 GB."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.415 seconds; current allocated memory: 1.438 GB."/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;norm_low&apos;"/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_597" tag="" content="Starting scheduling ..."/>
-	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.504 seconds; current allocated memory: 1.438 GB."/>
-	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
-	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
-	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
-	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
-	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.516 seconds; current allocated memory: 1.439 GB."/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;tmp&apos;"/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_597" tag="" content="Starting scheduling ..."/>
-	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.704 seconds; current allocated memory: 1.439 GB."/>
-	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
-	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
-	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
-	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
-	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.498 seconds; current allocated memory: 1.439 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.414 seconds; current allocated memory: 1.455 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;generateSinKernel_fi&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_597" tag="" content="Starting scheduling ..."/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.633 seconds; current allocated memory: 1.440 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.611 seconds; current allocated memory: 1.456 GB."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.636 seconds; current allocated memory: 1.440 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.758 seconds; current allocated memory: 1.457 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;exp_16_6_s&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
@@ -295,254 +317,226 @@
 	<Message severity="INFO" prefix="[SCHED 204-61]" key="SCHED_PIPELINING_STATUS_46" tag="" content="Pipelining function &apos;exp&lt;16, 6&gt;&apos;."/>
 	<Message severity="INFO" prefix="[SCHED 204-61]" key="SCHED_PIPELINING_STATUS_44" tag="" content="Pipelining result : Target II = 1, Final II = 1, Depth = 6."/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.753 seconds; current allocated memory: 1.441 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.946 seconds; current allocated memory: 1.457 GB."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.456 seconds; current allocated memory: 1.441 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.451 seconds; current allocated memory: 1.457 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;generateGaussKernel_s&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_597" tag="" content="Starting scheduling ..."/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.542 seconds; current allocated memory: 1.442 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.547 seconds; current allocated memory: 1.458 GB."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.55 seconds; current allocated memory: 1.442 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.541 seconds; current allocated memory: 1.458 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;gaborPixel_fix&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_597" tag="" content="Starting scheduling ..."/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.639 seconds; current allocated memory: 1.442 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.672 seconds; current allocated memory: 1.459 GB."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.446 seconds; current allocated memory: 1.443 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.43 seconds; current allocated memory: 1.459 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;encode_fix&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_597" tag="" content="Starting scheduling ..."/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.517 seconds; current allocated memory: 1.443 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.493 seconds; current allocated memory: 1.459 GB."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.732 seconds; current allocated memory: 1.443 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.862 seconds; current allocated memory: 1.460 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;arrayMethod_fix&apos;"/>
+	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;iris_scanning_fix&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_597" tag="" content="Starting scheduling ..."/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.687 seconds; current allocated memory: 1.444 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.798 seconds; current allocated memory: 1.460 GB."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.815 seconds; current allocated memory: 1.444 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.788 seconds; current allocated memory: 1.461 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1477" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;top_level2&apos;"/>
+	<Message severity="INFO" prefix="[HLS 200-42]" key="HLS_42_1438" tag="" content="-- Implementing module &apos;top_level_fix&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1478" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_597" tag="" content="Starting scheduling ..."/>
 	<Message severity="INFO" prefix="[SCHED 204-11]" key="SCHED_SCHED_STATUS_596" tag="" content="Finished scheduling."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.871 seconds; current allocated memory: 1.445 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.829 seconds; current allocated memory: 1.461 GB."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_926" tag="" content="Starting micro-architecture generation ..."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_698" tag="" content="Performing variable lifetime analysis."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_697" tag="" content="Exploring resource sharing."/>
 	<Message severity="INFO" prefix="[BIND 205-101]" key="BIND_101_693" tag="" content="Binding ..."/>
 	<Message severity="INFO" prefix="[BIND 205-100]" key="BIND_100_925" tag="" content="Finished micro-architecture generation."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.544 seconds; current allocated memory: 1.445 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.54 seconds; current allocated memory: 1.461 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;arrayMethod_fix_Bloc&apos;"/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;iris_scanning_fix_Bl&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;arrayMethod_fix_Bloc&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.867 seconds; current allocated memory: 1.445 GB."/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;iris_scanning_fix_Bl&apos;."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.815 seconds; current allocated memory: 1.462 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;AXIvideo2Mat&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;AXIvideo2Mat&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.591 seconds; current allocated memory: 1.446 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.465 seconds; current allocated memory: 1.462 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;CvtColor&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_mul_mul_22ns_8ns_29_1_1&apos; to &apos;top_level2_mul_mubkb&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_mac_muladd_23ns_8ns_29ns_30_1_1&apos; to &apos;top_level2_mac_mucud&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_mac_muladd_20ns_8ns_29ns_29_1_1&apos; to &apos;top_level2_mac_mudEe&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_mac_mucud&apos;: 1 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_mac_mudEe&apos;: 1 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_mul_mubkb&apos;: 1 instance(s)."/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level_fix_mul_mul_22ns_8ns_29_1_1&apos; to &apos;top_level_fix_mulbkb&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level_fix_mac_muladd_23ns_8ns_29ns_30_1_1&apos; to &apos;top_level_fix_maccud&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level_fix_mac_muladd_20ns_8ns_29ns_29_1_1&apos; to &apos;top_level_fix_macdEe&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level_fix_maccud&apos;: 1 instance(s)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level_fix_macdEe&apos;: 1 instance(s)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level_fix_mulbkb&apos;: 1 instance(s)."/>
 	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;CvtColor&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.772 seconds; current allocated memory: 1.447 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.781 seconds; current allocated memory: 1.463 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;findPupil&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;findPupil&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.671 seconds; current allocated memory: 1.447 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.714 seconds; current allocated memory: 1.464 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;Mat2Array&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;Mat2Array&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.908 seconds; current allocated memory: 1.448 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.9 seconds; current allocated memory: 1.464 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;calcCircleSum&apos;"/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;Iris_fix_border&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_fadd_32ns_32ns_32_5_full_dsp_1&apos; to &apos;top_level2_fadd_3eOg&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_fmul_32ns_32ns_32_4_max_dsp_1&apos; to &apos;top_level2_fmul_3fYi&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_sitofp_32ns_32_6_1&apos; to &apos;top_level2_sitofpg8j&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_fadd_3eOg&apos;: 1 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_fmul_3fYi&apos;: 1 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_sitofpg8j&apos;: 2 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;calcCircleSum&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.73 seconds; current allocated memory: 1.449 GB."/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;Iris_fix_border&apos;."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.566 seconds; current allocated memory: 1.465 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;norm_float&apos;"/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;norm_float&apos;."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.59 seconds; current allocated memory: 1.465 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;cordic_fix&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;cordic_fix&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.954 seconds; current allocated memory: 1.449 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.552 seconds; current allocated memory: 1.465 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;cordic360_COS_SIN_fi&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;cordic360_COS_SIN_fi&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.69 seconds; current allocated memory: 1.450 GB."/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;norm_low&apos;"/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_fpext_32ns_64_2_1&apos; to &apos;top_level2_fpext_hbi&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_mac_muladd_9ns_8s_15ns_15_1_1&apos; to &apos;top_level2_mac_muibs&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_mul_mul_13ns_9ns_21_1_1&apos; to &apos;top_level2_mul_mujbC&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_mac_muladd_13ns_8ns_21ns_21_1_1&apos; to &apos;top_level2_mac_mukbM&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_fmul_3fYi&apos;: 1 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_fpext_hbi&apos;: 1 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_mac_muibs&apos;: 4 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_mac_mukbM&apos;: 2 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_mul_mujbC&apos;: 2 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_sitofpg8j&apos;: 1 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;norm_low&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.875 seconds; current allocated memory: 1.451 GB."/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;tmp&apos;"/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;tmp&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 1.106 seconds; current allocated memory: 1.451 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.662 seconds; current allocated memory: 1.466 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;generateSinKernel_fi&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_fdiv_32ns_32ns_32_16_1&apos; to &apos;top_level2_fdiv_3lbW&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_sdiv_29ns_16s_15_33_seq_1&apos; to &apos;top_level2_sdiv_2mb6&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_fdiv_3lbW&apos;: 1 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_fmul_3fYi&apos;: 1 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_fpext_hbi&apos;: 1 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_sdiv_2mb6&apos;: 2 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_sitofpg8j&apos;: 1 instance(s)."/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level_fix_fmul_32ns_32ns_32_4_max_dsp_1&apos; to &apos;top_level_fix_fmueOg&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level_fix_fdiv_32ns_32ns_32_16_1&apos; to &apos;top_level_fix_fdifYi&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level_fix_sitofp_32ns_32_6_1&apos; to &apos;top_level_fix_sitg8j&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level_fix_fpext_32ns_64_2_1&apos; to &apos;top_level_fix_fpehbi&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level_fix_fdifYi&apos;: 2 instance(s)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level_fix_fmueOg&apos;: 1 instance(s)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level_fix_fpehbi&apos;: 2 instance(s)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level_fix_sitg8j&apos;: 1 instance(s)."/>
 	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;generateSinKernel_fi&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.921 seconds; current allocated memory: 1.453 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.867 seconds; current allocated memory: 1.468 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;exp_16_6_s&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;exp_16_6_s_f_x_lsb_table_V&apos; to &apos;exp_16_6_s_f_x_lsncg&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;exp_16_6_s_exp_x_msb_2_m_1_tabl&apos; to &apos;exp_16_6_s_exp_x_ocq&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;exp_16_6_s_exp_x_msb_1_table_V&apos; to &apos;exp_16_6_s_exp_x_pcA&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;exp_16_6_s_f_x_lsb_table_V&apos; to &apos;exp_16_6_s_f_x_lsibs&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;exp_16_6_s_exp_x_msb_2_m_1_tabl&apos; to &apos;exp_16_6_s_exp_x_jbC&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;exp_16_6_s_exp_x_msb_1_table_V&apos; to &apos;exp_16_6_s_exp_x_kbM&apos; due to the length limit 20"/>
 	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;exp_16_6_s&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 1.334 seconds; current allocated memory: 1.454 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 2.024 seconds; current allocated memory: 1.469 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;generateGaussKernel_s&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_dmul_64ns_64ns_64_6_max_dsp_1&apos; to &apos;top_level2_dmul_6qcK&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_sitodp_32s_64_6_1&apos; to &apos;top_level2_sitodprcU&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_sdiv_42s_17ns_42_46_seq_1&apos; to &apos;top_level2_sdiv_4sc4&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_mul_mul_16ns_16ns_27_1_1&apos; to &apos;top_level2_mul_mutde&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_mul_mul_15s_15s_26_1_1&apos; to &apos;top_level2_mul_muudo&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_mac_muladd_15s_15s_26s_30_1_1&apos; to &apos;top_level2_mac_muvdy&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_dmul_6qcK&apos;: 1 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_mac_muvdy&apos;: 1 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_mul_mutde&apos;: 1 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_mul_muudo&apos;: 1 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_sdiv_4sc4&apos;: 1 instance(s)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_sitodprcU&apos;: 1 instance(s)."/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level_fix_dmul_64ns_64ns_64_6_max_dsp_1&apos; to &apos;top_level_fix_dmulbW&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level_fix_sitodp_32s_64_6_1&apos; to &apos;top_level_fix_sitmb6&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level_fix_sdiv_42s_17ns_42_46_seq_1&apos; to &apos;top_level_fix_sdincg&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level_fix_mul_mul_16ns_16ns_27_1_1&apos; to &apos;top_level_fix_mulocq&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level_fix_mul_mul_15s_15s_26_1_1&apos; to &apos;top_level_fix_mulpcA&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level_fix_mac_muladd_15s_15s_26s_30_1_1&apos; to &apos;top_level_fix_macqcK&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level_fix_dmulbW&apos;: 1 instance(s)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level_fix_macqcK&apos;: 1 instance(s)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level_fix_mulocq&apos;: 1 instance(s)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level_fix_mulpcA&apos;: 1 instance(s)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level_fix_sdincg&apos;: 1 instance(s)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level_fix_sitmb6&apos;: 1 instance(s)."/>
 	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;generateGaussKernel_s&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 1.185 seconds; current allocated memory: 1.455 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 1.085 seconds; current allocated memory: 1.471 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;gaborPixel_fix&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;gaborPixel_fix&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 1.093 seconds; current allocated memory: 1.456 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 1.094 seconds; current allocated memory: 1.471 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;encode_fix&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;encode_fix_sin_filter_matrix_V&apos; to &apos;encode_fix_sin_fiwdI&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;encode_fix_cos_filter_matrix_V&apos; to &apos;encode_fix_cos_fixdS&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;top_level2_mul_mul_8s_16s_22_1_1&apos; to &apos;top_level2_mul_muyd2&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_855" tag="" content="Generating core module &apos;top_level2_mul_muyd2&apos;: 2 instance(s)."/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;encode_fix_sin_filter_matrix_V&apos; to &apos;encode_fix_sin_fircU&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;encode_fix_cos_filter_matrix_V&apos; to &apos;encode_fix_cos_fisc4&apos; due to the length limit 20"/>
 	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;encode_fix&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.953 seconds; current allocated memory: 1.457 GB."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 0.833 seconds; current allocated memory: 1.472 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;arrayMethod_fix&apos;"/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;iris_scanning_fix&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;arrayMethod_fix_imageIn&apos; to &apos;arrayMethod_fix_izec&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;arrayMethod_fix_imageOut&apos; to &apos;arrayMethod_fix_iAem&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;start_for_CvtColor_U0&apos; to &apos;start_for_CvtColoBew&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;start_for_findPupil_U0&apos; to &apos;start_for_findPupCeG&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;start_for_Mat2Array_U0&apos; to &apos;start_for_Mat2ArrDeQ&apos; due to the length limit 20"/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;arrayMethod_fix&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 1.193 seconds; current allocated memory: 1.458 GB."/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;start_for_CvtColor_U0&apos; to &apos;start_for_CvtColotde&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;start_for_findPupil_U0&apos; to &apos;start_for_findPupudo&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;start_for_Mat2Array_U0&apos; to &apos;start_for_Mat2Arrvdy&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;start_for_Iris_fix_border_U0&apos; to &apos;start_for_Iris_fiwdI&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;start_for_norm_float_U0&apos; to &apos;start_for_norm_flxdS&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[SYN 201-210]" key="SYN_210_889" tag="" content="Renamed object name &apos;start_for_encode_fix_U0&apos; to &apos;start_for_encode_yd2&apos; due to the length limit 20"/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;iris_scanning_fix&apos;."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 1.341 seconds; current allocated memory: 1.473 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1483" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;top_level2&apos;"/>
+	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1484" tag="" content="-- Generating RTL for module &apos;top_level_fix&apos;"/>
 	<Message severity="INFO" prefix="[HLS 200-10]" key="HLS_10_1485" tag="" content="----------------------------------------------------------------"/>
-	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level2/inputStream_V_data_V&apos; to &apos;axis&apos; (register, both mode)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level2/inputStream_V_keep_V&apos; to &apos;axis&apos; (register, both mode)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level2/inputStream_V_strb_V&apos; to &apos;axis&apos; (register, both mode)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level2/inputStream_V_user_V&apos; to &apos;axis&apos; (register, both mode)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level2/inputStream_V_last_V&apos; to &apos;axis&apos; (register, both mode)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level2/inputStream_V_id_V&apos; to &apos;axis&apos; (register, both mode)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level2/inputStream_V_dest_V&apos; to &apos;axis&apos; (register, both mode)."/>
-	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level2/code_V&apos; to &apos;s_axilite &amp; ap_memory&apos;."/>
-	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on function &apos;top_level2&apos; to &apos;ap_ctrl_none&apos;."/>
+	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level_fix/inputStream_V_data_V&apos; to &apos;axis&apos; (register, both mode)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level_fix/inputStream_V_keep_V&apos; to &apos;axis&apos; (register, both mode)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level_fix/inputStream_V_strb_V&apos; to &apos;axis&apos; (register, both mode)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level_fix/inputStream_V_user_V&apos; to &apos;axis&apos; (register, both mode)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level_fix/inputStream_V_last_V&apos; to &apos;axis&apos; (register, both mode)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level_fix/inputStream_V_id_V&apos; to &apos;axis&apos; (register, both mode)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level_fix/inputStream_V_dest_V&apos; to &apos;axis&apos; (register, both mode)."/>
+	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on port &apos;top_level_fix/code_V&apos; to &apos;s_axilite &amp; ap_memory&apos;."/>
+	<Message severity="INFO" prefix="[RTGEN 206-500]" key="PREPROC_IO_COMP_CONFLICT_1950" tag="" content="Setting interface mode on function &apos;top_level_fix&apos; to &apos;ap_ctrl_none&apos;."/>
 	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_851" tag="" content="Bundling port &apos;code_V&apos; to AXI-Lite port AXILiteS."/>
-	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;top_level2&apos;."/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 1.384 seconds; current allocated memory: 1.459 GB."/>
+	<Message severity="INFO" prefix="[RTGEN 206-100]" key="RTGEN_100_856" tag="" content="Finished creating RTL model for &apos;top_level_fix&apos;."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_966" tag="" content=" Elapsed time: 1.341 seconds; current allocated memory: 1.474 GB."/>
 	<Message severity="INFO" prefix="[HLS 200-789]" key="HLS 200-789" tag="THROUGHPUT,SDX_KERNEL" content="**** Estimated Fmax: 106.38 MHz"/>
 	<Message severity="INFO" prefix="[RTMG 210-279]" key="RTMG_279_1793" tag="" content="Implementing memory &apos;cordic_fix_arctan_V_rom&apos; using distributed ROMs."/>
-	<Message severity="INFO" prefix="[RTMG 210-282]" key="RTMG_282_1796" tag="" content="Generating pipelined core: &apos;top_level2_sdiv_2mb6_div&apos;"/>
-	<Message severity="INFO" prefix="[RTMG 210-279]" key="RTMG_279_1793" tag="" content="Implementing memory &apos;exp_16_6_s_f_x_lsncg_rom&apos; using distributed ROMs."/>
-	<Message severity="INFO" prefix="[RTMG 210-279]" key="RTMG_279_1793" tag="" content="Implementing memory &apos;exp_16_6_s_exp_x_ocq_rom&apos; using distributed ROMs."/>
-	<Message severity="INFO" prefix="[RTMG 210-279]" key="RTMG_279_1793" tag="" content="Implementing memory &apos;exp_16_6_s_exp_x_pcA_rom&apos; using distributed ROMs."/>
-	<Message severity="INFO" prefix="[RTMG 210-282]" key="RTMG_282_1796" tag="" content="Generating pipelined core: &apos;top_level2_sdiv_4sc4_div&apos;"/>
-	<Message severity="INFO" prefix="[RTMG 210-278]" key="RTMG_278_1790" tag="" content="Implementing memory &apos;encode_fix_sin_i_ram (RAM)&apos; using distributed RAMs."/>
-	<Message severity="INFO" prefix="[RTMG 210-278]" key="RTMG_278_1790" tag="" content="Implementing memory &apos;encode_fix_gauss_i_ram (RAM)&apos; using block RAMs."/>
-	<Message severity="INFO" prefix="[HLS 200-741]" key="HLS 200-741" tag="" content="Implementing PIPO arrayMethod_fix_izec_memcore using a single memory for all blocks"/>
-	<Message severity="INFO" prefix="[RTMG 210-278]" key="RTMG_278_1790" tag="" content="Implementing memory &apos;arrayMethod_fix_izec_memcore_ram (RAM)&apos; using block RAMs."/>
-	<Message severity="INFO" prefix="[HLS 200-741]" key="HLS 200-741" tag="" content="Implementing PIPO arrayMethod_fix_iAem_memcore using a single memory for all blocks"/>
-	<Message severity="INFO" prefix="[RTMG 210-278]" key="RTMG_278_1790" tag="" content="Implementing memory &apos;arrayMethod_fix_iAem_memcore_ram (RAM)&apos; using block RAMs."/>
-	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;img0_rows_V_c_U(fifo_w10_d2_A)&apos; using Shift Registers."/>
+	<Message severity="INFO" prefix="[RTMG 210-279]" key="RTMG_279_1793" tag="" content="Implementing memory &apos;exp_16_6_s_f_x_lsibs_rom&apos; using distributed ROMs."/>
+	<Message severity="INFO" prefix="[RTMG 210-279]" key="RTMG_279_1793" tag="" content="Implementing memory &apos;exp_16_6_s_exp_x_jbC_rom&apos; using distributed ROMs."/>
+	<Message severity="INFO" prefix="[RTMG 210-279]" key="RTMG_279_1793" tag="" content="Implementing memory &apos;exp_16_6_s_exp_x_kbM_rom&apos; using distributed ROMs."/>
+	<Message severity="INFO" prefix="[RTMG 210-282]" key="RTMG_282_1796" tag="" content="Generating pipelined core: &apos;top_level_fix_sdincg_div&apos;"/>
+	<Message severity="INFO" prefix="[RTMG 210-278]" key="RTMG_278_1790" tag="" content="Implementing memory &apos;encode_fix_sin_k_i_ram (RAM)&apos; using distributed RAMs."/>
+	<Message severity="INFO" prefix="[RTMG 210-278]" key="RTMG_278_1790" tag="" content="Implementing memory &apos;encode_fix_gauss_i_ram (RAM)&apos; using distributed RAMs."/>
+	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;img0_rows_V_c_U(fifo_w9_d2_A)&apos; using Shift Registers."/>
 	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;img0_cols_V_c_U(fifo_w10_d2_A)&apos; using Shift Registers."/>
 	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;img0_data_stream_0_s_U(fifo_w8_d2_A)&apos; using Shift Registers."/>
 	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;img0_data_stream_1_s_U(fifo_w8_d2_A)&apos; using Shift Registers."/>
 	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;img0_data_stream_2_s_U(fifo_w8_d2_A)&apos; using Shift Registers."/>
-	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;img0_rows_V_c8_U(fifo_w10_d2_A)&apos; using Shift Registers."/>
+	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;img0_rows_V_c8_U(fifo_w9_d2_A)&apos; using Shift Registers."/>
 	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;img0_cols_V_c9_U(fifo_w10_d2_A)&apos; using Shift Registers."/>
 	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;img1_data_stream_0_s_U(fifo_w8_d2_A)&apos; using Shift Registers."/>
 	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;img2_data_stream_0_s_U(fifo_w8_d2_A)&apos; using Shift Registers."/>
 	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;r1_c_U(fifo_w32_d3_A)&apos; using Shift Registers."/>
 	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;x_c_U(fifo_w32_d3_A)&apos; using Shift Registers."/>
-	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;y_c_U(fifo_w32_d3_A)&apos; using Shift Registers."/>
-	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;start_for_CvtColoBew_U(start_for_CvtColoBew)&apos; using Shift Registers."/>
-	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;start_for_findPupCeG_U(start_for_findPupCeG)&apos; using Shift Registers."/>
-	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;start_for_Mat2ArrDeQ_U(start_for_Mat2ArrDeQ)&apos; using Shift Registers."/>
-	<Message severity="INFO" prefix="[HLS 200-741]" key="HLS 200-741" tag="" content="Implementing PIPO arrayMethod_fix_izec_memcore using a single memory for all blocks"/>
-	<Message severity="INFO" prefix="[HLS 200-741]" key="HLS 200-741" tag="" content="Implementing PIPO arrayMethod_fix_iAem_memcore using a single memory for all blocks"/>
-	<Message severity="INFO" prefix="[HLS 200-741]" key="HLS 200-741" tag="" content="Implementing PIPO arrayMethod_fix_izec_memcore using a single memory for all blocks"/>
-	<Message severity="INFO" prefix="[HLS 200-741]" key="HLS 200-741" tag="" content="Implementing PIPO arrayMethod_fix_iAem_memcore using a single memory for all blocks"/>
-	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished generating all RTL models Time (s): cpu = 00:01:00 ; elapsed = 00:04:36 . Memory (MB): peak = 1631.551 ; gain = 1541.855"/>
-	<Message severity="INFO" prefix="[VHDL 208-304]" key="VHDL_304_1066" tag="" content="Generating VHDL RTL for top_level2."/>
-	<Message severity="INFO" prefix="[VLOG 209-307]" key="VLOG_307_1067" tag="" content="Generating Verilog RTL for top_level2."/>
+	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;start_for_CvtColotde_U(start_for_CvtColotde)&apos; using Shift Registers."/>
+	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;start_for_findPupudo_U(start_for_findPupudo)&apos; using Shift Registers."/>
+	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;start_for_Mat2Arrvdy_U(start_for_Mat2Arrvdy)&apos; using Shift Registers."/>
+	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;start_for_Iris_fiwdI_U(start_for_Iris_fiwdI)&apos; using Shift Registers."/>
+	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;start_for_norm_flxdS_U(start_for_norm_flxdS)&apos; using Shift Registers."/>
+	<Message severity="INFO" prefix="[RTMG 210-285]" key="RTMG_285_1799" tag="" content="Implementing FIFO &apos;start_for_encode_yd2_U(start_for_encode_yd2)&apos; using Shift Registers."/>
+	<Message severity="INFO" prefix="[HLS 200-111]" key="HLS_111_965" tag="" content="Finished generating all RTL models Time (s): cpu = 00:00:59 ; elapsed = 00:04:20 . Memory (MB): peak = 1646.555 ; gain = 1555.766"/>
+	<Message severity="INFO" prefix="[VHDL 208-304]" key="VHDL_304_1066" tag="" content="Generating VHDL RTL for top_level_fix."/>
+	<Message severity="INFO" prefix="[VLOG 209-307]" key="VLOG_307_1067" tag="" content="Generating Verilog RTL for top_level_fix."/>
 </Messages>

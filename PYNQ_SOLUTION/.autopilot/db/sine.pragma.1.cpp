@@ -34441,17 +34441,13 @@ const float ThreeHalfPI = 4.7123889803846898;
 const float PIHALF = 1.570796327;
 const float DEGtoRAD = 0.01745329252;
 
-typedef ap_fixed<8,1> float30;
-typedef ap_fixed<4,1> floatIntern;
-typedef ap_fixed<16,5> floatGauss;
 
-
+typedef ap_fixed<8,5> floatGauss;
 typedef ap_fixed<8,5> floatGabor;
 typedef ap_ufixed<8,0> floatTan;
 typedef ap_fixed<8,2> floatSin;
 typedef ap_fixed<8,4> floatArg;
-typedef ap_uint<9> IntPoints;
-typedef ap_uint<2> codeINT;
+
 
 static const floatTan arctan[] = {
   0.7853981633974483,
@@ -34485,25 +34481,8 @@ static const floatTan arctan[] = {
   3.725290298461914e-09,
   1.862645149230957e-09,
   9.313225746154785e-10,
-  4.656612873077393e-10,
-  2.3283064365386963e-10,
-  1.1641532182693481e-10,
-  5.820766091346741e-11,
-  2.9103830456733704e-11,
-  1.4551915228366852e-11,
-  7.275957614183426e-12,
-  3.637978807091713e-12,
-  1.8189894035458565e-12,
-  9.094947017729282e-13,
-  4.547473508864641e-13,
-  2.2737367544323206e-13,
-  1.1368683772161603e-13,
-  5.684341886080802e-14,
-  2.842170943040401e-14,
-  1.4210854715202004e-14,
-  7.105427357601002e-15,
-  3.552713678800501e-15,
-  1.7763568394002505e-15};
+  4.656612873077393e-10
+  };
 static const float arctan_double[] = {
   0.7853981633974483,
   0.4636476090008061,
@@ -34538,30 +34517,11 @@ static const float arctan_double[] = {
   9.313225746154785e-10,
   4.656612873077393e-10,
   2.3283064365386963e-10,
-  1.1641532182693481e-10,
-  5.820766091346741e-11,
-  2.9103830456733704e-11,
-  1.4551915228366852e-11,
-  7.275957614183426e-12,
-  3.637978807091713e-12,
-  1.8189894035458565e-12,
-  9.094947017729282e-13,
-  4.547473508864641e-13,
-  2.2737367544323206e-13,
-  1.1368683772161603e-13,
-  5.684341886080802e-14,
-  2.842170943040401e-14,
-  1.4210854715202004e-14,
-  7.105427357601002e-15,
-  3.552713678800501e-15,
-  1.7763568394002505e-15
+  1.1641532182693481e-10
   };
 
 float sinTaylor(float x);
 float cosTaylor(float x);
-
-float30 cosTaylor_fix(float x);
-float30 sinTaylor_fix(float x);
 
 
 
@@ -34635,7 +34595,7 @@ float cosTaylor(float x){
 }
 
 void cordic_fix(floatArg phi,int nMax,floatSin &s,floatSin &c){
- floatSin z_r = 0.60725293500888;
+ floatSin z_r = 0.607252935;
  floatSin z_i = 0;
  floatSin val = 1;
  for (int n =0;n<nMax;n++){
@@ -34667,7 +34627,7 @@ void cordic360_COS_SIN_fix(floatArg x, floatSin &s, floatSin &c,int nMax){
   cordic_fix(t,nMax,s,c);
   s = -s;
   c = -c;
- }else if(x>(floatArg)-PI && x<=(floatArg)-PIHALF){
+ }else if(x>=(floatArg)-PI && x<=(floatArg)-PIHALF){
   floatArg t = x + (floatArg)PI;
   cordic_fix(t,nMax,s,c);
   s =-s;

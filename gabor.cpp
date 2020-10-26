@@ -65,7 +65,7 @@ void generateGaborKernel(int kern_size,
 	float sinK[MAX_KERN_SIZE];
 	float cosK[MAX_KERN_SIZE];
 	generateSinKernel(kern_size,sinK,cosK);
-	generateGaussKernel(kern_size,8,gauss);
+	generateGaussKernel(kern_size,15,gauss);
 
 	GaussMulti:
 	for (int i = 0; i < kern_size; i++) {
@@ -255,7 +255,7 @@ void gaborPixel_fix(int rho, int phi,
 		floatGabor cos_filter_matrix[MAX_KERN_SIZE][MAX_KERN_SIZE],
 		ap_uint<2> code[BITCODE_LENGTH], int pos) {
 	ap_uint<9> angles = NORM_WIDTH;
-	ap_fixed<15,14> total_i = 0;
+	ap_fixed<15,14> total_i = 0;//15,14
 	ap_fixed<15,14> total_r = 0;
 
 	GaborPixeLoop: for (int i = 0; i < filter_size; i++) {
@@ -305,7 +305,6 @@ void encode_fix(uint8_t norm_img[NORM_HEIGHT * NORM_WIDTH],
 		}
 	}
 }
-
 
 int gaborPixel_visual(int rho, int phi, uint8_t norm_img[NORM_HEIGHT * NORM_WIDTH],
 		int filter_size, float sin_filter_matrix[MAX_KERN_SIZE][MAX_KERN_SIZE],
@@ -363,8 +362,6 @@ int gaborPixel_visual_fix(int rho, int phi, uint8_t norm_img[NORM_HEIGHT * NORM_
 			ap_uint<8> tmp = (ap_uint<8>)norm_img[index];
 			ap_fixed<15,14> valueS = (sin_filter_matrix[i][j]*tmp);
 			ap_fixed<15,14> valueC = (cos_filter_matrix[i][j]*tmp);
-
-
 			total_i = total_i + valueS; //255*6.4
 			total_r = total_r + valueC;
 			//std::cout << total_i.to_float() <<"\n";
@@ -387,9 +384,9 @@ int gaborPixel_visual_fix(int rho, int phi, uint8_t norm_img[NORM_HEIGHT * NORM_
 	return ret;
 }
 
-void visualize_float(uint8_t norm_img[32*360],NORM_RGB_IMAGE &out){
-	int radii  = 32;
-	int angels = 360;
+void visualize_float(uint8_t norm_img[NORM_WIDTH*NORM_HEIGHT],NORM_RGB_IMAGE &out){
+	int radii  = NORM_HEIGHT;
+	int angels = NORM_WIDTH;
 	int filter_size = 9;
 
 	float gaborR[MAX_KERN_SIZE][MAX_KERN_SIZE];
@@ -401,6 +398,8 @@ void visualize_float(uint8_t norm_img[32*360],NORM_RGB_IMAGE &out){
 	RGBPIXEL px;
 	for (int i = 0;i<radii;i++){
 		for(int j = 0;j<angels;j++){
+#pragma HLS loop_flatten off
+#pragma HLS pipeline II=1
 			if ((i<=filter_size/2) or (i>=(radii-(filter_size/2)))){
 				px.val[0] = 0;
 				px.val[1] = 0;
@@ -408,37 +407,32 @@ void visualize_float(uint8_t norm_img[32*360],NORM_RGB_IMAGE &out){
 				out << px;
 			}else{
 				int temp = gaborPixel_visual(i,j,norm_img,filter_size,gaborI,gaborR );
-				int real = (temp & 2)>>1;
-				int imag =  temp & 1;
-				if (imag == 1){
-					if (real==1){
+				switch (temp){
+					case 0:
 						px.val[0] = 255;
 						px.val[1] = 0;
 						px.val[2] = 0;
-						out << px;
-					}else{
+						break;
+					case 1:
 						px.val[0] = 0;
 						px.val[1] = 255;
 						px.val[2] = 0;
-						out << px;
-					}
-				}else{
-					if (real==1){
+						break;
+					case 2:
 						px.val[0] = 0;
 						px.val[1] = 0;
 						px.val[2] = 255;
-						out << px;
-					}else{
-						px.val[0] = 0;
+						break;
+					case 3:
+						px.val[0] = 255;
 						px.val[1] = 255;
-						px.val[2] = 255;
-						out << px;
-					}
+						px.val[2] = 0;
+						break;
 				}
+				out << px;
 			}
 		}
 	}
-
 }
 
 void visualize_fix(uint8_t norm_img[32*360],NORM_RGB_IMAGE &out){
@@ -463,33 +457,29 @@ void visualize_fix(uint8_t norm_img[32*360],NORM_RGB_IMAGE &out){
 				out << px;
 			}else{
 				int temp = gaborPixel_visual_fix(i,j,norm_img,filter_size,gaborIf,gaborRf );
-				int real = (temp & 2)>>1;
-				int imag =  temp & 1;
-				if (imag == 1){
-					if (real==1){
+				switch (temp){
+					case 0:
 						px.val[0] = 255;
 						px.val[1] = 0;
 						px.val[2] = 0;
-						out << px;
-					}else{
+						break;
+					case 1:
 						px.val[0] = 0;
 						px.val[1] = 255;
 						px.val[2] = 0;
-						out << px;
-					}
-				}else{
-					if (real==1){
+						break;
+					case 2:
 						px.val[0] = 0;
 						px.val[1] = 0;
 						px.val[2] = 255;
-						out << px;
-					}else{
-						px.val[0] = 0;
+						break;
+					case 3:
+						px.val[0] = 255;
 						px.val[1] = 255;
-						px.val[2] = 255;
-						out << px;
-					}
+						px.val[2] = 0;
+						break;
 				}
+				out << px;
 			}
 		}
 	}

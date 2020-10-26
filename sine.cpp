@@ -1,26 +1,44 @@
 #include "sine.hpp"
 
 float replaceCOS(int val){
-	if (val==0) return 1;
-	if (val==45) return 0.7071;
-	if (val==90) return 0.0;
-	if (val==135) return -0.7071;
-	if (val==180) return -1;
-	if (val==225) return -0.7071;
-	if (val==270) return 0;
-	if (val==315) return 0.7071;
+	if(val==0) return 1;
+	if(val==10) return 0.9848;
+	if(val==20) return 0.9396;
+	if(val==30) return 0.8660;
+	if(val==45) return 0.7071;
+	if(val==90) return 0.0;
+
+	if(val==160) return -0.9396;
+	if(val==170) return -0.9848;
+	if(val==180) return -1;
+	if(val==190) return -0.9848;
+	if(val==350) return 0.9848;
+
+	if(val==135) return -0.7071;
+	if(val==225) return -0.7071;
+	if(val==270) return 0;
+	if(val==315) return 0.7071;
 	else return 42;
 }
 
 float replaceSIN(int val){
 	if (val==0) return 0;
-	if (val==45) return 0.7071;
-	if (val==90) return 1.0;
-	if (val==135) return 0.7071;
-	if (val==180) return 0;
-	if (val==225) return -0.7071;
-	if (val==270) return -1;
-	if (val==315) return -0.7071;
+	if(val==10) return 0.1736;
+	if(val==20) return 0.3420;
+	if(val==30) return 0.5;
+	if(val==45) return 0.7071;
+	if(val==90) return 1.0;
+
+	if(val==160) return 0.3420;
+	if(val==170) return 0.1736;
+	if(val==180) return 0;
+	if(val==190) return -0.1736;
+	if(val==350) return -0.1736;
+
+	if(val==135) return 0.7071;
+	if(val==225) return -0.7071;
+	if(val==270) return -1;
+	if(val==315) return -0.7071;
 	else return 42;
 }
 

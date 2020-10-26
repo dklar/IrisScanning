@@ -21,11 +21,9 @@ void iris_scanning_float(AXI_STREAM& inputStream,uint8_t code[BITCODE_LENGTH]){
 	hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
 	findPupil(img1, r1, x, y, 5, img2);
 	hls::Mat2Array<MAX_WIDTH>(img2, fifo1);
-	Iris_fix_border(fifo1, r1, x, y, r2,fifo2);
+	Iris(fifo1,fifo2,x,y,r1,r2);
 	norm_float(fifo2, fifo3, x,y,r1,r2);
 	encode(fifo3,code);
-	//std::cout << x <<";"<<y<<";"<<r1<<";"<<r2<<"\n";
-
 }
 
 void iris_scanning_fix(AXI_STREAM& inputStream,ap_uint<2> code[BITCODE_LENGTH]){
@@ -48,7 +46,7 @@ void iris_scanning_fix(AXI_STREAM& inputStream,ap_uint<2> code[BITCODE_LENGTH]){
 	hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
 	findPupil(img1, r1, x, y, 5, img2);
 	hls::Mat2Array<MAX_WIDTH>(img2, fifo1);
-	Iris_fix_border(fifo1, r1, x, y, r2,fifo2);
+	Iris(fifo1,fifo2,x,y,r1,r2);
 	norm_float(fifo2, fifo3, x,y,r1,r2);
 	encode_fix(fifo3,code);
 }
@@ -73,11 +71,10 @@ void iris_visualize_float(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
 	hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
 	findPupil(img1, r1, x, y, 5, img2);
 	hls::Mat2Array<MAX_WIDTH>(img2, fifo1);
-	Iris_fix_border(fifo1, r1, x, y, r2,fifo2);
+	Iris(fifo1,fifo2,x,y,r1,r2);
 	norm_float(fifo2, fifo3, x,y,r1,r2);
 	visualize_float(fifo3,img5);
 	hls::Mat2AXIvideo(img5, outputStream);
-
 }
 
 void iris_visualize_fix(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
@@ -100,7 +97,7 @@ void iris_visualize_fix(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
 	hls::CvtColor<HLS_RGB2GRAY>(img0, img1);
 	findPupil(img1, r1, x, y, 5, img2);
 	hls::Mat2Array<MAX_WIDTH>(img2, fifo1);
-	Iris_fix_border(fifo1, r1, x, y, r2,fifo2);
+	Iris(fifo1,fifo2,x,y,r1,r2);
 	norm_float(fifo2, fifo3, x,y,r1,r2);
 	visualize_fix(fifo3,img5);
 	hls::Mat2AXIvideo(img5, outputStream);
@@ -108,15 +105,16 @@ void iris_visualize_fix(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
 
 void top_level_vis_float(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
 #pragma HLS INTERFACE axis port=inputStream
-#pragma HLS INTERFACE s_axilite port=code
+#pragma HLS INTERFACE axis port=outputStream
 #pragma HLS INTERFACE ap_ctrl_none port=return
 	iris_visualize_float(inputStream,outputStream);
 }
+
 void top_level_vis_fix(AXI_STREAM& inputStream,AXI_STREAM& outputStream){
 #pragma HLS INTERFACE axis port=inputStream
-#pragma HLS INTERFACE s_axilite port=code
+#pragma HLS INTERFACE axis port=outputStream
 #pragma HLS INTERFACE ap_ctrl_none port=return
-	top_level_vis_fix(inputStream,outputStream);
+	iris_visualize_fix(inputStream,outputStream);
 }
 
 void top_level_float(AXI_STREAM& inputStream,uint8_t code[BITCODE_LENGTH]){

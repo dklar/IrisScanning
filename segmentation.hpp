@@ -4,18 +4,21 @@
 #include "sine.hpp"
 #endif
 
-void findPupil(GRAY_IMAGE &img, int &r, int &x, int &y, int threshold, GRAY_IMAGE &dst_img);
+void findPupil(GRAY_IMAGE &img, int &r, int &x, int &y, int threshold,
+		GRAY_IMAGE &dst_img);
 
-void findPupil2(GRAY_IMAGE &img, int &r, int &x, int &y, int threshold, GRAY_IMAGE &dst_img);
+void findPupil2(GRAY_IMAGE &img, int &r, int &x, int &y, int threshold,
+		GRAY_IMAGE &dst_img);
 
 void find_iris_high_accuracy(GRAY_IMAGE &img, int &pupilRadius, int &x, int &y,
-							 int &irisRadius, GRAY_IMAGE &dst_img);
+		int &irisRadius, GRAY_IMAGE &dst_img);
 
 void find_iris_low_accuracy(GRAY_IMAGE &img, int &pupilRadius, int &x, int &y,
-							int &irisRadius, GRAY_IMAGE &dst_img);
+		int &irisRadius, GRAY_IMAGE &dst_img);
 
-void Iris(uint8_t image_in[MAX_HEIGHT * MAX_WIDTH], int &pupilRadius, int &x,
-		int &y, int &irisRadius, uint8_t image_out[MAX_HEIGHT * MAX_WIDTH]);
+void Iris(uint8_t image_in[MAX_HEIGHT * MAX_WIDTH],
+		uint8_t image_out[MAX_HEIGHT * MAX_WIDTH], int &x, int &y,
+		int &pupilRadius, int &irisRadius);
 
 void Iris_fix_border(uint8_t image_in[MAX_HEIGHT * MAX_WIDTH], int &pupilRadius, int &x,
 		int &y, int &irisRadius, uint8_t image_out[MAX_HEIGHT * MAX_WIDTH]);
@@ -36,6 +39,8 @@ namespace hlsCanny{
 	struct line{
 		int begin;
 		int end;
+		//just for pupil
+		int yPos;
 	};
 
 	class Canny{
@@ -63,7 +68,94 @@ namespace hlsCanny{
 
     	template<int w,int h>
     	void getPossibleCircles(uint8_t* src,int minimum,int threshold,int &x,int &y,int &r);
+
+    	template<int w,int h>
+    	void createHistogramm(uint8_t* src,uint8_t *hist);
+    	template<int w, int h>
+    	static void getPupil_center(uint8_t* src, int minimum, int threshold, int &x,
+    			int &y);
+
+    	template<uint8_t startSearch, uint8_t end_search, int width, int height>
+    	static void getBorder(uint8_t* image_in, uint8_t* image_out, int &x, int &y,
+    			int &radius);
+
+    	template<int width,int height>
+    	void getNonFixBorder(uint8_t* image_in,uint8_t* image_out, int &x, int &y, int &radiusIn, int &radiusOut);
+
+    	static inline void replaceSIN2(int val, float &retVal);
+
+    	static inline void replaceCOS2(int val, float &retVal);
+
 	};
+	inline void replaceCOS22(int val,float &retVal) {
+			if (val == 0)
+				retVal =  1.0;
+			if (val == 10)
+				retVal =  0.9848;
+			if (val == 20)
+				retVal =  0.9396;
+			if (val == 30)
+				retVal =  0.8660;
+			if (val == 45)
+				retVal =  0.7071;
+			if (val == 90)
+				retVal =  0.0;
+
+			if (val == 160)
+				retVal =  -0.9396;
+			if (val == 170)
+				retVal =  -0.9848;
+			if (val == 180)
+				retVal =  -1;
+			if (val == 190)
+				retVal =  -0.9848;
+			if (val == 350)
+				retVal =  0.9848;
+
+			if (val == 135)
+				retVal =  -0.7071;
+			if (val == 225)
+				retVal =  -0.7071;
+			if (val == 270)
+				retVal =  0;
+			if (val == 315)
+				retVal =  0.7071;
+		}
+
+	inline void replaceSIN22(int val,float &retVal) {
+			if (val == 0)
+				retVal =  0.0;
+			if (val == 10)
+				retVal =  0.1736;
+			if (val == 20)
+				retVal =  0.3420;
+			if (val == 30)
+				retVal =  0.5;
+			if (val == 45)
+				retVal =  0.7071;
+			if (val == 90)
+				retVal =  1.0;
+
+			if (val == 160)
+				retVal =  0.3420;
+			if (val == 170)
+				retVal =  0.1736;
+			if (val == 180)
+				retVal =  0;
+			if (val == 190)
+				retVal =  -0.1736;
+			if (val == 350)
+				retVal =  -0.1736;
+
+			if (val == 135)
+				retVal =  0.7071;
+			if (val == 225)
+				retVal =  -0.7071;
+			if (val == 270)
+				retVal =  -1;
+			if (val == 315)
+				retVal =  -0.7071;
+		}
 
 	template<int w,int h>
 	void MatToArray(GRAY_IMAGE &in, uint8_t* out){
@@ -512,4 +604,174 @@ namespace hlsCanny{
 		r = r_temp;
 	}
 
+	template<int w,int h>
+	void createHistogramm2(uint8_t* src,float *hist){
+		for(int i=0;i<6;i++){
+			hist[i]=0;
+		}
+		for(int y = 0; y < h; y++) {
+			for(int x = 0; x < w; x++) {
+				#pragma HLS PIPELINE II=1
+				#pragma HLS LOOP_FLATTEN off
+				uint8_t pos =src[x + y*w] / 50;
+				hist[pos]+=1;
+			}
+		}
+		for(int i=0;i<6;i++){
+			hist[i]/=w*h;
+		}
+	}
+
+	template<int w,int h>
+	void getPupil_center(uint8_t* src, int minimum,int threshold,int &x,int &y){
+	line line1;
+	bool firstX = true;
+	bool firstY = true;
+	uint16_t votingX[w];
+	uint16_t votingY[h];
+
+#pragma HLS ARRAY_MAP variable=votingX instance=array3 horizontal
+#pragma HLS ARRAY_MAP variable=votingY instance=array3 horizontal
+
+	initVotingX:
+	for (int i = 0; i < w; i++) {
+		votingX[i] = 0;
+	}
+	initVotingY:
+	for (int i = 0; i < h; i++) {
+		votingY[i] = 0;
+	}
+
+	searchForX:
+	for (int y = 0; y < h; y++) {
+		for (int x = 0; x < w; x++) {
+		#pragma HLS PIPELINE II=1
+		#pragma HLS LOOP_FLATTEN off
+			if (src[x + y * w] > threshold) {
+				if (firstX) {
+					line1.begin = x;
+					firstX = false;
+				}
+				if (!firstX) {
+					line1.end = x;
+					int l = line1.end - line1.begin;
+					if (l > minimum)
+						votingX[line1.begin + l / 2] += 1;
+					line1.begin = x;
+				}
+			}
+		}
+	}
+	line1.begin = 0;
+	line1.end = 0;
+	searchForY:
+	for (int x = 0; x < w; x++) {
+		for (int y = 0; y < h; y++) {
+			if (src[x + y * w] > threshold) {
+				if (firstY) {
+					line1.begin = y;
+					firstY = false;
+				}
+				if (!firstY) {
+					line1.end = y;
+					int l = line1.end - line1.begin;
+					if (l > minimum)
+						votingY[line1.begin + l / 2] += 1;
+					line1.begin = y;
+				}
+			}
+		}
+	}
+	int Xmax = 0;
+	int Ymax = 0;
+	int posX = 0;
+	int posY = 0;
+
+	for (int i = 0; i < w; i++) {
+		if (votingX[i] > Xmax) {
+			Xmax = votingX[i];
+			posX = i;
+		}
+	}
+	for (int i = 0; i < h; i++) {
+		if (votingY[i] > Ymax) {
+			Ymax = votingY[i];
+			posY = i;
+		}
+	}
+	//now we got the middlepoint of the pupil
+	x = posX;
+	y = posY;
+}
+
+	template<int w,int h>
+	int CircleSum(uint8_t* image_in, int x, int y,int r) {
+		int sum = 0;
+
+		IrisSumUpLoop1:
+		for (int alpha = 0; alpha <= 350; alpha += 10) {
+			if (alpha <= 20) {
+				float tempC,tempS;
+				replaceCOS2(alpha,tempC);
+				replaceSIN2(alpha,tempS);
+				int PointX = (int) (x + r * tempC);
+				int PointY = (int) (y + r * tempS);
+				sum += image_in[w * PointY + PointX];
+			}
+			if (alpha >= 160 && alpha <= 190) {
+				float tempC,tempS;
+				replaceCOS2(alpha,tempC);
+				replaceSIN2(alpha,tempS);
+				int PointX = (int) (x + r * tempC);
+				int PointY = (int) (y - r * tempS); //170..180 sin positiv, but display system need negative values so minus r
+				sum += image_in[w * PointY + PointX];
+			}
+			if (alpha == 350) {
+				float tempC,tempS;
+				replaceCOS2(alpha,tempC);
+				replaceSIN2(alpha,tempS);
+				int PointX = (int) (x + r * tempC);
+				int PointY = (int) (y - r * tempS); //170..180 sin positiv, but display system need negative values so minus r
+				sum += image_in[w * PointY + PointX];
+			}
+
+		}
+		return sum >> 3;
+	}
+
+	template<uint8_t startSearch, uint8_t end_search,int width,int height>
+	void getBorder(uint8_t* image_in,uint8_t* image_out, int &x, int &y, int &radius) {
+
+		//create a histogram, by actually not creating a histogram, divide color space(0..255) into 5 groups
+		//hist_inner is the histogram value of the inner Hull integral of the iris
+		//IrisSegmentaionLoop is checking if we reached a other histogram step, to make sure, that is not just coincidence, that
+		//the outer Hull integral is bigger(brighter) than the inner Hull integral it have to be 3 times successively
+
+		int hist_inner = CircleSum<width,height>(image_in, x, y, startSearch+2) / 50;
+		//std::cout <<"Inner hist.: "<< hist_inner <<"\n";
+		int count=0;
+		IrisSegmentaionLoop:
+		for(int r = startSearch+2;r<end_search;r++){
+		#pragma HLS unroll
+			int hist_outer = CircleSum<width,height>(image_in, x, y, r) / 50;
+			//std::cout <<"outer hist.: "<< hist_outer <<"\n";
+			if (hist_outer > hist_inner){
+				count++;
+				radius = r;//if we don't reach the condition below, we want to return the most coincidence value (so with section change)
+				if(count>3){
+					radius = r-3;
+					break;
+				}
+			}else{
+				count=0;
+			}
+		}
+		//image_out = image_in;don't work
+		assignOutputLoop:
+		for(int y =0;y<height;y++){
+			for(int x =0;x<width;x++){
+				image_out[width * y + x] = image_in[width * y + x];
+			}
+		}
+	}
 }

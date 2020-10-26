@@ -216,66 +216,38 @@ loopPixel:
 	irisRadius = IRIS_RADIUS_MIN + iris_radius;
 }
 
-int calcCircleSum(uint8_t image_in[MAX_HEIGHT * MAX_WIDTH],
-				  int x, int y, int r)
-{
-	int sum = 0;
+/*
+ * Weiss ->groﬂ 255
+ */
+void Iris(uint8_t image_in[MAX_HEIGHT * MAX_WIDTH],
+		uint8_t image_out[MAX_HEIGHT * MAX_WIDTH], int &x, int &y,
+		int &pupilRadius, int &irisRadius) { //uint8_t *histogramm,
 
-	IrisSumUpLoop:
-	for (int alpha = 0; alpha < 360; alpha += 45)
-	{
-		if (alpha != 90 and alpha != 270)
-		{
-			int PointX = (int)(x + r * replaceCOS(alpha));
-			int PointY = (int)(x + r * replaceSIN(alpha));
-			sum += image_in[MAX_HEIGHT * PointY + MAX_WIDTH];
-		}
-	}
-	return sum;
-}
+	//create a histogram, by actually not creating a histogram, divide color space(0..255) into 5 groups
+	//hist_inner is the histogram value of the inner Hull integral of the iris
+	//IrisSegmentaionLoop is checking if we reached a other histogram step, to make sure, that is not just coincidence, that
+	//the outer Hull integral is bigger(brighter) than the inner Hull integral it have to be 3 times successively
 
-void Iris(uint8_t image_in[MAX_HEIGHT * MAX_WIDTH], int &pupilRadius, int &x,
-		int &y, int &irisRadius, uint8_t image_out[MAX_HEIGHT * MAX_WIDTH]) {
-	int Amax = 0;
-
+	int hist_inner = calcCircleSum3(image_in, x, y, IRIS_RADIUS_MIN) / 50;
+	int count=0;
 	IrisSegmentaionLoop:
-	for (int r = pupilRadius + 30; r < pupilRadius * 4;r++) { //pupilRadius*5
-		int outer = calcCircleSum(image_in, x, y, r + 1);
-		int inner = calcCircleSum(image_in, x, y, r - 1);
-		int gradient = outer - inner;
-		if (gradient > Amax) {
-			Amax = gradient;
-			irisRadius = r;
+	//for (int r = pupilRadius + 30; r < pupilRadius * 4;r++) {
+	for(int r = IRIS_RADIUS_MIN;r<IRIS_RADIUS_MAX;r++){
+#pragma HLS unroll
+		int hist_outer = calcCircleSum3(image_in, x, y, r) / 50;
+		if (hist_outer > hist_inner){
+			count++;
+			irisRadius = r;//if we don't reach the condition below, we want to return the most coincidence value (so with section change)
+			if(count>3){
+				irisRadius = r-3;
+				break;
+			}
+		}else{
+			count=0;
 		}
 	}
-	FIFOLoop:
-	for (int yi = 0; yi < MAX_HEIGHT; yi++) {
-		for (int xi = 0; xi < MAX_WIDTH; xi++) {
-			image_out[xi + yi * MAX_WIDTH] = image_in[xi + yi * MAX_WIDTH];
-		}
-	}
+	image_out = image_in;
 }
 
-void Iris_fix_border(uint8_t image_in[MAX_HEIGHT * MAX_WIDTH], int &pupilRadius, int &x,
-		int &y, int &irisRadius, uint8_t image_out[MAX_HEIGHT * MAX_WIDTH]) {
-	int Amax = 0;
-
-	IrisSegmentaionLoop:
-	for (int r = pupilRadius + 10; r < pupilRadius + 50;r++) { //pupilRadius*5
-		int outer = calcCircleSum(image_in, x, y, r + 1);
-		int inner = calcCircleSum(image_in, x, y, r - 1);
-		int gradient = outer - inner;
-		if (gradient > Amax) {
-			Amax = gradient;
-			irisRadius = r;
-		}
-	}
-	FIFOLoop:
-	for (int yi = 0; yi < MAX_HEIGHT; yi++) {
-		for (int xi = 0; xi < MAX_WIDTH; xi++) {
-			image_out[xi + yi * MAX_WIDTH] = image_in[xi + yi * MAX_WIDTH];
-		}
-	}
-}
 
 

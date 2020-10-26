@@ -21,15 +21,15 @@
 #define MAX_WIDTH MAX_WIDTH_IITD
 #define MAX_HEIGHT MAX_HEIGHT_IITD
 
-#define IRIS_RADIUS_MIN 85
-#define IRIS_RADIUS_MAX 150
+#define IRIS_RADIUS_MIN 100
+#define IRIS_RADIUS_MAX 120
 
 #define PUPIL_RADIUS_MIN 30
 #define PUPIL_RADIUS_MAX  60
 
 
-#define NORM_HEIGHT 32//48//32
-#define NORM_WIDTH  360//432//360
+#define NORM_HEIGHT 32
+#define NORM_WIDTH  360
 
 #define MAX_KERN_SIZE NORM_HEIGHT/3
 
@@ -43,7 +43,3 @@ typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,   HLS_8UC3> 		NORM_RGB_IMAGE;//RGB imag
 typedef hls::Mat<NORM_HEIGHT,NORM_WIDTH,   HLS_8UC1> 		NORM_GRAY_IMAGE;//Gray image from type HLS::Mat
 typedef hls::Scalar<3, uint8_t> 							RGBPIXEL;
 typedef hls::Scalar<1, uint8_t> 							PIXELGRAY;
-
-
-typedef ap_uint<2> int2;//for return value of gabor pixel ->00,01,10,11
-typedef ap_uint<6> int6;//for other small values

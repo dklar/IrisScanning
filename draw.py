@@ -2,7 +2,8 @@ import cv2
 import os
 
 f = open("eye.txt")
-os.mkdir("Test")
+if not os.path.exists("Test"):
+    os.mkdir("Test")
 
 i = 0
 for line in f:

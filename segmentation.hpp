@@ -16,12 +16,6 @@ void find_iris_high_accuracy(GRAY_IMAGE &img, int &pupilRadius, int &x, int &y,
 void find_iris_low_accuracy(GRAY_IMAGE &img, int &pupilRadius, int &x, int &y,
 		int &irisRadius, GRAY_IMAGE &dst_img);
 
-void Iris(uint8_t image_in[MAX_HEIGHT * MAX_WIDTH],
-		uint8_t image_out[MAX_HEIGHT * MAX_WIDTH], int &x, int &y,
-		int &pupilRadius, int &irisRadius);
-
-void Iris_fix_border(uint8_t image_in[MAX_HEIGHT * MAX_WIDTH], int &pupilRadius, int &x,
-		int &y, int &irisRadius, uint8_t image_out[MAX_HEIGHT * MAX_WIDTH]);
 namespace hlsCanny{
 
 	enum Direction{
@@ -37,10 +31,8 @@ namespace hlsCanny{
 	};
 
 	struct line{
-		int begin;
-		int end;
-		//just for pupil
-		int yPos;
+		uint16_t begin;
+		uint16_t end;
 	};
 
 	class Canny{
@@ -71,7 +63,11 @@ namespace hlsCanny{
 
     	template<int w,int h>
     	void createHistogramm(uint8_t* src,uint8_t *hist);
-    	template<int w, int h>
+    	
+		template<int w,int h>
+		int CircleSum(uint8_t* image_in, int x, int y,int r);
+
+		template<int w, int h>
     	static void getPupil_center(uint8_t* src, int minimum, int threshold, int &x,
     			int &y);
 
@@ -85,9 +81,22 @@ namespace hlsCanny{
     	static inline void replaceSIN2(int val, float &retVal);
 
     	static inline void replaceCOS2(int val, float &retVal);
+		
+		template<int width, int height>
+		void duplicate(uint8_t *in,uint8_t *out1,uint8_t* out2);
+
+		template<int w,int h>
+		void MatToGrayArray(RGB_IMAGE &in, uint8_t* out);
+
+		template <int WIDTH,int HEIGHT>
+		static void Gauss(uint8_t* src, uint8_t* dst);
+
+		template <int WIDTH,int HEIGHT>
+		void Gauss3(uint8_t* src, uint8_t *dst);
+
 
 	};
-	inline void replaceCOS22(int val,float &retVal) {
+	inline void replaceCOS2(int val,float &retVal) {
 			if (val == 0)
 				retVal =  1.0;
 			if (val == 10)
@@ -122,7 +131,7 @@ namespace hlsCanny{
 				retVal =  0.7071;
 		}
 
-	inline void replaceSIN22(int val,float &retVal) {
+	inline void replaceSIN2(int val,float &retVal) {
 			if (val == 0)
 				retVal =  0.0;
 			if (val == 10)
@@ -185,6 +194,152 @@ namespace hlsCanny{
 				px1.val[1] = in[x+y*w];
 				px1.val[2] = in[x+y*w];
 				out << px1;
+			}
+		}
+	}
+
+	/*
+	 *Convert an RGB_IMAGE to an array of grayscale
+	 */
+	template<int w,int h>
+	void MatToGrayArray(RGB_IMAGE &in, uint8_t* out){
+		RGBPIXEL pixel_value;
+		loopPixel:
+		for (int y=0;y<h;y++){
+			for (int x=0;x<w;x++){
+				#pragma HLS loop_flatten off
+				#pragma HLS pipeline II=1
+				in >> pixel_value;
+				uint8_t red   = (pixel_value.val[0]*19595)>>16;//*0.299
+				uint8_t green = (pixel_value.val[1]*38469)>>16;//*0.587
+				uint8_t blue  = (pixel_value.val[2]*4718 )>>16;//0.114
+				out[x+y*w] = red+green+blue;
+			}
+		}
+	}
+	
+	template <int WIDTH,int HEIGHT>
+	void Gauss(uint8_t* src, uint8_t *dst){
+		const int KERNEL_SIZE = 5;
+
+        uint8_t line_buf[KERNEL_SIZE][WIDTH];
+        uint8_t window_buf[KERNEL_SIZE][KERNEL_SIZE];
+
+        #pragma HLS ARRAY_RESHAPE variable=line_buf complete dim=1
+        #pragma HLS ARRAY_PARTITION variable=window_buf complete dim=0
+
+        const int GaussKernel[KERNEL_SIZE][KERNEL_SIZE] ={	{1,  4,  6,  4, 1},
+															{4, 16, 24, 16, 4},
+															{6, 24, 36, 24, 6},
+															{4, 16, 24, 16, 4},
+															{1,  4,  6,  4, 1}
+        												  };
+		#pragma HLS ARRAY_PARTITION variable=GaussKernel complete dim=0
+
+
+        GaussianConvolveLoop:
+		for (int y = 0;y< HEIGHT;y++){
+			for(int x = 0;x< WIDTH;x++){
+				#pragma HLS PIPELINE II=1
+                #pragma HLS LOOP_FLATTEN off
+
+				prepareLineBuffer:
+				for(int y_tmp = 0; y_tmp< KERNEL_SIZE-1;y_tmp++)
+					line_buf[y_tmp][x] = line_buf[y_tmp+1][x];
+
+				line_buf[KERNEL_SIZE - 1][x] = src[x + y*WIDTH];
+
+				prepareWindow:
+				for(int yw = 0; yw < KERNEL_SIZE; yw++) {
+					for(int xw = 0; xw < KERNEL_SIZE - 1; xw++) {
+						window_buf[yw][xw] = window_buf[yw][xw + 1];
+					}
+				}
+				fillWindow:
+                for(int yw = 0; yw < KERNEL_SIZE; yw++) {
+                    window_buf[yw][KERNEL_SIZE - 1] = line_buf[yw][x];
+                }
+
+                int pixel = 0;
+
+                conv:
+                for(int yw = 0; yw < KERNEL_SIZE; yw++) {
+                    for(int xw = 0; xw < KERNEL_SIZE; xw++) {
+                    	pixel += window_buf[yw][xw] * GaussKernel[yw][xw];
+                    }
+                }
+
+                pixel >>=8;
+                dst[x + y*WIDTH] = pixel;
+			}
+		}
+	}
+
+	template <int WIDTH,int HEIGHT>
+	void Gauss3(uint8_t* src, uint8_t *dst){
+		const int KERNEL_SIZE = 3;
+
+		uint8_t line_buf[KERNEL_SIZE][WIDTH];
+		uint8_t window_buf[KERNEL_SIZE][KERNEL_SIZE];
+
+		#pragma HLS ARRAY_RESHAPE variable=line_buf complete dim=1
+		#pragma HLS ARRAY_PARTITION variable=window_buf complete dim=0
+
+		const int GaussKernel[KERNEL_SIZE][KERNEL_SIZE] ={	{1, 2, 1},
+															{2, 4, 2},
+															{1, 2, 1}
+														  };
+		#pragma HLS ARRAY_PARTITION variable=GaussKernel complete dim=0
+
+
+		GaussianConvolveLoop:
+		for (int y = 0;y< HEIGHT;y++){
+			for(int x = 0;x< WIDTH;x++){
+				#pragma HLS PIPELINE II=1
+				#pragma HLS LOOP_FLATTEN off
+
+				prepareLineBuffer:
+				for(int y_tmp = 0; y_tmp< KERNEL_SIZE-1;y_tmp++)
+					line_buf[y_tmp][x] = line_buf[y_tmp+1][x];
+
+				line_buf[KERNEL_SIZE - 1][x] = src[x + y*WIDTH];
+
+				prepareWindow:
+				for(int yw = 0; yw < KERNEL_SIZE; yw++) {
+					for(int xw = 0; xw < KERNEL_SIZE - 1; xw++) {
+						window_buf[yw][xw] = window_buf[yw][xw + 1];
+					}
+				}
+
+				fillWindow:
+                for(int yw = 0; yw < KERNEL_SIZE; yw++) {
+                    window_buf[yw][KERNEL_SIZE - 1] = line_buf[yw][x];
+                }
+
+
+				int pixel = 0;
+
+				conv:
+				for(int yw = 0; yw < KERNEL_SIZE; yw++) {
+					for(int xw = 0; xw < KERNEL_SIZE; xw++) {
+						pixel += window_buf[yw][xw] * GaussKernel[yw][xw];
+					}
+				}
+
+				pixel >>=4;
+				dst[x + y*WIDTH] = pixel;
+			}
+		}
+	}
+
+	template<int width, int height>
+	void duplicate(uint8_t *in,uint8_t *out1,uint8_t* out2){
+		for (int y=0;y<height;y++){
+			for(int x=0;x<width;x++){
+				#pragma HLS PIPELINE II=1
+				#pragma HLS LOOP_FLATTEN off
+				out1[x+y*width] = in[x+y*width];
+				out2[x+y*width] = in[x+y*width];
 			}
 		}
 	}
@@ -274,19 +429,19 @@ namespace hlsCanny{
 	                    t_int = 0x7FFFFFFF;
 	                }
 
-	                // 112.5° ~ 157.5° (tan 112.5° ~= -2.4142, tan 157.5° ~= -0.4142)
+	                // 112.5ï¿½ ~ 157.5ï¿½ (tan 112.5ï¿½ ~= -2.4142, tan 157.5ï¿½ ~= -0.4142)
 	                if(-618 < t_int && t_int <= -106) {
 	                    grad_sobel = GRAD_135;
 	                }
-	                // -22.5° ~ 22.5° (tan -22.5° ~= -0.4142, tan 22.5° = 0.4142)
+	                // -22.5ï¿½ ~ 22.5ï¿½ (tan -22.5ï¿½ ~= -0.4142, tan 22.5ï¿½ = 0.4142)
 	                else if(-106 < t_int && t_int <= 106) {
 	                    grad_sobel = GRAD_0;
 	                }
-	                // 22.5° ~ 67.5° (tan 22.5° ~= 0.4142, tan 67.5° = 2.4142)
+	                // 22.5ï¿½ ~ 67.5ï¿½ (tan 22.5ï¿½ ~= 0.4142, tan 67.5ï¿½ = 2.4142)
 	                else if(106 < t_int && t_int < 618) {
 	                    grad_sobel = GRAD_45;
 	                }
-	                // 67.5° ~ 112.5° (to inf)
+	                // 67.5ï¿½ ~ 112.5ï¿½ (to inf)
 	                else {
 	                    grad_sobel = GRAD_90;
 	                }
@@ -382,7 +537,7 @@ namespace hlsCanny{
 						value_nms = 0;
 					}
 				}
-				// grad 135° -> bottom left, upper right
+				// grad 135ï¿½ -> bottom left, upper right
 				else if(grad_nms == GRAD_135) {
 					if(value_nms < window_buf[WINDOW_SIZE - 1][0].color ||
 					   value_nms < window_buf[0][WINDOW_SIZE - 1].color) {
@@ -484,6 +639,17 @@ namespace hlsCanny{
 		}
 	}
 
+/**
+ * Hough Circle transform based circle detection, Returns only the coordinates of 
+ * the circle of the most likely position 
+ * and the concerning radius of this position.
+ * @tparam w width of the image
+ * @tparam h height of the image
+ * @param src Input canny grayscale image
+ * @param minimum Minimal radius of a circle
+ * @param threshold threshold for which pixel the transform is adapted
+ * @param[out] x,y,r coordinates an radius of circle center
+ * */
 	template<int w,int h>
 	void getPossibleCircles(uint8_t* src,int minimum,int threshold,int &x,int &y,int &r){
 		line line1;
@@ -557,7 +723,7 @@ namespace hlsCanny{
 		int Ymax = 0;
 		int posX = 0;
 		int posY = 0;
-
+		//check for the maximum in X and Y direction could also be in the loop above, but maybe 
 		for (int i = 0;i<w;i++){
 			if (votingX[i]>Xmax){
 				Xmax = votingX[i];
@@ -578,7 +744,7 @@ namespace hlsCanny{
 				if (src[x0 + y0*w]>threshold){
 					int b = (y0-posY)*(y0-posY);
 					uint32_t c = a + b;
-					if(c<=10000 || c>=625){
+					if(c<=10000 || c>625){
 						 // possible range of radii
 						 // rmin = 25  -> temp>=25^2=625
 						 // rmax = 100 -> tmep<=100^2=10.000
@@ -622,6 +788,18 @@ namespace hlsCanny{
 		}
 	}
 
+/**
+ * Addpated Hough Circle transform returns only x and y coordinates
+ * to determine the radius of the circel use getBorder 
+ * @see getBorder
+ * @see getPossibleCircles
+ * @tparam w width of the image
+ * @tparam h height of the image
+ * @param src Input canny grayscale image
+ * @param minimum Minimal radius of a circle
+ * @param threshold threshold for which pixel the transform is adapted
+ * @param[out] x,y coordinates of circle center
+ * */
 	template<int w,int h>
 	void getPupil_center(uint8_t* src, int minimum,int threshold,int &x,int &y){
 	line line1;
@@ -704,6 +882,15 @@ namespace hlsCanny{
 	y = posY;
 }
 
+/**
+ * Addpated Hough Circle transform returns only x and y coordinates
+ * to determine the radius of the circel use getBorder 
+ * @tparam w width of the image
+ * @tparam h height of the image
+ * @param image_in Input grayscale image
+ * @param x,y,r coordinates and radius of the circle
+ * @return average of pixel color 
+ * */
 	template<int w,int h>
 	int CircleSum(uint8_t* image_in, int x, int y,int r) {
 		int sum = 0;
@@ -752,7 +939,7 @@ namespace hlsCanny{
 		int count=0;
 		IrisSegmentaionLoop:
 		for(int r = startSearch+2;r<end_search;r++){
-		#pragma HLS unroll
+		//#pragma HLS unroll
 			int hist_outer = CircleSum<width,height>(image_in, x, y, r) / 50;
 			//std::cout <<"outer hist.: "<< hist_outer <<"\n";
 			if (hist_outer > hist_inner){

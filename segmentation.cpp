@@ -215,39 +215,3 @@ loopPixel:
 
 	irisRadius = IRIS_RADIUS_MIN + iris_radius;
 }
-
-/*
- * Weiss ->groﬂ 255
- */
-void Iris(uint8_t image_in[MAX_HEIGHT * MAX_WIDTH],
-		uint8_t image_out[MAX_HEIGHT * MAX_WIDTH], int &x, int &y,
-		int &pupilRadius, int &irisRadius) { //uint8_t *histogramm,
-
-	//create a histogram, by actually not creating a histogram, divide color space(0..255) into 5 groups
-	//hist_inner is the histogram value of the inner Hull integral of the iris
-	//IrisSegmentaionLoop is checking if we reached a other histogram step, to make sure, that is not just coincidence, that
-	//the outer Hull integral is bigger(brighter) than the inner Hull integral it have to be 3 times successively
-
-	int hist_inner = calcCircleSum3(image_in, x, y, IRIS_RADIUS_MIN) / 50;
-	int count=0;
-	IrisSegmentaionLoop:
-	//for (int r = pupilRadius + 30; r < pupilRadius * 4;r++) {
-	for(int r = IRIS_RADIUS_MIN;r<IRIS_RADIUS_MAX;r++){
-#pragma HLS unroll
-		int hist_outer = calcCircleSum3(image_in, x, y, r) / 50;
-		if (hist_outer > hist_inner){
-			count++;
-			irisRadius = r;//if we don't reach the condition below, we want to return the most coincidence value (so with section change)
-			if(count>3){
-				irisRadius = r-3;
-				break;
-			}
-		}else{
-			count=0;
-		}
-	}
-	image_out = image_in;
-}
-
-
-
